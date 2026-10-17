@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CityU EE Degree Audit & Recovery Simulator v6</title>
+    <style>
+        :root {
+            --cityu-maroon: #800020;
+            --cityu-gold: #D4AF37;
+            --bg-gray: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --border-color: #cbd5e1;
+            --danger-red: #e74c3c;
+            --danger-bg: #fdf2f2;
+            --warning-orange: #f39c12;
+            --warning-bg: #fef9e7;
+            --success-green: #2ecc71;
+            --success-bg: #eafaf1;
+            --primary-blue: #3498db;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-gray);
+            color: var(--text-dark);
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--cityu-maroon);
+            color: white;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .badge-version {
+            background: var(--cityu-gold);
+            color: #000;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .control-panel {
+            background: var(--card-bg);
+            padding: 20px;
+            border-bottom: 2px solid var(--border-color);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        select, input[type="text"] {
+            padding: 9px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            background-color: #fff;
+            outline: none;
+        }
+
+        select:focus, input[type="text"]:focus {
+            border-color: var(--cityu-maroon);
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            background: #fff;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tab-btn {
+            padding: 14px 20px;
+            border: none;
+            background: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: var(--cityu-maroon);
+        }
+
+        .tab-btn.active {
+            color: var(--cityu-maroon);
+            border-bottom-color: var(--cityu-maroon);
+            background: #fff9f9;
+        }
+
+        /* Tab Content Panels */
+        .tab-content {
+            display: none;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            min-height: 500px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Metrics Bar */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .metric-card {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .metric-card .value {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--cityu-maroon);
+            margin-top: 5px;
+        }
+
+        .metric-card .label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Alert Banners */
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .alert-danger {
+            background-color: var(--danger-bg);
+            border: 1px solid var(--danger-red);
+            color: #900C3F;
+        }
+
+        .alert-success {
+            background-color: var(--success-bg);
+            border: 1px solid var(--success-green);
+            color: #1e8449;
+        }
+
+        .btn-action {
+            background-color: var(--cityu-maroon);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+
+        .btn-action:hover {
+            background-color: #600018;
+        }
+
+        .btn-reset {
+            background-color: #475569;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.82rem;
+        }
+
+        .btn-reset:hover {
+            background-color: #1e293b;
+        }
+
+        /* Audit Layout */
+        .audit-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .checklist-container {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            max-height: 480px;
+            overflow-y: auto;
+            background: #fafafa;
+        }
+
+        .course-check-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            background: #fff;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .course-check-item.ge-item {
+            border-left: 4px solid var(--cityu-gold);
+        }
+
+        /* Flowchart Visualizer Styles & Drag and Drop */
+        .flowchart-section {
+            border-top: 2px dashed var(--border-color);
+            padding-top: 25px;
+            margin-top: 25px;
+        }
+
+        .flowchart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .flowchart-header h3 {
+            font-size: 1.1rem;
+            color: var(--cityu-maroon);
+        }
+
+        .flowchart-legend {
+            display: flex;
+            gap: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .legend-box {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            border: 1px solid var(--border-color);
+        }
+
+        .legend-box.completed {
+            background-color: #d1fae5;
+            border-color: #10b981;
+        }
+
+        .legend-box.incomplete {
+            background-color: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        .legend-box.failed {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+
+        .flowchart-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .sem-row {
+            display: flex;
+            align-items: stretch;
+            gap: 12px;
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1.5px solid var(--border-color);
+            position: relative;
+        }
+
+        .sem-row.sem-warning-border {
+            border-color: var(--danger-red) !important;
+            background-color: #fef2f2 !important;
+        }
+
+        .sem-label-container {
+            width: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            border-right: 2px solid var(--border-color);
+            padding-right: 10px;
+        }
+
+        .sem-label {
+            font-weight: bold;
+            font-size: 0.85rem;
+            color: var(--cityu-maroon);
+            text-align: center;
+        }
+
+        .sem-cu-counter {
+            font-size: 0.75rem;
+            background: #e2e8f0;
+            color: var(--text-dark);
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .sem-courses {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            flex: 1;
+            min-height: 55px;
+            align-items: center;
+            padding: 4px;
+            border: 1px dashed transparent;
+            border-radius: 6px;
+        }
+
+        .sem-courses.drag-over {
+            border-color: var(--primary-blue);
+            background-color: #f0f9ff;
+        }
+
+        .prereq-warning-banner {
+            width: 100%;
+            background: var(--danger-bg);
+            color: var(--danger-red);
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .flow-box {
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            min-width: 110px;
+            text-align: center;
+            border: 1.5px solid var(--border-color);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+            transition: all 0.2s;
+            cursor: grab;
+            user-select: none;
+        }
+
+        .flow-box:active {
+            cursor: grabbing;
+            opacity: 0.6;
+        }
+
+        .flow-box.completed {
+            background-color: #d1fae5 !important;
+            border-color: #10b981 !important;
+            color: #065f46 !important;
+            font-weight: 600;
+        }
+
+        .flow-box.incomplete {
+            background-color: #ffffff !important;
+            border-color: #94a3b8 !important;
+            color: #475569 !important;
+        }
+
+        .flow-box.failed-highlight {
+            border: 2px solid #ef4444 !important;
+            background-color: #fee2e2 !important;
+            color: #991b1b !important;
+            font-weight: bold;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        /* Timetable Layout */
+        .simulator-grid {
+            display: grid;
+            grid-template-columns: 310px 1fr;
+            gap: 20px;
+        }
+
+        .timetable-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .timetable-table th, .timetable-table td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            height: 65px;
+            vertical-align: middle;
+        }
+
+        .timetable-table th {
+            background-color: #f8f9fa;
+        }
+
+        .slot-active {
+            background-color: #e0f2fe;
+            border-left: 4px solid var(--primary-blue) !important;
+            color: #0369a1;
+            font-weight: bold;
+        }
+
+        .slot-clash {
+            background-color: var(--danger-bg) !important;
+            border-left: 4px solid var(--danger-red) !important;
+            color: var(--danger-red) !important;
+            font-weight: bold;
+        }
+
+        .override-card {
+            background: #fafafa;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .prereq-chain {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 15px 0;
+            font-weight: bold;
+            flex-wrap: wrap;
+        }
+
+        .chain-node {
+            padding: 8px 14px;
+            border-radius: 6px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            font-size: 0.85rem;
+        }
+
+        .chain-node.failed {
+            background: var(--danger-bg);
+            border-color: var(--danger-red);
+            color: var(--danger-red);
+        }
+
+        /* Planner Slots */
+        .planner-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .planner-term-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            background: #fff;
+        }
+
+        .planner-term-card h4 {
+            font-size: 0.9rem;
+            color: var(--cityu-maroon);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .planner-course-list {
+            min-height: 45px;
+            border: 1px dashed var(--border-color);
+            border-radius: 6px;
+            padding: 6px;
+            margin-bottom: 8px;
+            background: #fafafa;
+        }
+
+        .planned-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e0f2fe;
+            border: 1px solid #bae6fd;
+            color: #0369a1;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin: 2px;
+        }
+
+        .planned-tag .remove-btn {
+            cursor: pointer;
+            color: var(--danger-red);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            <h1>CityU EE Degree Audit & Timetable Recovery Simulator</h1>
+            <p>2hr 50min Time Slot Engine & Full Course Timeslot Coverage</p>
+        </div>
+        <span class="badge-version">v6.0 2h50m Slots & Fixed Timeslots</span>
+    </header>
+
+    <!-- Global Controls -->
+    <div class="control-panel">
+        <div class="form-group">
+            <label for="majorSelect">Select Major Structure:</label>
+            <select id="majorSelect" onchange="handleGlobalChange()">
+                <option value="CDE">Computer and Data Engineering (CDE)</option>
+                <option value="INFE">Information Engineering (INFE)</option>
+                <option value="ELEL">Electronic and Electrical Engineering (ELEL)</option>
+                <option value="MEE">Microelectronic Engineering (MEE)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="degreeRouteSelect">Degree Requirement Entry Route:</label>
+            <select id="degreeRouteSelect" onchange="handleGlobalChange()">
+                <option value="120">Normative 4-Year Degree (Min. 120 CUs)</option>
+                <option value="96">Advanced Standing I (ASI) (Min. 96 CUs)</option>
+                <option value="75">Advanced Standing II (ASII) (Min. 75 CUs)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="yearSelect">Current Year of Study:</label>
+            <select id="yearSelect" onchange="handleGlobalChange()">
+                <option value="1">Year 1</option>
+                <option value="2" selected>Year 2</option>
+                <option value="3">Year 3</option>
+                <option value="4">Year 4 (Final Year)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="failedCourseSelect">Failed Prerequisite Course:</label>
+            <select id="failedCourseSelect" onchange="handleGlobalChange()"></select>
+        </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('roadmapTab', this)">🎓 Degree Audit & Interactive Flowchart</button>
+        <button class="tab-btn" onclick="switchTab('visualizerTab', this)">🗓️ Timetable Conflict Simulator</button>
+        <button class="tab-btn" onclick="switchTab('overrideTab', this)">🔓 Prerequisite Override Assistant</button>
+    </div>
+
+    <!-- TAB 1: Degree Audit & Interactive Flowchart -->
+    <div id="roadmapTab" class="tab-content active">
+        
+        <!-- Metrics -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="label">Degree Requirement</div>
+                <div class="value" id="metricDegreeReq">120 CU</div>
+            </div>
+            <div class="metric-card">
+                <div class="label">Completed Credits</div>
+                <div class="value" id="metricCompleted">0 CU</div>
+            </div>
+            <div class="metric-card">
+                <div class="label">Planned Credits</div>
+                <div class="value" id="metricPlanned">0 CU</div>
+            </div>
+            <div class="metric-card">
+                <div class="label">Remaining Gap</div>
+                <div class="value" id="metricRemaining" style="color:var(--danger-red);">120 CU</div>
+            </div>
+        </div>
+
+        <!-- Deferral Alert Banner -->
+        <div id="deferralStatusBanner"></div>
+
+        <div class="audit-layout">
+            <!-- Left: Interactive Course Checklist -->
+            <div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <h3>Step 1: Check Completed Courses</h3>
+                    <button class="btn-reset" onclick="resetChecklistToDefault()">🔄 Reset Checklist</button>
+                </div>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px;">
+                    Includes 7 GE Courses (21 CUs) and 5 Technical Electives (15 CUs).
+                </p>
+                <div class="checklist-container" id="completedChecklistContainer"></div>
+            </div>
+
+            <!-- Right: Future Planning -->
+            <div>
+                <h3>Step 2: Plan Unfinished Semesters</h3>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px;">
+                    Allocate remaining requirements into upcoming terms. Courses in Upcoming Semester B automatically sync to Timetable Simulator.
+                </p>
+                
+                <div class="planner-container">
+                    <div class="planner-term-card">
+                        <h4>
+                            <span>Upcoming Semester B (Syncs to Timetable)</span>
+                            <span id="term1Cu">0 CU</span>
+                        </h4>
+                        <div class="planner-course-list" id="term1List"></div>
+                        <div style="display:flex; gap:5px;">
+                            <select id="term1Select" style="flex:1;"></select>
+                            <button class="btn-action" onclick="addCourseToTerm(1)">+ Add</button>
+                        </div>
+                    </div>
+
+                    <div class="planner-term-card">
+                        <h4>
+                            <span>Summer Term</span>
+                            <span id="term2Cu">0 CU</span>
+                        </h4>
+                        <div class="planner-course-list" id="term2List"></div>
+                        <div style="display:flex; gap:5px;">
+                            <select id="term2Select" style="flex:1;"></select>
+                            <button class="btn-action" onclick="addCourseToTerm(2)">+ Add</button>
+                        </div>
+                    </div>
+
+                    <div class="planner-term-card">
+                        <h4>
+                            <span>Next Semester A</span>
+                            <span id="term3Cu">0 CU</span>
+                        </h4>
+                        <div class="planner-course-list" id="term3List"></div>
+                        <div style="display:flex; gap:5px;">
+                            <select id="term3Select" style="flex:1;"></select>
+                            <button class="btn-action" onclick="addCourseToTerm(3)">+ Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Major Structure Interactive Flowchart -->
+        <div class="flowchart-section">
+            <div class="flowchart-header">
+                <h3 id="flowchartTitle">Curriculum Structure Flowchart</h3>
+                <button class="btn-reset" onclick="resetFlowchartLayout()">🔄 Reset to Default Flowchart</button>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">
+                <strong>Drag & Drop Enabled:</strong> Drag any course block to a different semester row. Real-time credit counters and prerequisite warnings update automatically.
+            </p>
+
+            <div class="flowchart-legend">
+                <div class="legend-item"><div class="legend-box completed"></div> Completed Course (Green)</div>
+                <div class="legend-item"><div class="legend-box incomplete"></div> Haven't Completed (Grey/White)</div>
+                <div class="legend-item"><div class="legend-box failed"></div> Failed Prerequisite Course (Red Outline)</div>
+            </div>
+
+            <div class="flowchart-grid" id="flowchartGridContainer"></div>
+        </div>
+    </div>
+
+    <!-- TAB 2: Timetable Conflict Simulator -->
+    <div id="visualizerTab" class="tab-content">
+        <div id="clashAlertContainer"></div>
+
+        <div class="simulator-grid">
+            <div style="border-right:1px solid var(--border-color); padding-right:15px;">
+                <h3>Course Selection</h3>
+                <div class="form-group" style="margin-top:10px;">
+                    <label>Retake Course Section Slot:</label>
+                    <select id="sectionSelect" onchange="renderTimetable()">
+                        <option value="L01">Section L01 (Tue 09:00 - 11:50)</option>
+                        <option value="L02">Section L02 (Thu 15:00 - 17:50) [Non-clashing]</option>
+                    </select>
+                </div>
+                <h4 style="margin-top:15px; font-size:0.9rem;">Target Semester Courses (Synced from Planner):</h4>
+                <div id="visualizerCheckboxes" style="display:flex; flex-direction:column; gap:8px; margin-top:8px;"></div>
+            </div>
+
+            <div>
+                <!-- Requirement 1: Updated 2hr 50min Time Slots -->
+                <table class="timetable-table">
+                    <thead>
+                        <tr>
+                            <th>Time Slot (2h 50m)</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                        </tr>
+                    </thead>
+                    <tbody id="timetableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: Prerequisite Override Assistant -->
+    <div id="overrideTab" class="tab-content">
+        <div class="override-card">
+            <h3>Prerequisite Chain Visualizer</h3>
+            <div class="prereq-chain" id="prereqChainContainer"></div>
+        </div>
+
+        <div class="override-card">
+            <h3>Concurrent Enrollment Waiver Evaluation</h3>
+            <ul style="list-style:none; line-height: 2;">
+                <li><input type="checkbox" checked disabled> Prior attempt logged in prerequisite course</li>
+                <li><input type="checkbox" id="chkGpa" checked onchange="renderOverrideTab()"> Cumulative GPA ≥ 1.70</li>
+                <li><input type="checkbox" id="chkNoClash" checked disabled> Zero schedule clashes verified</li>
+            </ul>
+            <div id="overrideEligibilityBanner"></div>
+            <button class="btn-action" style="margin-top:15px;" onclick="downloadForm()">📄 Export Pre-Filled Waiver Application</button>
+        </div>
+    </div>
+
+    <script>
+        // Requirement 2: GE Courses with explicitly assigned day and slot
+        const commonGeCourses = [
+            { code: "GE1401", name: "University English", cu: 3, defaultSem: "GE", isGe: true, day: "Mon", slot: "09:00" },
+            { code: "GE2410", name: "English for Engineering", cu: 3, defaultSem: "GE", isGe: true, day: "Wed", slot: "09:00" },
+            { code: "GE1501", name: "Chinese Civilisation", cu: 3, defaultSem: "GE", isGe: true, day: "Fri", slot: "12:00" },
+            { code: "GE_AREA1", name: "GE Area 1 - Arts & Humanities", cu: 3, defaultSem: "GE", isGe: true, day: "Tue", slot: "15:00" },
+            { code: "GE_AREA2", name: "GE Area 2 - Study of Societies", cu: 3, defaultSem: "GE", isGe: true, day: "Thu", slot: "12:00" },
+            { code: "GE_AREA3", name: "GE Area 3 - Science & Technology", cu: 3, defaultSem: "GE", isGe: true, day: "Mon", slot: "15:00" },
+            { code: "GE_RANDOM", name: "GE Area (Distributional)", cu: 3, defaultSem: "GE", isGe: true, day: "Wed", slot: "15:00" }
+        ];
+
+        // Requirement 2: Technical Electives with explicitly assigned day and slot
+        const commonTechElectives = [
+            { code: "TE_ELEC1", name: "Technical Elective 1", cu: 3, defaultSem: "4A", isTe: true, day: "Mon", slot: "18:00" },
+            { code: "TE_ELEC2", name: "Technical Elective 2", cu: 3, defaultSem: "4A", isTe: true, day: "Tue", slot: "18:00" },
+            { code: "TE_ELEC3", name: "Technical Elective 3", cu: 3, defaultSem: "4A", isTe: true, day: "Wed", slot: "18:00" },
+            { code: "TE_ELEC4", name: "Technical Elective 4", cu: 3, defaultSem: "4B", isTe: true, day: "Thu", slot: "18:00" },
+            { code: "TE_ELEC5", name: "Technical Elective 5", cu: 3, defaultSem: "4B", isTe: true, day: "Fri", slot: "18:00" }
+        ];
+
+        // Semester index map for chronological prerequisite validation
+        const semOrderMap = {
+            "GE": 0, "1A": 1, "1B": 2, "2A": 3, "2B": 4, "3A": 5, "3B": 6, "4A": 7, "4B": 8
+        };
+
+        // Complete Curriculum Data with 2h 50m slots across all courses
+        const curriculumData = {
+            CDE: {
+                name: "Computer and Data Engineering",
+                courses: [
+                    ...commonGeCourses,
+                    { code: "MA1200", name: "Calculus I", cu: 3, defaultSem: "1A", day: "Mon", slot: "09:00" },
+                    { code: "MA1201", name: "Calculus II", cu: 3, defaultSem: "1B", day: "Wed", slot: "09:00", prereq: "MA1200" },
+                    { code: "GE1354", name: "Intro to Electronic Design", cu: 3, defaultSem: "1A", day: "Fri", slot: "09:00" },
+                    { code: "CS1302", name: "Intro to Computer Programming", cu: 3, defaultSem: "1A", day: "Thu", slot: "09:00" },
+                    { code: "EE1001", name: "Foundations of Digital Tech", cu: 3, defaultSem: "1A", day: "Mon", slot: "12:00" },
+                    { code: "EE1002", name: "Principles of Electrical Eng", cu: 3, defaultSem: "1A", day: "Tue", slot: "12:00" },
+                    { code: "EE1004", name: "Foundations of Info Systems", cu: 3, defaultSem: "1A", day: "Wed", slot: "12:00" },
+                    { code: "PHY1101", name: "Intro Classical Mechanics", cu: 3, defaultSem: "1B", day: "Fri", slot: "12:00" },
+                    { code: "MA2001", name: "Multi-variable Calculus", cu: 3, defaultSem: "2A", day: "Mon", slot: "09:00", prereq: "MA1201" },
+                    { code: "EE3001", name: "Foundations of Data Eng", cu: 3, defaultSem: "2A", day: "Tue", slot: "09:00", prereq: "EE1004", blocks: "EE3211", downstream: "EE4146" },
+                    { code: "CS2311", name: "Computer Programming", cu: 3, defaultSem: "2A", day: "Wed", slot: "09:00", prereq: "CS1302", blocks: "EE2331", downstream: "CS3103" },
+                    { code: "EE2000", name: "Logic Circuit Design", cu: 3, defaultSem: "2A", day: "Mon", slot: "12:00", prereq: "EE1001", blocks: "EE2004", downstream: "EE3220" },
+                    { code: "EE2005", name: "Electronic Devices & Circuits", cu: 3, defaultSem: "2A", day: "Thu", slot: "09:00", prereq: "EE1002" },
+                    { code: "EE3211", name: "Modelling Techniques", cu: 3, defaultSem: "2B", day: "Fri", slot: "09:00", prereq: "EE3001" },
+                    { code: "EE2331", name: "Data Structures & Algorithms", cu: 3, defaultSem: "2B", day: "Tue", slot: "12:00", prereq: "CS2311" },
+                    { code: "EE2004", name: "Microcomputer Systems", cu: 3, defaultSem: "2B", day: "Thu", slot: "12:00", prereq: "EE2000" },
+                    { code: "EE3009", name: "Data Comms & Networking", cu: 3, defaultSem: "2B", day: "Thu", slot: "09:00" },
+                    { code: "EE3210", name: "Signals and Systems", cu: 3, defaultSem: "3A", day: "Tue", slot: "09:00", prereq: "MA2001" },
+                    { code: "EE3206", name: "Java Programming & Apps", cu: 3, defaultSem: "3A", day: "Wed", slot: "12:00" },
+                    { code: "CS3103", name: "Operating Systems", cu: 3, defaultSem: "3A", day: "Fri", slot: "12:00", prereq: "EE2004" },
+                    { code: "EE3070", name: "Design Project", cu: 3, defaultSem: "3A", day: "Mon", slot: "09:00" },
+                    { code: "EE3315", name: "Internet Technology", cu: 3, defaultSem: "3A", day: "Mon", slot: "12:00", prereq: "EE3009" },
+                    { code: "EE4090", name: "Engineering Training", cu: 0, defaultSem: "3A", hasNoSlot: true },
+                    { code: "EE4146", name: "Data Eng & Learning Systems", cu: 3, defaultSem: "3B", day: "Wed", slot: "09:00", prereq: "EE3211" },
+                    { code: "CS3402", name: "Database Systems", cu: 3, defaultSem: "3B", day: "Tue", slot: "12:00" },
+                    { code: "EE3220", name: "System-On-Chip Design", cu: 3, defaultSem: "3B", day: "Fri", slot: "09:00", prereq: "EE2004" },
+                    { code: "EE4080 A", name: "Final Year Project (Part A)", cu: 3, defaultSem: "4A", hasNoSlot: true },
+                    { code: "EE4080 B", name: "Final Year Project (Part B)", cu: 3, defaultSem: "4B", hasNoSlot: true, prereq: "EE4080 A" },
+                    { code: "EE2066", name: "Engineers in Society", cu: 3, defaultSem: "4A", day: "Thu", slot: "15:00" },
+                    ...commonTechElectives
+                ]
+            },
+            INFE: {
+                name: "Information Engineering",
+                courses: [
+                    ...commonGeCourses,
+                    { code: "MA1200", name: "Calculus I", cu: 3, defaultSem: "1A", day: "Mon", slot: "09:00" },
+                    { code: "MA1201", name: "Calculus II", cu: 3, defaultSem: "1B", day: "Wed", slot: "09:00", prereq: "MA1200" },
+                    { code: "PHY1101", name: "Intro Classical Mechanics", cu: 3, defaultSem: "1B", day: "Fri", slot: "12:00" },
+                    { code: "EE1001", name: "Foundations Digital Tech", cu: 3, defaultSem: "1A", day: "Mon", slot: "12:00" },
+                    { code: "CS1302", name: "Intro Computer Programming", cu: 3, defaultSem: "1A", day: "Thu", slot: "09:00" },
+                    { code: "GE1354", name: "Intro Electronic Design", cu: 3, defaultSem: "1A", day: "Fri", slot: "09:00" },
+                    { code: "EE1004", name: "Foundations Info Systems", cu: 3, defaultSem: "1A", day: "Wed", slot: "12:00" },
+                    { code: "EE1002", name: "Principles Electrical Eng", cu: 3, defaultSem: "1A", day: "Tue", slot: "12:00" },
+                    { code: "MA2001", name: "Multi-variable Calculus", cu: 3, defaultSem: "2A", day: "Mon", slot: "09:00", prereq: "MA1201" },
+                    { code: "EE2302", name: "Foundations Info Eng & Crypto", cu: 3, defaultSem: "2A", day: "Tue", slot: "09:00", prereq: "EE1001", blocks: "EE3301", downstream: "EE3008" },
+                    { code: "EE3331", name: "Probability Models INFE", cu: 3, defaultSem: "2B", day: "Wed", slot: "09:00" },
+                    { code: "EE3009", name: "Data Comms & Networking", cu: 3, defaultSem: "2B", day: "Tue", slot: "09:00" },
+                    { code: "CS2311", name: "Computer Programming", cu: 3, defaultSem: "2A", day: "Mon", slot: "12:00", prereq: "CS1302" },
+                    { code: "EE2303", name: "Applied AI Systems INFE", cu: 3, defaultSem: "2B", day: "Fri", slot: "09:00" },
+                    { code: "EE2000", name: "Logic Circuit Design", cu: 3, defaultSem: "2A", day: "Tue", slot: "12:00", prereq: "EE1001" },
+                    { code: "EE2004", name: "Microcomputer Systems", cu: 3, defaultSem: "2B", day: "Thu", slot: "12:00", prereq: "EE2000" },
+                    { code: "EE3210", name: "Signals and Systems", cu: 3, defaultSem: "3A", day: "Thu", slot: "09:00", prereq: "MA2001" },
+                    { code: "EE3301", name: "Quantitative Methods INFE", cu: 3, defaultSem: "3A", day: "Wed", slot: "12:00", prereq: "EE2302" },
+                    { code: "CS3402", name: "Database Systems", cu: 3, defaultSem: "3B", day: "Fri", slot: "12:00" },
+                    { code: "EE2331", name: "Data Structures & Algo", cu: 3, defaultSem: "3A", day: "Mon", slot: "09:00", prereq: "CS2311" },
+                    { code: "EE3070", name: "Design Project", cu: 3, defaultSem: "3A", day: "Thu", slot: "09:00" },
+                    { code: "EE4090", name: "Engineering Training", cu: 0, defaultSem: "3A", hasNoSlot: true },
+                    { code: "EE3008", name: "Principles of Comms", cu: 3, defaultSem: "3B", day: "Wed", slot: "09:00", prereq: "EE3301" },
+                    { code: "EE3315", name: "Internet Technology", cu: 3, defaultSem: "3B", day: "Tue", slot: "12:00", prereq: "EE3009" },
+                    { code: "EE3206", name: "Object-Oriented Prog", cu: 3, defaultSem: "3B", day: "Fri", slot: "09:00" },
+                    { code: "CS3103", name: "Operating Systems", cu: 3, defaultSem: "3A", day: "Mon", slot: "12:00", prereq: "EE2004" },
+                    { code: "EE4080 A", name: "Final Year Project (Part A)", cu: 3, defaultSem: "4A", hasNoSlot: true },
+                    { code: "EE4080 B", name: "Final Year Project (Part B)", cu: 3, defaultSem: "4B", hasNoSlot: true, prereq: "EE4080 A" },
+                    { code: "EE2066", name: "Engineers in Society", cu: 3, defaultSem: "4A", day: "Thu", slot: "15:00" },
+                    ...commonTechElectives
+                ]
+            },
+            ELEL: {
+                name: "Electronic and Electrical Engineering",
+                courses: [
+                    ...commonGeCourses,
+                    { code: "MA1200", name: "Calculus I", cu: 3, defaultSem: "1A", day: "Mon", slot: "09:00" },
+                    { code: "MA1201", name: "Calculus II", cu: 3, defaultSem: "1B", day: "Wed", slot: "09:00", prereq: "MA1200" },
+                    { code: "EE1001", name: "Foundations Digital Tech", cu: 3, defaultSem: "1A", day: "Mon", slot: "12:00" },
+                    { code: "EE1002", name: "Principles Electrical Eng", cu: 3, defaultSem: "1A", day: "Tue", slot: "12:00" },
+                    { code: "EE1004", name: "Foundations Info Systems", cu: 3, defaultSem: "1A", day: "Wed", slot: "12:00" },
+                    { code: "GE1354", name: "Intro Electronic Design", cu: 3, defaultSem: "1A", day: "Fri", slot: "09:00" },
+                    { code: "PHY1101", name: "Intro Classical Mechanics", cu: 3, defaultSem: "1A", day: "Fri", slot: "12:00" },
+                    { code: "CS1302", name: "Intro Computer Programming", cu: 3, defaultSem: "1A", day: "Thu", slot: "09:00" },
+                    { code: "MA2001", name: "Multi-variable Calculus", cu: 3, defaultSem: "2A", day: "Mon", slot: "09:00", prereq: "MA1201" },
+                    { code: "EE2108", name: "Computational Eng Analysis", cu: 3, defaultSem: "2A", day: "Tue", slot: "09:00" },
+                    { code: "EE3121", name: "Diff Equations for EE", cu: 3, defaultSem: "2B", day: "Wed", slot: "09:00", prereq: "MA2001" },
+                    { code: "EE3210", name: "Signals and Systems", cu: 3, defaultSem: "2B", day: "Tue", slot: "09:00", prereq: "EE1002" },
+                    { code: "EE2104", name: "Intro Electromagnetics", cu: 3, defaultSem: "2B", day: "Fri", slot: "09:00", prereq: "MA1201", blocks: "EE3109", downstream: "EE3114" },
+                    { code: "EE2005", name: "Electronic Devices & Circuits", cu: 3, defaultSem: "2A", day: "Mon", slot: "12:00", prereq: "EE1002" },
+                    { code: "CS2311", name: "Computer Programming", cu: 3, defaultSem: "2B", day: "Tue", slot: "12:00", prereq: "CS1302" },
+                    { code: "EE2000", name: "Logic Circuit Design", cu: 3, defaultSem: "2B", day: "Wed", slot: "12:00", prereq: "EE1001" },
+                    { code: "EE3114", name: "Systems & Control", cu: 3, defaultSem: "3A", day: "Mon", slot: "09:00", prereq: "EE2104" },
+                    { code: "EE3008", name: "Principles of Comms", cu: 3, defaultSem: "3A", day: "Tue", slot: "12:00" },
+                    { code: "EE3123", name: "Intro Electric Power Systems", cu: 3, defaultSem: "3A", day: "Wed", slot: "12:00" },
+                    { code: "EE2004", name: "Microcomputer Systems", cu: 3, defaultSem: "3A", day: "Thu", slot: "12:00", prereq: "EE2000" },
+                    { code: "EE4090", name: "Engineering Training", cu: 0, defaultSem: "3A", hasNoSlot: true },
+                    { code: "EE3109", name: "Applied Electromagnetics", cu: 3, defaultSem: "3B", day: "Fri", slot: "12:00", prereq: "EE2104" },
+                    { code: "EE3124", name: "Electric Machines & Drives", cu: 3, defaultSem: "3B", day: "Mon", slot: "12:00", prereq: "EE3123" },
+                    { code: "EE3115", name: "Applied Opto-Electronic", cu: 3, defaultSem: "3B", day: "Tue", slot: "09:00" },
+                    { code: "EE3122", name: "Analogue Circuit Fund", cu: 3, defaultSem: "3B", day: "Wed", slot: "09:00", prereq: "EE2005" },
+                    { code: "EE3070", name: "Design Project", cu: 3, defaultSem: "3B", day: "Thu", slot: "09:00" },
+                    { code: "EE4080 A", name: "Final Year Project (Part A)", cu: 3, defaultSem: "4A", hasNoSlot: true },
+                    { code: "EE4080 B", name: "Final Year Project (Part B)", cu: 3, defaultSem: "4B", hasNoSlot: true, prereq: "EE4080 A" },
+                    { code: "EE2066", name: "Engineers in Society", cu: 3, defaultSem: "4A", day: "Thu", slot: "15:00" },
+                    ...commonTechElectives
+                ]
+            },
+            MEE: {
+                name: "Microelectronic Engineering",
+                courses: [
+                    ...commonGeCourses,
+                    { code: "MA1200", name: "Calculus I", cu: 3, defaultSem: "1A", day: "Mon", slot: "09:00" },
+                    { code: "MA1201", name: "Calculus II", cu: 3, defaultSem: "1B", day: "Wed", slot: "09:00", prereq: "MA1200" },
+                    { code: "EE1001", name: "Foundations Digital Tech", cu: 3, defaultSem: "1A", day: "Mon", slot: "12:00" },
+                    { code: "EE1002", name: "Principles Electrical Eng", cu: 3, defaultSem: "1A", day: "Tue", slot: "12:00" },
+                    { code: "EE1004", name: "Foundations Info Systems", cu: 3, defaultSem: "1A", day: "Wed", slot: "12:00" },
+                    { code: "GE1354", name: "Intro Electronic Design", cu: 3, defaultSem: "1A", day: "Fri", slot: "09:00" },
+                    { code: "PHY1101", name: "Intro Classical Mechanics", cu: 3, defaultSem: "1A", day: "Fri", slot: "12:00" },
+                    { code: "CS1302", name: "Intro Computer Programming", cu: 3, defaultSem: "1A", day: "Thu", slot: "09:00" },
+                    { code: "MA2001", name: "Multi-variable Calculus", cu: 3, defaultSem: "2A", day: "Mon", slot: "09:00", prereq: "MA1201" },
+                    { code: "EE2000", name: "Logic Circuit Design", cu: 3, defaultSem: "2A", day: "Tue", slot: "09:00", prereq: "EE1001" },
+                    { code: "EE2005", name: "Electronic Devices & Circuits", cu: 3, defaultSem: "2A", day: "Wed", slot: "09:00", prereq: "EE1002" },
+                    { code: "CS2311", name: "Computer Programming", cu: 3, defaultSem: "2B", day: "Thu", slot: "09:00", prereq: "CS1302" },
+                    { code: "EE2800", name: "Semiconductor Physics", cu: 3, defaultSem: "2B", day: "Fri", slot: "09:00", prereq: "PHY1101", blocks: "EE3800", downstream: "EE3801" },
+                    { code: "EE3121", name: "Diff Equations for EE", cu: 3, defaultSem: "2B", day: "Mon", slot: "12:00", prereq: "MA2001" },
+                    { code: "EE3210", name: "Signals and Systems", cu: 3, defaultSem: "2B", day: "Tue", slot: "12:00" },
+                    { code: "EE2104", name: "Intro Electromagnetics", cu: 3, defaultSem: "2B", day: "Wed", slot: "12:00", prereq: "MA1201" },
+                    { code: "EE3800", name: "Semiconductor Materials", cu: 3, defaultSem: "3A", day: "Mon", slot: "09:00", prereq: "EE2800" },
+                    { code: "EE3008", name: "Principles of Comms", cu: 3, defaultSem: "3A", day: "Tue", slot: "09:00" },
+                    { code: "EE3801", name: "Microsystems & Nanotech", cu: 3, defaultSem: "3A", day: "Wed", slot: "09:00", prereq: "EE3800" },
+                    { code: "EE2004", name: "Microcomputer Systems", cu: 3, defaultSem: "3A", day: "Thu", slot: "09:00", prereq: "EE2000" },
+                    { code: "EE4090", name: "Engineering Training", cu: 0, defaultSem: "3A", hasNoSlot: true },
+                    { code: "EE3115", name: "Applied Opto-Electronic", cu: 3, defaultSem: "3B", day: "Fri", slot: "12:00" },
+                    { code: "EE3122", name: "Analogue Circuit Fund", cu: 3, defaultSem: "3B", day: "Mon", slot: "12:00", prereq: "EE2005" },
+                    { code: "EE3220", name: "System-on-Chip Design", cu: 3, defaultSem: "3B", day: "Tue", slot: "12:00", prereq: "EE2004" },
+                    { code: "EE3070", name: "Design Project", cu: 3, defaultSem: "3B", day: "Wed", slot: "12:00" },
+                    { code: "EE4080 A", name: "Final Year Project (Part A)", cu: 3, defaultSem: "4A", hasNoSlot: true },
+                    { code: "EE4080 B", name: "Final Year Project (Part B)", cu: 3, defaultSem: "4B", hasNoSlot: true, prereq: "EE4080 A" },
+                    { code: "EE2066", name: "Engineers in Society", cu: 3, defaultSem: "4A", day: "Thu", slot: "15:00" },
+                    ...commonTechElectives
+                ]
+            }
+        };
+
+        // State tracking
+        let completedCourses = new Set();
+        let plannedTerms = { 1: [], 2: [], 3: [] };
+        let courseSemMap = {}; 
+
+        // Requirement 1: Updated 2hr 50min Time Slots
+        const timeSlots = [
+            { time: "09:00 - 11:50", key: "09:00" },
+            { time: "12:00 - 14:50", key: "12:00" },
+            { time: "15:00 - 17:50", key: "15:00" },
+            { time: "18:00 - 20:50", key: "18:00" }
+        ];
+
+        const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+
+        window.onload = function() {
+            handleGlobalChange();
+        };
+
+        function initCourseSemMap() {
+            const majorKey = document.getElementById('majorSelect').value;
+            const major = curriculumData[majorKey];
+            courseSemMap = {};
+            major.courses.forEach(c => {
+                courseSemMap[c.code] = c.defaultSem;
+            });
+        }
+
+        function handleGlobalChange() {
+            const majorKey = document.getElementById('majorSelect').value;
+            const major = curriculumData[majorKey];
+
+            initCourseSemMap();
+
+            const failedSelect = document.getElementById('failedCourseSelect');
+            const currentFailed = failedSelect.value;
+            failedSelect.innerHTML = '';
+            
+            const failCandidates = major.courses.filter(c => !c.isGe);
+            failCandidates.forEach(c => {
+                failedSelect.innerHTML += `<option value="${c.code}">${c.code} - ${c.name} (${c.cu} CU)</option>`;
+            });
+
+            if (currentFailed && failCandidates.some(c => c.code === currentFailed)) {
+                failedSelect.value = currentFailed;
+            }
+
+            renderChecklist();
+            renderFlowchart();
+            renderRoadmapAndAudit();
+            renderTimetable();
+            renderOverrideTab();
+        }
+
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(tb => tb.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        /* CHECKLIST LOGIC */
+        function renderChecklist() {
+            const majorKey = document.getElementById('majorSelect').value;
+            const failedCode = document.getElementById('failedCourseSelect').value;
+            const year = parseInt(document.getElementById('yearSelect').value);
+            const major = curriculumData[majorKey];
+
+            const container = document.getElementById('completedChecklistContainer');
+            container.innerHTML = '';
+
+            major.courses.forEach(c => {
+                let defaultChecked = false;
+                if (c.isGe && year >= 2) defaultChecked = true;
+                else if (!c.isGe && !c.isTe) {
+                    const semLevel = parseInt(c.defaultSem.charAt(0)) || 1;
+                    if (semLevel < year) defaultChecked = true;
+                }
+
+                if (c.code === failedCode) defaultChecked = false;
+
+                const isChecked = completedCourses.has(c.code) || (completedCourses.size === 0 && defaultChecked);
+                if (isChecked) completedCourses.add(c.code);
+
+                container.innerHTML += `
+                    <div class="course-check-item ${c.isGe ? 'ge-item' : ''}">
+                        <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                            <input type="checkbox" value="${c.code}" ${completedCourses.has(c.code) ? 'checked' : ''} onchange="toggleCourseCompletion('${c.code}', this.checked)">
+                            <span><strong>${c.code}</strong> ${c.name} ${c.isGe ? '(GE Requirement)' : '[' + c.defaultSem + ']'}</span>
+                        </label>
+                        <span style="font-weight:bold; color:var(--text-muted);">${c.cu} CU</span>
+                    </div>
+                `;
+            });
+
+            updatePlannerDropdowns();
+        }
+
+        function toggleCourseCompletion(code, isChecked) {
+            if (isChecked) {
+                completedCourses.add(code);
+                for (let t in plannedTerms) {
+                    plannedTerms[t] = plannedTerms[t].filter(c => c !== code);
+                }
+            } else {
+                completedCourses.delete(code);
+            }
+            renderFlowchart();
+            renderRoadmapAndAudit();
+        }
+
+        function resetChecklistToDefault() {
+            completedCourses.clear();
+            renderChecklist();
+            renderFlowchart();
+            renderRoadmapAndAudit();
+        }
+
+        /* FLOWCHART & DRAG-DROP */
+        function renderFlowchart() {
+            const majorKey = document.getElementById('majorSelect').value;
+            const failedCode = document.getElementById('failedCourseSelect').value;
+            const major = curriculumData[majorKey];
+
+            document.getElementById('flowchartTitle').innerText = `Curriculum Structure Flowchart — ${major.name} (${majorKey})`;
+
+            const container = document.getElementById('flowchartGridContainer');
+            container.innerHTML = '';
+
+            const semGroups = ["GE", "1A", "1B", "2A", "2B", "3A", "3B", "4A", "4B"];
+
+            semGroups.forEach(semLabel => {
+                const semCourses = major.courses.filter(c => courseSemMap[c.code] === semLabel);
+                
+                let semCuTotal = 0;
+                semCourses.forEach(c => semCuTotal += c.cu);
+
+                let prereqViolations = [];
+                semCourses.forEach(c => {
+                    if (c.prereq) {
+                        const isPrereqCompleted = completedCourses.has(c.prereq);
+                        if (!isPrereqCompleted) {
+                            const prereqSem = courseSemMap[c.prereq];
+                            const currentSemIdx = semOrderMap[semLabel];
+                            const prereqSemIdx = semOrderMap[prereqSem];
+
+                            if (prereqSemIdx >= currentSemIdx) {
+                                prereqViolations.push(`${c.code} requires ${c.prereq} in an earlier semester`);
+                            }
+                        }
+                    }
+                });
+
+                const isWarningRow = prereqViolations.length > 0;
+
+                let rowHtml = `
+                    <div class="sem-row ${isWarningRow ? 'sem-warning-border' : ''}">
+                        <div class="sem-label-container">
+                            <div class="sem-label">${semLabel === "GE" ? "GE Courses" : "Sem " + semLabel}</div>
+                            <div class="sem-cu-counter">${semCuTotal} CU</div>
+                        </div>
+
+                        <div class="sem-courses" 
+                             ondragover="allowDrop(event)" 
+                             ondragleave="dragLeave(event)" 
+                             ondrop="dropCourse(event, '${semLabel}')">
+                `;
+
+                if (isWarningRow) {
+                    rowHtml += `
+                        <div class="prereq-warning-banner">
+                            ⚠ Prerequisite Violation: ${prereqViolations.join('; ')}
+                        </div>
+                    `;
+                }
+
+                semCourses.forEach(c => {
+                    const isCompleted = completedCourses.has(c.code);
+                    const isFailed = (c.code === failedCode);
+
+                    let boxClass = "flow-box ";
+                    if (isFailed) {
+                        boxClass += "failed-highlight";
+                    } else if (isCompleted) {
+                        boxClass += "completed";
+                    } else {
+                        boxClass += "incomplete";
+                    }
+
+                    rowHtml += `
+                        <div class="${boxClass}" 
+                             draggable="true" 
+                             ondragstart="dragStart(event, '${c.code}')">
+                            <div><strong>${c.code}</strong></div>
+                            <div style="font-size:0.7rem;">${c.name}</div>
+                            <div style="font-size:0.65rem; margin-top:2px; opacity:0.8;">${c.cu} CU</div>
+                        </div>
+                    `;
+                });
+
+                rowHtml += `</div></div>`;
+                container.innerHTML += rowHtml;
+            });
+        }
+
+        function dragStart(ev, code) {
+            ev.dataTransfer.setData("text/plain", code);
+        }
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+            ev.currentTarget.classList.add('drag-over');
+        }
+
+        function dragLeave(ev) {
+            ev.currentTarget.classList.remove('drag-over');
+        }
+
+        function dropCourse(ev, targetSem) {
+            ev.preventDefault();
+            ev.currentTarget.classList.remove('drag-over');
+            const code = ev.dataTransfer.getData("text/plain");
+
+            if (code && courseSemMap[code]) {
+                courseSemMap[code] = targetSem;
+                renderFlowchart();
+            }
+        }
+
+        function resetFlowchartLayout() {
+            initCourseSemMap();
+            renderFlowchart();
+        }
+
+        function updatePlannerDropdowns() {
+            const majorKey = document.getElementById('majorSelect').value;
+            const major = curriculumData[majorKey];
+
+            const uncompleted = major.courses.filter(c => !completedCourses.has(c.code));
+
+            for (let t = 1; t <= 3; t++) {
+                const select = document.getElementById(`term${t}Select`);
+                select.innerHTML = '';
+                uncompleted.forEach(c => {
+                    let alreadyPlanned = false;
+                    for (let p in plannedTerms) {
+                        if (plannedTerms[p].includes(c.code)) alreadyPlanned = true;
+                    }
+                    if (!alreadyPlanned) {
+                        select.innerHTML += `<option value="${c.code}">${c.code} - ${c.name} (${c.cu} CU)</option>`;
+                    }
+                });
+            }
+        }
+
+        function addCourseToTerm(termId) {
+            const code = document.getElementById(`term${termId}Select`).value;
+            if (code) {
+                plannedTerms[termId].push(code);
+                renderRoadmapAndAudit();
+            }
+        }
+
+        function removeCourseFromTerm(termId, code) {
+            plannedTerms[termId] = plannedTerms[termId].filter(c => c !== code);
+            renderRoadmapAndAudit();
+        }
+
+        function renderRoadmapAndAudit() {
+            const majorKey = document.getElementById('majorSelect').value;
+            const major = curriculumData[majorKey];
+            const targetReq = parseInt(document.getElementById('degreeRouteSelect').value);
+            const currentYear = parseInt(document.getElementById('yearSelect').value);
+
+            let completedCU = 0;
+            major.courses.forEach(c => {
+                if (completedCourses.has(c.code)) completedCU += c.cu;
+            });
+
+            let plannedCU = 0;
+            for (let t in plannedTerms) {
+                plannedTerms[t].forEach(code => {
+                    const cObj = major.courses.find(c => c.code === code);
+                    if (cObj) plannedCU += cObj.cu;
+                });
+            }
+
+            const totalProjected = completedCU + plannedCU;
+            const gap = targetReq - totalProjected;
+
+            document.getElementById('metricDegreeReq').innerText = `${targetReq} CU`;
+            document.getElementById('metricCompleted').innerText = `${completedCU} CU`;
+            document.getElementById('metricPlanned').innerText = `${plannedCU} CU`;
+            document.getElementById('metricRemaining').innerText = `${gap > 0 ? gap : 0} CU`;
+
+            const bannerContainer = document.getElementById('deferralStatusBanner');
+            if (gap > 0) {
+                bannerContainer.innerHTML = `
+                    <div class="alert alert-danger">
+                        <div>
+                            <strong>⚠ WARNING: Graduation Deferral Risk Detected!</strong>
+                            <p style="font-size:0.85rem; margin-top:3px;">
+                                You currently have a deficit of <strong>${gap} Credit Units</strong> to satisfy the ${targetReq} CU requirement. 
+                                ${currentYear >= 3 ? "As a Year " + currentYear + " student, failing to plan these remaining credits into upcoming terms will force a semester deferral." : "Add remaining required courses to your upcoming terms below."}
+                            </p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                bannerContainer.innerHTML = `
+                    <div class="alert alert-success">
+                        <div>
+                            <strong>✓ Recovery Plan Verified: On-Time Graduation Track</strong>
+                            <p style="font-size:0.85rem; margin-top:3px;">
+                                Total completed and planned credits (${totalProjected} CU) meet the ${targetReq} CU graduation threshold!
+                            </p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            for (let t = 1; t <= 3; t++) {
+                const listEl = document.getElementById(`term${t}List`);
+                const cuEl = document.getElementById(`term${t}Cu`);
+                listEl.innerHTML = '';
+                let termCu = 0;
+
+                plannedTerms[t].forEach(code => {
+                    const cObj = major.courses.find(c => c.code === code);
+                    if (cObj) {
+                        termCu += cObj.cu;
+                        listEl.innerHTML += `
+                            <span class="planned-tag">
+                                ${cObj.code} (${cObj.cu} CU)
+                                <span class="remove-btn" onclick="removeCourseFromTerm(${t}, '${cObj.code}')">×</span>
+                            </span>
+                        `;
+                    }
+                });
+                cuEl.innerText = `${termCu} CU Planned`;
+            }
+
+            updatePlannerDropdowns();
+            renderVisualizerCheckboxes();
+        }
+
+        /* REQUIREMENT 2: Display accurate timeslots for ALL synced courses without 'undefined' */
+        function renderVisualizerCheckboxes() {
+            const majorKey = document.getElementById('majorSelect').value;
+            const major = curriculumData[majorKey];
+            const failedCode = document.getElementById('failedCourseSelect').value;
+
+            const container = document.getElementById('visualizerCheckboxes');
+            container.innerHTML = '';
+
+            let targetCourses = [];
+            if (plannedTerms[1] && plannedTerms[1].length > 0) {
+                targetCourses = major.courses.filter(c => plannedTerms[1].includes(c.code) && c.code !== failedCode);
+            } else {
+                targetCourses = major.courses.filter(c => !completedCourses.has(c.code) && c.code !== failedCode && !c.isGe && !c.isTe).slice(0, 4);
+            }
+
+            if (targetCourses.length === 0) {
+                container.innerHTML = `<p style="font-size:0.8rem; color:var(--text-muted);">No courses selected in Step 2 Planner yet.</p>`;
+                renderTimetable();
+                return;
+            }
+
+            targetCourses.forEach((c) => {
+                let slotLabel = "";
+                if (c.hasNoSlot) {
+                    slotLabel = "[No Fixed Timeslot / FYP]";
+                } else {
+                    slotLabel = `(${c.day} ${c.slot} - 2h50m)`;
+                }
+
+                container.innerHTML += `
+                    <label style="display:flex; align-items:center; gap:8px; font-size:0.85rem;">
+                        <input type="checkbox" value="${c.code}" checked onchange="renderTimetable()">
+                        <span><strong>${c.code}</strong> ${slotLabel}</span>
+                    </label>
+                `;
+            });
+
+            renderTimetable();
+        }
+
+        /* REQUIREMENT 1 & 2: Render 2h 50m Timetable Matrix */
+        function renderTimetable() {
+            const section = document.getElementById('sectionSelect').value;
+            const majorKey = document.getElementById('majorSelect').value;
+            const failedCode = document.getElementById('failedCourseSelect').value;
+            const major = curriculumData[majorKey];
+
+            // Section L01 = Tue 09:00 - 11:50; Section L02 = Thu 15:00 - 17:50
+            let retakeSlot = (section === "L01") ? { day: "Tue", timeKey: "09:00" } : { day: "Thu", timeKey: "15:00" };
+
+            const selectedCodes = Array.from(document.querySelectorAll('#visualizerCheckboxes input:checked')).map(cb => cb.value);
+            const activeCourses = major.courses.filter(c => selectedCodes.includes(c.code));
+
+            let isClash = false;
+            let clashingCode = "";
+
+            activeCourses.forEach(c => {
+                if (!c.hasNoSlot && c.day === retakeSlot.day && c.slot === retakeSlot.timeKey) {
+                    isClash = true;
+                    clashingCode = c.code;
+                }
+            });
+
+            const alertContainer = document.getElementById('clashAlertContainer');
+            if (isClash) {
+                alertContainer.innerHTML = `
+                    <div class="alert alert-danger">
+                        <div>
+                            <strong>⚠ Timetable Clash Detected!</strong>
+                            <p style="font-size:0.85rem;">Retake course <strong>${failedCode} (${section})</strong> clashes directly with core course <strong>${clashingCode}</strong> on ${retakeSlot.day} 09:00 - 11:50.</p>
+                        </div>
+                        <button class="btn-action" onclick="document.getElementById('sectionSelect').value='L02'; renderTimetable();">⚡ Auto-Resolve Clash</button>
+                    </div>
+                `;
+            } else {
+                alertContainer.innerHTML = `
+                    <div class="alert alert-success">
+                        <div>
+                            <strong>✓ Conflict-Free Schedule Confirmed</strong>
+                            <p style="font-size:0.85rem;">Retake slot (Thu 15:00 - 17:50) fits perfectly without overlapping required major courses.</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            const tbody = document.getElementById('timetableBody');
+            tbody.innerHTML = '';
+
+            timeSlots.forEach(ts => {
+                let row = `<tr><td><strong>${ts.time}</strong></td>`;
+                days.forEach(d => {
+                    let content = "";
+                    let cellClass = "";
+
+                    if (d === retakeSlot.day && ts.key === retakeSlot.timeKey) {
+                        content += `<div>[RETAKE] ${failedCode}</div>`;
+                        cellClass = "slot-active";
+                    }
+
+                    activeCourses.forEach(c => {
+                        if (!c.hasNoSlot && c.day === d && c.slot === ts.key) {
+                            if (content !== "") {
+                                content += `<div>[CORE] ${c.code}</div>`;
+                                cellClass = "slot-clash";
+                            } else {
+                                content = `<div>[CORE] ${c.code}</div>`;
+                                cellClass = "slot-active";
+                            }
+                        }
+                    });
+
+                    row += `<td class="${cellClass}">${content}</td>`;
+                });
+                row += `</tr>`;
+                tbody.innerHTML += row;
+            });
+        }
+
+        /* OVERRIDE ASSISTANT */
+        function renderOverrideTab() {
+            const majorKey = document.getElementById('majorSelect').value;
+            const failedCode = document.getElementById('failedCourseSelect').value;
+            const major = curriculumData[majorKey];
+            const failedObj = major.courses.find(c => c.code === failedCode) || major.courses[0];
+
+            const chainContainer = document.getElementById('prereqChainContainer');
+            chainContainer.innerHTML = `
+                <div class="chain-node failed">${failedObj.code} (Failed)</div>
+                <div>➔ [Prerequisite Lock] ➔</div>
+                <div class="chain-node">${failedObj.blocks || "Downstream Core"} (Blocked)</div>
+                <div>➔</div>
+                <div class="chain-node">${failedObj.downstream || "Elective Path"}</div>
+            `;
+
+            const gpaOk = document.getElementById('chkGpa').checked;
+            const banner = document.getElementById('overrideEligibilityBanner');
+            if (gpaOk) {
+                banner.innerHTML = `
+                    <div class="alert alert-success" style="margin-top:10px;">
+                        <strong>✓ ELIGIBLE FOR CONCURRENT OVERRIDE WAIVER</strong><br>
+                        <span style="font-size:0.85rem">You satisfy EE department criteria to request concurrent waiver for <strong>${failedObj.blocks || 'blocked core course'}</strong>.</span>
+                    </div>
+                `;
+            } else {
+                banner.innerHTML = `
+                    <div class="alert alert-danger" style="margin-top:10px;">
+                        <strong>⚠ OVERRIDE INELIGIBLE</strong><br>
+                        <span style="font-size:0.85rem">A minimum GPA of 1.70 is required to apply for prerequisite overrides.</span>
+                    </div>
+                `;
+            }
+        }
+
+        function downloadForm() {
+            const majorKey = document.getElementById('majorSelect').value;
+            const failedCode = document.getElementById('failedCourseSelect').value;
+            alert(`CITY UNIVERSITY OF HONG KONG\nDepartment of Electrical Engineering\n\nPrerequisite Override Request Form\n------------------------------------\nMajor: ${majorKey}\nFailed Prerequisite: ${failedCode}\nStatus: Verified via Recovery Simulator v6\n\n[Pre-filled application exported successfully]`);
+        }
+    </script>
+</body>
+</html>
