@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CityU EE Programme Guide</title>
+  <style>
+/* ===== Reset & Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  background: #0f3b5c;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.nav-logo {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 8px;
+}
+
+.nav-links a {
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background: #0d9488;
+  color: white;
+}
+
+/* ===== Main Content ===== */
+main {
+  flex: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  width: 100%;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+/* ===== Hero ===== */
+.hero {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.hero h1 {
+  font-size: 32px;
+  color: #0f3b5c;
+  margin-bottom: 8px;
+}
+
+.hero p {
+  color: #64748b;
+  font-size: 16px;
+}
+
+/* ===== Search ===== */
+.search-section {
+  display: flex;
+  max-width: 640px;
+  margin: 0 auto 35px;
+  gap: 12px;
+}
+
+#searchInput {
+  flex: 1;
+  padding: 14px 18px;
+  font-size: 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#searchInput:focus {
+  border-color: #0d9488;
+}
+
+#searchBtn {
+  padding: 14px 28px;
+  background: #0d9488;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#searchBtn:hover {
+  background: #0f766e;
+}
+
+/* ===== Results / Cards ===== */
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.programme-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  width: 340px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.programme-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.card-header {
+  background: #0f3b5c;
+  color: white;
+  padding: 18px 20px;
+}
+
+.card-header h2 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.card-header .university {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.indicators {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.indicator {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.indicator-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.icon-career { background: #ccfbf1; }
+.icon-difficulty { background: #fef3c7; }
+.icon-internship { background: #dbeafe; }
+
+.indicator-text h3 {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.indicator-text p {
+  font-size: 14px;
+  color: #1e293b;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  padding: 0 20px 20px;
+}
+
+.btn {
+  flex: 1;
+  padding: 11px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+}
+
+.btn-primary {
+  background: #0d9488;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #0f766e;
+}
+
+.btn-secondary {
+  background: #f1f5f9;
+  color: #334155;
+}
+
+.btn-secondary:hover {
+  background: #e2e8f0;
+}
+
+/* ===== Other Pages ===== */
+.page-title {
+  font-size: 26px;
+  color: #0f3b5c;
+  margin-bottom: 8px;
+}
+
+.page-desc {
+  color: #64748b;
+  margin-bottom: 28px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.info-card {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.info-card h3 {
+  color: #0f3b5c;
+  margin-bottom: 12px;
+  font-size: 17px;
+}
+
+.info-card ul {
+  padding-left: 18px;
+  margin: 10px 0;
+}
+
+.info-card li {
+  margin-bottom: 6px;
+}
+
+.info-card .note {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #64748b;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 12px;
+}
+
+/* Graduate List */
+.graduate-list {
+  margin: 16px 0 24px;
+}
+
+.graduate-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.graduate-item:last-child {
+  border-bottom: none;
+}
+
+.graduate-item .role {
+  font-weight: 600;
+  color: #0f3b5c;
+  font-size: 14px;
+}
+
+.graduate-item .company {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Pie Chart */
+.pie-section {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.pie-section h4 {
+  font-size: 14px;
+  color: #0f3b5c;
+  margin-bottom: 14px;
+}
+
+.pie-chart {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  background: conic-gradient(
+    #0d9488 0% 35%,
+    #3b82f6 35% 60%,
+    #f59e0b 60% 75%,
+    #8b5cf6 75% 90%,
+    #94a3b8 90% 100%
+  );
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.pie-legend {
+  font-size: 13px;
+  color: #334155;
+}
+
+.pie-legend div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot.tech { background: #0d9488; }
+.dot.telecom { background: #3b82f6; }
+.dot.power { background: #f59e0b; }
+.dot.finance { background: #8b5cf6; }
+.dot.others { background: #94a3b8; }
+
+/* Compare */
+.compare-controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  align-items: center;
+}
+
+.compare-controls select {
+  padding: 10px 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  min-width: 220px;
+}
+
+.compare-result {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.compare-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  width: 320px;
+  overflow: hidden;
+}
+
+.compare-card .card-header {
+  background: #0f3b5c;
+  color: white;
+  padding: 16px 18px;
+}
+
+.compare-card .card-body {
+  padding: 18px;
+}
+
+.compare-row {
+  margin-bottom: 14px;
+}
+
+.compare-row h4 {
+  font-size: 12px;
+  color: #64748b;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.compare-row p {
+  font-size: 14px;
+}
+
+.coming-soon, .about-content {
+  background: white;
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  max-width: 700px;
+}
+
+.about-content ul {
+  margin: 16px 0;
+  padding-left: 20px;
+}
+
+.about-content li {
+  margin-bottom: 8px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #94a3b8;
+  margin-top: 50px;
+  font-size: 15px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ===== Footer ===== */
+footer {
+  background: #0f3b5c;
+  color: #94a3b8;
+  text-align: center;
+  padding: 18px;
+  font-size: 13px;
+  margin-top: 40px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 700px) {
+  .nav-links {
+    display: none;
+  }
+  .hero h1 {
+    font-size: 24px;
+  }
+  .search-section {
+    flex-direction: column;
+  }
+}
+
+/* ===== Main CityU EE Card on Home ===== */
+.main-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  max-width: 700px;
+  margin: 0 auto 30px;
+  overflow: hidden;
+}
+
+.home-note {
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===== Curriculum Table ===== */
+.curriculum-section h3 {
+  color: #0f3b5c;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.course-table {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.course-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 80px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 14px;
+  align-items: center;
+}
+
+.course-row.header {
+  background: #0f3b5c;
+  color: white;
+  font-weight: 600;
+}
+
+.course-row:last-child {
+  border-bottom: none;
+}
+
+.course-row:nth-child(even):not(.header) {
+  background: #f8fafc;
+}
+
+.notes-box {
+  background: #f0fdfa;
+  border-left: 4px solid #0d9488;
+  padding: 16px 20px;
+  margin-top: 20px;
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+}
+
+.notes-box ul {
+  margin-top: 8px;
+  padding-left: 18px;
+}
+
+.notes-box li {
+  margin-bottom: 6px;
+}
+
+/* Language Button */
+.lang-switch {
+  margin-left: 16px;
+}
+
+.lang-btn {
+  background: #0d9488;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.lang-btn:hover {
+  background: #0f766e;
+}
+
+/* Course List with Description */
+.course-list {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.course-item {
+  padding: 14px 18px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.course-item:last-child {
+  border-bottom: none;
+}
+
+.course-item:nth-child(even) {
+  background: #f8fafc;
+}
+
+.course-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.course-code {
+  font-weight: 700;
+  color: #0f3b5c;
+  font-size: 14px;
+  min-width: 110px;
+}
+
+.course-title {
+  font-weight: 600;
+  color: #1e293b;
+  flex: 1;
+  margin-left: 12px;
+}
+
+.course-credit {
+  font-size: 13px;
+  color: #64748b;
+  background: #e2e8f0;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.course-desc {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 4px;
+  margin-left: 122px;
+}
+
+/* Course Detail View */
+.detail-header {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.detail-header h2 {
+  color: #0f3b5c;
+  margin-bottom: 8px;
+}
+
+.detail-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.detail-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+.detail-card h4 {
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.big-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f3b5c;
+}
+
+.comments-section {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.comments-section h3 {
+  margin-bottom: 16px;
+  color: #0f3b5c;
+}
+
+.comment-box {
+  border-bottom: 1px solid #f1f5f9;
+  padding: 14px 0;
+}
+
+.comment-box:last-child {
+  border-bottom: none;
+}
+
+.comment-user {
+  font-weight: 600;
+  color: #0f3b5c;
+  margin-bottom: 4px;
+}
+
+.comment-text {
+  color: #334155;
+  font-size: 14px;
+}
+/* ===== CityU EE Detailed Section ===== */
+.detail-section {
+  max-width: 1100px;
+  margin: 40px auto 30px;
+}
+
+.section-title {
+  font-size: 24px;
+  color: #0f3b5c;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.detail-info-card {
+  background: white;
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.detail-info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.detail-info-card h3 {
+  color: #0f3b5c;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.detail-info-card ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.detail-info-card li {
+  font-size: 14px;
+  color: #334155;
+  margin-bottom: 6px;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo" data-i18n="logo">CityU EE Guide</div>
+      <ul class="nav-links">
+        <li><a href="#" class="active" data-page="home" data-i18n="nav_home">Home</a></li>
+        <li><a href="#" data-page="curriculum" data-i18n="nav_curriculum">Curriculum</a></li>
+        <li><a href="#" data-page="career" data-i18n="nav_career">Career</a></li>
+        <li><a href="#" data-page="internships" data-i18n="nav_internships">Internships</a></li>
+        <li><a href="#" data-page="compare" data-i18n="nav_compare">Compare</a></li>
+        <li><a href="#" data-page="about" data-i18n="nav_about">About</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button id="langBtn" class="lang-btn">繁體</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ==================== HOME ==================== -->
+    <section id="page-home" class="page active">
+      <header class="hero">
+        <h1 data-i18n="home_title">CityU Electronic & Electrical Engineering</h1>
+        <p data-i18n="home_subtitle">Quick guide for current students and JUPAS candidates</p>
+      </header>
+
+      <!-- Search Bar -->
+      <div class="search-section">
+        <input type="text" id="searchInput" placeholder="Search programme (e.g. CityU EE, HKU EE, PolyU EE)" />
+        <button id="searchBtn" data-i18n="btn_search">Search</button>
+      </div>
+      <div id="searchResults" class="results"></div>
+
+      <!-- Main CityU EE Card -->
+      <div class="main-card">
+      
+        <div class="card-header">
+          <h2 data-i18n="card_title">BEng Electronic and Electrical Engineering</h2>
+          <div class="university">City University of Hong Kong (CityU)</div>
+        </div>
+        <div class="card-body">
+          <div class="indicators">
+            <div class="indicator">
+              <div class="indicator-icon icon-career">💼</div>
+              <div class="indicator-text">
+                <h3 data-i18n="label_career">Career Outcomes</h3>
+                <p data-i18n="card_career">High employment in electronics, telecom, power systems, semiconductors & AI-related roles. Accredited by HKIE.</p>
+              </div>
+            </div>
+            <div class="indicator">
+              <div class="indicator-icon icon-difficulty">📚</div>
+              <div class="indicator-text">
+                <h3 data-i18n="label_difficulty">Course Difficulty</h3>
+                <p data-i18n="card_difficulty">Medium–High (strong foundation in maths, physics, circuits and programming required)</p>
+              </div>
+            </div>
+            <div class="indicator">
+              <div class="indicator-icon icon-internship">🏢</div>
+              <div class="indicator-text">
+                <h3 data-i18n="label_internship">Internship Opportunities</h3>
+                <p data-i18n="card_internship">Professional Internship Program (EE4085/86/87) — 4 to 12 months with industry partners</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="https://www.ee.cityu.edu.hk/en/current_students/undergraduate/major/admission_beng-elel_majorcurriculum" target="_blank" class="btn btn-secondary" data-i18n="btn_official">Official Curriculum</a>
+          <button class="btn btn-primary" onclick="document.querySelector('[data-page=curriculum]').click()" data-i18n="btn_courses">View Course List</button>
+        </div>
+      </div>
+      <!-- CityU EE Detailed Information -->
+<div class="detail-section">
+  <h2 class="section-title" data-i18n="cityu_detail_title">More About CityU EE</h2>
+
+  <div class="detail-grid">
+
+    <!-- Programme Overview -->
+    <div class="detail-info-card">
+      <h3 data-i18n="cityu_overview_title">📘 Programme Overview</h3>
+      <ul>
+        <li data-i18n="cityu_overview_1">4-year full-time BEng programme</li>
+        <li data-i18n="cityu_overview_2">Accredited by the Hong Kong Institution of Engineers (HKIE)</li>
+        <li data-i18n="cityu_overview_3">Offered by the Department of Electrical Engineering, CityU</li>
+        <li data-i18n="cityu_overview_4">Strong focus on electronics, communications, power systems, and AI</li>
+      </ul>
+    </div>
+
+    <!-- Admission Requirements -->
+    <div class="detail-info-card">
+      <h3 data-i18n="cityu_admission_title">🎓 Admission Requirements</h3>
+      <ul>
+        <li data-i18n="cityu_admission_1">JUPAS: Best 5 subjects, including Maths and one science subject</li>
+        <li data-i18n="cityu_admission_2">English Language: Level 3 or above</li>
+        <li data-i18n="cityu_admission_3">Mathematics: Level 3 or above</li>
+        <li data-i18n="cityu_admission_4">Physics or Combined Science preferred</li>
+      </ul>
+    </div>
+
+    <!-- Programme Structure -->
+    <div class="detail-info-card">
+      <h3 data-i18n="cityu_structure_title">📚 Programme Structure</h3>
+      <ul>
+        <li data-i18n="cityu_structure_1">Core Courses: 69 credit units</li>
+        <li data-i18n="cityu_structure_2">Elective Courses: at least 15 credit units</li>
+        <li data-i18n="cityu_structure_3">Final Year Project (EE4080): 6 credit units</li>
+        <li data-i18n="cityu_structure_4">Internship options: EE4085 / EE4086 / EE4087</li>
+      </ul>
+    </div>
+
+    <!-- Career Prospects -->
+    <div class="detail-info-card">
+      <h3 data-i18n="cityu_career_title">💼 Career Prospects</h3>
+      <ul>
+        <li data-i18n="cityu_career_1">Electronics / Hardware Engineer</li>
+        <li data-i18n="cityu_career_2">Telecommunications Engineer</li>
+        <li data-i18n="cityu_career_3">Power & Energy Systems Engineer</li>
+        <li data-i18n="cityu_career_4">Semiconductor / IC Design Engineer</li>
+        <li data-i18n="cityu_career_5">AI & Signal Processing Engineer</li>
+      </ul>
+    </div>
+
+    <!-- Internship Partners -->
+    <div class="detail-info-card">
+      <h3 data-i18n="cityu_partner_title">🏢 Internship Partners</h3>
+      <ul>
+        <li>Arrow Electronics</li>
+        <li>GP Electronics (HK) Limited</li>
+        <li>Sengital Limited</li>
+        <li>WIZnet HK Limited</li>
+        <li>Automated Systems (H.K.) Ltd</li>
+      </ul>
+    </div>
+
+    <!-- Why Choose CityU EE -->
+    <div class="detail-info-card">
+      <h3 data-i18n="cityu_why_title">⭐ Why Choose CityU EE?</h3>
+      <ul>
+        <li data-i18n="cityu_why_1">HKIE-accredited programme with strong industry links</li>
+        <li data-i18n="cityu_why_2">Wide range of electives from AI to power systems</li>
+        <li data-i18n="cityu_why_3">Flexible internship options (4–12 months)</li>
+        <li data-i18n="cityu_why_4">Located in Kowloon Tong, easy access via MTR</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      <div class="home-note">
+        <p data-i18n="home_note">This guide is mainly designed for <strong>CityU EE students</strong>. JUPAS candidates can also use it to quickly understand the programme.</p>
+      </div>
+    </section>
+
+    <!-- ==================== CURRICULUM ==================== -->
+    <section id="page-curriculum" class="page">
+      <h2 class="page-title" data-i18n="curriculum_title">Curriculum Structure</h2>
+      <p class="page-desc" data-i18n="curriculum_desc">BEng Electronic and Electrical Engineering – Core Courses & Electives</p>
+
+      <div class="curriculum-section">
+        <h3 data-i18n="core_title">Core Courses (69 Credit Units)</h3>
+        <div class="course-list" id="coreCourses"></div>
+
+        <div class="notes-box">
+          <p><strong data-i18n="notes_title">Notes:</strong></p>
+          <ul>
+            <li data-i18n="note1"># EE2066 is counted as “College-specified GE Course” for 4-year degree students, but counted as “Major Requirement” for Advanced Standing I/II students.</li>
+            <li data-i18n="note2">★ Students having completed EE4085 Internship: Engineering Practice (3CUs) can use it to fulfill EE2066 and EE4090.</li>
+            <li data-i18n="note3">Students having completed FS4007 Start-up Technology Entrepreneur Programme I (3CUs) can use it to fulfill EE4090.</li>
+            <li data-i18n="note4">Students having completed EE4086 Internship: Advanced Topics (3CUs) can use it to fulfill one elective.</li>
+            <li data-i18n="note5">△ Students having completed EE4087 Internship: Industrial Project (6CUs) can use it to fulfill EE4080 Project.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="curriculum-section" style="margin-top: 40px;">
+        <h3 data-i18n="elective_title">Elective Courses (at least 5 courses = 15 Credit Units)</h3>
+        <div class="course-list" id="electiveCourses"></div>
+      </div>
+    </section>
+
+    <!-- ==================== CAREER ==================== -->
+    <section id="page-career" class="page">
+      <h2 class="page-title" data-i18n="career_title">Career Outcomes</h2>
+      <p class="page-desc" data-i18n="career_desc">What kind of jobs can graduates get after studying CityU Electronic & Electrical Engineering?</p>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h3 data-i18n="career_left_title">CityU Electronic & Electrical Engineering</h3>
+          <p><strong data-i18n="common_paths">Common career paths:</strong></p>
+          <ul>
+            <li data-i18n="job1">Electronics / Hardware Engineer</li>
+            <li data-i18n="job2">Telecommunications Engineer</li>
+            <li data-i18n="job3">Power & Energy Systems Engineer</li>
+            <li data-i18n="job4">Semiconductor / IC Design Engineer</li>
+            <li data-i18n="job5">AI & Signal Processing related roles</li>
+            <li data-i18n="job6">Technical roles in finance & banking</li>
+          </ul>
+          <p class="note" data-i18n="career_note">Graduates work in both technical industries and the financial sector. The programme is accredited by the Hong Kong Institution of Engineers (HKIE).</p>
+        </div>
+
+        <div class="info-card">
+          <h3 data-i18n="graduate_title">Example Graduate Roles</h3>
+          <div class="graduate-list">
+            <div class="graduate-item"><span class="role" data-i18n="role1">Software Engineer</span><span class="company" data-i18n="comp1">Tech / FinTech companies</span></div>
+            <div class="graduate-item"><span class="role" data-i18n="role2">Hardware Engineer</span><span class="company" data-i18n="comp2">Electronics & semiconductor firms</span></div>
+            <div class="graduate-item"><span class="role" data-i18n="role3">Telecommunications Engineer</span><span class="company" data-i18n="comp3">Mobile network & telecom operators</span></div>
+            <div class="graduate-item"><span class="role" data-i18n="role4">Power Systems Engineer</span><span class="company" data-i18n="comp4">Power companies & energy sector</span></div>
+            <div class="graduate-item"><span class="role" data-i18n="role5">IC / Semiconductor Engineer</span><span class="company" data-i18n="comp5">Chip design & manufacturing</span></div>
+            <div class="graduate-item"><span class="role" data-i18n="role6">AI / Signal Processing Engineer</span><span class="company" data-i18n="comp6">AI, robotics & data companies</span></div>
+          </div>
+
+          <div class="pie-section">
+            <h4 data-i18n="pie_title">Approximate Employment Sectors</h4>
+            <div class="pie-chart"></div>
+            <div class="pie-legend">
+              <div><span class="dot tech"></span> <span data-i18n="pie1">Electronics & Tech (35%)</span></div>
+              <div><span class="dot telecom"></span> <span data-i18n="pie2">Telecom & Communications (25%)</span></div>
+              <div><span class="dot power"></span> <span data-i18n="pie3">Power & Energy (15%)</span></div>
+              <div><span class="dot finance"></span> <span data-i18n="pie4">Finance & Banking (15%)</span></div>
+              <div><span class="dot others"></span> <span data-i18n="pie5">Others / Further Study (10%)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== INTERNSHIPS ==================== -->
+    <section id="page-internships" class="page">
+      <h2 class="page-title" data-i18n="intern_title">Internship Opportunities</h2>
+      <p class="page-desc" data-i18n="intern_desc">Real internship programmes offered by CityU Electrical Engineering</p>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h3 data-i18n="intern_left_title">CityU EE Professional Internship Program</h3>
+          <p data-i18n="intern_intro">The Department offers structured internship courses:</p>
+          <ul>
+            <li><strong>EE4085</strong> – <span data-i18n="ee4085">Internship: Engineering Practice (4 months)</span></li>
+            <li><strong>EE4086</strong> – <span data-i18n="ee4086">Internship: Advanced Topics</span></li>
+            <li><strong>EE4087</strong> – <span data-i18n="ee4087">Internship: Industrial Project (up to 12 months)</span></li>
+          </ul>
+          <p data-i18n="intern_note">These internships can replace some required courses.</p>
+        </div>
+
+        <div class="info-card">
+          <h3 data-i18n="partner_title">Example Partner Companies</h3>
+          <ul>
+            <li>Arrow Electronics</li>
+            <li>GP Electronics (HK) Limited</li>
+            <li>Sengital Limited</li>
+            <li>WIZnet HK Limited</li>
+            <li>Appcider Limited</li>
+            <li>Automated Systems (H.K.) Ltd</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== COMPARE ==================== -->
+    <section id="page-compare" class="page">
+      <h2 class="page-title" data-i18n="compare_title">Compare Programmes</h2>
+      <p class="page-desc" data-i18n="compare_desc">Select two programmes to compare side by side</p>
+
+      <div class="compare-controls">
+        <select id="compare1"></select>
+        <select id="compare2"></select>
+        <button id="compareBtn" class="btn btn-primary" data-i18n="btn_compare">Compare</button>
+      </div>
+      <div id="compareResult" class="compare-result"></div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <section id="page-about" class="page">
+      <h2 class="page-title" data-i18n="about_title">About This Guide</h2>
+      <div class="about-content">
+        <p data-i18n="about_p1">This guide is mainly designed for <strong>CityU EE students</strong> to quickly understand their programme structure, career paths and internship opportunities.</p>
+        <p data-i18n="about_p2">JUPAS candidates can also use it as a simple reference.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p data-i18n="footer">CityU EE Programme Guide · For students and JUPAS candidates</p>
+  </footer>
+
+  <script>
+// ========== Language Data ==========
+const i18n = {
+  en: {
+    logo: "CityU EE Guide",
+    nav_home: "Home",
+    nav_curriculum: "Curriculum",
+    nav_career: "Career",
+    nav_internships: "Internships",
+    nav_compare: "Compare",
+    nav_about: "About",
+    home_title: "CityU Electronic & Electrical Engineering",
+    home_subtitle: "Quick guide for current students and JUPAS candidates",
+    card_title: "BEng Electronic and Electrical Engineering",
+    label_career: "Career Outcomes",
+    card_career: "High employment in electronics, telecom, power systems, semiconductors & AI-related roles. Accredited by HKIE.",
+    label_difficulty: "Course Difficulty",
+    card_difficulty: "Medium–High (strong foundation in maths, physics, circuits and programming required)",
+    label_internship: "Internship Opportunities",
+    card_internship: "Professional Internship Program (EE4085/86/87) — 4 to 12 months with industry partners",
+    btn_official: "Official Curriculum",
+    btn_courses: "View Course List",
+    btn_search: "Search",
+    home_note: "This guide is mainly designed for <strong>CityU EE students</strong>. JUPAS candidates can also use it to quickly understand the programme.",
+
+    // CityU EE Detail Section
+    cityu_detail_title: "More About CityU EE",
+
+    cityu_overview_title: "📘 Programme Overview",
+    cityu_overview_1: "4-year full-time BEng programme",
+    cityu_overview_2: "Accredited by the Hong Kong Institution of Engineers (HKIE)",
+    cityu_overview_3: "Offered by the Department of Electrical Engineering, CityU",
+    cityu_overview_4: "Strong focus on electronics, communications, power systems, and AI",
+
+    cityu_admission_title: "🎓 Admission Requirements",
+    cityu_admission_1: "JUPAS: Best 5 subjects, including Maths and one science subject",
+    cityu_admission_2: "English Language: Level 3 or above",
+    cityu_admission_3: "Mathematics: Level 3 or above",
+    cityu_admission_4: "Physics or Combined Science preferred",
+
+    cityu_structure_title: "📚 Programme Structure",
+    cityu_structure_1: "Core Courses: 69 credit units",
+    cityu_structure_2: "Elective Courses: at least 15 credit units",
+    cityu_structure_3: "Final Year Project (EE4080): 6 credit units",
+    cityu_structure_4: "Internship options: EE4085 / EE4086 / EE4087",
+
+    cityu_career_title: "💼 Career Prospects",
+    cityu_career_1: "Electronics / Hardware Engineer",
+    cityu_career_2: "Telecommunications Engineer",
+    cityu_career_3: "Power & Energy Systems Engineer",
+    cityu_career_4: "Semiconductor / IC Design Engineer",
+    cityu_career_5: "AI & Signal Processing Engineer",
+
+    cityu_partner_title: "🏢 Internship Partners",
+
+    cityu_why_title: "⭐ Why Choose CityU EE?",
+    cityu_why_1: "HKIE-accredited programme with strong industry links",
+    cityu_why_2: "Wide range of electives from AI to power systems",
+    cityu_why_3: "Flexible internship options (4–12 months)",
+    cityu_why_4: "Located in Kowloon Tong, easy access via MTR",
+
+    curriculum_title: "Curriculum Structure",
+    curriculum_desc: "BEng Electronic and Electrical Engineering – Core Courses & Electives",
+    core_title: "Core Courses (69 Credit Units)",
+    elective_title: "Elective Courses (at least 5 courses = 15 Credit Units)",
+    notes_title: "Notes:",
+    note1: "# EE2066 is counted as “College-specified GE Course” for 4-year degree students, but counted as “Major Requirement” for Advanced Standing I/II students.",
+    note2: "★ Students having completed EE4085 Internship: Engineering Practice (3CUs) can use it to fulfill EE2066 and EE4090.",
+    note3: "Students having completed FS4007 Start-up Technology Entrepreneur Programme I (3CUs) can use it to fulfill EE4090.",
+    note4: "Students having completed EE4086 Internship: Advanced Topics (3CUs) can use it to fulfill one elective.",
+    note5: "△ Students having completed EE4087 Internship: Industrial Project (6CUs) can use it to fulfill EE4080 Project.",
+    career_title: "Career Outcomes",
+    career_desc: "What kind of jobs can graduates get after studying CityU Electronic & Electrical Engineering?",
+    career_left_title: "CityU Electronic & Electrical Engineering",
+    common_paths: "Common career paths:",
+    job1: "Electronics / Hardware Engineer",
+    job2: "Telecommunications Engineer",
+    job3: "Power & Energy Systems Engineer",
+    job4: "Semiconductor / IC Design Engineer",
+    job5: "AI & Signal Processing related roles",
+    job6: "Technical roles in finance & banking",
+    career_note: "Graduates work in both technical industries and the financial sector. The programme is accredited by the Hong Kong Institution of Engineers (HKIE).",
+    graduate_title: "Example Graduate Roles",
+    role1: "Software Engineer", comp1: "Tech / FinTech companies",
+    role2: "Hardware Engineer", comp2: "Electronics & semiconductor firms",
+    role3: "Telecommunications Engineer", comp3: "Mobile network & telecom operators",
+    role4: "Power Systems Engineer", comp4: "Power companies & energy sector",
+    role5: "IC / Semiconductor Engineer", comp5: "Chip design & manufacturing",
+    role6: "AI / Signal Processing Engineer", comp6: "AI, robotics & data companies",
+    pie_title: "Approximate Employment Sectors",
+    pie1: "Electronics & Tech (35%)",
+    pie2: "Telecom & Communications (25%)",
+    pie3: "Power & Energy (15%)",
+    pie4: "Finance & Banking (15%)",
+    pie5: "Others / Further Study (10%)",
+    intern_title: "Internship Opportunities",
+    intern_desc: "Real internship programmes offered by CityU Electrical Engineering",
+    intern_left_title: "CityU EE Professional Internship Program",
+    intern_intro: "The Department offers structured internship courses:",
+    ee4085: "Internship: Engineering Practice (4 months)",
+    ee4086: "Internship: Advanced Topics",
+    ee4087: "Internship: Industrial Project (up to 12 months)",
+    intern_note: "These internships can replace some required courses.",
+    partner_title: "Example Partner Companies",
+    compare_title: "Compare Programmes",
+    compare_desc: "Select two programmes to compare side by side",
+    select1: "Select first programme",
+    select2: "Select second programme",
+    btn_compare: "Compare",
+    about_title: "About This Guide",
+    about_p1: "This guide is mainly designed for <strong>CityU EE students</strong> to quickly understand their programme structure, career paths and internship opportunities.",
+    about_p2: "JUPAS candidates can also use it as a simple reference.",
+    footer: "CityU EE Programme Guide · For students and JUPAS candidates",
+    back_btn: "← Back to Course List",
+    assessment: "Assessment",
+    workload: "Workload",
+    mean_gpa: "Mean GPA",
+    comments: "Comments",
+    add_comment: "Add Comment"
+  },
+  zh: {
+    logo: "城大電機工程指南",
+    nav_home: "主頁",
+    nav_curriculum: "課程結構",
+    nav_career: "就業前景",
+    nav_internships: "實習機會",
+    nav_compare: "比較課程",
+    nav_about: "關於",
+    home_title: "城大電子及電機工程學",
+    home_subtitle: "為現有學生及JUPAS申請人而設的快速指南",
+    card_title: "工學士（電子及電機工程學）",
+    label_career: "就業前景",
+    card_career: "在電子、電訊、電力系統、半導體及人工智能相關職位有高就業率。獲香港工程師學會（HKIE）認可。",
+    label_difficulty: "課程難度",
+    card_difficulty: "中至高（需要良好的數學、物理、電路及程式基礎）",
+    label_internship: "實習機會",
+    card_internship: "專業實習計劃（EE4085/86/87）— 為期4至12個月，與業界合作",
+    btn_official: "官方課程",
+    btn_courses: "查看課程列表",
+    btn_search: "搜尋",
+    home_note: "本指南主要為<strong>城大電機工程學生</strong>而設，JUPAS申請人亦可使用以快速了解課程。",
+
+    // CityU EE Detail Section
+    cityu_detail_title: "更多關於城大電機工程",
+
+    cityu_overview_title: "📘 課程概覽",
+    cityu_overview_1: "四年全日制工學士課程",
+    cityu_overview_2: "獲香港工程師學會（HKIE）認可",
+    cityu_overview_3: "由城大電機工程學系開辦",
+    cityu_overview_4: "專注電子、通訊、電力系統及人工智能",
+
+    cityu_admission_title: "🎓 入學要求",
+    cityu_admission_1: "JUPAS：最佳五科，包括數學及一科科學",
+    cityu_admission_2: "英語：第3級或以上",
+    cityu_admission_3: "數學：第3級或以上",
+    cityu_admission_4: "優先考慮物理或組合科學",
+
+    cityu_structure_title: "📚 課程結構",
+    cityu_structure_1: "核心課程：69學分",
+    cityu_structure_2: "選修課程：至少15學分",
+    cityu_structure_3: "畢業專題（EE4080）：6學分",
+    cityu_structure_4: "實習選項：EE4085 / EE4086 / EE4087",
+
+    cityu_career_title: "💼 就業前景",
+    cityu_career_1: "電子／硬件工程師",
+    cityu_career_2: "電訊工程師",
+    cityu_career_3: "電力及能源系統工程師",
+    cityu_career_4: "半導體／IC設計工程師",
+    cityu_career_5: "人工智能及信號處理工程師",
+
+    cityu_partner_title: "🏢 實習合作公司",
+
+    cityu_why_title: "⭐ 為何選擇城大電機工程？",
+    cityu_why_1: "獲HKIE認可，與業界聯繫緊密",
+    cityu_why_2: "選修科目涵蓋人工智能至電力系統",
+    cityu_why_3: "彈性實習選項（4至12個月）",
+    cityu_why_4: "位於九龍塘，港鐵直達",
+
+    curriculum_title: "課程結構",
+    curriculum_desc: "工學士（電子及電機工程學）– 核心課程及選修課程",
+    core_title: "核心課程（69學分）",
+    elective_title: "選修課程（至少5科 = 15學分）",
+    notes_title: "備註：",
+    note1: "# EE2066 對四年制學生計為「學院指定通識課程」，對高年級入學學生則計為「主修要求」。",
+    note2: "★ 完成 EE4085 實習：工程實踐（3學分）可用作滿足 EE2066 及 EE4090。",
+    note3: "完成 FS4007 初創科技企業家計劃 I（3學分）可用作滿足 EE4090。",
+    note4: "完成 EE4086 實習：電機工程進階專題（3學分）可用作滿足一科選修。",
+    note5: "△ 完成 EE4087 實習：工業項目（6學分）可用作滿足 EE4080 專題。",
+    career_title: "就業前景",
+    career_desc: "城大電子及電機工程畢業生可以從事什麼工作？",
+    career_left_title: "城大電子及電機工程學",
+    common_paths: "常見就業方向：",
+    job1: "電子／硬件工程師",
+    job2: "電訊工程師",
+    job3: "電力及能源系統工程師",
+    job4: "半導體／IC設計工程師",
+    job5: "人工智能及信號處理相關職位",
+    job6: "金融及銀行技術職位",
+    career_note: "畢業生可在技術行業及金融界工作。課程獲香港工程師學會（HKIE）認可。",
+    graduate_title: "畢業生職位例子",
+    role1: "軟件工程師", comp1: "科技／金融科技公司",
+    role2: "硬件工程師", comp2: "電子及半導體公司",
+    role3: "電訊工程師", comp3: "流動網絡及電訊營運商",
+    role4: "電力系統工程師", comp4: "電力公司及能源界",
+    role5: "IC／半導體工程師", comp5: "芯片設計及製造",
+    role6: "人工智能／信號處理工程師", comp6: "人工智能、機械人及數據公司",
+    pie_title: "大約就業界別分佈",
+    pie1: "電子及科技（35%）",
+    pie2: "電訊及通訊（25%）",
+    pie3: "電力及能源（15%）",
+    pie4: "金融及銀行（15%）",
+    pie5: "其他／繼續升學（10%）",
+    intern_title: "實習機會",
+    intern_desc: "城大電機工程提供的真實實習計劃",
+    intern_left_title: "城大電機專業實習計劃",
+    intern_intro: "學系提供以下結構化實習課程：",
+    ee4085: "實習：工程實踐（4個月）",
+    ee4086: "實習：進階專題",
+    ee4087: "實習：工業項目（最長12個月）",
+    intern_note: "這些實習可用作取代部分必修課程。",
+    partner_title: "合作公司例子",
+    compare_title: "比較課程",
+    compare_desc: "選擇兩個課程進行並排比較",
+    select1: "選擇第一個課程",
+    select2: "選擇第二個課程",
+    btn_compare: "比較",
+    about_title: "關於本指南",
+    about_p1: "本指南主要為<strong>城大電機工程學生</strong>而設，幫助快速了解課程結構、就業前景及實習機會。",
+    about_p2: "JUPAS申請人亦可作為簡單參考。",
+    footer: "城大電機工程指南 · 為學生及JUPAS申請人而設",
+    back_btn: "← 返回課程列表",
+    assessment: "評估方式",
+    workload: "工作量",
+    mean_gpa: "平均 GPA",
+    comments: "學生評論",
+    add_comment: "新增評論"
+  }
+};
+
+// ========== Other University EE Programmes ==========
+const otherProgrammes = [
+  {
+    id: "cityu-ee",
+    name: "CityU EE",
+    fullName: "BEng Electronic and Electrical Engineering",
+    university: "City University of Hong Kong",
+    career: "High employment in electronics, telecom, power systems, semiconductors & AI-related roles. Accredited by HKIE.",
+    difficulty: "Medium–High (strong foundation in maths, physics, circuits and programming required)",
+    internship: "Professional Internship Program (EE4085/86/87) — 4 to 12 months with industry partners",
+    link: "https://www.ee.cityu.edu.hk/en/current_students/undergraduate/major/admission_beng-elel_majorcurriculum"
+  },
+  {
+    id: "hku-ee",
+    name: "HKU EE",
+    fullName: "BEng Electrical and Electronic Engineering",
+    university: "The University of Hong Kong",
+    career: "Strong graduate outcomes in power, communications, electronics, and fintech. Accredited by HKIE.",
+    difficulty: "High (rigorous maths, physics, and programming foundation required)",
+    internship: "Internship opportunities with CLP, HK Electric, Huawei, and other industry partners.",
+    link: "https://www.eee.hku.hk/"
+  },
+  {
+    id: "polyu-ee",
+    name: "PolyU EE",
+    fullName: "BEng Electrical Engineering",
+    university: "The Hong Kong Polytechnic University",
+    career: "Graduates work in power, railway, telecom, and building services. Strong industry links.",
+    difficulty: "Medium–High (emphasis on practical engineering and hands-on projects)",
+    internship: "Work-integrated education (WIE) with MTR, CLP, and engineering firms.",
+    link: "https://www.polyu.edu.hk/eee/"
+  },
+  {
+    id: "cuhk-ee",
+    name: "CUHK EE",
+    fullName: "BEng Electronic Engineering",
+    university: "The Chinese University of Hong Kong",
+    career: "Graduates work in electronics, communications, AI, and healthcare technology. Strong research-oriented training.",
+    difficulty: "High (strong emphasis on mathematics, physics, and programming)",
+    internship: "Summer internship programmes with tech companies and research labs.",
+    link: "https://www.ee.cuhk.edu.hk/"
+  },
+  {
+    id: "ust-ee",
+    name: "UST EE",
+    fullName: "BEng Electronic and Computer Engineering",
+    university: "The Hong Kong University of Science and Technology",
+    career: "Strong outcomes in semiconductors, AI, robotics, and fintech. High employability in tech sector.",
+    difficulty: "High (rigorous engineering and computing foundation required)",
+    internship: "Internship opportunities with Huawei, DJI, and global tech firms.",
+    link: "https://ece.hkust.edu.hk/"
+  }
+];
+
+// ========== Course Data ==========
+const coreCourses = [
+  { code: "EE1001", title: "Foundations of Digital Techniques", titleZh: "數碼技術基礎", desc: "Introduces number systems, Boolean algebra, logic gates and basic digital circuits.", descZh: "介紹數字系統、布爾代數、邏輯閘及基本數碼電路。", credit: 3, workload: 3.1, gpa: 3.05 },
+  { code: "EE1002", title: "Principles of Electrical Engineering", titleZh: "電機工程原理", desc: "Covers fundamental electrical concepts: voltage, current, resistance, power and basic circuit laws.", descZh: "涵蓋基本電學概念：電壓、電流、電阻、功率及基本電路定律。", credit: 3, workload: 3.3, gpa: 2.95 },
+  { code: "EE1004", title: "Foundations of Information Systems and Data Analysis", titleZh: "資訊系統及數據分析基礎", desc: "Introduces basic data handling, information systems and simple data analysis techniques.", descZh: "介紹基本數據處理、資訊系統及簡單數據分析技術。", credit: 3, workload: 2.8, gpa: 3.15 },
+  { code: "GE1354", title: "Introduction to Electronic Design", titleZh: "電子設計導論", desc: "Hands-on introduction to electronic design principles and simple circuit building.", descZh: "透過實踐介紹電子設計原理及簡單電路製作。", credit: 3, workload: 2.9, gpa: 3.20 },
+  { code: "EE2000", title: "Logic Circuit Design", titleZh: "邏輯電路設計", desc: "Design of combinational and sequential logic circuits using modern digital techniques.", descZh: "使用現代數碼技術設計組合及時序邏輯電路。", credit: 3, workload: 3.4, gpa: 2.88 },
+  { code: "EE2004", title: "Microcomputer Systems", titleZh: "微電腦系統", desc: "Fundamentals of microcomputer architecture, assembly language and interfacing.", descZh: "微電腦架構、組合語言及介面的基礎知識。", credit: 3, workload: 3.5, gpa: 2.75 },
+  { code: "EE2005", title: "Electronic Devices and Circuits", titleZh: "電子器件及電路", desc: "Study of diodes, transistors and basic analogue electronic circuits.", descZh: "研習二極體、電晶體及基本模擬電子電路。", credit: 3, workload: 3.6, gpa: 2.70 },
+  { code: "EE2066", title: "Engineers in Society", titleZh: "工程師與社會", desc: "Explores the role of engineers in society, ethics, sustainability and professional practice.", descZh: "探討工程師在社會中的角色、倫理、可持續發展及專業實踐。", credit: 3, workload: 2.4, gpa: 3.40 },
+  { code: "EE2104", title: "Introduction to Electromagnetics", titleZh: "電磁學導論", desc: "Basic concepts of electric and magnetic fields and their applications in engineering.", descZh: "電場及磁場的基本概念及其在工程上的應用。", credit: 3, workload: 3.7, gpa: 2.65 },
+  { code: "EE2108", title: "Computational Engineering Analysis", titleZh: "計算工程分析", desc: "Uses computational tools to analyse engineering problems and data.", descZh: "使用計算工具分析工程問題及數據。", credit: 3, workload: 3.2, gpa: 3.00 },
+  { code: "EE3008", title: "Principles of Communications", titleZh: "通訊原理", desc: "Fundamentals of analogue and digital communication systems.", descZh: "模擬及數碼通訊系統的基本原理。", credit: 3, workload: 3.5, gpa: 2.80 },
+  { code: "EE3070", title: "Design Project", titleZh: "設計專題", desc: "Team-based design project solving real engineering problems.", descZh: "以小組形式進行設計專題，解決實際工程問題。", credit: 3, workload: 3.8, gpa: 3.10 },
+  { code: "EE3109", title: "Applied Electromagnetics", titleZh: "應用電磁學", desc: "Advanced applications of electromagnetic theory in engineering systems.", descZh: "電磁理論在工程系統中的進階應用。", credit: 3, workload: 3.9, gpa: 2.60 },
+  { code: "EE3114", title: "Systems & Control", titleZh: "系統與控制", desc: "Modelling and control of dynamic systems, feedback and stability.", descZh: "動態系統的建模與控制、反饋及穩定性。", credit: 3, workload: 3.6, gpa: 2.85 },
+  { code: "EE3115", title: "Applied Optoelectronic Devices", titleZh: "應用光電子器件", desc: "Principles and applications of optoelectronic devices (LEDs, lasers, photodetectors).", descZh: "光電子器件（LED、激光、光探測器）的原理及應用。", credit: 3, workload: 3.3, gpa: 2.95 },
+  { code: "EE3121", title: "Differential Equations for Electrical Engineering", titleZh: "電機工程微分方程", desc: "Mathematical methods for solving differential equations in EE problems.", descZh: "解決電機工程問題中微分方程的數學方法。", credit: 3, workload: 3.4, gpa: 2.90 },
+  { code: "EE3122", title: "Analogue Circuit Fundamentals", titleZh: "模擬電路基礎", desc: "Design and analysis of analogue circuits including amplifiers and filters.", descZh: "模擬電路（包括放大器及濾波器）的設計與分析。", credit: 3, workload: 3.7, gpa: 2.70 },
+  { code: "EE3123", title: "Introduction to Electric Power Systems", titleZh: "電力系統導論", desc: "Basics of power generation, transmission, distribution and power system components.", descZh: "發電、輸電、配電及電力系統元件的基礎知識。", credit: 3, workload: 3.2, gpa: 3.05 },
+  { code: "EE3124", title: "Introduction to Electric Machines and Drives", titleZh: "電機及驅動導論", desc: "Principles of electric machines (motors & generators) and drive systems.", descZh: "電機（馬達及發電機）及驅動系統的原理。", credit: 3, workload: 3.3, gpa: 2.98 },
+  { code: "EE3210", title: "Signals and Systems", titleZh: "信號與系統", desc: "Analysis of continuous and discrete-time signals and linear systems.", descZh: "連續及離散時間信號與線性系統的分析。", credit: 3, workload: 3.8, gpa: 2.55 },
+  { code: "EE4080", title: "Project", titleZh: "專題研究", desc: "Final Year Project – independent research or design work under supervision.", descZh: "畢業專題 – 在指導下進行獨立研究或設計工作。", credit: 6, workload: 4.2, gpa: 3.25 },
+  { code: "EE4090", title: "Engineering Training", titleZh: "工程訓練", desc: "Practical engineering training (can be fulfilled by internship).", descZh: "實務工程訓練（可由實習取代）。", credit: 0, workload: 2.0, gpa: 3.50 },
+  { code: "CS2311", title: "Computer Programming", titleZh: "電腦程式設計", desc: "Programming fundamentals for engineering applications.", descZh: "工程應用的程式設計基礎。", credit: 3, workload: 3.0, gpa: 3.10 },
+  { code: "MA2001", title: "Multi-variable Calculus and Linear Algebra", titleZh: "多變量微積分及線性代數", desc: "Advanced mathematics needed for engineering analysis.", descZh: "工程分析所需的高等數學。", credit: 3, workload: 3.5, gpa: 2.80 }
+];
+
+const electiveCourses = [
+  { code: "EE2331", title: "Data Structures and Algorithms", titleZh: "數據結構與算法", desc: "Common data structures and algorithms used in engineering software.", descZh: "工程軟件常用的數據結構與算法。", credit: 3, workload: 3.4, gpa: 2.90 },
+  { code: "EE2800", title: "Semiconductor Physics for Engineers", titleZh: "工程師半導體物理", desc: "Physics of semiconductor materials and devices.", descZh: "半導體材料及器件的物理學。", credit: 3, workload: 3.6, gpa: 2.75 },
+  { code: "EE3009", title: "Data Communications and Networking", titleZh: "數據通訊與網絡", desc: "Principles of computer networks and data communication protocols.", descZh: "電腦網絡及數據通訊協議的原理。", credit: 3, workload: 3.2, gpa: 3.00 },
+  { code: "EE3206", title: "Object-Oriented Programming and Applications", titleZh: "物件導向程式設計及應用", desc: "Object-oriented programming concepts and practical applications.", descZh: "物件導向程式設計概念及實際應用。", credit: 3, workload: 3.1, gpa: 3.15 },
+  { code: "EE3220", title: "System-on-Chip Design", titleZh: "系統單晶片設計", desc: "Design of complex digital systems on a single chip (SoC).", descZh: "在單一晶片上設計複雜數碼系統（SoC）。", credit: 3, workload: 3.8, gpa: 2.70 },
+  { code: "EE4015 / EE5410", title: "Digital Signal Processing", titleZh: "數碼信號處理", desc: "Techniques for processing digital signals (filtering, FFT, etc.).", descZh: "處理數碼信號的技術（濾波、FFT等）。", credit: 3, workload: 3.7, gpa: 2.65 },
+  { code: "EE4016 / EE5438", title: "Applications of AI with Deep Learning", titleZh: "深度學習人工智能應用", desc: "Practical applications of deep learning in engineering problems.", descZh: "深度學習在工程問題上的實際應用。", credit: 3, workload: 3.5, gpa: 3.05 },
+  { code: "EE4017", title: "Internet Finance", titleZh: "互聯網金融", desc: "Technology and systems behind fintech and internet finance.", descZh: "金融科技及互聯網金融背後的技術與系統。", credit: 3, workload: 2.7, gpa: 3.30 },
+  { code: "EE4035", title: "Optical Fibre Communications", titleZh: "光纖通訊", desc: "Principles of optical fibre communication systems.", descZh: "光纖通訊系統的原理。", credit: 3, workload: 3.3, gpa: 2.95 },
+  { code: "EE4036", title: "Wireless Communications", titleZh: "無線通訊", desc: "Modern wireless communication technologies and systems.", descZh: "現代無線通訊技術及系統。", credit: 3, workload: 3.4, gpa: 2.85 },
+  { code: "EE4045", title: "Computer Controlled Systems", titleZh: "電腦控制系統", desc: "Design of computer-based control systems.", descZh: "基於電腦的控制系統設計。", credit: 3, workload: 3.5, gpa: 2.90 },
+  { code: "EE4101", title: "Sustainable Energy Systems", titleZh: "可持續能源系統", desc: "Renewable energy systems and sustainable power technologies.", descZh: "可再生能源系統及可持續電力技術。", credit: 3, workload: 3.0, gpa: 3.20 },
+  { code: "EE4105", title: "Principles of Lasers", titleZh: "激光原理", desc: "Working principles and applications of lasers.", descZh: "激光的工作原理及應用。", credit: 3, workload: 3.2, gpa: 3.00 },
+  { code: "EE4107", title: "5G Circuit Design", titleZh: "5G電路設計", desc: "Circuit design techniques for 5G wireless systems.", descZh: "5G無線系統的電路設計技術。", credit: 3, workload: 3.6, gpa: 2.80 },
+  { code: "EE4108", title: "Antennas for Wireless Communications and Sensing", titleZh: "無線通訊及感測天線", desc: "Antenna design for wireless communication and sensing applications.", descZh: "無線通訊及感測應用的天線設計。", credit: 3, workload: 3.5, gpa: 2.85 },
+  { code: "EE4115", title: "Audio-Visual Engineering", titleZh: "影音工程", desc: "Engineering principles of audio and video systems.", descZh: "音頻及視頻系統的工程原理。", credit: 3, workload: 2.9, gpa: 3.15 },
+  { code: "EE4142", title: "Introduction to Integrated Photonics", titleZh: "集成光子學導論", desc: "Basics of photonic integrated circuits.", descZh: "光子集成電路的基礎知識。", credit: 3, workload: 3.4, gpa: 2.90 },
+  { code: "EE4146", title: "Data Engineering and Machine Learning", titleZh: "數據工程及機器學習", desc: "Data processing pipelines and machine learning applications.", descZh: "數據處理流程及機器學習應用。", credit: 3, workload: 3.3, gpa: 3.05 },
+  { code: "EE4147", title: "Grid-Connected Power Converters", titleZh: "併網電力轉換器", desc: "Power electronic converters used in grid-connected systems.", descZh: "用於併網系統的電力電子轉換器。", credit: 3, workload: 3.5, gpa: 2.88 },
+  { code: "EE4148", title: "Advanced Power System", titleZh: "進階電力系統", desc: "Advanced topics in electric power systems analysis and operation.", descZh: "電力系統分析及運作的進階主題。", credit: 3, workload: 3.6, gpa: 2.75 },
+  { code: "EE4149", title: "Power Electronics", titleZh: "電力電子學", desc: "Design and control of power electronic converters.", descZh: "電力電子轉換器的設計與控制。", credit: 3, workload: 3.7, gpa: 2.70 },
+  { code: "EE4221", title: "Cloud Computing Systems", titleZh: "雲端運算系統", desc: "Architecture and technologies of cloud computing systems.", descZh: "雲端運算系統的架構及技術。", credit: 3, workload: 3.1, gpa: 3.10 },
+  { code: "EE4316", title: "Mobile Data Networks", titleZh: "流動數據網絡", desc: "Technologies and protocols used in mobile data networks.", descZh: "流動數據網絡使用的技術及協議。", credit: 3, workload: 3.2, gpa: 3.00 }
+];
+
+// ========== Generate 3 comments for each course ==========
+function generateComments(code, title) {
+  const templates = [
+    [
+      { user: "EE Student 2023", text: `This course is quite fundamental. The concepts in ${title} are important for later courses. Workload is manageable if you review regularly.` },
+      { user: "Year 2 Student", text: `Lectures are clear but the tutorials are very useful. Make sure you understand the basic principles early.` },
+      { user: "Anonymous", text: `Good starting point. Not too difficult if you have solid secondary school physics/maths background.` }
+    ],
+    [
+      { user: "CityU EE", text: `${code} requires consistent practice. The final exam can be tricky if you only memorize formulas.` },
+      { user: "Senior Student", text: `Interesting content. Lab sessions help a lot in understanding the theory.` },
+      { user: "2024 Graduate", text: `Useful course for building foundation. Recommend doing past papers.` }
+    ],
+    [
+      { user: "EE Year 3", text: `Workload is medium. Group project (if any) needs good time management.` },
+      { user: "Student A", text: `Professor explains well. Content is relevant to real engineering applications.` },
+      { user: "Anonymous CityUer", text: `A bit theoretical at times, but overall a solid course in the curriculum.` }
+    ]
+  ];
+  const index = code.charCodeAt(2) % 3;
+  return templates[index];
+}
+
+// ========== Render Course List ==========
+function renderCourses(lang) {
+  const coreContainer = document.getElementById("coreCourses");
+  const electiveContainer = document.getElementById("electiveCourses");
+  if (!coreContainer || !electiveContainer) return;
+
+  const renderList = (courses) => courses.map(c => `
+    <div class="course-item" onclick="showCourseDetail('${c.code}')" style="cursor:pointer;">
+      <div class="course-top">
+        <span class="course-code">${c.code}</span>
+        <span class="course-title">${lang === 'zh' ? c.titleZh : c.title}</span>
+        <span class="course-credit">${c.credit} ${lang === 'zh' ? '學分' : 'credits'}</span>
+      </div>
+      <div class="course-desc">${lang === 'zh' ? c.descZh : c.desc}</div>
+    </div>
+  `).join("");
+
+  coreContainer.innerHTML = renderList(coreCourses);
+  electiveContainer.innerHTML = renderList(electiveCourses);
+}
+
+// ========== Show Course Detail ==========
+function showCourseDetail(code) {
+  const allCourses = [...coreCourses, ...electiveCourses];
+  const course = allCourses.find(c => c.code === code);
+  if (!course) return;
+
+  const lang = currentLang;
+  const comments = generateComments(course.code, lang === 'zh' ? course.titleZh : course.title);
+
+  document.querySelectorAll('.curriculum-section').forEach(el => el.style.display = 'none');
+  document.querySelector('.page-title').style.display = 'none';
+  document.querySelector('.page-desc').style.display = 'none';
+
+  let detailDiv = document.getElementById('courseDetailView');
+  if (!detailDiv) {
+    detailDiv = document.createElement('div');
+    detailDiv.id = 'courseDetailView';
+    document.getElementById('page-curriculum').appendChild(detailDiv);
+  }
+
+  detailDiv.style.display = 'block';
+  detailDiv.innerHTML = `
+    <button class="btn btn-secondary" onclick="backToList()" style="margin-bottom:20px;">${i18n[lang].back_btn}</button>
+
+    <div class="detail-header">
+      <h2>${course.code} - ${lang === 'zh' ? course.titleZh : course.title}</h2>
+      <p>${lang === 'zh' ? course.descZh : course.desc}</p>
+    </div>
+
+    <div class="detail-cards">
+      <div class="detail-card">
+        <h4>${i18n[lang].assessment}</h4>
+        <ul>
+          <li>✓ Exam</li>
+          <li>✓ Quizzes</li>
+          <li>✓ Assignments</li>
+          <li>✓ ${course.credit >= 6 ? 'Project' : 'Lab / Tutorial'}</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <h4>${i18n[lang].mean_gpa}</h4>
+        <div class="big-number">${course.gpa.toFixed(2)}</div>
+      </div>
+      <div class="detail-card">
+        <h4>${i18n[lang].workload}</h4>
+        <div class="big-number">${course.workload.toFixed(1)} / 5</div>
+      </div>
+    </div>
+
+    <div class="comments-section">
+      <h3>${i18n[lang].comments} (${comments.length})</h3>
+      ${comments.map(c => `
+        <div class="comment-box">
+          <div class="comment-user">${c.user}</div>
+          <div class="comment-text">${c.text}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function backToList() {
+  document.getElementById('courseDetailView').style.display = 'none';
+  document.querySelectorAll('.curriculum-section').forEach(el => el.style.display = 'block');
+  document.querySelector('.page-title').style.display = 'block';
+  document.querySelector('.page-desc').style.display = 'block';
+}
+
+// ========== Language Switch ==========
+let currentLang = 'en';
+
+function setLanguage(lang) {
+  currentLang = lang;
+  const langBtn = document.getElementById("langBtn");
+  if (langBtn) langBtn.textContent = lang === 'en' ? '繁體' : 'EN';
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang][key]) el.innerHTML = i18n[lang][key];
+  });
+
+  renderCourses(lang);
+  populateCompareDropdowns();
+}
+
+// ========== Navigation ==========
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", function(e) {
+    e.preventDefault();
+    document.querySelectorAll(".nav-links a").forEach(a => a.classList.remove("active"));
+    this.classList.add("active");
+    const page = this.getAttribute("data-page");
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    const target = document.getElementById("page-" + page);
+    if (target) target.classList.add("active");
+  });
+});
+
+document.getElementById("langBtn")?.addEventListener("click", () => {
+  setLanguage(currentLang === 'en' ? 'zh' : 'en');
+});
+
+// ========== Search ==========
+function searchProgrammes(query) {
+  const q = query.toLowerCase().trim();
+  if (!q) return [];
+  return otherProgrammes.filter(p =>
+    p.name.toLowerCase().includes(q) ||
+    p.fullName.toLowerCase().includes(q) ||
+    p.university.toLowerCase().includes(q)
+  );
+}
+
+function renderSearchResults(results) {
+  const container = document.getElementById("searchResults");
+  if (!container) return;
+
+  if (results.length === 0) {
+    container.innerHTML = `<p class="empty-state">No results found. Try "CityU EE", "HKU EE", or "PolyU EE".</p>`;
+    return;
+  }
+
+  container.innerHTML = results.map(p => `
+    <div class="programme-card">
+      <div class="card-header">
+        <h2>${p.name}</h2>
+        <div class="university">${p.university}</div>
+      </div>
+      <div class="card-body">
+        <div class="indicators">
+          <div class="indicator">
+            <div class="indicator-icon icon-career">💼</div>
+            <div class="indicator-text">
+              <h3>Career Outcomes</h3>
+              <p>${p.career}</p>
+            </div>
+          </div>
+          <div class="indicator">
+            <div class="indicator-icon icon-difficulty">📚</div>
+            <div class="indicator-text">
+              <h3>Course Difficulty</h3>
+              <p>${p.difficulty}</p>
+            </div>
+          </div>
+          <div class="indicator">
+            <div class="indicator-icon icon-internship">🏢</div>
+            <div class="indicator-text">
+              <h3>Internship Opportunities</h3>
+              <p>${p.internship}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-actions">
+        <a href="${p.link}" target="_blank" class="btn btn-primary">Official Website</a>
+      </div>
+    </div>
+  `).join("");
+}
+
+// ========== Compare ==========
+function populateCompareDropdowns() {
+  const select1 = document.getElementById("compare1");
+  const select2 = document.getElementById("compare2");
+  if (!select1 || !select2) return;
+
+  const options = otherProgrammes.map(p =>
+    `<option value="${p.id}">${p.name} — ${p.university}</option>`
+  ).join("");
+
+  select1.innerHTML = `<option value="">${i18n[currentLang].select1}</option>${options}`;
+  select2.innerHTML = `<option value="">${i18n[currentLang].select2}</option>${options}`;
+}
+
+function compareProgrammes() {
+  const id1 = document.getElementById("compare1").value;
+  const id2 = document.getElementById("compare2").value;
+  const resultDiv = document.getElementById("compareResult");
+
+  if (!id1 || !id2) {
+    resultDiv.innerHTML = `<p class="empty-state">Please select two programmes to compare.</p>`;
+    return;
+  }
+
+  const p1 = otherProgrammes.find(p => p.id === id1);
+  const p2 = otherProgrammes.find(p => p.id === id2);
+
+  resultDiv.innerHTML = `
+    <div class="compare-card">
+      <div class="card-header">
+        <h2>${p1.name}</h2>
+        <div class="university">${p1.university}</div>
+      </div>
+      <div class="card-body">
+        <div class="compare-row"><h4>Career Outcomes</h4><p>${p1.career}</p></div>
+        <div class="compare-row"><h4>Course Difficulty</h4><p>${p1.difficulty}</p></div>
+        <div class="compare-row"><h4>Internships</h4><p>${p1.internship}</p></div>
+      </div>
+    </div>
+    <div class="compare-card">
+      <div class="card-header">
+        <h2>${p2.name}</h2>
+        <div class="university">${p2.university}</div>
+      </div>
+      <div class="card-body">
+        <div class="compare-row"><h4>Career Outcomes</h4><p>${p2.career}</p></div>
+        <div class="compare-row"><h4>Course Difficulty</h4><p>${p2.difficulty}</p></div>
+        <div class="compare-row"><h4>Internships</h4><p>${p2.internship}</p></div>
+      </div>
+    </div>
+  `;
+}
+
+// ========== Init ==========
+document.addEventListener("DOMContentLoaded", () => {
+  renderCourses('en');
+  populateCompareDropdowns();
+
+  const searchBtn = document.getElementById("searchBtn");
+  const searchInput = document.getElementById("searchInput");
+
+  if (searchBtn && searchInput) {
+    searchBtn.addEventListener("click", () => {
+      const results = searchProgrammes(searchInput.value);
+      renderSearchResults(results);
+    });
+
+    searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        const results = searchProgrammes(searchInput.value);
+        renderSearchResults(results);
+      }
+    });
+  }
+
+  const compareBtn = document.getElementById("compareBtn");
+  if (compareBtn) {
+    compareBtn.addEventListener("click", compareProgrammes);
+  }
+});
+  </script>
+</body>
+</html>
