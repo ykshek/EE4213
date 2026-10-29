@@ -2,6 +2,10 @@
 (() => {
     'use strict';
 
+    // Resolve navigation from this shared script, independent of the current page depth.
+    // Explicit index.html destinations also work when opening local files directly.
+    const PORTAL_ROOT = new URL('../../', document.currentScript.src);
+
     // Trusted static markup copied from base.html; never interpolate user input here.
     const SHELL_MARKUP = `
 <a href="#mainContent" class="skip-link"><span class="lang-zh">跳至主內容</span><span class="lang-en">Skip to main content</span></a>
@@ -52,40 +56,40 @@
             </div>
             <ul class="sidebar-nav">
                 <li>
-                    <a class="nav-item" id="navProfile" href="student-profile.html" data-page="profile">
+                    <a class="nav-item" id="navProfile" href="student-profile/index.html" data-page="profile">
                         <span class="icon" aria-hidden="true">👤</span>
                         <span><span class="label-zh">學生個人檔案</span><span class="label-en">Student Profile</span></span>
                         <span class="lock-icon" aria-hidden="true">🔒</span>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-item" id="navCourseInfo" href="course-info.html" data-page="course-info">
+                    <a class="nav-item" id="navCourseInfo" href="course-info/index.html" data-page="course-info">
                         <span class="icon" aria-hidden="true">📚</span>
                         <span><span class="label-zh">課程資訊</span><span class="label-en">Course Information</span></span>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-item" id="navMajorInfo" href="major-info.html" data-page="major-info">
+                    <a class="nav-item" id="navMajorInfo" href="major-info/index.html" data-page="major-info">
                         <span class="icon" aria-hidden="true">🎓</span>
                         <span><span class="label-zh">主修資訊</span><span class="label-en">Major Information</span></span>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-item" id="navComparator" href="comparator.html" data-page="comparator">
+                    <a class="nav-item" id="navComparator" href="comparator/index.html" data-page="comparator">
                         <span class="icon" aria-hidden="true">⚖️</span>
                         <span><span class="label-zh">課程比較器</span><span class="label-en">Course Comparator</span></span>
                         <span class="lock-icon" aria-hidden="true">🔒</span>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-item" id="navDegreeAudit" href="degree-audit.html" data-page="degree-audit">
+                    <a class="nav-item" id="navDegreeAudit" href="degree-audit/index.html" data-page="degree-audit">
                         <span class="icon" aria-hidden="true">✅</span>
                         <span><span class="label-zh">學位審核輔助</span><span class="label-en">Degree Audit Helper</span></span>
                         <span class="lock-icon" aria-hidden="true">🔒</span>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-item" id="navProgramCareer" href="program-career.html" data-page="program-career">
+                    <a class="nav-item" id="navProgramCareer" href="program-career/index.html" data-page="program-career">
                         <span class="icon" aria-hidden="true">💼</span>
                         <span><span class="label-zh">課程瀏覽與職涯資訊</span><span class="label-en">Program Browser &amp; Career Info</span></span>
                         <span class="lock-icon" aria-hidden="true">🔒</span>
@@ -172,13 +176,13 @@
     `;
     const PAGES = Object.freeze({
         home: { file: 'index.html', public: true, zh: '首頁', en: 'Home' },
-        registration: { file: 'registration.html', zh: '註冊導航器', en: 'Registration Navigator' },
-        profile: { file: 'student-profile.html', nav: 'navProfile', zh: '學生個人檔案', en: 'Student Profile' },
-        'course-info': { file: 'course-info.html', public: true, nav: 'navCourseInfo', zh: '課程資訊', en: 'Course Information' },
-        'major-info': { file: 'major-info.html', public: true, nav: 'navMajorInfo', zh: '主修資訊', en: 'Major Information' },
-        comparator: { file: 'comparator.html', nav: 'navComparator', zh: '課程比較器', en: 'Course Comparator' },
-        'degree-audit': { file: 'degree-audit.html', nav: 'navDegreeAudit', zh: '學位審核輔助', en: 'Degree Audit Helper' },
-        'program-career': { file: 'program-career.html', nav: 'navProgramCareer', zh: '課程瀏覽與職涯資訊', en: 'Program Browser & Career Information' }
+        registration: { file: 'registration/index.html', zh: '註冊導航器', en: 'Registration Navigator' },
+        profile: { file: 'student-profile/index.html', nav: 'navProfile', zh: '學生個人檔案', en: 'Student Profile' },
+        'course-info': { file: 'course-info/index.html', public: true, nav: 'navCourseInfo', zh: '課程資訊', en: 'Course Information' },
+        'major-info': { file: 'major-info/index.html', public: true, nav: 'navMajorInfo', zh: '主修資訊', en: 'Major Information' },
+        comparator: { file: 'comparator/index.html', nav: 'navComparator', zh: '課程比較器', en: 'Course Comparator' },
+        'degree-audit': { file: 'degree-audit/index.html', nav: 'navDegreeAudit', zh: '學位審核輔助', en: 'Degree Audit Helper' },
+        'program-career': { file: 'program-career/index.html', nav: 'navProgramCareer', zh: '課程瀏覽與職涯資訊', en: 'Program Browser & Career Information' }
     });
     const STORAGE_KEY = 'ee4213.portal.session.v1';
     let state = { isLoggedIn: false, hasVisitedNavigator: false, userName: '', language: 'zh' };
@@ -231,6 +235,9 @@
         const template = document.createElement('template');
         template.innerHTML = SHELL_MARKUP;
         const shell = template.content;
+        shell.querySelectorAll('a[href]:not([href^="#"])').forEach(link => {
+            link.href = new URL(link.getAttribute('href'), PORTAL_ROOT).href;
+        });
         document.body.prepend(shell.querySelector('.skip-link'), shell.querySelector('.topbar'));
         document.querySelector('.layout').prepend(shell.querySelector('.sidebar'));
         document.body.append(shell);
@@ -238,7 +245,7 @@
             <p id="storageNotice" class="session-notice" role="status" hidden>
                 <span class="lang-zh">此瀏覽模式無法保留跨頁登入；開啟功能頁後請再次示範登入。建議使用 Live Server。</span>
                 <span class="lang-en">This browser mode cannot retain login between pages. Log in again on each feature page, or use Live Server.</span>
-                <a href="registration.html"><span class="lang-zh">前往註冊導航器</span><span class="lang-en">Open Registration Navigator</span></a>
+                <a href="${new URL(PAGES.registration.file, PORTAL_ROOT).href}"><span class="lang-zh">前往註冊導航器</span><span class="lang-en">Open Registration Navigator</span></a>
             </p>
             <div id="accessNotice" class="card access-notice" hidden>
                 <h2><span class="lang-zh">🔒 需要登入</span><span class="lang-en">🔒 Login Required</span></h2>
@@ -353,7 +360,7 @@
             openModal('lockedModal');
             return;
         }
-        location.assign(target.file);
+        location.assign(new URL(target.file, PORTAL_ROOT).href);
     }
 
     function handleAuthSubmit(event) {
@@ -377,7 +384,7 @@
         saveState();
         closeModal(false);
         applyAuthUI();
-        location.assign(PAGES.home.file);
+        goTo('home');
     }
 
     function bindEvents() {

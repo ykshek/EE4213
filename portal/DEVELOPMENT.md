@@ -1,6 +1,6 @@
 # 專案結構與開啟方式
 
-這個專案是 CityU EE 學生平台的靜態 HTML 原型。團隊目前在 `portal/` 內開發，每個功能頁各有一個 HTML，共用樣式和導覽程式，不需要安裝專案套件或執行建置。
+這個專案是 CityU EE 學生平台的靜態 HTML 原型。團隊目前在 `portal/` 內開發，每個功能分頁各有一個資料夾，目前只放一個 `index.html`；首頁保留在 `portal/index.html` 作為入口。各頁共用樣式和導覽程式，不需要安裝專案套件或執行建置。
 
 ## 專案結構
 
@@ -14,13 +14,20 @@ EE4213/
 ├── base.html                     # 拆分前的單檔版本，保留作參考
 ├── portal/                       # 團隊目前的開發版本
 │   ├── index.html                # 首頁與主要入口
-│   ├── registration.html         # 註冊導航器
-│   ├── student-profile.html      # 學生個人檔案
-│   ├── course-info.html          # 課程資訊
-│   ├── major-info.html           # 主修資訊
-│   ├── comparator.html           # 課程比較器
-│   ├── degree-audit.html          # 學位審核輔助
-│   ├── program-career.html        # 課程瀏覽與職涯資訊
+│   ├── registration/             # 註冊導航器
+│   │   └── index.html
+│   ├── student-profile/          # 學生個人檔案
+│   │   └── index.html
+│   ├── course-info/              # 課程資訊
+│   │   └── index.html
+│   ├── major-info/               # 主修資訊
+│   │   └── index.html
+│   ├── comparator/               # 課程比較器
+│   │   └── index.html
+│   ├── degree-audit/             # 學位審核輔助
+│   │   └── index.html
+│   ├── program-career/           # 課程瀏覽與職涯資訊
+│   │   └── index.html
 │   ├── assets/
 │   │   ├── css/common.css        # 共用樣式、中英文顯示及響應式排版
 │   │   └── js/common.js          # 共用介面、導覽、示範登入及語言切換
@@ -31,6 +38,8 @@ EE4213/
 ```
 
 各 HTML 負責自己的主要內容；頁首、側欄、頁尾及登入彈窗由 `common.js` 統一建立，外觀由 `common.css` 管理。
+
+分頁的共用資源使用 `../assets/css/common.css` 和 `../assets/js/common.js`。導覽以共用程式的位置解析頁面網址，因此從首頁、任一分頁或不同伺服器子目錄開啟，都能返回首頁並切換功能頁。
 
 目前首頁與共用介面已有互動，其餘 7 個功能頁仍是「開發中」預留位置。`original/` 的原型功能尚未整合至這些頁面；所有登入都是示範，沒有連接大學系統或後端。
 
@@ -79,6 +88,8 @@ py -V:3.14 -m http.server 8765 --bind 127.0.0.1 --directory portal
 
 `--directory portal` 會將網頁根目錄設為 `portal/`，所以開啟 [團隊版本首頁](http://127.0.0.1:8765/) 就會直接顯示 `portal/index.html`，不會先顯示專案根目錄的檔案列表；網址不需要再加 `/portal/`。
 
+分頁網址會使用各自的資料夾，例如 [課程資訊](http://127.0.0.1:8765/course-info/) 對應 `portal/course-info/index.html`。側欄連結會明確指向 `index.html`，同時支援靜態伺服器和直接開啟本地檔案。
+
 如果舊伺服器仍在執行，請先在原本的 PowerShell 按 `Ctrl+C`，再使用上述新指令啟動並重新整理瀏覽器。使用期間保持 PowerShell 開啟，結束時也按 `Ctrl+C` 停止伺服器。
 
 如果電腦原本已有可用的 Python，也可跳過上述安裝，在 `EE4213` 根目錄直接執行：
@@ -89,7 +100,7 @@ python -m http.server 8765 --bind 127.0.0.1 --directory portal
 
 ### 方法三：直接雙擊 HTML
 
-可直接雙擊 `portal/index.html` 或其他功能頁，但必須保留完整的 `portal/` 資料夾，包括 `assets/`，並啟用瀏覽器 JavaScript。
+可直接雙擊 `portal/index.html` 或任一功能資料夾內的 `index.html`，但必須保留完整的 `portal/` 資料夾，包括共用的 `assets/`，並啟用瀏覽器 JavaScript。
 
 直接開啟會使用 `file://`。不同瀏覽器對本地檔案儲存的支援不同，可能需要逐頁示範登入；若儲存不可用，登入只解鎖當頁並顯示提示。需要完整跨頁體驗時，請使用前兩種方式。
 
@@ -97,14 +108,14 @@ python -m http.server 8765 --bind 127.0.0.1 --directory portal
 
 首頁、課程資訊及主修資訊可直接瀏覽，其餘頁面需要示範登入。登入表單可填入任意示範帳號與密碼，請勿使用真實密碼。
 
-首次登入或註冊會前往註冊導航器；同一工作階段登出後再次登入會前往學生個人檔案。註冊導航器不在側欄內，可由登入流程進入，或直接開啟 `registration.html`。
+首次登入或註冊會前往註冊導航器；同一工作階段登出後再次登入會前往學生個人檔案。註冊導航器不在側欄內，可由登入流程進入，或直接開啟 `registration/index.html`。
 
 登入狀態及語言選擇使用 `sessionStorage` 保存，不儲存密碼。請在同一瀏覽器分頁、相同主機及連接埠下切換頁面；`localhost` 與 `127.0.0.1` 的狀態互不共用。
 
 ## 組員應修改哪些檔案
 
-- **頁面內容：** 修改自己負責的 HTML，在 `#pageContent` 內開發；保留既有的 `data-page` 和共用掛載結構。
-- **頁面專屬樣式／互動：** 有需要時，新增同名 CSS／JS，例如 `assets/css/course-info.css`、`assets/js/course-info.js`，並在該 HTML 引入。CSS 放在 `common.css` 後；JS 使用 `defer` 並放在 `common.js` 後。樣式以頁面範圍限定，避免影響其他頁。
+- **頁面內容：** 修改自己負責資料夾內的 `index.html`，例如 `course-info/index.html`，在 `#pageContent` 內開發；保留既有的 `data-page` 和共用掛載結構。
+- **頁面專屬樣式／互動：** 目前每個功能資料夾只需一個 HTML。有需要時，再將專屬檔案放在同一資料夾，例如 `course-info/style.css`、`course-info/script.js`，並在該頁使用相對路徑引入。CSS 放在共用 `common.css` 後；JS 使用 `defer` 並放在共用 `common.js` 後。樣式以頁面範圍限定，避免影響其他頁。
 - **共用介面：** 導覽、登入、語言及全站樣式集中在 `common.js`／`common.css`，由負責整合的組員協調修改。
 
 `base.html` 和 `original/` 保留不動。修改後使用 Live Server 開啟負責頁面，確認互動、附近導覽及窄螢幕排版正常。
