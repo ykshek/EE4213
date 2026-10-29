@@ -8,20 +8,57 @@ The current team implementation is `portal/`. `base.html` and the two files in `
 
 ## Document authority
 
-`portal/DEVELOPMENT.md` is authoritative for the portal: project structure, local run instructions, page ownership, shared assets, and session behavior. This file (`AGENTS.md`) is the repository-wide guide: product scope, HCI/HAI requirements, accessibility, bilingual UI, safe rendering, and the legacy `base.html` behavior. For portal-specific details, follow `portal/DEVELOPMENT.md`; if the two documents disagree, the portal-specific guidance wins for `portal/`. When a change affects both, update both documents.
+This `AGENTS.md` is the authoritative development guide for the entire repository, including `portal/`. It covers product scope, portal structure and run instructions, page ownership, shared assets, session behavior, HCI/HAI requirements, accessibility, bilingual UI, safe rendering, and the legacy `base.html` behavior. Treat `base.html` and `original/` as read-only references unless a task explicitly asks to change them; port reference behavior into the matching portal page.
 
 ## Current implementation
 
 | Path | Status | Current contents |
 | --- | --- | --- |
 | `portal/` | **Current team implementation** | Static multipage prototype. `portal/index.html` is the public Home; seven feature folders each contain a placeholder `index.html`; the shared header, sidebar, footer, dialogs, demo login, and language switch live in `portal/assets/css/common.css` and `portal/assets/js/common.js`. Only Home and the shared shell are interactive today. |
-| `portal/DEVELOPMENT.md` | Current portal guide | Portal structure, run methods, demo session behavior, and edit ownership. |
 | `base.html` | Legacy reference | Pre-split single-file prototype with inline HTML, CSS, and JavaScript. It keeps every feature as an in-page section and uses in-memory demo state. Do not treat it as the active build target. |
 | `original/cityu-ee-guide.html` | Legacy reference | Original individual prototype: programme/course information, career information, internship information, and programme comparison. |
 | `original/EE4213_code_v6.html` | Legacy reference | Original individual prototype: degree audit, interactive flowchart, and recovery simulator. |
 | `README.md` | Course brief | Course project brief and submission requirements. |
 
 The portal uses separate shared CSS and JavaScript files; `base.html` and the files in `original/` use inline HTML, CSS, and JavaScript. There is no package manifest, build system, backend, framework, or automated test suite. The portal does have a client-side shared shell and uses `sessionStorage` for demo login and language state; there is no server-side persistence, database, or credential verification. `base.html` keeps the same demo state in memory only.
+
+## Portal structure and local run instructions
+
+Paths below are relative to the repository root:
+
+```text
+portal/
+├── index.html
+├── registration/index.html
+├── student-profile/index.html
+├── course-info/index.html
+├── major-info/index.html
+├── comparator/index.html
+├── degree-audit/index.html
+├── program-career/index.html
+└── assets/
+    ├── css/common.css
+    └── js/common.js
+```
+
+Each HTML file owns its page content. The shared shell (header, sidebar, footer, and login dialogs) is mounted by `common.js`, with shared presentation in `common.css`. Feature pages use the shared assets through relative paths. The shared navigation resolves its location so links work from the home page and feature folders, including when the portal is served from a subdirectory.
+
+The recommended way to run the portal is with a static server from the repository root:
+
+```sh
+python -m http.server 8765 --bind 127.0.0.1 --directory portal
+```
+
+Then open `http://127.0.0.1:8765/`. In Windows PowerShell, `py -m http.server 8765 --bind 127.0.0.1 --directory portal` can be used if the Python launcher is installed. Alternatively, open `portal/index.html` with VS Code Live Server. Stop a running server with `Ctrl+C` in its terminal.
+
+Opening `portal/index.html` or a feature page directly is also possible, provided the full `portal/` folder and its `assets/` remain together and browser JavaScript is enabled. This uses `file://`; browser storage support can vary, and login may only unlock the current page when `sessionStorage` is unavailable. Use a static server for the full cross-page demo session. Session state is origin-specific, so use the same browser tab, host, and port when navigating; `localhost` and `127.0.0.1` do not share state.
+
+## Page and file ownership
+
+- Implement page content in the responsible page's HTML, inside `#pageContent`, and preserve its existing `data-page` and shared mounting structure. Keep the Course Workload Details page at `portal/course-info/workload.html`; integrate Student Status and Course Feedback within Student Profile and Course Information instead of adding sidebar items.
+- Add page-specific CSS and JavaScript in the page's folder when needed. Load CSS after `common.css` and JavaScript with `defer` after `common.js`; scope styles to the page. A new `PAGES` entry or sidebar item affects shared navigation and should be coordinated before changing `common.js`.
+- Shared navigation, login, language switching, and site-wide styles belong in `portal/assets/js/common.js` and `portal/assets/css/common.css`; coordinate shared-shell changes with the integration owner.
+- Keep the portal build-free and static. Do not add dependencies, a backend, or build tooling without a concrete need.
 
 ## Pages to complete
 
@@ -84,9 +121,9 @@ Storage differs by prototype:
 
 ## Development conventions
 
-- Work in `portal/`; follow `portal/DEVELOPMENT.md` for structure, shared assets, and page ownership. Treat `base.html` and `original/` as read-only references unless the task explicitly asks to change them.
+- Work in `portal/` for the current team implementation. Treat `base.html` and `original/` as read-only references unless the task explicitly asks to change them.
 - Preserve the prototypes' ability to run as static HTML. Portal pages need the `portal/` folder and its `assets/`; a static file server (Live Server or `python -m http.server --directory portal`) is recommended for testing the cross-page demo session, but direct `file://` opening remains a documented fallback. `base.html` and the `original/` files remain directly openable single files.
-- Keep portal pages build-free. Put page content inside `#pageContent`, keep the shared shell in `common.js`/`common.css`, and load any page-specific CSS after `common.css` and page-specific JS with `defer` after `common.js`. Scope page styles to avoid affecting other pages.
+- Keep portal pages build-free. Put page content inside `#pageContent`, keep the shared shell in `common.js`/`common.css`, and load any page-specific CSS after `common.css` and page-specific JS with `defer` after `common.js`. Scope page styles to avoid affecting other pages. Coordinate changes to the shared navigation and `PAGES` configuration.
 - Keep Course Workload Details under `portal/course-info/` as a subpage; do not add it as a sidebar item unless the team explicitly changes that placement.
 - Keep edits focused on the requested feature and follow the existing page's HTML, CSS, and JavaScript patterns. Avoid introducing dependencies, a backend, or build tooling without a concrete need.
 - Keep course and programme facts accurate and clearly distinguish prototype/sample data from verified official information. Prefer linking to authoritative CityU sources for facts that can change.
