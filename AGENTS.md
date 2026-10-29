@@ -36,9 +36,11 @@ portal/
 ├── comparator/index.html
 ├── degree-audit/index.html
 ├── program-career/index.html
-└── assets/
-    ├── css/common.css
-    └── js/common.js
+├── assets/
+│   ├── css/common.css
+│   └── js/common.js
+├── AGENTS.md                     # Project development guide
+├── README.md                     # Project requirements and guidelines
 ```
 
 Each HTML file owns its page content. The shared shell (header, sidebar, footer, and login dialogs) is mounted by `common.js`, with shared presentation in `common.css`. Feature pages use the shared assets through relative paths. The shared navigation resolves its location so links work from the home page and feature folders, including when the portal is served from a subdirectory.
@@ -104,6 +106,35 @@ The portal presents these information areas and connected features as separate p
 The legacy `base.html` keeps the same features as single-page sections (`feature-home`, `feature-registration`, `feature-profile`, `feature-course-info`, `feature-major-info`, `feature-comparator`, `feature-degree-audit`, `feature-program-career`) with an in-page tab switcher. Use it as a reference for copy and interaction patterns, but do not update it unless the task explicitly asks.
 
 Student Status, Course Feedback, and Internship Opportunities are not separate sidebar destinations in the current portal. Student Status and Course Feedback should be integrated into Student Profile and Course Information (as subpages or sections); internships remain optional. The two original HTML files in `original/` implement only part of this direction. In particular, do not describe the profile, registration navigator, student status, workload details, or feedback collector as implemented unless they have since been added to `portal/`. The chart is a high-level structure: it does not specify exact data ownership, API contracts, or connector semantics. Confirm those details before making changes that depend on them.
+
+## Shared mock data
+
+The planned portal pages need consistent **Course Information**, **Major Information**, and **Student Profile** mock data. The shared static data module is `portal/assets/js/mock-data.js`, exposed as `window.EE4213Data`. It contains course information and degree-audit curricula copied from `original/`, plus the comparison programmes from the guide. Existing pages have not yet been migrated to use this module, so page-local arrays and simulator state are not a shared source of truth. Keep the portal build-free:
+
+- **Use the shared JavaScript data file** for records needed by multiple pages. It works with both `file://` and a local static server, without fetch configuration or a backend. Treat the records as read-only; a page script can look up records by stable IDs rather than copying arrays.
+- **JSON files loaded with `fetch()`** keep data separate from code, but browsers commonly block local-file fetches. Use this only if pages are tested through the documented local server (or a later build/runtime provides a reliable loader).
+- **Page-local constants** are suitable only for data used by one page. Duplicating shared records across pages causes inconsistencies; `sessionStorage` or `localStorage` should not be the canonical store for reference fixtures because they are mutable per-browser state, not shared data.
+
+Include the shared file before a page-specific deferred script, using a path relative to that HTML file (for example, `../assets/js/mock-data.js` from either `portal/course-info/index.html` or `portal/course-info/workload.html`). Deferred scripts execute in document order:
+
+```html
+<script src="../assets/js/common.js" defer></script>
+<script src="../assets/js/mock-data.js" defer></script>
+<script src="course-info.js" defer></script>
+```
+
+The module contains `courses` (76 unique course IDs, with existing English/Chinese titles, descriptions, credit units, sample workload/GPA where present, and curriculum-only records), `majors` (four degree-audit structures with course references, semesters, and source prerequisite/scheduling metadata), `comparisonProgrammes` (five programme-comparison records), and `generatedFeedbackTemplates` (three English-language comment sets from the guide's template generator). These generated comments are illustrative examples, not user-submitted feedback; do not present them as collected student reviews. Course records have a `courseId`; major records have a `majorId`; curriculum entries refer to courses by `courseId`. Some source records have English-only labels or no course description; do not invent missing translations or facts. The source prototypes contain no student profile records, so `studentProfiles` is intentionally empty. Do not infer or fabricate a student profile from the simulator defaults; only add a clearly labeled sample profile when a feature needs one and its fixture values are explicitly defined.
+
+Keep any future student profile linked by stable IDs: use `majorId` for its major and `completedCourseIds` / `plannedCourseIds` for courses. Use bilingual fields for new user-facing labels, such as `{ "en": "Electrical Engineering", "zh": "電機工程學" }`, and keep page-specific presentation and derived values in the page code rather than duplicating source facts. Pages should handle missing IDs explicitly instead of silently substituting unrelated data. The shared fixtures are sample data only, not official university records or persistent student accounts; label them as mock/demo content in the UI and never put real student or sensitive data in them.
+
+For example, a page can retrieve a course by ID from the shared API:
+
+```js
+const course = window.EE4213Data.courses.find((item) => item.courseId === courseId);
+if (!course) {
+    // Show an explicit not-found state for this course.
+}
+```
 
 ## Login and registration states
 
