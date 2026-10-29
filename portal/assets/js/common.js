@@ -288,6 +288,13 @@
         document.getElementById('btnLogout').hidden = !state.isLoggedIn;
         document.getElementById('userChip').hidden = !state.isLoggedIn;
         document.getElementById('userChipName').textContent = state.userName || 'Student';
+        // Page content can offer separate guest/member copy without duplicating auth logic.
+        document.querySelectorAll('[data-guest-only]').forEach(element => {
+            element.hidden = state.isLoggedIn;
+        });
+        document.querySelectorAll('[data-member-only]').forEach(element => {
+            element.hidden = !state.isLoggedIn;
+        });
         document.querySelectorAll('.nav-item').forEach(link => {
             const target = PAGES[link.dataset.page];
             const locked = !state.isLoggedIn && !target.public;
@@ -389,10 +396,11 @@
 
     function bindEvents() {
         document.addEventListener('click', event => {
-            const button = event.target.closest('[data-action], [data-auth], [data-language]');
+            const button = event.target.closest('[data-action], [data-auth], [data-language], [data-nav]');
             if (button) {
                 if (button.dataset.auth) openAuthModal(button.dataset.auth);
                 else if (button.dataset.language) setLanguage(button.dataset.language);
+                else if (button.dataset.nav) goTo(button.dataset.nav);
                 else if (button.dataset.action === 'logout') logout();
                 else if (button.dataset.action === 'close-modal') closeModal();
                 else if (button.dataset.action === 'toggle-auth') {
