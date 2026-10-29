@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁 | CityU EE Student Portal</title>
+    <link rel="stylesheet" href="assets/css/common.css">
+    <!-- Load page-specific CSS after common.css, and deferred JS after common.js. -->
+    <script src="assets/js/common.js" defer></script>
+</head>
+<body data-page="home" data-lang="zh">
+    <!-- Shared header, sidebar, footer and dialogs are mounted by common.js. -->
+    <div class="layout">
+        <main class="main" id="mainContent" tabindex="-1">
+            <!-- PAGE OWNER: develop this page inside #pageContent. -->
+            <section id="pageContent" class="page-content" aria-labelledby="pageTitle">
+                <div class="home-landing">
+                    <div class="home-hero">
+                        <span class="hero-emoji" aria-hidden="true">🎓</span>
+                        <h2 id="pageTitle">
+                            <span class="lang-zh">歡迎來到 CityU EE 學生平台</span>
+                            <span class="lang-en">Welcome to the CityU EE Student Portal</span>
+                        </h2>
+                        <p>
+                            <span class="lang-zh">一站式學位規劃、課程資訊與學術支援。登入後即可使用完整功能，包括學位審核、課程比較與個人檔案管理。</span>
+                            <span class="lang-en">Your one-stop platform for degree planning, course info, and academic support. Log in to unlock all features including degree audit, course comparison, and profile management.</span>
+                        </p>
+                        <div class="hero-actions">
+                            <button type="button" class="hero-btn hero-btn-primary" data-auth="login">
+                                <span class="lang-zh">立即登入</span><span class="lang-en">Login Now</span>
+                            </button>
+                            <button type="button" class="hero-btn hero-btn-outline" data-auth="register">
+                                <span class="lang-zh">註冊新帳號</span><span class="lang-en">Create Account</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="home-features">
+                        <div class="home-feature-card">
+                            <span class="fc-icon" aria-hidden="true">📚</span>
+                            <h4><span class="lang-zh">課程資訊</span><span class="lang-en">Course Info</span></h4>
+                            <p><span class="lang-zh">無需登入即可瀏覽課程資料。</span><span class="lang-en">Browse course data without logging in.</span></p>
+                        </div>
+                        <div class="home-feature-card">
+                            <span class="fc-icon" aria-hidden="true">🎓</span>
+                            <h4><span class="lang-zh">主修資訊</span><span class="lang-en">Major Info</span></h4>
+                            <p><span class="lang-zh">無需登入即可查看主修結構。</span><span class="lang-en">View major structures without logging in.</span></p>
+                        </div>
+                        <div class="home-feature-card">
+                            <span class="fc-icon" aria-hidden="true">✅</span>
+                            <h4><span class="lang-zh">學位審核</span><span class="lang-en">Degree Audit</span></h4>
+                            <p><span class="lang-zh">登入後使用學位審核輔助工具。</span><span class="lang-en">Log in to use the degree audit helper.</span></p>
+                        </div>
+                        <div class="home-feature-card">
+                            <span class="fc-icon" aria-hidden="true">⚖️</span>
+                            <h4><span class="lang-zh">課程比較</span><span class="lang-en">Course Compare</span></h4>
+                            <p><span class="lang-zh">登入後比較不同課程選項。</span><span class="lang-en">Log in to compare course options.</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <noscript><p>請啟用 JavaScript 以使用導覽和示範登入。 / Enable JavaScript for navigation and demo login.</p></noscript>
+        </main>
+    </div>
+</body>
+</html>
