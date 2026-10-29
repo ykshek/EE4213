@@ -64,8 +64,8 @@ Photographs accompanying the observation report or video recordings that documen
   Briefly explain how the team connected the individual findings to define the group’s ultimate problem statement and prototype scope.
   A prototype demonstration of primary end-to-end user workflow (connected secondary workflow if applicable).
 
-      Please limit the scope of your presentation to 1-3 features only, making sure they are impactful to users.
-      Unless your account registration, login, forget password workflow are providing a huge value to your solution, otherwise, you shall skip them in your prototype and focus on core feature(s).
+  Please limit the scope of your presentation to 1-3 features only, making sure they are impactful to users.
+  Unless your account registration, login, forget password workflow are providing a huge value to your solution, otherwise, you shall skip them in your prototype and focus on core feature(s).
 
   Explain the team’s AI-design decision (if applicable, which include the AI-assisted interaction patterns the human-oversight boundary design.)
   The usability-testing method, key findings, and clear before-and-after comparison.
@@ -76,10 +76,8 @@ Photographs accompanying the observation report or video recordings that documen
 
   For software applications, you shall submit:
 
-      A video hosted on YouTube demonstrating how your application works. (example:
-      https://youtu.be/e67j3LBk1iA?si=Fe06pBACZztlFIG9&t=39Links to an external site.
-      Starting from 0:39s)
-      Your code or a link to your final high-fidelity prototype. 
+  A video hosted on YouTube demonstrating how your application works. (example: https://youtu.be/e67j3LBk1iA&t=39)
+  Your code or a link to your final high-fidelity prototype. 
 
   For hardware prototype, you shall submit a video hosted on YouTube demonstrating how it During the presentation, you should bring your hardware product and be able to demonstrate exactly the same user experience as shown in the video.
   In both cases, no extra marks will be given if the actual deliverable in the presentation is better than what's captured in the video.
