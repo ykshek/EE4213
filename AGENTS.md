@@ -36,9 +36,11 @@ portal/
 ├── comparator/index.html
 ├── degree-audit/index.html
 ├── program-career/index.html
-└── assets/
-    ├── css/common.css
-    └── js/common.js
+├── assets/
+│   ├── css/common.css
+│   └── js/common.js
+├── AGENTS.md                     # Project development guide
+├── README.md                     # Project requirements and guidelines
 ```
 
 Each HTML file owns its page content. The shared shell (header, sidebar, footer, and login dialogs) is mounted by `common.js`, with shared presentation in `common.css`. Feature pages use the shared assets through relative paths. The shared navigation resolves its location so links work from the home page and feature folders, including when the portal is served from a subdirectory.
