@@ -43,15 +43,19 @@ portal/
 
 Each HTML file owns its page content. The shared shell (header, sidebar, footer, and login dialogs) is mounted by `common.js`, with shared presentation in `common.css`. Feature pages use the shared assets through relative paths. The shared navigation resolves its location so links work from the home page and feature folders, including when the portal is served from a subdirectory.
 
-The recommended way to run the portal is with a static server from the repository root:
+### Open a page
+
+No extra software is needed beyond a web browser. Keep the whole `portal/` folder together, then open `portal/index.html` or the feature page you want to test (for example, `portal/degree-audit/index.html`) in the browser. The sidebar links can open the other pages.
+
+When opened this way with a `file://` URL, browser storage may not work across pages. The page will show a notice; demo login may need to be repeated on each feature page and will only unlock the page currently open. This is suitable for checking an individual page.
+
+Optionally, to test a login session while navigating between pages, a local server can be used if Python is already installed; no packages are needed. From the repository root, run:
 
 ```sh
 python -m http.server 8765 --bind 127.0.0.1 --directory portal
 ```
 
-Then open `http://127.0.0.1:8765/`. In Windows PowerShell, `py -m http.server 8765 --bind 127.0.0.1 --directory portal` can be used if the Python launcher is installed. Alternatively, open `portal/index.html` with VS Code Live Server. Stop a running server with `Ctrl+C` in its terminal.
-
-Opening `portal/index.html` or a feature page directly is also possible, provided the full `portal/` folder and its `assets/` remain together and browser JavaScript is enabled. This uses `file://`; browser storage support can vary, and login may only unlock the current page when `sessionStorage` is unavailable. Use a static server for the full cross-page demo session. Session state is origin-specific, so use the same browser tab, host, and port when navigating; `localhost` and `127.0.0.1` do not share state.
+Open `http://127.0.0.1:8765/` and stop the server with `Ctrl+C`. On Windows, use `py` instead of `python` if that is the available command.
 
 ## Page and file ownership
 
@@ -122,7 +126,7 @@ Storage differs by prototype:
 ## Development conventions
 
 - Work in `portal/` for the current team implementation. Treat `base.html` and `original/` as read-only references unless the task explicitly asks to change them.
-- Preserve the prototypes' ability to run as static HTML. Portal pages need the `portal/` folder and its `assets/`; a static file server (Live Server or `python -m http.server --directory portal`) is recommended for testing the cross-page demo session, but direct `file://` opening remains a documented fallback. `base.html` and the `original/` files remain directly openable single files.
+- Preserve the prototypes' ability to run as static HTML. Portal pages need the `portal/` folder and its `assets/`; opening a portal HTML file directly in a browser is the simplest way to test an individual page. An optional static server can be used to test a cross-page demo session. `base.html` and the `original/` files remain directly openable single files.
 - Keep portal pages build-free. Put page content inside `#pageContent`, keep the shared shell in `common.js`/`common.css`, and load any page-specific CSS after `common.css` and page-specific JS with `defer` after `common.js`. Scope page styles to avoid affecting other pages. Coordinate changes to the shared navigation and `PAGES` configuration.
 - Keep Course Workload Details under `portal/course-info/` as a subpage; do not add it as a sidebar item unless the team explicitly changes that placement.
 - Keep edits focused on the requested feature and follow the existing page's HTML, CSS, and JavaScript patterns. Avoid introducing dependencies, a backend, or build tooling without a concrete need.
@@ -181,4 +185,4 @@ All UI work must follow HCI (Human-Computer Interaction) and HAI (Human-AI Inter
 
 ## Validation
 
-There are no repository-provided automated checks. For portal changes, serve `portal/` (Live Server or `python -m http.server 8765 --bind 127.0.0.1 --directory portal`), then exercise the changed interaction and nearby navigation: login, registration, logout, locked pages, language switch, page reload, Back/Forward, and any page-specific flow. Check the browser console for JavaScript errors and verify the layout at a narrow viewport. If `sessionStorage` is unavailable (for example when opening `file://` directly), verify the visible notice and per-page login fallback. For legacy `base.html`, open it directly and exercise the tab switcher and modals. If automated tooling is added later, document and run its relevant checks.
+There are no repository-provided automated checks. For portal changes, open the changed HTML page directly in a browser and exercise its interaction and page links. Use the optional local server described above only when checking a demo login session across pages. Check the browser console for JavaScript errors and verify the layout at a narrow viewport. For `file://` use, verify the storage notice and per-page login fallback. For legacy `base.html`, open it directly and exercise the tab switcher and modals. If automated tooling is added later, document and run its relevant checks.
