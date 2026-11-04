@@ -5,10 +5,11 @@
     const data = {
     "metadata": {
         "isMockData": true,
-        "description": "Static prototype data copied from the original HTML prototypes; not official or live student/course records.",
+        "description": "Static prototype data copied from original HTML prototypes, including illustrative Comparator fixtures; not official or live student/course records.",
         "sources": [
             "original/cityu-ee-guide.html",
-            "original/EE4213_code_v6.html"
+            "original/EE4213_code_v6.html",
+            "original/comparator/app.js"
         ]
     },
     "courses": [
@@ -25,7 +26,31 @@
             "creditUnits": 3,
             "sampleWorkload": 3.1,
             "sampleMeanGpa": 3.05,
-            "category": "core"
+            "category": "core",
+            "comparator": {
+                "expectedStudyHoursPerWeek": 8,
+                "assessmentLoad": "High",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "assignments": 30,
+                    "midterm": 20,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "12:00 pm - 2:50 pm",
+                        "days": ["W"],
+                        "location": "Li Dak Sum Yip Yio Chin A Bldg 4307"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "12:00 pm - 2:50 pm",
+                        "days": ["T"],
+                        "location": "Yeung Kin Man Acad Building P4701"
+                    }
+                ]
+            }
         },
         {
             "courseId": "EE1002",
@@ -948,8 +973,264 @@
             },
             "creditUnits": 3,
             "category": "curriculum"
+        },
+        {
+            "courseId": "EE2002",
+            "titles": {
+                "en": "Circuit Theory"
+            },
+            "category": "comparator-sample",
+            "comparator": {
+                "expectedStudyHoursPerWeek": 10,
+                "assessmentLoad": "High",
+                "difficulty": 5,
+                "gradingComponents": {
+                    "assignments": 25,
+                    "midterm": 25,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "9:30 am - 11:20 am",
+                        "days": ["M"],
+                        "location": "Academic 1 2001"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "1:30 pm - 2:20 pm",
+                        "days": ["F"],
+                        "location": "Academic 1 2512"
+                    }
+                ]
+            }
+        },
+        {
+            "courseId": "EE3101",
+            "titles": {
+                "en": "Signals and Systems"
+            },
+            "category": "comparator-sample",
+            "comparator": {
+                "expectedStudyHoursPerWeek": 12,
+                "assessmentLoad": "Very High",
+                "difficulty": 5,
+                "gradingComponents": {
+                    "assignments": 20,
+                    "midterm": 30,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "10:30 am - 12:20 pm",
+                        "days": ["T"],
+                        "location": "YEUNG Kin Man Building P4704"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "3:30 pm - 5:20 pm",
+                        "days": ["Th"],
+                        "location": "EEE Laboratory 3"
+                    }
+                ]
+            }
+        },
+        {
+            "courseId": "EE3201",
+            "titles": {
+                "en": "Electromagnetic Fields"
+            },
+            "category": "comparator-sample",
+            "comparator": {
+                "expectedStudyHoursPerWeek": 9,
+                "assessmentLoad": "Moderate",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "assignments": 35,
+                    "midterm": 15,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "2:30 pm - 4:20 pm",
+                        "days": ["W"],
+                        "location": "CSE Labs 1"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "11:30 am - 12:20 pm",
+                        "days": ["F"],
+                        "location": "Academic 2 3030"
+                    }
+                ]
+            }
+        },
+        {
+            "courseId": "EE4213",
+            "titles": {
+                "en": "Programming for Engineers"
+            },
+            "category": "comparator-sample",
+            "comparator": {
+                "expectedStudyHoursPerWeek": 11,
+                "assessmentLoad": "High",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "assignments": 40,
+                    "midterm": 20,
+                    "final": 40
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "1:30 pm - 3:20 pm",
+                        "days": ["T"],
+                        "location": "YEUNG Kin Man Building P4701"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "4:30 pm - 5:20 pm",
+                        "days": ["Th"],
+                        "location": "Innovation Hub 3104"
+                    }
+                ]
+            }
+        },
+        {
+            "courseId": "EE4301",
+            "titles": {
+                "en": "Power Electronics"
+            },
+            "category": "comparator-sample",
+            "comparator": {
+                "expectedStudyHoursPerWeek": 14,
+                "assessmentLoad": "Very High",
+                "difficulty": 5,
+                "gradingComponents": {
+                    "assignments": 25,
+                    "midterm": 25,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "9:00 am - 10:50 am",
+                        "days": ["M"],
+                        "location": "Energy Centre 3402"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "11:00 am - 12:50 pm",
+                        "days": ["F"],
+                        "location": "Energy Centre 3405"
+                    }
+                ]
+            }
+        },
+        {
+            "courseId": "EE2201",
+            "titles": {
+                "en": "Electronic Devices and Circuits"
+            },
+            "category": "comparator-sample",
+            "comparator": {
+                "expectedStudyHoursPerWeek": 10,
+                "assessmentLoad": "High",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "assignments": 30,
+                    "midterm": 20,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "10:00 am - 11:50 am",
+                        "days": ["W"],
+                        "location": "YEUNG Kin Man Building P4701"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "2:30 pm - 3:20 pm",
+                        "days": ["F"],
+                        "location": "Academic 2 3505"
+                    }
+                ]
+            }
+        },
+        {
+            "courseId": "EE3302",
+            "titles": {
+                "en": "Control Systems"
+            },
+            "category": "comparator-sample",
+            "comparator": {
+                "expectedStudyHoursPerWeek": 11,
+                "assessmentLoad": "High",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "assignments": 25,
+                    "midterm": 25,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "11:00 am - 12:50 pm",
+                        "days": ["M"],
+                        "location": "Academic 1 2102"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "3:30 pm - 4:20 pm",
+                        "days": ["W"],
+                        "location": "YEUNG Kin Man Building P4704"
+                    }
+                ]
+            }
+        },
+        {
+            "courseId": "EE4402",
+            "titles": {
+                "en": "Renewable Energy Systems"
+            },
+            "category": "comparator-sample",
+            "comparator": {
+                "expectedStudyHoursPerWeek": 10,
+                "assessmentLoad": "Moderate",
+                "difficulty": 3,
+                "gradingComponents": {
+                    "assignments": 35,
+                    "project": 25,
+                    "final": 40
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "2:00 pm - 3:50 pm",
+                        "days": ["Th"],
+                        "location": "Energy Centre 3402"
+                    },
+                    {
+                        "type": "Project",
+                        "time": "10:00 am - 11:50 am",
+                        "days": ["F"],
+                        "location": "Energy Centre 3405"
+                    }
+                ]
+            }
         }
     ],
+    "comparatorSemesterPresets": {
+        "2A": ["EE1001", "EE2002", "EE2201"],
+        "2B": ["EE1001", "EE2201", "EE3201", "EE3302"],
+        "3A": ["EE2002", "EE3101", "EE3201", "EE3302"],
+        "3B": ["EE3101", "EE3302", "EE4213", "EE4301"],
+        "4A": ["EE3101", "EE4213", "EE4301", "EE4402"],
+        "4B": ["EE3201", "EE4213", "EE4301", "EE4402"]
+    },
     "majors": [
         {
             "majorId": "CDE",

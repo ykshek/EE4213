@@ -14,10 +14,11 @@ This `AGENTS.md` is the authoritative development guide for the entire repositor
 
 | Path | Status | Current contents |
 | --- | --- | --- |
-| `portal/` | **Current team implementation** | Static multipage prototype. `portal/index.html` is the public Home; seven feature folders each contain a placeholder `index.html`; the shared header, sidebar, footer, dialogs, demo login, and language switch live in `portal/assets/css/common.css` and `portal/assets/js/common.js`. Only Home and the shared shell are interactive today. |
+| `portal/` | **Current team implementation** | Static multipage prototype. `portal/index.html` is the public Home; six feature folders remain placeholders. The public Course Comparator is implemented in `portal/comparator/` with workload comparison and a sample timetable conflict preview. The shared header, sidebar, footer, dialogs, demo login, and language switch live in `portal/assets/css/common.css` and `portal/assets/js/common.js`. |
 | `base.html` | Legacy reference | Pre-split single-file prototype with inline HTML, CSS, and JavaScript. It keeps every feature as an in-page section and uses in-memory demo state. Do not treat it as the active build target. |
 | `original/cityu-ee-guide.html` | Legacy reference | Original individual prototype: programme/course information, career information, internship information, and programme comparison. |
 | `original/EE4213_code_v6.html` | Legacy reference | Original individual prototype: degree audit, interactive flowchart, and recovery simulator. |
+| `original/comparator/` | Legacy reference | Original course workload comparison and sample timetable conflict preview. |
 | `README.md` | Course brief | Course project brief and submission requirements. |
 
 The portal uses separate shared CSS and JavaScript files; `base.html` and the files in `original/` use inline HTML, CSS, and JavaScript. There is no package manifest, build system, backend, framework, or automated test suite. The portal does have a client-side shared shell and uses `sessionStorage` for demo login and language state; there is no server-side persistence, database, or credential verification. `base.html` keeps the same demo state in memory only.
@@ -34,11 +35,15 @@ portal/
 ├── course-info/index.html
 ├── major-info/index.html
 ├── comparator/index.html
+├── comparator/comparator.css
+├── comparator/comparator.js
 ├── degree-audit/index.html
 ├── program-career/index.html
 ├── assets/
 │   ├── css/common.css
-│   └── js/common.js
+│   └── js/
+│       ├── common.js
+│       └── mock-data.js
 ├── AGENTS.md                     # Project development guide
 ├── README.md                     # Project requirements and guidelines
 ```
@@ -76,7 +81,7 @@ Use these checkboxes to track the chart's feature pages. Checked items have a wo
 - [ ] **Course Workload Details Page** — Build it as a subpage at `portal/course-info/workload.html`, reachable from Course Information and other relevant flows. Port the existing course detail view from `original/cityu-ee-guide.html`. It currently shows a sample workload score, GPA, generic assessment items, and generated sample comments. Add clear workload detail/context and label mock or generated content so it cannot be mistaken for verified course data or real student feedback. Do not add it as a sidebar item.
 - [ ] **Course Feedback Collector** — Add an actual course feedback form and submission interaction, with input validation and mock feedback data associated with the selected course. The course detail view currently renders generated comments only; it has no feedback form or collection behavior. Keep generated examples distinct from user-submitted mock feedback. In `portal/`, plan it within the Course Information/course detail flow rather than a new sidebar item; its exact placement is still to confirm. Not implemented.
 - [x] **Degree Audit Helper** — The reference prototype is in `original/EE4213_code_v6.html` as the Degree Audit & Interactive Flowchart tab, including a completion checklist, semester planner, credit metrics, and prerequisite warnings. `portal/degree-audit/index.html` is a placeholder. This is a prototype counterpart, not a connection to official student records.
-- [x] **Course Comparator** — The reference prototype is in `original/cityu-ee-guide.html` as the Compare Programmes page, with two programme selectors and side-by-side comparison. `portal/comparator/index.html` is a placeholder.
+- [x] **Course Comparator** — Implemented in `portal/comparator/` as a public workload comparison with a sample weekly timetable and conflict summary. It uses shared course mock data where available and clearly labeled illustrative schedule/workload fixtures; it is not official course information. The read-only reference is `original/comparator/`.
 - [x] **Program Browser and Career Information** — The reference prototype is in `original/cityu-ee-guide.html` as programme search on Home and the Career page. The guide also has a separate Internships page; the chart marks internship opportunities as optional. `portal/program-career/index.html` is a placeholder.
 
 The chart also names **Major Information**, **Course Information**, and **Student Profile** as information areas. In `portal/` they appear as sidebar destinations (`portal/major-info/`, `portal/course-info/`, `portal/student-profile/`); in legacy `base.html` they are sections. Keep their mock data consistent across the relevant features; do not treat the current page-specific arrays and simulator state as an already-shared data model.
@@ -99,7 +104,7 @@ The portal presents these information areas and connected features as separate p
 - **Student Profile** (`portal/student-profile/`) — sidebar item; login required; placeholder; planned home of the Student Status view (subpage or section to confirm).
 - **Course Information** (`portal/course-info/`) — sidebar item; publicly browsable; placeholder; planned home of the Course Workload Details subpage (`workload.html`) and the Course Feedback flow.
 - **Major Information** (`portal/major-info/`) — sidebar item; publicly browsable; placeholder.
-- **Course Comparator** (`portal/comparator/`) — publicly browsable sidebar item; placeholder.
+- **Course Comparator** (`portal/comparator/`) — publicly browsable sidebar item; implemented with sample workload comparison and timetable conflict preview.
 - **Degree Audit Helper** (`portal/degree-audit/`) — sidebar item; login required; placeholder; reference prototype in `original/EE4213_code_v6.html`.
 - **Program Browser and Career Information** (`portal/program-career/`) — sidebar item; login required; placeholder; reference prototype in `original/cityu-ee-guide.html`.
 
@@ -109,7 +114,7 @@ Student Status, Course Feedback, and Internship Opportunities are not separate s
 
 ## Shared mock data
 
-The planned portal pages need consistent **Course Information**, **Major Information**, and **Student Profile** mock data. The shared static data module is `portal/assets/js/mock-data.js`, exposed as `window.EE4213Data`. It contains course information and degree-audit curricula copied from `original/`, plus the comparison programmes from the guide. Existing pages have not yet been migrated to use this module, so page-local arrays and simulator state are not a shared source of truth. Keep the portal build-free:
+The planned portal pages need consistent **Course Information**, **Major Information**, and **Student Profile** mock data. The shared static data module is `portal/assets/js/mock-data.js`, exposed as `window.EE4213Data`. It contains course information and degree-audit curricula copied from `original/`, Comparator fixtures sourced from `original/comparator/app.js`, plus the comparison programmes from the guide. Keep the portal build-free:
 
 - **Use the shared JavaScript data file** for records needed by multiple pages. It works with both `file://` and a local static server, without fetch configuration or a backend. Treat the records as read-only; a page script can look up records by stable IDs rather than copying arrays.
 - **JSON files loaded with `fetch()`** keep data separate from code, but browsers commonly block local-file fetches. Use this only if pages are tested through the documented local server (or a later build/runtime provides a reliable loader).
@@ -123,7 +128,7 @@ Include the shared file before a page-specific deferred script, using a path rel
 <script src="course-info.js" defer></script>
 ```
 
-The module contains `courses` (76 unique course IDs, with existing English/Chinese titles, descriptions, credit units, sample workload/GPA where present, and curriculum-only records), `majors` (four degree-audit structures with course references, semesters, and source prerequisite/scheduling metadata), `comparisonProgrammes` (five programme-comparison records), and `generatedFeedbackTemplates` (three English-language comment sets from the guide's template generator). These generated comments are illustrative examples, not user-submitted feedback; do not present them as collected student reviews. Course records have a `courseId`; major records have a `majorId`; curriculum entries refer to courses by `courseId`. Some source records have English-only labels or no course description; do not invent missing translations or facts. The source prototypes contain no student profile records, so `studentProfiles` is intentionally empty. Do not infer or fabricate a student profile from the simulator defaults; only add a clearly labeled sample profile when a feature needs one and its fixture values are explicitly defined.
+The module contains `courses` (84 unique course IDs, with existing English/Chinese titles, descriptions, credit units, sample workload/GPA where present, and curriculum-only records), `majors` (four degree-audit structures with course references, semesters, and source prerequisite/scheduling metadata), `comparatorSemesterPresets` (sample semester course IDs), `comparisonProgrammes` (five programme-comparison records), and `generatedFeedbackTemplates` (three English-language comment sets from the guide's template generator). Nine course records have a `comparator` object with sample study-hour estimate, assessment-load label, difficulty, grading breakdown, and `scheduledMeetingTimes`. Comparator timetable records provide `days` arrays, a `time` range, meeting `type`, and `location`; they are illustrative fixtures copied from `original/comparator/app.js`, not current or official section schedules. Do not duplicate those records in page scripts or treat derived workload indices as source facts. These generated comments are illustrative examples, not user-submitted feedback; do not present them as collected student reviews. Course records have a `courseId`; major records have a `majorId`; curriculum entries refer to courses by `courseId`. Some source records have English-only labels or no course description; do not invent missing translations or facts. The source prototypes contain no student profile records, so `studentProfiles` is intentionally empty. Do not infer or fabricate a student profile from the simulator defaults; only add a clearly labeled sample profile when a feature needs one and its fixture values are explicitly defined.
 
 Keep any future student profile linked by stable IDs: use `majorId` for its major and `completedCourseIds` / `plannedCourseIds` for courses. Use bilingual fields for new user-facing labels, such as `{ "en": "Electrical Engineering", "zh": "電機工程學" }`, and keep page-specific presentation and derived values in the page code rather than duplicating source facts. Pages should handle missing IDs explicitly instead of silently substituting unrelated data. The shared fixtures are sample data only, not official university records or persistent student accounts; label them as mock/demo content in the UI and never put real student or sensitive data in them.
 
