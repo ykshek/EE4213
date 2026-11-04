@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Workload Comparator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Course planning</p>
+          <h1>Workload Comparator</h1>
+        </div>
+        <div class="topbar-actions">
+          <button id="reset-selection" class="button ghost" type="button">Reset</button>
+        </div>
+      </header>
+
+      <main class="app-layout">
+        <section class="panel controls-panel" aria-labelledby="selection-heading">
+          <div class="panel-header">
+            <h2 id="selection-heading">Course selection</h2>
+          </div>
+
+          <form id="course-form" class="selection-form">
+            <label for="course-codes" class="sr-only">Course codes</label>
+            <textarea
+              id="course-codes"
+              rows="4"
+              placeholder="EE1001, EE2002, EE4213"
+              aria-label="Course codes"
+            ></textarea>
+
+            <div class="button-row">
+              <button id="add-courses" class="button primary" type="submit">Add courses</button>
+            </div>
+          </form>
+
+          <div class="preset-controls">
+            <label for="semester-preset">Timetable preset</label>
+            <div class="button-row">
+              <select id="semester-preset" aria-label="Choose a semester timetable preset">
+                <option value="2A">Semester 2A</option>
+                <option value="2B">Semester 2B</option>
+                <option value="3A">Semester 3A</option>
+                <option value="3B">Semester 3B</option>
+                <option value="4A" selected>Semester 4A</option>
+                <option value="4B">Semester 4B</option>
+              </select>
+              <button id="import-timetable" class="button secondary" type="button">Load preset</button>
+            </div>
+          </div>
+
+          <div class="selector-block">
+            <div class="selector-header">
+              <h3>Candidate courses</h3>
+              <span class="helper-text">Select multiple</span>
+            </div>
+            <div id="course-list" class="course-list" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section class="panel results-panel" aria-labelledby="results-heading">
+          <div class="panel-header results-header">
+            <h2 id="results-heading">Comparison</h2>
+            <label class="sort-control" for="sort-key">
+              <span>Sort by</span>
+              <select id="sort-key" aria-label="Sort selected courses by">
+                <option value="workloadScore">Workload</option>
+                <option value="expectedStudyHoursPerWeek">Study hours per week</option>
+                <option value="difficulty">Difficulty</option>
+                <option value="assessmentLoadRank">Assessment load</option>
+                <option value="courseCode">Course code</option>
+              </select>
+            </label>
+          </div>
+
+          <div id="status-message" class="status-message" aria-live="polite"></div>
+          <div id="comparison-table-wrapper" class="table-wrapper"></div>
+
+          <div class="timetable-block">
+            <div class="panel-header compact">
+              <h3>What-if timetable</h3>
+            </div>
+            <div id="timetable-wrapper" class="timetable-wrapper"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
