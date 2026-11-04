@@ -78,7 +78,6 @@
                     <a class="nav-item" id="navComparator" href="comparator/index.html" data-page="comparator">
                         <span class="icon" aria-hidden="true">⚖️</span>
                         <span><span class="label-zh">課程比較器</span><span class="label-en">Course Comparator</span></span>
-                        <span class="lock-icon" aria-hidden="true">🔒</span>
                     </a>
                 </li>
                 <li>
@@ -180,7 +179,7 @@
         profile: { file: 'student-profile/index.html', nav: 'navProfile', zh: '學生個人檔案', en: 'Student Profile' },
         'course-info': { file: 'course-info/index.html', public: true, nav: 'navCourseInfo', zh: '課程資訊', en: 'Course Information' },
         'major-info': { file: 'major-info/index.html', public: true, nav: 'navMajorInfo', zh: '主修資訊', en: 'Major Information' },
-        comparator: { file: 'comparator/index.html', nav: 'navComparator', zh: '課程比較器', en: 'Course Comparator' },
+        comparator: { file: 'comparator/index.html', public: true, nav: 'navComparator', zh: '課程比較器', en: 'Course Comparator' },
         'degree-audit': { file: 'degree-audit/index.html', nav: 'navDegreeAudit', zh: '學位審核輔助', en: 'Degree Audit Helper' },
         'program-career': { file: 'program-career/index.html', nav: 'navProgramCareer', zh: '課程瀏覽與職涯資訊', en: 'Program Browser & Career Information' }
     });

@@ -99,7 +99,7 @@ The portal presents these information areas and connected features as separate p
 - **Student Profile** (`portal/student-profile/`) — sidebar item; login required; placeholder; planned home of the Student Status view (subpage or section to confirm).
 - **Course Information** (`portal/course-info/`) — sidebar item; publicly browsable; placeholder; planned home of the Course Workload Details subpage (`workload.html`) and the Course Feedback flow.
 - **Major Information** (`portal/major-info/`) — sidebar item; publicly browsable; placeholder.
-- **Course Comparator** (`portal/comparator/`) — sidebar item; login required; placeholder.
+- **Course Comparator** (`portal/comparator/`) — publicly browsable sidebar item; placeholder.
 - **Degree Audit Helper** (`portal/degree-audit/`) — sidebar item; login required; placeholder; reference prototype in `original/EE4213_code_v6.html`.
 - **Program Browser and Career Information** (`portal/program-career/`) — sidebar item; login required; placeholder; reference prototype in `original/cityu-ee-guide.html`.
 
@@ -144,7 +144,7 @@ Common behavior:
 
 - **Login** and **Register** buttons are shown when the user is not logged in.
 - A **Logout** button and a user chip are shown when the user is logged in.
-- **Not logged in:** the main content shows Home. Only **Course Information** and **Major Information** sidebar items are browsable. All other sidebar items (Student Profile, Course Comparator, Degree Audit Helper, Program Browser & Career Information) are locked. Clicking a locked item opens a notice asking the user to login or register; the portal does not navigate, and a protected page opened directly shows the same notice instead of its content.
+- **Not logged in:** the main content shows Home. **Course Information**, **Major Information**, and **Course Comparator** sidebar items are browsable. The other protected sidebar items (Student Profile, Degree Audit Helper, Program Browser & Career Information) are locked. Clicking a locked item opens a notice asking the user to login or register; the portal does not navigate, and a protected page opened directly shows the same notice instead of its content.
 - **Logged in:** all sidebar items become clickable.
 - **First login or registration:** the portal navigates to the Registration Navigator. **Subsequent logins:** it navigates to Student Profile. Clicking **Register** always lands on the Registration Navigator, treating the session as first-time.
 - **Logout:** returns the user to Home and preserves the "navigator visited" state, so the next login goes to Student Profile.
