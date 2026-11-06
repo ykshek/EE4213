@@ -1,3 +1,4 @@
+<!-- portal/registration/index.html -->
 <!DOCTYPE html>
 <html lang="zh-HK">
 <head>
@@ -5,35 +6,437 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>註冊導航器 | CityU EE Student Portal</title>
     <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="registration.css">
     <!-- Load page-specific CSS after common.css, and deferred JS after common.js. -->
     <script src="../assets/js/common.js" defer></script>
+    <script src="../assets/js/mock-data.js" defer></script>
+    <script src="registration.js" defer></script>
 </head>
 <body data-page="registration" data-lang="zh">
     <!-- Shared header, sidebar, footer and dialogs are mounted by common.js. -->
     <div class="layout">
         <main class="main" id="mainContent" tabindex="-1">
             <!-- PAGE OWNER: develop this page inside #pageContent. -->
-            <section id="pageContent" class="page-content" aria-labelledby="pageTitle" hidden inert>
-                <div class="feature-header">
-                    <h2 id="pageTitle">
-                        <span class="lang-zh">🧭 註冊導航器</span>
-                        <span class="lang-en">🧭 Registration Navigator</span>
-                    </h2>
-                    <p>
-                        <span class="lang-zh">引導你完成選課與註冊流程。</span>
-                        <span class="lang-en">Guides you through the course registration process.</span>
-                    </p>
+            <section id="pageContent" class="page-content registration-page" aria-labelledby="pageTitle" hidden inert>
+
+                <!-- Horizontal step indicator -->
+                <div class="step-indicator" aria-hidden="true">
+                    <div class="step-pip active" id="pip-0"><span class="pip-dot" id="pipdot-0">1</span><span class="pip-label lang-zh">歡迎</span><span class="pip-label lang-en">Welcome</span></div>
+                    <div class="step-pip" id="pip-1"><span class="pip-dot" id="pipdot-1">2</span><span class="pip-label lang-zh">背景</span><span class="pip-label lang-en">Profile</span></div>
+                    <div class="step-pip" id="pip-2"><span class="pip-dot" id="pipdot-2">3</span><span class="pip-label lang-zh">目標</span><span class="pip-label lang-en">Goals</span></div>
+                    <div class="step-pip" id="pip-3"><span class="pip-dot" id="pipdot-3">4</span><span class="pip-label lang-zh">興趣</span><span class="pip-label lang-en">Interests</span></div>
+                    <div class="step-pip" id="pip-4"><span class="pip-dot" id="pipdot-4">5</span><span class="pip-label lang-zh">檢查</span><span class="pip-label lang-en">Checklist</span></div>
+                    <div class="step-pip" id="pip-5"><span class="pip-dot" id="pipdot-5">6</span><span class="pip-label lang-zh">總結</span><span class="pip-label lang-en">Summary</span></div>
                 </div>
-                <div class="placeholder-card">
-                    <span class="emoji" aria-hidden="true">🚧</span>
-                    <span class="status-zh">此功能開發中</span>
-                    <span class="status-en">Under Development</span>
-                    <span class="hint lang-zh">此區塊為功能掛載預留位置，由負責組員整合。</span>
-                    <span class="hint lang-en">Reserved mount point for the assigned teammate to integrate this feature.</span>
-                </div>
-            </section>
-            <noscript><p>請啟用 JavaScript 以使用導覽和示範登入。 / Enable JavaScript for navigation and demo login.</p></noscript>
-        </main>
-    </div>
-</body>
+
+                <!-- ============ STEP 0: WELCOME ============ -->
+                <section id="step-0" class="reg-step active">
+                    <div class="feature-header">
+                        <h2 id="pageTitle">
+                            <span class="lang-zh">🧭 歡迎使用註冊導航器</span>
+                            <span class="lang-en">🧭 Welcome to the Registration Navigator</span>
+                        </h2>
+                        <p>
+                            <span class="lang-zh">在選課前先了解你的註冊路徑。我們會逐步引導你完成規劃。</span>
+                            <span class="lang-en">Understand your registration path before enrolling. We'll guide you step by step.</span>
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="reg-card-title">
+                            <span class="lang-zh">你將完成以下步驟：</span>
+                            <span class="lang-en">You will complete these steps:</span>
+                        </h3>
+                        <ul class="reg-step-list">
+                            <li><span class="lang-zh">填寫你的背景資料</span><span class="lang-en">Fill in your profile</span></li>
+                            <li><span class="lang-zh">設定你的學習目標</span><span class="lang-en">Set your learning goals</span></li>
+                            <li><span class="lang-zh">選擇你的興趣方向</span><span class="lang-en">Choose your interests</span></li>
+                            <li><span class="lang-zh">檢視必做與建議事項</span><span class="lang-en">Review must-do and suggested items</span></li>
+                            <li><span class="lang-zh">確認你的註冊摘要</span><span class="lang-en">Confirm your registration summary</span></li>
+                        </ul>
+                    </div>
+                    <div class="actions">
+                        <span class="spacer"></span>
+                        <button class="btn-action" type="button" onclick="goToStep(1)">
+                            <span class="lang-zh">開始 →</span>
+                            <span class="lang-en">Start →</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- ============ STEP 1: PROFILE ============ -->
+                <section id="step-1" class="reg-step">
+                    <div class="feature-header">
+                        <h2>
+                            <span class="lang-zh">👤 你的背景資料</span>
+                            <span class="lang-en">👤 Your Profile</span>
+                        </h2>
+                        <p>
+                            <span class="lang-zh">這些資料僅用於推薦課程或本網站的其他功能。</span>
+                            <span class="lang-en">This data is used only to recommend courses or for other features on this site.</span>
+                        </p>
+                    </div>
+                    <div class="card">
+                        <div class="form-group">
+                            <label for="majorSelect">
+                                <span class="lang-zh">主修 / 課程</span>
+                                <span class="lang-en">Major / Programme</span>
+                            </label>
+                            <span class="hint">
+                                <span class="lang-zh">你將進入哪個學位？若尚未決定，請選擇「尚未選擇主修」。</span>
+                                <span class="lang-en">Which degree are you entering? If not decided yet, choose "Not yet selected".</span>
+                            </span>
+                            <select id="majorSelect"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <span class="lang-zh">升學背景</span>
+                                <span class="lang-en">Study Background</span>
+                            </label>
+                            <span class="hint">
+                                <span class="lang-zh">你是以哪種途徑進入這個學位？</span>
+                                <span class="lang-en">Which pathway are you using to enter this degree?</span>
+                            </span>
+                            <div class="choice-grid">
+                                <button type="button" class="choice selected" data-transfer="Associate Degree">
+                                    <span class="choice-icon">📘</span>
+                                    <span class="choice-body">
+                                        <strong><span class="lang-zh">副學士</span><span class="lang-en">Associate Degree</span></strong>
+                                        <small><span class="lang-zh">兩年制學位路徑</span><span class="lang-en">Two-year degree pathway</span></small>
+                                    </span>
+                                </button>
+                                <button type="button" class="choice" data-transfer="Higher Diploma">
+                                    <span class="choice-icon">🎓</span>
+                                    <span class="choice-body">
+                                        <strong><span class="lang-zh">高級文憑</span><span class="lang-en">Higher Diploma</span></strong>
+                                        <small><span class="lang-zh">專業文憑路徑</span><span class="lang-en">Specialized diploma pathway</span></small>
+                                    </span>
+                                </button>
+                                <button type="button" class="choice" data-transfer="Direct Entry">
+                                    <span class="choice-icon">➡️</span>
+                                    <span class="choice-body">
+                                        <strong><span class="lang-zh">直接升讀 / 直升</span><span class="lang-en">Direct Entry</span></strong>
+                                        <small><span class="lang-zh">直接進入本學位</span><span class="lang-en">Direct entry into this degree</span></small>
+                                    </span>
+                                </button>
+                                <button type="button" class="choice" data-transfer="Department Transfer">
+                                    <span class="choice-icon">🔄</span>
+                                    <span class="choice-body">
+                                        <strong><span class="lang-zh">轉系 / 轉主修</span><span class="lang-en">Department Transfer</span></strong>
+                                        <small><span class="lang-zh">從其他學系轉入</span><span class="lang-en">Transferring from another department</span></small>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <span class="lang-zh">就讀年級</span>
+                                <span class="lang-en">Year of Study</span>
+                            </label>
+                            <span class="hint">
+                                <span class="lang-zh">你將進入哪一年級？</span>
+                                <span class="lang-en">Which year will you enter?</span>
+                            </span>
+                            <div class="chips" id="yearChips">
+                                <button type="button" data-year="Year 1" class="selected"><span class="lang-zh">一年級</span><span class="lang-en">Year 1</span></button>
+                                <button type="button" data-year="Year 2"><span class="lang-zh">二年級</span><span class="lang-en">Year 2</span></button>
+                                <button type="button" data-year="Year 3"><span class="lang-zh">三年級</span><span class="lang-en">Year 3</span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="btn-secondary" type="button" onclick="goToStep(0)">
+                            <span class="lang-zh">← 上一步</span>
+                            <span class="lang-en">← Back</span>
+                        </button>
+                        <button class="btn-action" type="button" onclick="goToStep(2)">
+                            <span class="lang-zh">下一步 →</span>
+                            <span class="lang-en">Next →</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- ============ STEP 2: GOALS ============ -->
+                <section id="step-2" class="reg-step">
+                    <div class="feature-header">
+                        <h2>
+                            <span class="lang-zh">🎯 你的學習目標</span>
+                            <span class="lang-en">🎯 Your Goals</span>
+                        </h2>
+                        <p>
+                            <span class="lang-zh">告訴我們你的職涯方向，並勾選已完成的課程。</span>
+                            <span class="lang-en">Tell us your career direction and check courses you've completed.</span>
+                        </p>
+                    </div>
+                    <div class="card">
+                        <div class="form-group">
+                            <label>
+                                <span class="lang-zh">職涯目標</span>
+                                <span class="lang-en">Career Goal</span>
+                            </label>
+                            <div class="chips" id="goalChips">
+                                <button type="button" data-goal="IC Design Engineer"><span class="lang-zh">IC 設計工程師</span><span class="lang-en">IC Design Engineer</span></button>
+                                <button type="button" data-goal="Embedded Systems Engineer"><span class="lang-zh">嵌入式系統工程師</span><span class="lang-en">Embedded Systems Engineer</span></button>
+                                <button type="button" data-goal="RF / Communications Engineer"><span class="lang-zh">射頻 / 通訊工程師</span><span class="lang-en">RF / Communications Engineer</span></button>
+                                <button type="button" data-goal="Power / Energy Engineer"><span class="lang-zh">電力 / 能源工程師</span><span class="lang-en">Power / Energy Engineer</span></button>
+                                <button type="button" data-goal="Software Engineer"><span class="lang-zh">軟體工程師</span><span class="lang-en">Software Engineer</span></button>
+                                <button type="button" data-goal="Data Analyst"><span class="lang-zh">資料分析師</span><span class="lang-en">Data Analyst</span></button>
+                                <button type="button" data-goal="Machine Learning Engineer"><span class="lang-zh">機器學習工程師</span><span class="lang-en">Machine Learning Engineer</span></button>
+                                <button type="button" data-goal="Network / Security Engineer"><span class="lang-zh">網路 / 資安工程師</span><span class="lang-en">Network / Security Engineer</span></button>
+                                <button type="button" data-goal="Research Engineer"><span class="lang-zh">研究工程師</span><span class="lang-en">Research Engineer</span></button>
+                                <button type="button" data-goal="Product / Project Engineer"><span class="lang-zh">產品 / 專案工程師</span><span class="lang-en">Product / Project Engineer</span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="form-group">
+                            <label>
+                                <span class="lang-zh">已完成的課程</span>
+                                <span class="lang-en">Completed Courses</span>
+                            </label>
+                            <span class="hint">
+                                <span class="lang-zh">請選擇你已經修讀並及格的課程。</span>
+                                <span class="lang-en">Please choose the courses you have already taken and passed.</span>
+                            </span>
+                            <div class="course-list" id="courseList"></div>
+                            <div class="selection-summary">
+                                <span class="badge" id="selectedCount">0</span>
+                                <span>
+                                    <span class="lang-zh">門課程已選擇</span>
+                                    <span class="lang-en">courses selected</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="btn-secondary" type="button" onclick="goToStep(1)">
+                            <span class="lang-zh">← 上一步</span>
+                            <span class="lang-en">← Back</span>
+                        </button>
+                        <button class="btn-action" type="button" onclick="goToStep(3)">
+                            <span class="lang-zh">下一步 →</span>
+                            <span class="lang-en">Next →</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- ============ STEP 3: INTERESTS ============ -->
+                <section id="step-3" class="reg-step">
+                    <div class="feature-header">
+                        <h2>
+                            <span class="lang-zh">🌟 你的興趣方向</span>
+                            <span class="lang-en">🌟 Your Interests</span>
+                        </h2>
+                        <p>
+                            <span class="lang-zh">選擇你最感興趣的專業方向。</span>
+                            <span class="lang-en">Choose the specialization you're most interested in.</span>
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="form-group">
+                            <label>
+                                <span class="lang-zh">專業方向</span>
+                                <span class="lang-en">Specialization</span>
+                            </label>
+                            <div class="choice-grid choice-grid-single" id="specGrid">
+                                <button type="button" class="choice selected" data-spec="Data Engineering">
+                                    <span class="choice-icon">📊</span>
+                                    <span class="choice-body">
+                                        <strong><span class="lang-zh">資料工程</span><span class="lang-en">Data Engineering</span></strong>
+                                        <small><span class="lang-zh">資料處理、分析與機器學習</span><span class="lang-en">Data processing, analytics, and machine learning</span></small>
+                                    </span>
+                                </button>
+                                <button type="button" class="choice" data-spec="Artificial Intelligence / Machine Learning">
+                                    <span class="choice-icon">🤖</span>
+                                    <span class="choice-body">
+                                        <strong><span class="lang-zh">人工智慧 / 機器學習</span><span class="lang-en">Artificial Intelligence / Machine Learning</span></strong>
+                                        <small><span class="lang-zh">智慧系統與演算法</span><span class="lang-en">Intelligent systems and algorithms</span></small>
+                                    </span>
+                                </button>
+                                <button type="button" class="choice" data-spec="Communications">
+                                    <span class="choice-icon">📡</span>
+                                    <span class="choice-body">
+                                        <strong><span class="lang-zh">通訊工程</span><span class="lang-en">Communications</span></strong>
+                                        <small><span class="lang-zh">網路、訊號與無線通訊</span><span class="lang-en">Networks, signals, and wireless communications</span></small>
+                                    </span>
+                                </button>
+                                <button type="button" class="choice" data-spec="Microelectronics / IC Design">
+                                    <span class="choice-icon">🔬</span>
+                                    <span class="choice-body">
+                                        <strong><span class="lang-zh">微電子 / IC 設計</span><span class="lang-en">Microelectronics / IC Design</span></strong>
+                                        <small><span class="lang-zh">半導體、晶片設計與奈米技術</span><span class="lang-en">Semiconductors, chip design, and nanotechnology</span></small>
+                                    </span>
+                                </button>
+                                <button type="button" class="choice" data-spec="Embedded Systems">
+                                    <span class="choice-icon">⚙️</span>
+                                    <span class="choice-body">
+                                        <strong><span class="lang-zh">嵌入式系統</span><span class="lang-en">Embedded Systems</span></strong>
+                                        <small><span class="lang-zh">微控制器、韌體與即時系統</span><span class="lang-en">Microcontrollers, firmware, and real-time systems</span></small>
+                                    </span>
+                                </button>
+                                <button type="button" class="choice" data-spec="Power and Energy">
+                                    <span class="choice-icon">⚡</span>
+                                    <span class="choice-body">
+                                        <strong><span class="lang-zh">電力與能源</span><span class="lang-en">Power and Energy</span></strong>
+                                        <small><span class="lang-zh">電力系統、再生能源與電機驅動</span><span class="lang-en">Power systems, renewables, and motor drives</span></small>
+                                    </span>
+                                </button>
+                                <button type="button" class="choice" data-spec="Networking and Security">
+                                    <span class="choice-icon">🔐</span>
+                                    <span class="choice-body">
+                                        <strong><span class="lang-zh">網路與資安</span><span class="lang-en">Networking and Security</span></strong>
+                                        <small><span class="lang-zh">網路架構、協定與資訊安全</span><span class="lang-en">Network architecture, protocols, and security</span></small>
+                                    </span>
+                                </button>
+                                <button type="button" class="choice" data-spec="Photonics">
+                                    <span class="choice-icon">💡</span>
+                                    <span class="choice-body">
+                                        <strong><span class="lang-zh">光電工程</span><span class="lang-en">Photonics</span></strong>
+                                        <small><span class="lang-zh">光學、雷射與光電元件</span><span class="lang-en">Optics, lasers, and optoelectronic devices</span></small>
+                                    </span>
+                                </button>
+                                <button type="button" class="choice" data-spec="Control Systems">
+                                    <span class="choice-icon">🎛️</span>
+                                    <span class="choice-body">
+                                        <strong><span class="lang-zh">控制系統</span><span class="lang-en">Control Systems</span></strong>
+                                        <small><span class="lang-zh">系統建模、控制理論與自動化</span><span class="lang-en">System modelling, control theory, and automation</span></small>
+                                    </span>
+                                </button>
+                                <button type="button" class="choice" data-spec="Software Engineering">
+                                    <span class="choice-icon">💻</span>
+                                    <span class="choice-body">
+                                        <strong><span class="lang-zh">軟體工程</span><span class="lang-en">Software Engineering</span></strong>
+                                        <small><span class="lang-zh">軟體開發、系統設計與工程實務</span><span class="lang-en">Software development, system design, and engineering practice</span></small>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="btn-secondary" type="button" onclick="goToStep(2)">
+                            <span class="lang-zh">← 上一步</span>
+                            <span class="lang-en">← Back</span>
+                        </button>
+                        <button class="btn-action" type="button" onclick="goToStep(4)">
+                            <span class="lang-zh">下一步 →</span>
+                            <span class="lang-en">Next →</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- ============ STEP 4: CHECKLIST ============ -->
+                <section id="step-4" class="reg-step">
+                    <div class="feature-header">
+                        <h2>
+                            <span class="lang-zh">✅ 註冊檢查清單</span>
+                            <span class="lang-en">✅ Registration Checklist</span>
+                        </h2>
+                        <p>
+                            <span class="lang-zh">檢視你在註冊前必須完成的事項。</span>
+                            <span class="lang-en">Review what you must complete before registration.</span>
+                        </p>
+                    </div>
+
+                    <div class="list-section">
+                        <div class="list-header">
+                            <h3>
+                                <span class="lang-zh">必做事項</span>
+                                <span class="lang-en">Must Do</span>
+                                <span class="badge" id="mustBadge">3</span>
+                            </h3>
+                        </div>
+                        <div id="mustList"></div>
+                    </div>
+
+                    <div class="list-section">
+                        <div class="list-header">
+                            <h3>
+                                <span class="lang-zh">建議事項</span>
+                                <span class="lang-en">Should Do</span>
+                                <span class="badge optional" id="shouldBadge">1</span>
+                            </h3>
+                        </div>
+                        <div id="shouldList"></div>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <span class="lang-zh">完成導航器後，你即可使用其他功能。</span>
+                        <span class="lang-en">After the Navigator, you can use the other functions.</span>
+                    </div>
+
+                    <div class="actions">
+                        <button class="btn-secondary" type="button" onclick="goToStep(3)">
+                            <span class="lang-zh">← 上一步</span>
+                            <span class="lang-en">← Back</span>
+                        </button>
+                        <button class="btn-action" type="button" onclick="goToStep(5)">
+                            <span class="lang-zh">檢視總結 →</span>
+                            <span class="lang-en">Review Summary →</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- ============ STEP 5: SUMMARY ============ -->
+                <section id="step-5" class="reg-step">
+                    <div class="feature-header">
+                        <h2>
+                            <span class="lang-zh">🎉 你的註冊摘要</span>
+                            <span class="lang-en">🎉 Your Registration Summary</span>
+                        </h2>
+                        <p>
+                            <span class="lang-zh">確認你的規劃後，即可檢閱個性化推薦選課或比對不同課程的功能。</span>
+                            <span class="lang-en">After confirming your plan, you can review personalized course recommendations or compare different courses.</span>
+                        </p>
+                    </div>
+
+                    <div class="summary-grid">
+                        <div class="summary-card">
+                            <h4><span class="lang-zh">主修</span><span class="lang-en">Major</span></h4>
+                            <p id="summaryMajor">—</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4><span class="lang-zh">升學背景</span><span class="lang-en">Study Background</span></h4>
+                            <p id="summaryTransfer">—</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4><span class="lang-zh">就讀年級</span><span class="lang-en">Year of Study</span></h4>
+                            <p id="summaryYear">—</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4><span class="lang-zh">職涯目標</span><span class="lang-en">Career Goal</span></h4>
+                            <p id="summaryGoal">—</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4><span class="lang-zh">興趣方向</span><span class="lang-en">Specialization</span></h4>
+                            <p id="summarySpec">—</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4><span class="lang-zh">已選課程</span><span class="lang-en">Selected Courses</span></h4>
+                            <p id="summaryCourses">—</p>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <span class="lang-zh">完成規劃後，你仍可在個人檔案中修改，更新會自動同步至其他功能。</span>
+                        <span class="lang-en">After finishing your plan, you can still modify it in your profile — updates will automatically sync to other functions.</span>
+                    </div>
+
+                    <div class="actions">
+                        <button class="btn-secondary" type="button" onclick="goToStep(4)">
+                            <span class="lang-zh">← 上一步</span>
+                            <span class="lang-en">← Back</span>
+                        </button>
+                        <button class="btn-action" type="button" id="finishBtn">
+                            <span class="lang-zh">完成</span>
+                            <span class="lang-en">Finish</span>
+                        </button>
+                    </div>
+                </section>
+                <noscript><p>請啟用 JavaScript 以使用導覽和示範登入。 / Enable JavaScript for navigation and demo login.</p></noscript>
+            </main>
+        </div>
+    </body>
 </html>
