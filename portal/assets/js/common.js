@@ -109,25 +109,30 @@
                 <span class="lang-en" id="authTitleEn">Login</span>
             </h3>
             <p class="modal-desc" id="authDesc">
-                <span class="lang-zh">請輸入你的學生帳號與密碼（示範用，任意輸入即可）。</span>
-                <span class="lang-en">Enter your student ID and password (demo only — any input works).</span>
+                <span class="lang-zh">請輸入帳號及密碼。</span>
+                <span class="lang-en">Enter your username and password.</span>
             </p>
 
-            <form class="modal-form" id="authForm" autocomplete="off">
+            <form class="modal-form" id="authForm" autocomplete="off" novalidate>
                 <div class="form-group">
                     <label for="authUser">
-                        <span class="lang-zh">學生編號 / 電子郵件</span>
-                        <span class="lang-en">Student ID / Email</span>
+                        <span class="lang-zh">帳號</span>
+                        <span class="lang-en">Username</span>
                     </label>
-                    <input type="text" id="authUser" placeholder="e.g. 51234567 / student@cityu.edu.hk" required>
+                    <input type="text" id="authUser" placeholder="studyplan_01" maxlength="100" autocapitalize="none" spellcheck="false" aria-describedby="authDesc" required>
                 </div>
                 <div class="form-group">
                     <label for="authPass">
                         <span class="lang-zh">密碼</span>
                         <span class="lang-en">Password</span>
                     </label>
-                    <input type="password" id="authPass" placeholder="••••••••" required>
+                    <input type="password" id="authPass" placeholder="••••••••" maxlength="128" aria-describedby="authPasswordHelp" required>
+                    <small id="authPasswordHelp">
+                        <span class="lang-zh">密碼須為 6–128 個字元，並區分大小寫。</span>
+                        <span class="lang-en">Use 6–128 characters for your password. Passwords are case-sensitive.</span>
+                    </small>
                 </div>
+                <p id="authError" class="auth-error" role="alert" aria-atomic="true" hidden><span class="lang-zh"></span><span class="lang-en"></span></p>
                 <div class="modal-actions">
                     <button type="button" class="btn-secondary" data-action="close-modal">
                         <span class="lang-zh">取消</span><span class="lang-en">Cancel</span>
@@ -184,6 +189,9 @@
         'program-career': { file: 'program-career/index.html', nav: 'navProgramCareer', zh: '課程瀏覽與職涯資訊', en: 'Program Browser & Career Information' }
     });
     const STORAGE_KEY = 'ee4213.portal.session.v1';
+    const ACCOUNTS_KEY = 'ee4213.portal.demo-accounts.v1';
+    // Browser-local prototype credentials. This is not a security boundary.
+    let accounts = [];
     let state = { isLoggedIn: false, hasVisitedNavigator: false, userName: '', language: 'zh' };
     let storageAvailable = true;
     let authMode = 'login';
@@ -194,18 +202,35 @@
 
     if (!page) throw new Error('Unknown portal data-page: ' + pageId);
 
+    function loadAccounts() {
+        accounts = [];
+        try {
+            const saved = JSON.parse(sessionStorage.getItem(ACCOUNTS_KEY) || '[]');
+            if (Array.isArray(saved)) {
+                accounts = saved.filter(account => account &&
+                    typeof account.userName === 'string' && account.userName.trim().length > 0 && account.userName.length <= 100 &&
+                    typeof account.password === 'string' && account.password.trim().length > 0 &&
+                    account.password.length >= 6 && account.password.length <= 128);
+            }
+        } catch { /* Invalid or unavailable account storage starts empty. */ }
+    }
+
     function loadState() {
         state = { isLoggedIn: false, hasVisitedNavigator: false, userName: '', language: 'zh' };
+        loadAccounts();
         try {
+            storageAvailable = true;
             const raw = sessionStorage.getItem(STORAGE_KEY);
             if (raw) {
                 try {
                     const saved = JSON.parse(raw);
                     if (saved && typeof saved === 'object') {
+                        const account = typeof saved.userName === 'string' ? findAccount(saved.userName) : null;
                         state = {
-                            isLoggedIn: saved.isLoggedIn === true,
-                            hasVisitedNavigator: saved.hasVisitedNavigator === true,
-                            userName: typeof saved.userName === 'string' ? saved.userName : '',
+                            // Old unrestricted demo sessions have no registered account.
+                            isLoggedIn: saved.isLoggedIn === true && Boolean(account),
+                            hasVisitedNavigator: account ? account.hasVisitedNavigator === true : false,
+                            userName: saved.isLoggedIn === true && account ? account.userName : '',
                             language: saved.language === 'en' ? 'en' : 'zh'
                         };
                     }
@@ -230,6 +255,23 @@
         }
     }
 
+    function findAccount(userName) {
+        const id = userName.trim().toLowerCase();
+        return accounts.find(account => account.userName.trim().toLowerCase() === id);
+    }
+
+    function saveAccounts() {
+        try {
+            if (!storageAvailable) return false;
+            sessionStorage.setItem(ACCOUNTS_KEY, JSON.stringify(accounts));
+            return true;
+        } catch {
+            storageAvailable = false;
+            updateStorageNotice();
+            return false;
+        }
+    }
+
     function mountShell() {
         const template = document.createElement('template');
         template.innerHTML = SHELL_MARKUP;
@@ -242,13 +284,13 @@
         document.body.append(shell);
         document.getElementById('mainContent').insertAdjacentHTML('afterbegin', `
             <p id="storageNotice" class="session-notice" role="status" hidden>
-                <span class="lang-zh">此瀏覽模式無法保留跨頁登入；開啟功能頁後請再次示範登入。建議使用 Live Server。</span>
-                <span class="lang-en">This browser mode cannot retain login between pages. Log in again on each feature page, or use Live Server.</span>
+                <span class="lang-zh"></span>
+                <span class="lang-en"></span>
                 <a href="${new URL(PAGES.registration.file, PORTAL_ROOT).href}"><span class="lang-zh">前往註冊導航器</span><span class="lang-en">Open Registration Navigator</span></a>
             </p>
             <div id="accessNotice" class="card access-notice" hidden>
                 <h2><span class="lang-zh">🔒 需要登入</span><span class="lang-en">🔒 Login Required</span></h2>
-                <p><span class="lang-zh">請先登入／註冊以使用此功能（示範）。</span><span class="lang-en">Please login / register to use this demo feature.</span></p>
+                <p><span class="lang-zh">請先登入或註冊以使用此功能。</span><span class="lang-en">Please log in or register to use this feature.</span></p>
                 <button type="button" class="btn-action" data-auth="login"><span class="lang-zh">登入</span><span class="lang-en">Login</span></button>
                 <button type="button" class="btn-secondary" data-auth="register"><span class="lang-zh">註冊</span><span class="lang-en">Register</span></button>
             </div>`);
@@ -256,7 +298,10 @@
 
     function updateStorageNotice() {
         const notice = document.getElementById('storageNotice');
-        if (notice) notice.hidden = storageAvailable;
+        if (!notice) return;
+        notice.hidden = storageAvailable;
+        notice.querySelector('.lang-zh').textContent = '目前無法在切換頁面後保留帳號及登入狀態。請在需要使用的功能頁重新註冊及登入。';
+        notice.querySelector('.lang-en').textContent = 'Your account and login cannot be retained between pages. Register and log in again on the page you need.';
     }
 
     function applyLanguage() {
@@ -314,6 +359,7 @@
     }
 
     function updateAuthModalText() {
+        clearAuthError();
         const register = authMode === 'register';
         document.getElementById('authTitleZh').textContent = register ? '註冊新帳號' : '登入';
         document.getElementById('authTitleEn').textContent = register ? 'Create Account' : 'Login';
@@ -323,8 +369,8 @@
         };
         setPair('authSubmitBtn', register ? '註冊' : '登入', register ? 'Register' : 'Login');
         setPair('authSwitchBtn', register ? '返回登入' : '立即註冊', register ? 'Back to Login' : 'Register now');
-        setPair('authDesc', register ? '建立示範帳號（任意輸入即可，請勿使用真實密碼）。' : '請輸入示範學生帳號與密碼（任意輸入即可，請勿使用真實密碼）。',
-            register ? 'Create a demo account (any input works; do not use a real password).' : 'Enter a demo student ID and password (any input works; do not use a real password).');
+        setPair('authDesc', register ? '建立帳號，開始規劃你的學習路徑。帳號不區分大小寫。' : '請輸入帳號及密碼。帳號不區分大小寫。',
+            register ? 'Create an account to start planning your studies. Usernames are case-insensitive.' : 'Enter your username and password. Usernames are case-insensitive.');
         document.querySelectorAll('.modal-switch > .lang-zh')[0].textContent = register ? '已有帳號？' : '還沒有帳號？';
         document.querySelectorAll('.modal-switch > .lang-en')[0].textContent = register ? 'Already have an account?' : 'No account yet?';
     }
@@ -336,7 +382,10 @@
         activeModal.hidden = true;
         activeModal = null;
         document.querySelectorAll('[data-modal-background]').forEach(element => { element.inert = false; });
-        if (wasAuth) document.getElementById('authForm').reset();
+        if (wasAuth) {
+            document.getElementById('authForm').reset();
+            clearAuthError();
+        }
         if (restoreFocus && returnFocus && returnFocus.isConnected) returnFocus.focus();
     }
 
@@ -369,18 +418,72 @@
         location.assign(new URL(target.file, PORTAL_ROOT).href);
     }
 
+    function clearAuthError() {
+        document.getElementById('authError').hidden = true;
+        for (const [id, description] of [['authUser', 'authDesc'], ['authPass', 'authPasswordHelp']]) {
+            const input = document.getElementById(id);
+            input.removeAttribute('aria-invalid');
+            input.setAttribute('aria-describedby', description);
+        }
+    }
+
+    function showAuthError(zh, en, fieldIds) {
+        const error = document.getElementById('authError');
+        error.querySelector('.lang-zh').textContent = zh;
+        error.querySelector('.lang-en').textContent = en;
+        error.hidden = false;
+        fieldIds.forEach(id => {
+            const input = document.getElementById(id);
+            input.setAttribute('aria-invalid', 'true');
+            input.setAttribute('aria-describedby', input.getAttribute('aria-describedby') + ' authError');
+        });
+        document.getElementById(fieldIds[0]).focus();
+    }
+
     function handleAuthSubmit(event) {
         event.preventDefault();
-        const form = document.getElementById('authForm');
-        if (!form.reportValidity()) return;
-        state.userName = document.getElementById('authUser').value.trim() || 'Student';
+        clearAuthError();
+        const userName = document.getElementById('authUser').value.trim();
+        const password = document.getElementById('authPass').value;
+        if (!userName || userName.length > 100) {
+            showAuthError('請輸入 1–100 個字元的帳號，不能只輸入空白。',
+                'Enter a username of 1–100 characters, not just spaces.', ['authUser']);
+            return;
+        }
+        if (!password.trim() || password.length < 6 || password.length > 128) {
+            showAuthError('請輸入 6–128 個字元的密碼，不能只輸入空白。',
+                'Enter a password of 6–128 characters, not just spaces.', ['authPass']);
+            return;
+        }
+        let account = findAccount(userName);
+        if (authMode === 'register') {
+            if (account) {
+                showAuthError('此帳號已註冊，請返回登入或使用另一帳號。',
+                    'This account is already registered. Return to Login or use another account.', ['authUser']);
+                return;
+            }
+            account = { userName, password, hasVisitedNavigator: false };
+            accounts.push(account);
+        } else if (!account || account.password !== password) {
+            showAuthError('帳號或密碼不正確，請檢查後重試。如尚未建立帳號，請先註冊。',
+                'Incorrect account or password. Check your details and try again, or register if you do not have an account.', ['authUser', 'authPass']);
+            return;
+        }
+        const landing = authMode === 'register' || !account.hasVisitedNavigator ? 'registration' : 'profile';
+        account.hasVisitedNavigator = true;
+        const accountsSaved = saveAccounts();
+        if (!accountsSaved) {
+            showAuthError('帳號資料未能儲存，請允許瀏覽器儲存網站資料後再試。',
+                'Account details could not be saved. Allow your browser to store site data and try again.', ['authUser']);
+            return;
+        }
+        state.userName = account.userName;
         state.isLoggedIn = true;
-        const landing = authMode === 'register' || !state.hasVisitedNavigator ? 'registration' : 'profile';
         state.hasVisitedNavigator = true;
         const saved = saveState();
         closeModal();
         applyAuthUI();
-        if (saved) goTo(landing);
+        if (saved && accountsSaved) goTo(landing);
         else document.getElementById('mainContent').focus();
     }
 
@@ -416,6 +519,7 @@
             if (event.target === activeModal) closeModal();
         });
         document.getElementById('authForm').addEventListener('submit', handleAuthSubmit);
+        document.getElementById('authForm').addEventListener('input', clearAuthError);
         document.addEventListener('keydown', event => {
             if (!activeModal) return;
             if (event.key === 'Escape') {
