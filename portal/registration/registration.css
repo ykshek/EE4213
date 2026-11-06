@@ -1,0 +1,391 @@
+/* portal/registration/registration.css
+   Page-specific styles, scoped to #pageContent.registration-page.
+   Relies on CSS variables and base classes from ../assets/css/common.css. */
+
+/* ---------- Step indicator ---------- */
+#pageContent.registration-page .step-indicator {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 22px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+#pageContent.registration-page .step-pip {
+    flex: 1;
+    min-width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 6px;
+    border-radius: 8px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+    #pageContent.registration-page .step-pip .pip-dot {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: #f1f5f9;
+        border: 1.5px solid var(--border-color);
+        font-weight: 700;
+        font-size: 0.72rem;
+    }
+
+    #pageContent.registration-page .step-pip.active {
+        border-color: var(--cityu-maroon);
+        color: var(--cityu-maroon);
+        font-weight: 700;
+    }
+
+        #pageContent.registration-page .step-pip.active .pip-dot {
+            background: var(--cityu-maroon);
+            border-color: var(--cityu-maroon);
+            color: #fff;
+        }
+
+    #pageContent.registration-page .step-pip.done .pip-dot {
+        background: var(--success-bg);
+        border-color: var(--success-green);
+        color: var(--success-green);
+    }
+
+/* ---------- Sections ---------- */
+#pageContent.registration-page .reg-step {
+    display: none;
+}
+
+    #pageContent.registration-page .reg-step.active {
+        display: block;
+    }
+
+#pageContent.registration-page .reg-card-title {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+}
+
+#pageContent.registration-page .reg-step-list {
+    margin-left: 20px;
+    line-height: 1.9;
+    font-size: 0.88rem;
+    color: var(--text-dark);
+}
+
+/* ---------- Form extras ---------- */
+#pageContent.registration-page .form-group {
+    margin-bottom: 14px;
+}
+
+    #pageContent.registration-page .form-group .hint {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+    }
+
+#pageContent.registration-page select {
+    padding: 9px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background-color: #fff;
+    outline: none;
+    width: 100%;
+    max-width: 100%;
+}
+
+    #pageContent.registration-page select:focus {
+        border-color: var(--cityu-maroon);
+        box-shadow: 0 0 0 3px rgba(128,0,32,0.12);
+    }
+
+/* ---------- Choice grid ---------- */
+#pageContent.registration-page .choice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+#pageContent.registration-page .choice-grid-single {
+    grid-template-columns: 1fr;
+}
+
+#pageContent.registration-page .choice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    color: var(--text-dark);
+    font-size: 0.85rem;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+    #pageContent.registration-page .choice:hover {
+        background: #fafafa;
+    }
+
+    #pageContent.registration-page .choice.selected {
+        border: 2px solid var(--cityu-maroon);
+        background: #fff4f4;
+        padding: 11px;
+    }
+
+    #pageContent.registration-page .choice .choice-icon {
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+
+    #pageContent.registration-page .choice .choice-body {
+        display: grid;
+        gap: 2px;
+    }
+
+        #pageContent.registration-page .choice .choice-body small {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+    #pageContent.registration-page .choice:focus-visible {
+        outline: 2px solid var(--cityu-maroon);
+        outline-offset: 2px;
+    }
+
+/* ---------- Chips ---------- */
+#pageContent.registration-page .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+    #pageContent.registration-page .chips button {
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        padding: 7px 14px;
+        background: #fff;
+        color: var(--text-dark);
+        font-size: 0.82rem;
+        cursor: pointer;
+        transition: all 0.15s;
+    }
+
+        #pageContent.registration-page .chips button:hover {
+            background: #fafafa;
+        }
+
+        #pageContent.registration-page .chips button.selected {
+            border-color: var(--cityu-maroon);
+            background: #fff4f4;
+            color: var(--cityu-maroon);
+            font-weight: 700;
+        }
+
+        #pageContent.registration-page .chips button:focus-visible {
+            outline: 2px solid var(--cityu-maroon);
+            outline-offset: 2px;
+        }
+
+/* ---------- Course list ---------- */
+#pageContent.registration-page .course-list {
+    border-top: 1px solid var(--border-color);
+    max-height: 320px;
+    overflow-y: auto;
+    margin-top: 8px;
+}
+
+#pageContent.registration-page .course-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 4px;
+    border-bottom: 1px solid #eef2f6;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+    #pageContent.registration-page .course-row input {
+        width: 16px;
+        height: 16px;
+        accent-color: var(--cityu-maroon);
+        flex-shrink: 0;
+    }
+
+    #pageContent.registration-page .course-row strong {
+        font-size: 0.85rem;
+    }
+
+    #pageContent.registration-page .course-row small {
+        color: var(--text-muted);
+        font-size: 0.75rem;
+        display: block;
+    }
+
+#pageContent.registration-page .course-group-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--cityu-maroon);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 4px 4px;
+    margin-top: 4px;
+    border-top: 1px dashed var(--border-color);
+}
+
+    #pageContent.registration-page .course-group-title:first-child {
+        border-top: none;
+        margin-top: 0;
+    }
+
+#pageContent.registration-page .selection-summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+    #pageContent.registration-page .selection-summary .badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 22px;
+        height: 22px;
+        padding: 0 7px;
+        border-radius: 11px;
+        background: var(--cityu-maroon);
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+/* ---------- Checklist ---------- */
+#pageContent.registration-page .list-section {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    background: var(--card-bg);
+}
+
+#pageContent.registration-page .list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border-color);
+}
+
+    #pageContent.registration-page .list-header h3 {
+        font-size: 0.92rem;
+        margin: 0;
+    }
+
+    #pageContent.registration-page .list-header .badge {
+        background: var(--cityu-maroon);
+        color: #fff;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        margin-left: 6px;
+    }
+
+        #pageContent.registration-page .list-header .badge.optional {
+            background: var(--text-muted);
+        }
+
+#pageContent.registration-page .check-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid #eef2f6;
+    background: #fff;
+}
+
+    #pageContent.registration-page .check-item:last-child {
+        border-bottom: 0;
+    }
+
+#pageContent.registration-page .check-copy h4 {
+    font-size: 0.88rem;
+    margin: 0 0 4px 0;
+}
+
+#pageContent.registration-page .check-copy p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.45;
+}
+
+/* ---------- Summary ---------- */
+#pageContent.registration-page .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+#pageContent.registration-page .summary-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+    background: #fff;
+}
+
+    #pageContent.registration-page .summary-card h4 {
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        margin-bottom: 6px;
+    }
+
+    #pageContent.registration-page .summary-card p {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        overflow-wrap: anywhere;
+    }
+
+/* ---------- Actions ---------- */
+#pageContent.registration-page .actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+    #pageContent.registration-page .actions .spacer {
+        flex: 1;
+    }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+    #pageContent.registration-page .choice-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #pageContent.registration-page .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #pageContent.registration-page .step-pip {
+        min-width: 64px;
+    }
+
+        #pageContent.registration-page .step-pip .pip-label {
+            display: none;
+        }
+}
