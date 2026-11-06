@@ -1,4 +1,4 @@
-﻿/* portal/registration/registration.js
+﻿/* portal/assets/js/registration.js
    Registration Navigator page logic. Relies on:
    - window.Portal (from common.js) for language events
    - window.EE4213Data (from mock-data.js) for course and major data

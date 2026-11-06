@@ -1,6 +1,6 @@
-/* portal/registration/registration.css
+/* portal/assets/css/registration.css
    Page-specific styles, scoped to #pageContent.registration-page.
-   Relies on CSS variables and base classes from ../assets/css/common.css. */
+   Relies on CSS variables and base classes from common.css. */
 
 /* ---------- Step indicator ---------- */
 #pageContent.registration-page .step-indicator {
