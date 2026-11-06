@@ -1,11 +1,14 @@
-/* Shared static mock data copied from original/ prototypes. */
+/* Shared static mock data adapted from original/ prototypes.
+ * Comparator meetings use whole-hour demo slots: Class (lecture), Lab and
+ * Project last three hours; Tutorial lasts one hour. These are not official times.
+ */
 (function (global) {
     'use strict';
 
     const data = {
     "metadata": {
         "isMockData": true,
-        "description": "Static prototype data copied from original HTML prototypes, including illustrative Comparator fixtures; not official or live student/course records.",
+        "description": "Static prototype data adapted from original HTML prototypes, including illustrative Comparator fixtures with whole-hour demo meeting times; not official or live student/course records.",
         "sources": [
             "original/cityu-ee-guide.html",
             "original/EE4213_code_v6.html",
@@ -39,13 +42,13 @@
                 "scheduledMeetingTimes": [
                     {
                         "type": "Class",
-                        "time": "12:00 pm - 2:50 pm",
+                        "time": "12:00 pm - 3:00 pm",
                         "days": ["W"],
                         "location": "Li Dak Sum Yip Yio Chin A Bldg 4307"
                     },
                     {
                         "type": "Class",
-                        "time": "12:00 pm - 2:50 pm",
+                        "time": "12:00 pm - 3:00 pm",
                         "days": ["T"],
                         "location": "Yeung Kin Man Acad Building P4701"
                     }
@@ -992,13 +995,13 @@
                 "scheduledMeetingTimes": [
                     {
                         "type": "Class",
-                        "time": "9:30 am - 11:20 am",
+                        "time": "9:00 am - 12:00 pm",
                         "days": ["M"],
                         "location": "Academic 1 2001"
                     },
                     {
                         "type": "Tutorial",
-                        "time": "1:30 pm - 2:20 pm",
+                        "time": "1:00 pm - 2:00 pm",
                         "days": ["F"],
                         "location": "Academic 1 2512"
                     }
@@ -1023,13 +1026,13 @@
                 "scheduledMeetingTimes": [
                     {
                         "type": "Class",
-                        "time": "10:30 am - 12:20 pm",
+                        "time": "9:00 am - 12:00 pm",
                         "days": ["T"],
                         "location": "YEUNG Kin Man Building P4704"
                     },
                     {
                         "type": "Lab",
-                        "time": "3:30 pm - 5:20 pm",
+                        "time": "3:00 pm - 6:00 pm",
                         "days": ["Th"],
                         "location": "EEE Laboratory 3"
                     }
@@ -1054,13 +1057,13 @@
                 "scheduledMeetingTimes": [
                     {
                         "type": "Class",
-                        "time": "2:30 pm - 4:20 pm",
+                        "time": "3:00 pm - 6:00 pm",
                         "days": ["W"],
                         "location": "CSE Labs 1"
                     },
                     {
                         "type": "Tutorial",
-                        "time": "11:30 am - 12:20 pm",
+                        "time": "11:00 am - 12:00 pm",
                         "days": ["F"],
                         "location": "Academic 2 3030"
                     }
@@ -1085,13 +1088,13 @@
                 "scheduledMeetingTimes": [
                     {
                         "type": "Class",
-                        "time": "1:30 pm - 3:20 pm",
+                        "time": "12:00 pm - 3:00 pm",
                         "days": ["T"],
                         "location": "YEUNG Kin Man Building P4701"
                     },
                     {
                         "type": "Lab",
-                        "time": "4:30 pm - 5:20 pm",
+                        "time": "3:00 pm - 6:00 pm",
                         "days": ["Th"],
                         "location": "Innovation Hub 3104"
                     }
@@ -1116,13 +1119,13 @@
                 "scheduledMeetingTimes": [
                     {
                         "type": "Class",
-                        "time": "9:00 am - 10:50 am",
+                        "time": "9:00 am - 12:00 pm",
                         "days": ["M"],
                         "location": "Energy Centre 3402"
                     },
                     {
                         "type": "Lab",
-                        "time": "11:00 am - 12:50 pm",
+                        "time": "12:00 pm - 3:00 pm",
                         "days": ["F"],
                         "location": "Energy Centre 3405"
                     }
@@ -1147,13 +1150,13 @@
                 "scheduledMeetingTimes": [
                     {
                         "type": "Class",
-                        "time": "10:00 am - 11:50 am",
+                        "time": "9:00 am - 12:00 pm",
                         "days": ["W"],
                         "location": "YEUNG Kin Man Building P4701"
                     },
                     {
                         "type": "Tutorial",
-                        "time": "2:30 pm - 3:20 pm",
+                        "time": "2:00 pm - 3:00 pm",
                         "days": ["F"],
                         "location": "Academic 2 3505"
                     }
@@ -1178,13 +1181,13 @@
                 "scheduledMeetingTimes": [
                     {
                         "type": "Class",
-                        "time": "11:00 am - 12:50 pm",
+                        "time": "9:00 am - 12:00 pm",
                         "days": ["M"],
                         "location": "Academic 1 2102"
                     },
                     {
                         "type": "Tutorial",
-                        "time": "3:30 pm - 4:20 pm",
+                        "time": "3:00 pm - 4:00 pm",
                         "days": ["W"],
                         "location": "YEUNG Kin Man Building P4704"
                     }
@@ -1209,13 +1212,13 @@
                 "scheduledMeetingTimes": [
                     {
                         "type": "Class",
-                        "time": "2:00 pm - 3:50 pm",
+                        "time": "3:00 pm - 6:00 pm",
                         "days": ["Th"],
                         "location": "Energy Centre 3402"
                     },
                     {
                         "type": "Project",
-                        "time": "10:00 am - 11:50 am",
+                        "time": "9:00 am - 12:00 pm",
                         "days": ["F"],
                         "location": "Energy Centre 3405"
                     }
