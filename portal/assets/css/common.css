@@ -596,6 +596,27 @@ body {
     margin-top: 8px;
 }
 
+#authForm small {
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+#authForm .auth-error {
+    color: #9f1239;
+    background: #fff1f2;
+    border: 1px solid #9f1239;
+    border-radius: 7px;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+#authForm input[aria-invalid="true"] { border-color: #9f1239; }
+#authModal button, #authModal input { min-height: 44px; }
+#authModal .modal-close { min-width: 44px; }
+#authModal .modal-box { max-height: calc(100dvh - 40px); overflow-y: auto; }
+
     .modal-actions .btn-action {
         flex: 1;
         padding: 10px;

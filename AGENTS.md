@@ -21,7 +21,7 @@ This `AGENTS.md` is the authoritative development guide for the entire repositor
 | `original/comparator/` | Legacy reference | Original course workload comparison and sample timetable conflict preview. |
 | `README.md` | Course brief | Course project brief and submission requirements. |
 
-The portal uses separate shared CSS and JavaScript files; `base.html` and the files in `original/` use inline HTML, CSS, and JavaScript. There is no package manifest, build system, backend, framework, or automated test suite. The portal does have a client-side shared shell and uses `sessionStorage` for demo login and language state; there is no server-side persistence, database, or credential verification. `base.html` keeps the same demo state in memory only.
+The portal uses separate shared CSS and JavaScript files; `base.html` and the files in `original/` use inline HTML, CSS, and JavaScript. There is no package manifest, build system, backend, framework, or automated test suite. The portal has a client-side shared shell, uses `localStorage` for browser-local prototype accounts, and `sessionStorage` for login and language state. Login compares credentials with accounts registered in the same browser and origin; there is no server-side persistence, database, or real authentication. `base.html` retains its legacy unrestricted demo login in memory only.
 
 ## Portal structure and local run instructions
 
@@ -54,7 +54,7 @@ Each HTML file owns its page content. The shared shell (header, sidebar, footer,
 
 No extra software is needed beyond a web browser. Keep the whole `portal/` folder together, then open `portal/index.html` or the feature page you want to test (for example, `portal/degree-audit/index.html`) in the browser. The sidebar links can open the other pages.
 
-When opened this way with a `file://` URL, browser storage may not work across pages. The page will show a notice; demo login may need to be repeated on each feature page and will only unlock the page currently open. This is suitable for checking an individual page.
+When opened this way with a `file://` URL, browser storage may not work consistently across pages or browser sessions. The page shows a notice when storage access fails. Registration cannot succeed if account data cannot be saved. If only session storage is unavailable, login unlocks the current page and the account remains in local storage. Use the local server below to test account persistence and cross-page sessions reliably.
 
 Optionally, to test a login session while navigating between pages, a local server can be used if Python is already installed; no packages are needed. From the repository root, run:
 
@@ -143,7 +143,7 @@ if (!course) {
 
 ## Login and registration states
 
-`portal/` implements a client-side (demo-only) login and registration state machine. `base.html` implements a legacy in-memory version of the same flow. Neither has a server, database, or credential verification; any input in the login or registration form is accepted.
+`portal/` implements a client-side (demo-only) login and registration state machine. Registration creates a browser-local account and logs in automatically; login requires matching registered credentials. Account names are trimmed and compared case-insensitively (1–100 characters); passwords are matched exactly, case-sensitively (6–128 characters, not all whitespace). Duplicate account names, unknown accounts, and incorrect passwords show bilingual inline errors without logging in. Accounts store their own navigator-visited flag. Old unrestricted sessions without a registered account are signed out. `base.html` retains the legacy in-memory flow accepting arbitrary nonempty input. Neither implementation has a server, database, or real authentication; browser-side state can be edited by the user.
 
 Common behavior:
 
@@ -156,7 +156,7 @@ Common behavior:
 
 Storage differs by prototype:
 
-- **Portal (`portal/`)** — `portal/assets/js/common.js` stores `isLoggedIn`, `hasVisitedNavigator`, `userName`, and `language` in `sessionStorage` under `ee4213.portal.session.v1`. State survives page reloads and page changes in the same tab and origin. It is not shared across tabs, hosts, or ports, and may be unavailable under `file://`; in that case the page shows a notice and login only unlocks the current page.
+- **Portal (`portal/`)** — `portal/assets/js/common.js` stores `isLoggedIn`, `hasVisitedNavigator`, `userName`, and `language` in `sessionStorage` under `ee4213.portal.session.v1`. Accounts (`userName`, plaintext prototype `password`, `hasVisitedNavigator`) persist in `localStorage` under `ee4213.portal.demo-accounts.v1` across tab/browser closure, until site data is cleared. Use only made-up credentials during development and testing. Account UI uses product-facing username/password labels without student identifiers, email prompts, demo labels, or privacy slogans. This wording does not change the frontend-only architecture. Accounts previously saved in session storage migrate to local storage without overwriting an existing account with the same normalized username; the legacy copy is removed only after migration succeeds. Logout preserves accounts and their navigator history. Accounts are shared across tabs on the same browser profile and origin; login and language remain per-tab. Login/registration refresh account data before checking credentials, and storage events refresh other open tabs. Hosts, ports, browser profiles, and devices have separate stores. A failed account read/write shows an actionable error instead of reporting successful registration or login. If only session storage fails, login unlocks the current page and a notice asks the user to log in again with the existing account after navigating. A local static server supports reliable cross-page testing.
 - **Legacy `base.html`** — state is in memory only. `hasVisitedNavigator` resets on page reload, and the feature sections are switched in-page rather than by navigation.
 
 ## Development conventions
