@@ -194,6 +194,7 @@
     let accounts = [];
     let state = { isLoggedIn: false, hasVisitedNavigator: false, userName: '', language: 'zh' };
     let storageAvailable = true;
+    let accountStorageAvailable = true;
     let authMode = 'login';
     let activeModal = null;
     let returnFocus = null;
@@ -203,16 +204,35 @@
     if (!page) throw new Error('Unknown portal data-page: ' + pageId);
 
     function loadAccounts() {
-        accounts = [];
         try {
-            const saved = JSON.parse(sessionStorage.getItem(ACCOUNTS_KEY) || '[]');
-            if (Array.isArray(saved)) {
-                accounts = saved.filter(account => account &&
-                    typeof account.userName === 'string' && account.userName.trim().length > 0 && account.userName.length <= 100 &&
-                    typeof account.password === 'string' && account.password.trim().length > 0 &&
-                    account.password.length >= 6 && account.password.length <= 128);
-            }
-        } catch { /* Invalid or unavailable account storage starts empty. */ }
+            const readAccounts = raw => {
+                try {
+                    const saved = JSON.parse(raw || '[]');
+                    return Array.isArray(saved) ? saved.filter(account => account &&
+                        typeof account.userName === 'string' && account.userName.trim().length > 0 && account.userName.length <= 100 &&
+                        typeof account.password === 'string' && account.password.trim().length > 0 &&
+                        account.password.length >= 6 && account.password.length <= 128) : [];
+                } catch { return []; }
+            };
+            accounts = readAccounts(localStorage.getItem(ACCOUNTS_KEY));
+            accountStorageAvailable = true;
+            // Move accounts from the previous tab-only storage without replacing
+            // an account already saved in this browser.
+            let migrated = false;
+            try {
+                for (const account of readAccounts(sessionStorage.getItem(ACCOUNTS_KEY))) {
+                    if (!findAccount(account.userName)) {
+                        accounts.push(account);
+                        migrated = true;
+                    }
+                }
+                if (!migrated || saveAccounts()) sessionStorage.removeItem(ACCOUNTS_KEY);
+            } catch { /* Account persistence does not depend on session storage. */ }
+            return true;
+        } catch {
+            accountStorageAvailable = false;
+            return false;
+        }
     }
 
     function loadState() {
@@ -262,11 +282,11 @@
 
     function saveAccounts() {
         try {
-            if (!storageAvailable) return false;
-            sessionStorage.setItem(ACCOUNTS_KEY, JSON.stringify(accounts));
+            localStorage.setItem(ACCOUNTS_KEY, JSON.stringify(accounts));
+            accountStorageAvailable = true;
             return true;
         } catch {
-            storageAvailable = false;
+            accountStorageAvailable = false;
             updateStorageNotice();
             return false;
         }
@@ -299,9 +319,13 @@
     function updateStorageNotice() {
         const notice = document.getElementById('storageNotice');
         if (!notice) return;
-        notice.hidden = storageAvailable;
-        notice.querySelector('.lang-zh').textContent = '目前無法在切換頁面後保留帳號及登入狀態。請在需要使用的功能頁重新註冊及登入。';
-        notice.querySelector('.lang-en').textContent = 'Your account and login cannot be retained between pages. Register and log in again on the page you need.';
+        notice.hidden = storageAvailable && accountStorageAvailable;
+        notice.querySelector('.lang-zh').textContent = !accountStorageAvailable
+            ? '目前無法儲存帳號資料。請允許瀏覽器儲存網站資料後再試。'
+            : '目前無法保留跨頁登入狀態。切換頁面後請使用原有帳號重新登入。';
+        notice.querySelector('.lang-en').textContent = !accountStorageAvailable
+            ? 'Your account details could not be saved. Allow your browser to store site data and try again.'
+            : 'Your login cannot be retained between pages. Log in again with your existing account after switching pages.';
     }
 
     function applyLanguage() {
@@ -455,6 +479,14 @@
                 'Enter a password of 6–128 characters, not just spaces.', ['authPass']);
             return;
         }
+        // Refresh before checking credentials or duplicates, including accounts
+        // registered in another tab since this page was opened.
+        if (!loadAccounts() || !accountStorageAvailable) {
+            showAuthError('目前無法讀取或儲存帳號資料。請允許瀏覽器儲存網站資料後再試。',
+                'Account details could not be accessed or saved. Allow your browser to store site data and try again.', ['authUser']);
+            updateStorageNotice();
+            return;
+        }
         let account = findAccount(userName);
         if (authMode === 'register') {
             if (account) {
@@ -546,6 +578,12 @@
         window.addEventListener('pageshow', event => {
             if (!event.persisted) return;
             closeModal(false);
+            loadState();
+            applyLanguage();
+            applyAuthUI();
+        });
+        window.addEventListener('storage', event => {
+            if (event.storageArea !== localStorage || (event.key !== ACCOUNTS_KEY && event.key !== null)) return;
             loadState();
             applyLanguage();
             applyAuthUI();
