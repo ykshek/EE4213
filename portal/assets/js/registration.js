@@ -8,7 +8,6 @@
     'use strict';
 
     const SELECTED_COURSES_KEY = 'ee4213.registration.selectedCourses.v1';
-    const PROFILE_STORAGE_KEY = 'ee4213.registration.profile.v1';
     const UNDECLARED_ID = 'UNDECLARED';
 
     const state = {
@@ -81,6 +80,11 @@
         return data.courses.find((c) => c.courseId === courseId) || null;
     }
 
+    function getCourseTitle(course) {
+        if (!course || !course.titles) return '';
+        return course.titles.zh || course.titles.en || '';
+    }
+
     function getMajorById(majorId) {
         const data = getData();
         if (!data || !Array.isArray(data.majors)) return null;
@@ -102,47 +106,6 @@
     function saveSelectedCourses() {
         try {
             sessionStorage.setItem(SELECTED_COURSES_KEY, JSON.stringify(state.selectedCourses));
-        } catch (err) {
-            /* sessionStorage may be unavailable under file:// in some browsers. */
-        }
-    }
-
-    function loadProfileFromStorage() {
-        try {
-            const raw = sessionStorage.getItem(PROFILE_STORAGE_KEY);
-            if (!raw) return;
-            const parsed = JSON.parse(raw);
-            if (!parsed || typeof parsed !== 'object') return;
-
-            if (typeof parsed.major === 'string' && parsed.major) {
-                state.profile.major = parsed.major;
-            }
-            if (typeof parsed.transfer === 'string' && parsed.transfer) {
-                state.profile.transfer = parsed.transfer;
-            }
-            if (typeof parsed.year === 'string' && parsed.year) {
-                state.profile.year = parsed.year;
-            }
-            if (typeof parsed.goal === 'string') {
-                state.goal = parsed.goal;
-            }
-            if (typeof parsed.specialization === 'string' && parsed.specialization) {
-                state.specialization = parsed.specialization;
-            }
-        } catch (err) {
-            /* Invalid demo data is ignored. */
-        }
-    }
-
-    function saveProfileToStorage() {
-        try {
-            sessionStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify({
-                major: state.profile.major,
-                transfer: state.profile.transfer,
-                year: state.profile.year,
-                goal: state.goal,
-                specialization: state.specialization
-            }));
         } catch (err) {
             /* sessionStorage may be unavailable under file:// in some browsers. */
         }
@@ -183,6 +146,7 @@
         const data = getData();
         const majors = (data && Array.isArray(data.majors)) ? data.majors : [];
 
+        // UNDECLARED first
         const optUndeclared = document.createElement('option');
         optUndeclared.value = UNDECLARED_ID;
         optUndeclared.textContent = '尚未選擇主修（一年級學生）/ Not yet selected (Year 1 student)';
@@ -197,79 +161,9 @@
         });
 
         select.value = state.profile.major;
-        if (select.value !== state.profile.major) {
-            state.profile.major = UNDECLARED_ID;
-            select.value = UNDECLARED_ID;
-        }
-
         select.addEventListener('change', () => {
             state.profile.major = select.value;
-            saveProfileToStorage();
         });
-    }
-
-    function applyProfileSelectionsToUI() {
-        const majorSelect = document.getElementById('majorSelect');
-        if (majorSelect && majorSelect.value !== state.profile.major) {
-            majorSelect.value = state.profile.major;
-        }
-
-        const transferBtns = document.querySelectorAll('[data-transfer]');
-        if (transferBtns.length > 0) {
-            let matched = false;
-            transferBtns.forEach((b) => {
-                const isMatch = b.getAttribute('data-transfer') === state.profile.transfer;
-                b.classList.toggle('selected', isMatch);
-                if (isMatch) matched = true;
-            });
-            if (!matched) {
-                transferBtns.forEach((b, i) => b.classList.toggle('selected', i === 0));
-                state.profile.transfer = transferBtns[0].getAttribute('data-transfer');
-            }
-        }
-
-        const yearBtns = document.querySelectorAll('#yearChips button');
-        if (yearBtns.length > 0) {
-            let matched = false;
-            yearBtns.forEach((b) => {
-                const isMatch = b.getAttribute('data-year') === state.profile.year;
-                b.classList.toggle('selected', isMatch);
-                if (isMatch) matched = true;
-            });
-            if (!matched) {
-                yearBtns.forEach((b, i) => b.classList.toggle('selected', i === 0));
-                state.profile.year = yearBtns[0].getAttribute('data-year');
-            }
-        }
-
-        const goalBtns = document.querySelectorAll('#goalChips button');
-        if (goalBtns.length > 0) {
-            if (state.goal) {
-                let matched = false;
-                goalBtns.forEach((b) => {
-                    const isMatch = b.getAttribute('data-goal') === state.goal;
-                    b.classList.toggle('selected', isMatch);
-                    if (isMatch) matched = true;
-                });
-                if (!matched) state.goal = '';
-            } else {
-                goalBtns.forEach((b) => b.classList.remove('selected'));
-            }
-        }
-
-        const specBtns = document.querySelectorAll('#specGrid [data-spec]');
-        if (specBtns.length > 0) {
-            let matched = false;
-            specBtns.forEach((b) => {
-                const isMatch = b.getAttribute('data-spec') === state.specialization;
-                b.classList.toggle('selected', isMatch);
-                if (isMatch) matched = true;
-            });
-            if (!matched) {
-                specBtns.forEach((b, i) => b.classList.toggle('selected', i === 0));
-                state.specialization = specBtns[0].getAttribute('data-spec');
-            }
-        }
     }
 
     function bindProfileButtons() {
@@ -278,7 +172,6 @@
                 state.profile.transfer = btn.getAttribute('data-transfer');
                 document.querySelectorAll('[data-transfer]').forEach((b) => b.classList.remove('selected'));
                 btn.classList.add('selected');
-                saveProfileToStorage();
             });
         });
 
@@ -287,7 +180,6 @@
                 state.profile.year = btn.getAttribute('data-year');
                 document.querySelectorAll('#yearChips button').forEach((b) => b.classList.remove('selected'));
                 btn.classList.add('selected');
-                saveProfileToStorage();
             });
         });
     }
@@ -299,7 +191,6 @@
                 state.goal = btn.getAttribute('data-goal');
                 document.querySelectorAll('#goalChips button').forEach((b) => b.classList.remove('selected'));
                 btn.classList.add('selected');
-                saveProfileToStorage();
             });
         });
     }
@@ -330,8 +221,11 @@
             majors.forEach((m) => {
                 const majorCourses = collectMajorCourses(m, yearOne);
                 if (majorCourses.length === 0) return;
-                const label = (m.name && (lang === 'zh' ? (m.name.zh || m.name.en) : (m.name.en || m.name.zh))) || m.majorId;
-                addGroupTitle(container, label + (lang === 'zh' ? ' 主修參考課程' : ' Reference Courses'));
+                addGroupTitle(
+                    container,
+                    (lang === 'zh' ? (m.name && m.name.zh ? m.name.zh : m.majorId) : (m.name && m.name.en ? m.name.en : m.majorId))
+                    + (lang === 'zh' ? ' 主修參考課程' : ' Reference Courses')
+                );
                 majorCourses.forEach((course) => addCourseRow(container, course, lang));
             });
         } else {
@@ -350,6 +244,7 @@
     }
 
     function collectYearOneCourses() {
+        // Use CDE as the primary reference; dedupe by courseId.
         const data = getData();
         if (!data || !Array.isArray(data.majors)) return [];
         const cde = data.majors.find((m) => m.majorId === 'CDE') || data.majors[0];
@@ -363,10 +258,13 @@
             seen.add(entry.courseId);
             const course = getCourseById(entry.courseId);
             if (course) out.push(course);
-            else out.push({
-                courseId: entry.courseId,
-                titles: { en: entry.curriculumTitle || entry.courseId }
-            });
+            else {
+                // Fallback: build a minimal course-like object from the curriculum entry
+                out.push({
+                    courseId: entry.courseId,
+                    titles: { en: entry.curriculumTitle || entry.courseId }
+                });
+            }
         });
         return out;
     }
@@ -383,10 +281,12 @@
             seen.add(entry.courseId);
             const course = getCourseById(entry.courseId);
             if (course) out.push(course);
-            else out.push({
-                courseId: entry.courseId,
-                titles: { en: entry.curriculumTitle || entry.courseId }
-            });
+            else {
+                out.push({
+                    courseId: entry.courseId,
+                    titles: { en: entry.curriculumTitle || entry.courseId }
+                });
+            }
         });
         return out;
     }
@@ -446,7 +346,6 @@
                 state.specialization = btn.getAttribute('data-spec');
                 document.querySelectorAll('#specGrid [data-spec]').forEach((b) => b.classList.remove('selected'));
                 btn.classList.add('selected');
-                saveProfileToStorage();
             });
         });
     }
@@ -506,8 +405,7 @@
         const yearNames = {
             'Year 1': lang === 'zh' ? '一年級' : 'Year 1',
             'Year 2': lang === 'zh' ? '二年級' : 'Year 2',
-            'Year 3': lang === 'zh' ? '三年級' : 'Year 3',
-            'Year 4': lang === 'zh' ? '四年級' : 'Year 4'
+            'Year 3': lang === 'zh' ? '三年級' : 'Year 3'
         };
         const transferNames = {
             'Associate Degree': lang === 'zh' ? '副學士' : 'Associate Degree',
@@ -570,17 +468,16 @@
     // ---------- Init ----------
     function init() {
         state.selectedCourses = loadSelectedCourses();
-        loadProfileFromStorage();
         populateMajorSelect();
         bindProfileButtons();
         bindGoalButtons();
         bindSpecializationButtons();
         bindFinish();
         bindLanguageChange();
-        applyProfileSelectionsToUI();
         goToStep(0);
     }
 
+    // Expose goToStep for inline onclick handlers in HTML.
     window.goToStep = goToStep;
 
     if (document.readyState === 'loading') {
