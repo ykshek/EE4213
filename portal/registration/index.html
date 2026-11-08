@@ -6,27 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>註冊導航器 | CityU EE Student Portal</title>
     <link rel="stylesheet" href="../assets/css/common.css">
-    <link rel="stylesheet" href="../assets/css/registration.css">
     <!-- Load page-specific CSS after common.css, and deferred JS after common.js. -->
     <script src="../assets/js/common.js" defer></script>
-    <script src="../assets/js/mock-data.js" defer></script>
-    <script src="../assets/js/registration.js" defer></script>
 </head>
 <body data-page="registration" data-lang="zh">
     <!-- Shared header, sidebar, footer and dialogs are mounted by common.js. -->
     <div class="layout">
         <main class="main" id="mainContent" tabindex="-1">
             <!-- PAGE OWNER: develop this page inside #pageContent. -->
-            <section id="pageContent" class="page-content registration-page" aria-labelledby="pageTitle" hidden inert>
-
-                <!-- Horizontal step indicator -->
-                <div class="step-indicator" aria-hidden="true">
-                    <div class="step-pip active" id="pip-0"><span class="pip-dot" id="pipdot-0">1</span><span class="pip-label lang-zh">歡迎</span><span class="pip-label lang-en">Welcome</span></div>
-                    <div class="step-pip" id="pip-1"><span class="pip-dot" id="pipdot-1">2</span><span class="pip-label lang-zh">背景</span><span class="pip-label lang-en">Profile</span></div>
-                    <div class="step-pip" id="pip-2"><span class="pip-dot" id="pipdot-2">3</span><span class="pip-label lang-zh">目標</span><span class="pip-label lang-en">Goals</span></div>
-                    <div class="step-pip" id="pip-3"><span class="pip-dot" id="pipdot-3">4</span><span class="pip-label lang-zh">興趣</span><span class="pip-label lang-en">Interests</span></div>
-                    <div class="step-pip" id="pip-4"><span class="pip-dot" id="pipdot-4">5</span><span class="pip-label lang-zh">檢查</span><span class="pip-label lang-en">Checklist</span></div>
-                    <div class="step-pip" id="pip-5"><span class="pip-dot" id="pipdot-5">6</span><span class="pip-label lang-zh">總結</span><span class="pip-label lang-en">Summary</span></div>
+            <section id="pageContent" class="page-content" aria-labelledby="pageTitle" hidden inert>
+                <div class="feature-header">
+                    <h2 id="pageTitle">
+                        <span class="lang-zh">🧭 註冊導航器</span>
+                        <span class="lang-en">🧭 Registration Navigator</span>
+                    </h2>
+                    <p>
+                        <span class="lang-zh">引導你完成選課與註冊流程。</span>
+                        <span class="lang-en">Guides you through the course registration process.</span>
+                    </p>
                 </div>
 
                 <!-- ============ STEP 0: WELCOME ============ -->
