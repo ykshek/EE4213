@@ -3,186 +3,32 @@
  */
 
 (function () {
-    // Default profile state fallback (if navbar/global state is omitted)
-    const defaultStudentProfile = {
-        major: "CDE",
-        degreeRoute: 120,
-        year: 2,
-        failedCourse: "EE1001"
-    };
-
-    // Common GE Courses
-    const commonGeCourses = [
-        { code: "GE1401", name: "University English", cu: 3, defaultSem: "GE", isGe: true, day: "Mon", slot: "09:00" },
-        { code: "GE2410", name: "English for Engineering", cu: 3, defaultSem: "GE", isGe: true, day: "Wed", slot: "09:00" },
-        { code: "GE1501", name: "Chinese Civilisation", cu: 3, defaultSem: "GE", isGe: true, day: "Fri", slot: "12:00" },
-        { code: "GE_AREA1", name: "GE Area 1 - Arts & Humanities", cu: 3, defaultSem: "GE", isGe: true, day: "Tue", slot: "15:00" },
-        { code: "GE_AREA2", name: "GE Area 2 - Study of Societies", cu: 3, defaultSem: "GE", isGe: true, day: "Thu", slot: "12:00" },
-        { code: "GE_AREA3", name: "GE Area 3 - Science & Technology", cu: 3, defaultSem: "GE", isGe: true, day: "Mon", slot: "15:00" },
-        { code: "GE_RANDOM", name: "GE Area (Distributional)", cu: 3, defaultSem: "GE", isGe: true, day: "Wed", slot: "15:00" }
-    ];
-
-    // Common Technical Electives
-    const commonTechElectives = [
-        { code: "TE_ELEC1", name: "Technical Elective 1", cu: 3, defaultSem: "4A", isTe: true, day: "Mon", slot: "18:00" },
-        { code: "TE_ELEC2", name: "Technical Elective 2", cu: 3, defaultSem: "4A", isTe: true, day: "Tue", slot: "18:00" },
-        { code: "TE_ELEC3", name: "Technical Elective 3", cu: 3, defaultSem: "4A", isTe: true, day: "Wed", slot: "18:00" },
-        { code: "TE_ELEC4", name: "Technical Elective 4", cu: 3, defaultSem: "4B", isTe: true, day: "Thu", slot: "18:00" },
-        { code: "TE_ELEC5", name: "Technical Elective 5", cu: 3, defaultSem: "4B", isTe: true, day: "Fri", slot: "18:00" }
-    ];
-
-    const semOrderMap = {
-        "GE": 0, "1A": 1, "1B": 2, "2A": 3, "2B": 4, "3A": 5, "3B": 6, "4A": 7, "4B": 8
-    };
-
-    const curriculumData = {
-        CDE: {
-            name: "Computer and Data Engineering",
-            courses: [
-                ...commonGeCourses,
-                { code: "MA1200", name: "Calculus I", cu: 3, defaultSem: "1A", day: "Mon", slot: "09:00" },
-                { code: "MA1201", name: "Calculus II", cu: 3, defaultSem: "1B", day: "Wed", slot: "09:00", prereq: "MA1200" },
-                { code: "GE1354", name: "Intro to Electronic Design", cu: 3, defaultSem: "1A", day: "Fri", slot: "09:00" },
-                { code: "CS1302", name: "Intro to Computer Programming", cu: 3, defaultSem: "1A", day: "Thu", slot: "09:00" },
-                { code: "EE1001", name: "Foundations of Digital Tech", cu: 3, defaultSem: "1A", day: "Mon", slot: "12:00" },
-                { code: "EE1002", name: "Principles of Electrical Eng", cu: 3, defaultSem: "1A", day: "Tue", slot: "12:00" },
-                { code: "EE1004", name: "Foundations of Info Systems", cu: 3, defaultSem: "1A", day: "Wed", slot: "12:00" },
-                { code: "PHY1101", name: "Intro Classical Mechanics", cu: 3, defaultSem: "1B", day: "Fri", slot: "12:00" },
-                { code: "MA2001", name: "Multi-variable Calculus", cu: 3, defaultSem: "2A", day: "Mon", slot: "09:00", prereq: "MA1201" },
-                { code: "EE3001", name: "Foundations of Data Eng", cu: 3, defaultSem: "2A", day: "Tue", slot: "09:00", prereq: "EE1004", blocks: "EE3211", downstream: "EE4146" },
-                { code: "CS2311", name: "Computer Programming", cu: 3, defaultSem: "2A", day: "Wed", slot: "09:00", prereq: "CS1302", blocks: "EE2331", downstream: "CS3103" },
-                { code: "EE2000", name: "Logic Circuit Design", cu: 3, defaultSem: "2A", day: "Mon", slot: "12:00", prereq: "EE1001", blocks: "EE2004", downstream: "EE3220" },
-                { code: "EE2005", name: "Electronic Devices & Circuits", cu: 3, defaultSem: "2A", day: "Thu", slot: "09:00", prereq: "EE1002" },
-                { code: "EE3211", name: "Modelling Techniques", cu: 3, defaultSem: "2B", day: "Fri", slot: "09:00", prereq: "EE3001" },
-                { code: "EE2331", name: "Data Structures & Algorithms", cu: 3, defaultSem: "2B", day: "Tue", slot: "12:00", prereq: "CS2311" },
-                { code: "EE2004", name: "Microcomputer Systems", cu: 3, defaultSem: "2B", day: "Thu", slot: "12:00", prereq: "EE2000" },
-                { code: "EE3009", name: "Data Comms & Networking", cu: 3, defaultSem: "2B", day: "Thu", slot: "09:00" },
-                { code: "EE3210", name: "Signals and Systems", cu: 3, defaultSem: "3A", day: "Tue", slot: "09:00", prereq: "MA2001" },
-                { code: "EE3206", name: "Java Programming & Apps", cu: 3, defaultSem: "3A", day: "Wed", slot: "12:00" },
-                { code: "CS3103", name: "Operating Systems", cu: 3, defaultSem: "3A", day: "Fri", slot: "12:00", prereq: "EE2004" },
-                { code: "EE3070", name: "Design Project", cu: 3, defaultSem: "3A", day: "Mon", slot: "09:00" },
-                { code: "EE3315", name: "Internet Technology", cu: 3, defaultSem: "3A", day: "Mon", slot: "12:00", prereq: "EE3009" },
-                { code: "EE4090", name: "Engineering Training", cu: 0, defaultSem: "3A", hasNoSlot: true },
-                { code: "EE4146", name: "Data Eng & Learning Systems", cu: 3, defaultSem: "3B", day: "Wed", slot: "09:00", prereq: "EE3211" },
-                { code: "CS3402", name: "Database Systems", cu: 3, defaultSem: "3B", day: "Tue", slot: "12:00" },
-                { code: "EE3220", name: "System-On-Chip Design", cu: 3, defaultSem: "3B", day: "Fri", slot: "09:00", prereq: "EE2004" },
-                { code: "EE4080 A", name: "Final Year Project (Part A)", cu: 3, defaultSem: "4A", hasNoSlot: true },
-                { code: "EE4080 B", name: "Final Year Project (Part B)", cu: 3, defaultSem: "4B", hasNoSlot: true, prereq: "EE4080 A" },
-                { code: "EE2066", name: "Engineers in Society", cu: 3, defaultSem: "4A", day: "Thu", slot: "15:00" },
-                ...commonTechElectives
-            ]
-        },
-        INFE: {
-            name: "Information Engineering",
-            courses: [
-                ...commonGeCourses,
-                { code: "MA1200", name: "Calculus I", cu: 3, defaultSem: "1A", day: "Mon", slot: "09:00" },
-                { code: "MA1201", name: "Calculus II", cu: 3, defaultSem: "1B", day: "Wed", slot: "09:00", prereq: "MA1200" },
-                { code: "PHY1101", name: "Intro Classical Mechanics", cu: 3, defaultSem: "1B", day: "Fri", slot: "12:00" },
-                { code: "EE1001", name: "Foundations Digital Tech", cu: 3, defaultSem: "1A", day: "Mon", slot: "12:00" },
-                { code: "CS1302", name: "Intro Computer Programming", cu: 3, defaultSem: "1A", day: "Thu", slot: "09:00" },
-                { code: "GE1354", name: "Intro Electronic Design", cu: 3, defaultSem: "1A", day: "Fri", slot: "09:00" },
-                { code: "EE1004", name: "Foundations Info Systems", cu: 3, defaultSem: "1A", day: "Wed", slot: "12:00" },
-                { code: "EE1002", name: "Principles Electrical Eng", cu: 3, defaultSem: "1A", day: "Tue", slot: "12:00" },
-                { code: "MA2001", name: "Multi-variable Calculus", cu: 3, defaultSem: "2A", day: "Mon", slot: "09:00", prereq: "MA1201" },
-                { code: "EE2302", name: "Foundations Info Eng & Crypto", cu: 3, defaultSem: "2A", day: "Tue", slot: "09:00", prereq: "EE1001", blocks: "EE3301", downstream: "EE3008" },
-                { code: "EE3331", name: "Probability Models INFE", cu: 3, defaultSem: "2B", day: "Wed", slot: "09:00" },
-                { code: "EE3009", name: "Data Comms & Networking", cu: 3, defaultSem: "2B", day: "Tue", slot: "09:00" },
-                { code: "CS2311", name: "Computer Programming", cu: 3, defaultSem: "2A", day: "Mon", slot: "12:00", prereq: "CS1302" },
-                { code: "EE2303", name: "Applied AI Systems INFE", cu: 3, defaultSem: "2B", day: "Fri", slot: "09:00" },
-                { code: "EE2000", name: "Logic Circuit Design", cu: 3, defaultSem: "2A", day: "Tue", slot: "12:00", prereq: "EE1001" },
-                { code: "EE2004", name: "Microcomputer Systems", cu: 3, defaultSem: "2B", day: "Thu", slot: "12:00", prereq: "EE2000" },
-                { code: "EE3210", name: "Signals and Systems", cu: 3, defaultSem: "3A", day: "Thu", slot: "09:00", prereq: "MA2001" },
-                { code: "EE3301", name: "Quantitative Methods INFE", cu: 3, defaultSem: "3A", day: "Wed", slot: "12:00", prereq: "EE2302" },
-                { code: "CS3402", name: "Database Systems", cu: 3, defaultSem: "3B", day: "Fri", slot: "12:00" },
-                { code: "EE2331", name: "Data Structures & Algo", cu: 3, defaultSem: "3A", day: "Mon", slot: "09:00", prereq: "CS2311" },
-                { code: "EE3070", name: "Design Project", cu: 3, defaultSem: "3A", day: "Thu", slot: "09:00" },
-                { code: "EE4090", name: "Engineering Training", cu: 0, defaultSem: "3A", hasNoSlot: true },
-                { code: "EE3008", name: "Principles of Comms", cu: 3, defaultSem: "3B", day: "Wed", slot: "09:00", prereq: "EE3301" },
-                { code: "EE3315", name: "Internet Technology", cu: 3, defaultSem: "3B", day: "Tue", slot: "12:00", prereq: "EE3009" },
-                { code: "EE3206", name: "Object-Oriented Prog", cu: 3, defaultSem: "3B", day: "Fri", slot: "09:00" },
-                { code: "CS3103", name: "Operating Systems", cu: 3, defaultSem: "3A", day: "Mon", slot: "12:00", prereq: "EE2004" },
-                { code: "EE4080 A", name: "Final Year Project (Part A)", cu: 3, defaultSem: "4A", hasNoSlot: true },
-                { code: "EE4080 B", name: "Final Year Project (Part B)", cu: 3, defaultSem: "4B", hasNoSlot: true, prereq: "EE4080 A" },
-                { code: "EE2066", name: "Engineers in Society", cu: 3, defaultSem: "4A", day: "Thu", slot: "15:00" },
-                ...commonTechElectives
-            ]
-        },
-        ELEL: {
-            name: "Electronic and Electrical Engineering",
-            courses: [
-                ...commonGeCourses,
-                { code: "MA1200", name: "Calculus I", cu: 3, defaultSem: "1A", day: "Mon", slot: "09:00" },
-                { code: "MA1201", name: "Calculus II", cu: 3, defaultSem: "1B", day: "Wed", slot: "09:00", prereq: "MA1200" },
-                { code: "EE1001", name: "Foundations Digital Tech", cu: 3, defaultSem: "1A", day: "Mon", slot: "12:00" },
-                { code: "EE1002", name: "Principles Electrical Eng", cu: 3, defaultSem: "1A", day: "Tue", slot: "12:00" },
-                { code: "EE1004", name: "Foundations Info Systems", cu: 3, defaultSem: "1A", day: "Wed", slot: "12:00" },
-                { code: "GE1354", name: "Intro Electronic Design", cu: 3, defaultSem: "1A", day: "Fri", slot: "09:00" },
-                { code: "PHY1101", name: "Intro Classical Mechanics", cu: 3, defaultSem: "1A", day: "Fri", slot: "12:00" },
-                { code: "CS1302", name: "Intro Computer Programming", cu: 3, defaultSem: "1A", day: "Thu", slot: "09:00" },
-                { code: "MA2001", name: "Multi-variable Calculus", cu: 3, defaultSem: "2A", day: "Mon", slot: "09:00", prereq: "MA1201" },
-                { code: "EE2108", name: "Computational Eng Analysis", cu: 3, defaultSem: "2A", day: "Tue", slot: "09:00" },
-                { code: "EE3121", name: "Diff Equations for EE", cu: 3, defaultSem: "2B", day: "Wed", slot: "09:00", prereq: "MA2001" },
-                { code: "EE3210", name: "Signals and Systems", cu: 3, defaultSem: "2B", day: "Tue", slot: "09:00", prereq: "EE1002" },
-                { code: "EE2104", name: "Intro Electromagnetics", cu: 3, defaultSem: "2B", day: "Fri", slot: "09:00", prereq: "MA1201", blocks: "EE3109", downstream: "EE3114" },
-                { code: "EE2005", name: "Electronic Devices & Circuits", cu: 3, defaultSem: "2A", day: "Mon", slot: "12:00", prereq: "EE1002" },
-                { code: "CS2311", name: "Computer Programming", cu: 3, defaultSem: "2B", day: "Tue", slot: "12:00", prereq: "CS1302" },
-                { code: "EE2000", name: "Logic Circuit Design", cu: 3, defaultSem: "2B", day: "Wed", slot: "12:00", prereq: "EE1001" },
-                { code: "EE3114", name: "Systems & Control", cu: 3, defaultSem: "3A", day: "Mon", slot: "09:00", prereq: "EE2104" },
-                { code: "EE3008", name: "Principles of Comms", cu: 3, defaultSem: "3A", day: "Tue", slot: "12:00" },
-                { code: "EE3123", name: "Intro Electric Power Systems", cu: 3, defaultSem: "3A", day: "Wed", slot: "12:00" },
-                { code: "EE2004", name: "Microcomputer Systems", cu: 3, defaultSem: "3A", day: "Thu", slot: "12:00", prereq: "EE2000" },
-                { code: "EE4090", name: "Engineering Training", cu: 0, defaultSem: "3A", hasNoSlot: true },
-                { code: "EE3109", name: "Applied Electromagnetics", cu: 3, defaultSem: "3B", day: "Fri", slot: "12:00", prereq: "EE2104" },
-                { code: "EE3124", name: "Electric Machines & Drives", cu: 3, defaultSem: "3B", day: "Mon", slot: "12:00", prereq: "EE3123" },
-                { code: "EE3115", name: "Applied Opto-Electronic", cu: 3, defaultSem: "3B", day: "Tue", slot: "09:00" },
-                { code: "EE3122", name: "Analogue Circuit Fund", cu: 3, defaultSem: "3B", day: "Wed", slot: "09:00", prereq: "EE2005" },
-                { code: "EE3070", name: "Design Project", cu: 3, defaultSem: "3B", day: "Thu", slot: "09:00" },
-                { code: "EE4080 A", name: "Final Year Project (Part A)", cu: 3, defaultSem: "4A", hasNoSlot: true },
-                { code: "EE4080 B", name: "Final Year Project (Part B)", cu: 3, defaultSem: "4B", hasNoSlot: true, prereq: "EE4080 A" },
-                { code: "EE2066", name: "Engineers in Society", cu: 3, defaultSem: "4A", day: "Thu", slot: "15:00" },
-                ...commonTechElectives
-            ]
-        },
-        MEE: {
-            name: "Microelectronic Engineering",
-            courses: [
-                ...commonGeCourses,
-                { code: "MA1200", name: "Calculus I", cu: 3, defaultSem: "1A", day: "Mon", slot: "09:00" },
-                { code: "MA1201", name: "Calculus II", cu: 3, defaultSem: "1B", day: "Wed", slot: "09:00", prereq: "MA1200" },
-                { code: "EE1001", name: "Foundations Digital Tech", cu: 3, defaultSem: "1A", day: "Mon", slot: "12:00" },
-                { code: "EE1002", name: "Principles Electrical Eng", cu: 3, defaultSem: "1A", day: "Tue", slot: "12:00" },
-                { code: "EE1004", name: "Foundations Info Systems", cu: 3, defaultSem: "1A", day: "Wed", slot: "12:00" },
-                { code: "GE1354", name: "Intro Electronic Design", cu: 3, defaultSem: "1A", day: "Fri", slot: "09:00" },
-                { code: "PHY1101", name: "Intro Classical Mechanics", cu: 3, defaultSem: "1A", day: "Fri", slot: "12:00" },
-                { code: "CS1302", name: "Intro Computer Programming", cu: 3, defaultSem: "1A", day: "Thu", slot: "09:00" },
-                { code: "MA2001", name: "Multi-variable Calculus", cu: 3, defaultSem: "2A", day: "Mon", slot: "09:00", prereq: "MA1201" },
-                { code: "EE2000", name: "Logic Circuit Design", cu: 3, defaultSem: "2A", day: "Tue", slot: "09:00", prereq: "EE1001" },
-                { code: "EE2005", name: "Electronic Devices & Circuits", cu: 3, defaultSem: "2A", day: "Wed", slot: "09:00", prereq: "EE1002" },
-                { code: "CS2311", name: "Computer Programming", cu: 3, defaultSem: "2B", day: "Thu", slot: "09:00", prereq: "CS1302" },
-                { code: "EE2800", name: "Semiconductor Physics", cu: 3, defaultSem: "2B", day: "Fri", slot: "09:00", prereq: "PHY1101", blocks: "EE3800", downstream: "EE3801" },
-                { code: "EE3121", name: "Diff Equations for EE", cu: 3, defaultSem: "2B", day: "Mon", slot: "12:00", prereq: "MA2001" },
-                { code: "EE3210", name: "Signals and Systems", cu: 3, defaultSem: "2B", day: "Tue", slot: "12:00" },
-                { code: "EE2104", name: "Intro Electromagnetics", cu: 3, defaultSem: "2B", day: "Wed", slot: "12:00", prereq: "MA1201" },
-                { code: "EE3800", name: "Semiconductor Materials", cu: 3, defaultSem: "3A", day: "Mon", slot: "09:00", prereq: "EE2800" },
-                { code: "EE3008", name: "Principles of Comms", cu: 3, defaultSem: "3A", day: "Tue", slot: "09:00" },
-                { code: "EE3801", name: "Microsystems & Nanotech", cu: 3, defaultSem: "3A", day: "Wed", slot: "09:00", prereq: "EE3800" },
-                { code: "EE2004", name: "Microcomputer Systems", cu: 3, defaultSem: "3A", day: "Thu", slot: "09:00", prereq: "EE2000" },
-                { code: "EE4090", name: "Engineering Training", cu: 0, defaultSem: "3A", hasNoSlot: true },
-                { code: "EE3115", name: "Applied Opto-Electronic", cu: 3, defaultSem: "3B", day: "Fri", slot: "12:00" },
-                { code: "EE3122", name: "Analogue Circuit Fund", cu: 3, defaultSem: "3B", day: "Mon", slot: "12:00", prereq: "EE2005" },
-                { code: "EE3220", name: "System-on-Chip Design", cu: 3, defaultSem: "3B", day: "Tue", slot: "12:00", prereq: "EE2004" },
-                { code: "EE3070", name: "Design Project", cu: 3, defaultSem: "3B", day: "Wed", slot: "12:00" },
-                { code: "EE4080 A", name: "Final Year Project (Part A)", cu: 3, defaultSem: "4A", hasNoSlot: true },
-                { code: "EE4080 B", name: "Final Year Project (Part B)", cu: 3, defaultSem: "4B", hasNoSlot: true, prereq: "EE4080 A" },
-                { code: "EE2066", name: "Engineers in Society", cu: 3, defaultSem: "4A", day: "Thu", slot: "15:00" },
-                ...commonTechElectives
-            ]
+    const defaultFailedCourse = 'EE1001';
+    const semesters = ['GE', '1A', '1B', '2A', '2B', '3A', '3B', '4A', '4B'];
+    const curriculumData = Object.fromEntries(window.EE4213Data.majors.map(major => [
+        major.majorId,
+        {
+            name: major.name.en,
+            courses: major.curriculum.map(course => ({
+                code: course.courseId,
+                name: course.curriculumTitle,
+                cu: course.creditUnits,
+                defaultSem: course.semester,
+                day: course.day,
+                slot: course.timeSlot,
+                prereq: course.prerequisiteCourseIds?.[0],
+                blocks: course.blocksCourseId,
+                downstream: course.downstreamCourseId,
+                hasNoSlot: course.hasNoTimetableSlot,
+                isGe: course.isGeneralEducation,
+                isTe: course.isTechnicalElective
+            }))
         }
-    };
+    ]));
 
-    let completedCourses = new Set();
-    let plannedTerms = { 1: [], 2: [], 3: [] };
+    const completedCourses = new Set();
+    const plannedTerms = { 1: [], 2: [], 3: [] };
+    let activeMajor;
     let courseSemMap = {};
 
     const timeSlots = [
@@ -194,23 +40,20 @@
 
     const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 
-    // Helper functions to get global student profile values (or fallback if not rendered)
     function getSelectedMajor() {
-        return document.getElementById('majorSelect')?.value || window.globalStudentProfile?.major || defaultStudentProfile.major;
+        return document.getElementById('majorSelect').value;
     }
 
     function getSelectedDegreeRoute() {
-        const el = document.getElementById('degreeRouteSelect');
-        return el ? parseInt(el.value, 10) : (window.globalStudentProfile?.degreeRoute || defaultStudentProfile.degreeRoute);
+        return Number(document.getElementById('degreeRouteSelect').value);
     }
 
     function getSelectedYear() {
-        const el = document.getElementById('yearSelect');
-        return el ? parseInt(el.value, 10) : (window.globalStudentProfile?.year || defaultStudentProfile.year);
+        return Number(document.getElementById('yearSelect').value);
     }
 
     function getSelectedFailedCourse() {
-        return document.getElementById('failedCourseSelect')?.value || window.globalStudentProfile?.failedCourse || defaultStudentProfile.failedCourse;
+        return document.getElementById('failedCourseSelect').value;
     }
 
     function getActiveCurriculumData() {
@@ -224,46 +67,49 @@
         major.courses.forEach(c => {
             courseSemMap[c.code] = c.defaultSem;
         });
+        document.getElementById('flowchartCourse').replaceChildren(...major.courses.map(c =>
+            new Option(`${c.code} - ${c.name}`, c.code)));
+        document.getElementById('flowchartMoveStatus').textContent = '';
     }
 
     window.handleGlobalChange = function () {
         const majorKey = getSelectedMajor();
-        const major = getActiveCurriculumData()[majorKey] || getActiveCurriculumData()["CDE"];
+        const major = curriculumData[majorKey];
+        const initializing = activeMajor === undefined;
 
-        initCourseSemMap();
-
-        const failedSelect = document.getElementById('failedCourseSelect');
-        if (failedSelect) {
+        if (activeMajor !== majorKey) {
+            activeMajor = majorKey;
+            initCourseSemMap();
+            const failedSelect = document.getElementById('failedCourseSelect');
             const currentFailed = failedSelect.value;
-            failedSelect.innerHTML = '';
             const failCandidates = major.courses.filter(c => !c.isGe);
-            failCandidates.forEach(c => {
-                failedSelect.innerHTML += `<option value="${c.code}">${c.code} - ${c.name} (${c.cu} CU)</option>`;
-            });
-
-            if (currentFailed && failCandidates.some(c => c.code === currentFailed)) {
-                failedSelect.value = currentFailed;
-            }
+            failedSelect.replaceChildren(...failCandidates.map(c =>
+                new Option(`${c.code} - ${c.name} (${c.cu} CU)`, c.code)));
+            failedSelect.value = failCandidates.some(c => c.code === currentFailed) ? currentFailed : defaultFailedCourse;
         }
 
+        if (initializing) {
+            resetChecklistToDefault();
+            return;
+        }
+        completedCourses.delete(getSelectedFailedCourse());
         renderChecklist();
         renderFlowchart();
         renderRoadmapAndAudit();
-        renderTimetable();
-        renderOverrideTab();
     };
 
     window.switchTab = function (tabId, btn) {
         document.querySelectorAll('#pageContent[data-page="degree-audit"] .tab-content').forEach(tc => tc.classList.remove('active'));
-        document.querySelectorAll('#pageContent[data-page="degree-audit"] .tab-btn').forEach(tb => tb.classList.remove('active'));
+        document.querySelectorAll('#pageContent[data-page="degree-audit"] .tab-btn').forEach(tab => {
+            tab.classList.toggle('active', tab === btn);
+            tab.setAttribute('aria-pressed', String(tab === btn));
+        });
         document.getElementById(tabId).classList.add('active');
-        btn.classList.add('active');
     };
 
     function renderChecklist() {
         const majorKey = getSelectedMajor();
         const failedCode = getSelectedFailedCourse();
-        const year = getSelectedYear();
         const major = getActiveCurriculumData()[majorKey] || getActiveCurriculumData()["CDE"];
 
         const container = document.getElementById('completedChecklistContainer');
@@ -271,30 +117,17 @@
         container.innerHTML = '';
 
         major.courses.forEach(c => {
-            let defaultChecked = false;
-            if (c.isGe && year >= 2) defaultChecked = true;
-            else if (!c.isGe && !c.isTe) {
-                const semLevel = parseInt(c.defaultSem.charAt(0)) || 1;
-                if (semLevel < year) defaultChecked = true;
-            }
-
-            if (c.code === failedCode) defaultChecked = false;
-
-            const isChecked = completedCourses.has(c.code) || (completedCourses.size === 0 && defaultChecked);
-            if (isChecked) completedCourses.add(c.code);
-
             container.innerHTML += `
                 <div class="course-check-item ${c.isGe ? 'ge-item' : ''}">
-                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
-                        <input type="checkbox" value="${c.code}" ${completedCourses.has(c.code) ? 'checked' : ''} onchange="degreeAuditToggleCourse('${c.code}', this.checked)">
-                        <span><strong>${c.code}</strong> ${c.name} ${c.isGe ? '(GE Requirement)' : '[' + c.defaultSem + ']'}</span>
+                    <label>
+                        <input type="checkbox" value="${c.code}" ${completedCourses.has(c.code) ? 'checked' : ''} ${c.code === failedCode ? 'disabled' : ''} onchange="degreeAuditToggleCourse('${c.code}', this.checked)">
+                        <span><strong>${c.code}</strong> ${c.name} ${c.isGe ? '(GE)' : '[' + c.defaultSem + ']'}</span>
                     </label>
-                    <span style="font-weight:bold; color:var(--text-muted);">${c.cu} CU</span>
+                    <span>${c.cu} CU</span>
                 </div>
             `;
         });
 
-        updatePlannerDropdowns();
     }
 
     window.degreeAuditToggleCourse = function (code, isChecked) {
@@ -312,6 +145,15 @@
 
     window.resetChecklistToDefault = function () {
         completedCourses.clear();
+        const year = getSelectedYear();
+        const failedCode = getSelectedFailedCourse();
+        for (const course of curriculumData[getSelectedMajor()].courses) {
+            const takenInEarlierYear = course.isGe ? year >= 2 : Number(course.defaultSem[0]) < year;
+            if (course.code !== failedCode && !course.isTe && takenInEarlierYear) completedCourses.add(course.code);
+        }
+        for (const term in plannedTerms) {
+            plannedTerms[term] = plannedTerms[term].filter(code => !completedCourses.has(code));
+        }
         renderChecklist();
         renderFlowchart();
         renderRoadmapAndAudit();
@@ -324,16 +166,14 @@
 
         const titleEl = document.getElementById('flowchartTitle');
         if (titleEl) {
-            titleEl.innerText = `Curriculum Structure Flowchart — ${major.name} (${majorKey})`;
+            titleEl.innerHTML = `<span class="lang-zh">課程結構流程圖</span><span class="lang-en">Curriculum flowchart</span> — ${major.name} (${majorKey})`;
         }
 
         const container = document.getElementById('flowchartGridContainer');
         if (!container) return;
         container.innerHTML = '';
 
-        const semGroups = ["GE", "1A", "1B", "2A", "2B", "3A", "3B", "4A", "4B"];
-
-        semGroups.forEach(semLabel => {
+        semesters.forEach(semLabel => {
             const semCourses = major.courses.filter(c => courseSemMap[c.code] === semLabel);
 
             let semCuTotal = 0;
@@ -345,11 +185,11 @@
                     const isPrereqCompleted = completedCourses.has(c.prereq);
                     if (!isPrereqCompleted) {
                         const prereqSem = courseSemMap[c.prereq];
-                        const currentSemIdx = semOrderMap[semLabel];
-                        const prereqSemIdx = semOrderMap[prereqSem];
+                        const currentSemIdx = semesters.indexOf(semLabel);
+                        const prereqSemIdx = semesters.indexOf(prereqSem);
 
                         if (prereqSemIdx >= currentSemIdx) {
-                            prereqViolations.push(`${c.code} requires ${c.prereq} in an earlier semester`);
+                            prereqViolations.push(`<span class="lang-zh">${c.code} 須先修讀 ${c.prereq}</span><span class="lang-en">${c.code} requires ${c.prereq} in an earlier semester</span>`);
                         }
                     }
                 }
@@ -360,7 +200,7 @@
             let rowHtml = `
                 <div class="sem-row ${isWarningRow ? 'sem-warning-border' : ''}">
                     <div class="sem-label-container">
-                        <div class="sem-label">${semLabel === "GE" ? "GE Courses" : "Sem " + semLabel}</div>
+                        <div class="sem-label">${semLabel === "GE" ? '<span class="lang-zh">通識科目</span><span class="lang-en">GE Courses</span>' : semLabel}</div>
                         <div class="sem-cu-counter">${semCuTotal} CU</div>
                     </div>
 
@@ -373,7 +213,7 @@
             if (isWarningRow) {
                 rowHtml += `
                     <div class="prereq-warning-banner">
-                        ⚠ Prerequisite Violation: ${prereqViolations.join('; ')}
+                        <span>⚠ ${prereqViolations.join(' · ')}</span>
                     </div>
                 `;
             }
@@ -425,11 +265,18 @@
         ev.currentTarget.classList.remove('drag-over');
         const code = ev.dataTransfer.getData("text/plain");
 
-        if (code && courseSemMap[code]) {
+        moveCourse(code, targetSem);
+    };
+
+    function moveCourse(code, targetSem) {
+        if (Object.hasOwn(courseSemMap, code)) {
             courseSemMap[code] = targetSem;
             renderFlowchart();
+            document.getElementById('flowchartMoveStatus').innerHTML = `
+                <span class="lang-zh">${code} 已移至 ${targetSem}。</span>
+                <span class="lang-en">${code} moved to ${targetSem}.</span>`;
         }
-    };
+    }
 
     window.resetFlowchartLayout = function () {
         initCourseSemMap();
@@ -471,13 +318,13 @@
     window.removeCourseFromTerm = function (termId, code) {
         plannedTerms[termId] = plannedTerms[termId].filter(c => c !== code);
         renderRoadmapAndAudit();
+        document.getElementById(`term${termId}Select`).focus();
     };
 
     function renderRoadmapAndAudit() {
         const majorKey = getSelectedMajor();
         const major = getActiveCurriculumData()[majorKey] || getActiveCurriculumData()["CDE"];
         const targetReq = getSelectedDegreeRoute();
-        const currentYear = getSelectedYear();
 
         let completedCU = 0;
         major.courses.forEach(c => {
@@ -511,10 +358,10 @@
                 bannerContainer.innerHTML = `
                     <div class="alert alert-danger">
                         <div>
-                            <strong>⚠ WARNING: Graduation Deferral Risk Detected! / 警告：存在延畢風險！</strong>
+                            <strong><span class="lang-zh">尚欠 ${gap} 學分</span><span class="lang-en">${gap} credits remaining</span></strong>
                             <p style="font-size:0.85rem; margin-top:3px;">
-                                You currently have a deficit of <strong>${gap} Credit Units</strong> to satisfy the ${targetReq} CU requirement. 
-                                ${currentYear >= 3 ? "As a Year " + currentYear + " student, failing to plan these remaining credits into upcoming terms will force a semester deferral." : "Add remaining required courses to your upcoming terms below."}
+                                <span class="lang-zh">距離 ${targetReq} 學分的模擬要求尚有差額。請在下方規劃餘下科目。</span>
+                                <span class="lang-en">Add remaining courses below to work toward the sample ${targetReq}-credit requirement.</span>
                             </p>
                         </div>
                     </div>
@@ -523,9 +370,10 @@
                 bannerContainer.innerHTML = `
                     <div class="alert alert-success">
                         <div>
-                            <strong>✓ Recovery Plan Verified: On-Time Graduation Track / 復修計劃驗證成功：按時畢業進度</strong>
+                            <strong><span class="lang-zh">已達模擬學分目標</span><span class="lang-en">Sample credit target met</span></strong>
                             <p style="font-size:0.85rem; margin-top:3px;">
-                                Total completed and planned credits (${totalProjected} CU) meet the ${targetReq} CU graduation threshold!
+                                <span class="lang-zh">已完成及已規劃合共 ${totalProjected} 學分，達到 ${targetReq} 學分目標。</span>
+                                <span class="lang-en">Completed and planned credits total ${totalProjected} CU against a target of ${targetReq} CU.</span>
                             </p>
                         </div>
                     </div>
@@ -548,12 +396,15 @@
                     listEl.innerHTML += `
                         <span class="planned-tag">
                             ${cObj.code} (${cObj.cu} CU)
-                            <span class="remove-btn" onclick="removeCourseFromTerm(${t}, '${cObj.code}')">×</span>
+                            <button type="button" class="remove-btn" onclick="removeCourseFromTerm(${t}, '${cObj.code}')">
+                                <span aria-hidden="true">×</span>
+                                <span class="audit-sr-only"><span class="lang-zh">移除 ${cObj.code}</span><span class="lang-en">Remove ${cObj.code}</span></span>
+                            </button>
                         </span>
                     `;
                 }
             });
-            cuEl.innerText = `${termCu} CU Planned`;
+            cuEl.textContent = `${termCu} CU`;
         }
 
         updatePlannerDropdowns();
@@ -577,13 +428,15 @@
         }
 
         if (targetCourses.length === 0) {
-            container.innerHTML = `<p style="font-size:0.8rem; color:var(--text-muted);">No courses selected in Step 2 Planner yet.</p>`;
+            container.innerHTML = `<p><span class="lang-zh">沒有可加入課表的其他科目。</span><span class="lang-en">There are no other courses to show.</span></p>`;
             renderTimetable();
             return;
         }
 
         targetCourses.forEach((c) => {
-            let slotLabel = c.hasNoSlot ? "[No Fixed Timeslot / FYP]" : `(${c.day} ${c.slot} - 2h50m)`;
+            const slotLabel = c.hasNoSlot
+                ? '<span class="lang-zh">無固定時段</span><span class="lang-en">No fixed time</span>'
+                : `(${c.day} ${timeSlots.find(slot => slot.key === c.slot).time})`;
 
             container.innerHTML += `
                 <label style="display:flex; align-items:center; gap:8px; font-size:0.85rem;">
@@ -605,6 +458,7 @@
         const major = getActiveCurriculumData()[majorKey] || getActiveCurriculumData()["CDE"];
 
         let retakeSlot = (section === "L01") ? { day: "Tue", timeKey: "09:00" } : { day: "Thu", timeKey: "15:00" };
+        const retakeTime = timeSlots.find(slot => slot.key === retakeSlot.timeKey).time;
 
         const selectedCodes = Array.from(document.querySelectorAll('#visualizerCheckboxes input:checked')).map(cb => cb.value);
         const activeCourses = major.courses.filter(c => selectedCodes.includes(c.code));
@@ -625,18 +479,18 @@
                 alertContainer.innerHTML = `
                     <div class="alert alert-danger">
                         <div>
-                            <strong>⚠ Timetable Clash Detected! / 檢測到上課時間衝突！</strong>
-                            <p style="font-size:0.85rem;">Retake course <strong>${failedCode} (${section})</strong> clashes directly with core course <strong>${clashingCode}</strong> on ${retakeSlot.day} 09:00 - 11:50.</p>
+                            <strong><span class="lang-zh">⚠ 重修時段有衝突</span><span class="lang-en">⚠ Retake section clash</span></strong>
+                            <p><span class="lang-zh">${failedCode}（${section}）與 ${clashingCode} 在 ${retakeTime} 重疊。</span><span class="lang-en">${failedCode} (${section}) overlaps with ${clashingCode} at ${retakeTime}.</span></p>
                         </div>
-                        <button class="btn-action" onclick="document.getElementById('sectionSelect').value='L02'; renderTimetable();">⚡ Auto-Resolve Clash</button>
+                        ${section === "L01" ? `<button type="button" class="btn-action" onclick="document.getElementById('sectionSelect').value='L02'; document.getElementById('sectionSelect').focus(); renderTimetable();"><span class="lang-zh">試用 L02 時段</span><span class="lang-en">Try section L02</span></button>` : ''}
                     </div>
                 `;
             } else {
                 alertContainer.innerHTML = `
                     <div class="alert alert-success">
                         <div>
-                            <strong>✓ Conflict-Free Schedule Confirmed / 時間表無衝突確認</strong>
-                            <p style="font-size:0.85rem;">Retake slot (${retakeSlot.day} ${retakeSlot.timeKey === "09:00" ? "09:00 - 11:50" : "15:00 - 17:50"}) fits perfectly without overlapping required major courses.</p>
+                            <strong><span class="lang-zh">✓ 重修時段無衝突</span><span class="lang-en">✓ No retake section clash</span></strong>
+                            <p><span class="lang-zh">${section} 與目前勾選的科目沒有重疊。</span><span class="lang-en">${section} does not overlap with the selected courses.</span></p>
                         </div>
                     </div>
                 `;
@@ -648,33 +502,38 @@
         tbody.innerHTML = '';
 
         timeSlots.forEach(ts => {
-            let row = `<tr><td><strong>${ts.time}</strong></td>`;
+            let row = `<tr><th scope="row">${ts.time}</th>`;
             days.forEach(d => {
                 let content = "";
                 let cellClass = "";
 
                 if (d === retakeSlot.day && ts.key === retakeSlot.timeKey) {
-                    content += `<div>[RETAKE] ${failedCode}</div>`;
+                    content += `<div><span class="lang-zh">重修</span><span class="lang-en">Retake</span> ${failedCode}</div>`;
                     cellClass = "slot-active";
                 }
 
                 activeCourses.forEach(c => {
                     if (!c.hasNoSlot && c.day === d && c.slot === ts.key) {
                         if (content !== "") {
-                            content += `<div>[CORE] ${c.code}</div>`;
+                            content += `<div>${c.code}</div>`;
                             cellClass = "slot-clash";
                         } else {
-                            content = `<div>[CORE] ${c.code}</div>`;
+                            content = `<div>${c.code}</div>`;
                             cellClass = "slot-active";
                         }
                     }
                 });
 
-                row += `<td class="${cellClass}">${content}</td>`;
+                const clashLabel = cellClass === 'slot-clash'
+                    ? '<div><span class="lang-zh">時段衝突</span><span class="lang-en">Time clash</span></div>'
+                    : '';
+                row += `<td class="${cellClass}">${clashLabel}${content}</td>`;
             });
             row += `</tr>`;
             tbody.innerHTML += row;
         });
+        document.getElementById('chkNoClash').checked = !isClash;
+        renderOverrideTab();
     };
 
     window.renderOverrideTab = function () {
@@ -686,30 +545,26 @@
         const chainContainer = document.getElementById('prereqChainContainer');
         if (chainContainer) {
             chainContainer.innerHTML = `
-                <div class="chain-node failed">${failedObj.code} (Failed)</div>
-                <div>➔ [Prerequisite Lock] ➔</div>
-                <div class="chain-node">${failedObj.blocks || "Downstream Core"} (Blocked)</div>
-                <div>➔</div>
-                <div class="chain-node">${failedObj.downstream || "Elective Path"}</div>
+                <div class="chain-node failed">${failedObj.code} <span class="lang-zh">需重修</span><span class="lang-en">Retake</span></div>
+                ${failedObj.blocks ? `<span aria-hidden="true">➔</span><div class="chain-node">${failedObj.blocks} <span class="lang-zh">先修要求未滿足</span><span class="lang-en">Prerequisite unmet</span></div>` : ''}
+                ${failedObj.downstream ? `<span aria-hidden="true">➔</span><div class="chain-node">${failedObj.downstream}</div>` : ''}
             `;
         }
 
-        const chkGpa = document.getElementById('chkGpa');
-        const gpaOk = chkGpa ? chkGpa.checked : true;
+        const gpaOk = document.getElementById('chkGpa').checked;
+        const noClash = document.getElementById('chkNoClash').checked;
         const banner = document.getElementById('overrideEligibilityBanner');
         if (banner) {
-            if (gpaOk) {
+            if (gpaOk && noClash) {
                 banner.innerHTML = `
                     <div class="alert alert-success" style="margin-top:10px;">
-                        <strong>✓ ELIGIBLE FOR CONCURRENT OVERRIDE WAIVER / 符合同步修讀豁免資格</strong><br>
-                        <span style="font-size:0.85rem">You satisfy EE department criteria to request concurrent waiver for <strong>${failedObj.blocks || 'blocked core course'}</strong>.</span>
+                        <strong><span class="lang-zh">✓ 符合示範豁免條件</span><span class="lang-en">✓ Sample waiver checks passed</span></strong>
                     </div>
                 `;
             } else {
                 banner.innerHTML = `
                     <div class="alert alert-danger" style="margin-top:10px;">
-                        <strong>⚠ OVERRIDE INELIGIBLE / 不符合豁免條件</strong><br>
-                        <span style="font-size:0.85rem">A minimum GPA of 1.70 is required to apply for prerequisite overrides.</span>
+                        <strong><span class="lang-zh">⚠ 尚未符合示範豁免條件</span><span class="lang-en">⚠ Sample waiver checks incomplete</span></strong>
                     </div>
                 `;
             }
@@ -719,19 +574,24 @@
     window.downloadForm = function () {
         const majorKey = getSelectedMajor();
         const failedCode = getSelectedFailedCourse();
-        alert(`CITY UNIVERSITY OF HONG KONG\nDepartment of Electrical Engineering\n\nPrerequisite Override Request Form\n------------------------------------\nMajor: ${majorKey}\nFailed Prerequisite: ${failedCode}\nStatus: Verified via Recovery Simulator v6\n\n[Pre-filled application exported successfully]`);
+        alert(document.body.dataset.lang === 'en'
+            ? `Sample waiver application\nMajor: ${majorKey}\nCourse to retake: ${failedCode}`
+            : `示範豁免申請\n主修：${majorKey}\n需重修科目：${failedCode}`);
     };
 
-    // Auto-init on page mount inside portal
-    document.addEventListener("DOMContentLoaded", function () {
-        if (document.getElementById('pageContent')?.getAttribute('data-page') === 'degree-audit') {
-            handleGlobalChange();
-        }
-    });
-
-    if (document.readyState === "interactive" || document.readyState === "complete") {
-        if (document.getElementById('pageContent')?.getAttribute('data-page') === 'degree-audit') {
-            handleGlobalChange();
-        }
+    function translateOptions() {
+        const language = document.body.dataset.lang === 'en' ? 'en' : 'zh';
+        document.querySelectorAll('#pageContent option[data-en][data-zh]').forEach(option => {
+            option.textContent = option.dataset[language];
+        });
     }
+
+    document.addEventListener('portal:languagechange', translateOptions);
+    document.getElementById('flowchartSemester').replaceChildren(...semesters.map(semester => new Option(semester)));
+    document.getElementById('flowchartMoveForm').addEventListener('submit', event => {
+        event.preventDefault();
+        moveCourse(document.getElementById('flowchartCourse').value, document.getElementById('flowchartSemester').value);
+    });
+    translateOptions();
+    handleGlobalChange();
 })();

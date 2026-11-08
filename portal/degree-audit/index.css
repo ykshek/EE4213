@@ -7,7 +7,7 @@
     --text-dark: #2c3e50;
     --text-muted: #64748b;
     --border-color: #cbd5e1;
-    --danger-red: #e74c3c;
+    --danger-red: #b91c1c;
     --danger-bg: #fdf2f2;
     --warning-orange: #f39c12;
     --warning-bg: #fef9e7;
@@ -24,12 +24,14 @@
     padding: 20px;
     border-radius: 10px 10px 0 0;
     display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-#pageContent[data-page="degree-audit"] .audit-header h1 {
+#pageContent[data-page="degree-audit"] .audit-header h2 {
     font-size: 1.35rem;
     font-weight: 700;
     margin-bottom: 4px;
@@ -42,6 +44,7 @@
 
 #pageContent[data-page="degree-audit"] .header-badges {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
     align-items: center;
 }
@@ -64,18 +67,53 @@
     font-size: 0.75rem;
 }
 
-#pageContent[data-page="degree-audit"] select, 
-#pageContent[data-page="degree-audit"] input[type="text"] {
+#pageContent[data-page="degree-audit"] .control-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+    gap: 16px;
+    padding: 16px;
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#pageContent[data-page="degree-audit"] .control-panel .form-group {
+    min-width: 0;
+    margin: 0;
+}
+
+#pageContent[data-page="degree-audit"] .control-panel small {
+    display: block;
+    margin-top: 4px;
+    color: var(--text-muted);
+}
+
+#pageContent[data-page="degree-audit"] select {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
     padding: 9px;
     border: 1px solid var(--border-color);
     border-radius: 6px;
     font-size: 0.9rem;
     background-color: #fff;
-    outline: none;
 }
 
-#pageContent[data-page="degree-audit"] select:focus {
-    border-color: var(--cityu-maroon);
+#pageContent[data-page="degree-audit"] :is(select, input, .timetable-scroll):focus-visible {
+    outline: 2px solid var(--cityu-maroon);
+    outline-offset: 2px;
+}
+
+#pageContent[data-page="degree-audit"] button {
+    min-height: 44px;
+}
+
+#pageContent[data-page="degree-audit"] .audit-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
 
 /* Tabs */
@@ -112,7 +150,7 @@
 #pageContent[data-page="degree-audit"] .tab-content {
     display: none;
     background: var(--card-bg);
-    padding: 25px;
+    padding: clamp(12px, 2.5vw, 25px);
     border-radius: 0 0 10px 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     min-height: 500px;
@@ -125,7 +163,7 @@
 /* Metrics */
 #pageContent[data-page="degree-audit"] .metrics-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
     gap: 15px;
     margin-bottom: 20px;
 }
@@ -158,6 +196,8 @@
     border-radius: 8px;
     margin-bottom: 20px;
     display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
     justify-content: space-between;
     align-items: center;
 }
@@ -171,7 +211,7 @@
 #pageContent[data-page="degree-audit"] .alert-success {
     background-color: var(--success-bg);
     border: 1px solid var(--success-green);
-    color: #1e8449;
+    color: #166534;
 }
 
 #pageContent[data-page="degree-audit"] .btn-action {
@@ -207,16 +247,39 @@
 
 /* Audit Layout */
 #pageContent[data-page="degree-audit"] .audit-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 25px;
     margin-bottom: 30px;
 }
 
-@media (max-width: 868px) {
-    #pageContent[data-page="degree-audit"] .audit-layout {
-        grid-template-columns: 1fr;
-    }
+#pageContent[data-page="degree-audit"] .audit-layout > div {
+    flex: 1 1 20rem;
+    min-width: 0;
+}
+
+#pageContent[data-page="degree-audit"] :is(.checklist-heading, .flowchart-header) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+#pageContent[data-page="degree-audit"] :is(.course-check-item, #visualizerCheckboxes, .waiver-checklist) label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    cursor: pointer;
+}
+
+#pageContent[data-page="degree-audit"] .course-check-item > span {
+    white-space: nowrap;
+    margin-left: 8px;
+    font-weight: bold;
+    color: var(--text-muted);
 }
 
 #pageContent[data-page="degree-audit"] .checklist-container {
@@ -232,7 +295,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 12px;
+    padding: 0 8px;
     border-bottom: 1px solid #e2e8f0;
     background: #fff;
     margin-bottom: 5px;
@@ -249,13 +312,6 @@
     border-top: 2px dashed var(--border-color);
     padding-top: 25px;
     margin-top: 25px;
-}
-
-#pageContent[data-page="degree-audit"] .flowchart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
 }
 
 #pageContent[data-page="degree-audit"] .flowchart-header h3 {
@@ -307,8 +363,32 @@
     padding-bottom: 10px;
 }
 
+#pageContent[data-page="degree-audit"] .flowchart-move {
+    margin-bottom: 12px;
+}
+
+#pageContent[data-page="degree-audit"] .flowchart-move summary {
+    min-height: 44px;
+    padding: 10px 0;
+    color: var(--cityu-maroon);
+    cursor: pointer;
+}
+
+#pageContent[data-page="degree-audit"] .flowchart-move-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 8px;
+}
+
+#pageContent[data-page="degree-audit"] .flowchart-move-controls label {
+    flex: 1 1 11rem;
+    min-width: 0;
+}
+
 #pageContent[data-page="degree-audit"] .sem-row {
     display: flex;
+    flex-wrap: wrap;
     align-items: stretch;
     gap: 12px;
     background: #f8fafc;
@@ -355,7 +435,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    flex: 1;
+    flex: 1 1 14rem;
+    min-width: 0;
     min-height: 55px;
     align-items: center;
     padding: 4px;
@@ -418,33 +499,45 @@
     background-color: #fee2e2 !important;
     color: #991b1b !important;
     font-weight: bold;
-    animation: degreeAuditPulse 1.5s infinite;
-}
-
-@keyframes degreeAuditPulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.7; }
-    100% { opacity: 1; }
 }
 
 /* Simulator Grid & Timetable */
 #pageContent[data-page="degree-audit"] .simulator-grid {
-    display: grid;
-    grid-template-columns: 310px 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
-@media (max-width: 800px) {
-    #pageContent[data-page="degree-audit"] .simulator-grid {
-        grid-template-columns: 1fr;
-    }
+#pageContent[data-page="degree-audit"] .simulator-controls {
+    flex: 1 1 14rem;
+    min-width: 0;
+}
+
+#pageContent[data-page="degree-audit"] .simulator-hint {
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+#pageContent[data-page="degree-audit"] .timetable-scroll {
+    flex: 3 1 32rem;
+    min-width: 0;
+    overflow-x: auto;
+    align-self: start;
 }
 
 #pageContent[data-page="degree-audit"] .timetable-table {
     width: 100%;
+    min-width: 32rem;
     border-collapse: collapse;
     text-align: center;
     font-size: 0.85rem;
+}
+
+#pageContent[data-page="degree-audit"] .timetable-table caption {
+    text-align: left;
+    font-weight: 700;
+    padding-bottom: 8px;
 }
 
 #pageContent[data-page="degree-audit"] .timetable-table th, 
@@ -480,6 +573,10 @@
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
+}
+
+#pageContent[data-page="degree-audit"] .waiver-checklist {
+    list-style: none;
 }
 
 #pageContent[data-page="degree-audit"] .prereq-chain {
@@ -525,6 +622,26 @@
     margin-bottom: 8px;
     display: flex;
     justify-content: space-between;
+    gap: 8px;
+}
+
+#pageContent[data-page="degree-audit"] .planner-term-card h4 > :last-child {
+    white-space: nowrap;
+}
+
+#pageContent[data-page="degree-audit"] .planner-label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.85rem;
+}
+
+#pageContent[data-page="degree-audit"] .planner-controls {
+    display: flex;
+    gap: 6px;
+}
+
+#pageContent[data-page="degree-audit"] .planner-controls select {
+    flex: 1;
 }
 
 #pageContent[data-page="degree-audit"] .planner-course-list {
@@ -550,6 +667,10 @@
 }
 
 #pageContent[data-page="degree-audit"] .planned-tag .remove-btn {
+    min-width: 44px;
+    padding: 0;
+    background: transparent;
+    border: 0;
     cursor: pointer;
     color: var(--danger-red);
     font-weight: bold;
