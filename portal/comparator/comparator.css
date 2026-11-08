@@ -1,0 +1,477 @@
+.comparator-page {
+    --comparator-border: #d7dce3;
+    --comparator-muted: #526170;
+    --comparator-maroon: #800020;
+    --comparator-green: #176b3a;
+    --comparator-green-bg: #effaf2;
+    --comparator-red: #8b1e16;
+    --comparator-red-bg: #fff1ef;
+}
+
+.comparator-data-note {
+    margin: 0 0 18px;
+    padding: 12px 14px;
+    border: 1px solid #d9b866;
+    border-left: 5px solid #a56a00;
+    border-radius: 6px;
+    background: #fff9e8;
+    color: #493710;
+    line-height: 1.5;
+}
+
+.comparator-data-note strong {
+    margin-right: 6px;
+}
+
+.comparator-layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+    align-items: start;
+    gap: 18px;
+}
+
+.comparator-controls,
+.schedule-panel,
+.comparison-panel {
+    min-width: 0;
+}
+
+.comparator-section-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.comparator-section-heading h3 {
+    margin: 0 0 5px;
+    color: var(--cityu-maroon);
+    font-size: 1.1rem;
+}
+
+.comparator-hint {
+    margin: 0;
+    color: var(--comparator-muted);
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+.comparator-reset {
+    min-height: 44px;
+    flex-shrink: 0;
+}
+
+.comparator-form-group {
+    display: grid;
+    gap: 7px;
+    margin-bottom: 18px;
+}
+
+.comparator-form-group > label,
+.comparator-course-fieldset legend {
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.comparator-form-group textarea,
+.comparator-form-group select,
+.comparator-sort select {
+    width: 100%;
+    min-height: 44px;
+    padding: 9px 10px;
+    border: 1px solid var(--comparator-border);
+    border-radius: 6px;
+    background: #fff;
+    color: var(--text-dark);
+    font: inherit;
+}
+
+.comparator-form-group textarea {
+    min-height: 70px;
+    resize: vertical;
+}
+
+.comparator-form-group textarea:focus-visible,
+.comparator-form-group select:focus-visible,
+.comparator-sort select:focus-visible,
+.comparator-page button:focus-visible,
+.comparator-course-option input:focus-visible {
+    outline: 3px solid rgba(128, 0, 32, 0.25);
+    outline-offset: 2px;
+}
+
+.comparator-form-group .btn-action {
+    min-height: 44px;
+}
+
+.comparator-preset-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+}
+
+.comparator-preset-row .btn-secondary {
+    min-width: 76px;
+    min-height: 44px;
+}
+
+.comparator-course-fieldset {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.comparator-course-fieldset legend {
+    margin-bottom: 6px;
+}
+
+.comparator-course-list {
+    display: grid;
+    gap: 7px;
+    max-height: 420px;
+    margin-top: 10px;
+    overflow-y: auto;
+}
+
+.comparator-course-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 7px 9px;
+    border: 1px solid var(--comparator-border);
+    border-radius: 6px;
+    background: #fbfcfd;
+    cursor: pointer;
+}
+
+.comparator-course-option:has(input:checked) {
+    border-color: var(--comparator-maroon);
+    background: #fff8f8;
+}
+
+.comparator-course-option input {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    accent-color: var(--comparator-maroon);
+}
+
+.comparator-course-option span {
+    min-width: 0;
+    line-height: 1.35;
+}
+
+.comparator-course-option strong {
+    display: block;
+    font-size: 0.86rem;
+}
+
+.comparator-course-option small {
+    display: block;
+    margin-top: 2px;
+    color: var(--comparator-muted);
+    font-size: 0.78rem;
+}
+
+.comparator-results {
+    display: grid;
+    min-width: 0;
+    gap: 18px;
+}
+
+.schedule-status {
+    margin-bottom: 12px;
+}
+
+.schedule-status-card {
+    padding: 12px 14px;
+    border: 1px solid var(--comparator-border);
+    border-left-width: 5px;
+    border-radius: 6px;
+    line-height: 1.5;
+}
+
+.schedule-status-card strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.schedule-status-card p {
+    margin: 0;
+}
+
+.schedule-status-card ul {
+    margin: 6px 0 0;
+    padding-left: 21px;
+}
+
+.schedule-status-card.has-conflicts {
+    border-color: #d5958f;
+    border-left-color: var(--comparator-red);
+    background: var(--comparator-red-bg);
+    color: var(--comparator-red);
+}
+
+.schedule-status-card.is-clear {
+    border-color: #9dc9aa;
+    border-left-color: var(--comparator-green);
+    background: var(--comparator-green-bg);
+    color: var(--comparator-green);
+}
+
+.schedule-status-card.is-empty {
+    border-left-color: #6b7280;
+    background: #f7f8fa;
+}
+
+.timetable-wrapper,
+.comparison-table-wrapper {
+    min-width: 0;
+    overflow-x: auto;
+    border: 1px solid var(--comparator-border);
+    border-radius: 6px;
+}
+
+.timetable-wrapper:focus-visible,
+.comparison-table-wrapper:focus-visible {
+    outline: 3px solid rgba(128, 0, 32, 0.35);
+    outline-offset: 2px;
+}
+
+.timetable-grid {
+    --timetable-day-height: 630px;
+    display: grid;
+    grid-template-columns: 66px repeat(5, minmax(120px, 1fr));
+    grid-template-rows: 38px var(--timetable-day-height);
+    gap: 2px;
+    min-width: 700px;
+    background: var(--comparator-border);
+}
+
+.timetable-corner,
+.timetable-day-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    background: #f2e7e9;
+    color: #3d2026;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.timetable-day-header h4 {
+    margin: 0;
+    font-size: inherit;
+}
+
+.timetable-time-axis,
+.timetable-day-column {
+    grid-row: 2;
+    height: var(--timetable-day-height);
+    min-height: 0;
+    background: #fff;
+}
+
+.timetable-time-axis,
+.timetable-hour-slots {
+    display: grid;
+    grid-template-rows: repeat(15, minmax(0, 1fr));
+    gap: 1px;
+}
+
+.timetable-time-slot,
+.timetable-hour-slot {
+    min-height: 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.timetable-time-slot {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding-top: 2px;
+    color: #46505a;
+    font-size: 0.68rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.timetable-day-column {
+    position: relative;
+}
+
+.timetable-hour-slots,
+.timetable-events {
+    position: absolute;
+    inset: 0;
+}
+
+.timetable-events {
+    pointer-events: none;
+}
+
+.timetable-event {
+    position: absolute;
+    top: var(--event-top);
+    left: var(--event-left);
+    width: var(--event-width);
+    height: var(--event-height);
+    min-height: 26px;
+    overflow: hidden;
+    padding: 4px;
+    border: 1px solid #53677d;
+    border-radius: 3px;
+    background: #dbeafe;
+    color: #17212f;
+    font-size: 0.72rem;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+}
+
+.timetable-event strong,
+.timetable-event span {
+    display: block;
+}
+
+.timetable-event-conflict {
+    z-index: 2;
+    border: 3px solid #9b1c16;
+    background: #fee2df;
+}
+
+.timetable-empty {
+    padding: 28px 16px;
+    color: var(--comparator-muted);
+    text-align: center;
+}
+
+.comparator-sort {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--comparator-muted);
+    font-size: 0.82rem;
+    white-space: nowrap;
+}
+
+.comparator-sort select {
+    width: auto;
+    min-width: 140px;
+}
+
+.comparison-table {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e1e5ea;
+    text-align: left;
+    vertical-align: top;
+}
+
+.comparison-table thead th {
+    background: #f2e7e9;
+    color: #3d2026;
+    font-size: 0.82rem;
+}
+
+.comparison-table tbody th {
+    width: 180px;
+    background: #fafafa;
+    font-size: 0.82rem;
+}
+
+.comparison-table td {
+    font-size: 0.85rem;
+}
+
+.comparison-table tr:last-child th,
+.comparison-table tr:last-child td {
+    border-bottom: 0;
+}
+
+.comparison-empty {
+    padding: 24px 16px;
+    color: var(--comparator-muted);
+    text-align: center;
+}
+
+.comparator-message {
+    min-height: 1.4em;
+    margin: 8px 0 0;
+    color: var(--comparator-muted);
+    font-size: 0.82rem;
+}
+
+.comparator-message.is-error {
+    color: #8b1e16;
+    font-weight: 700;
+}
+
+@media (max-width: 1050px) {
+    .comparator-layout {
+        grid-template-columns: minmax(240px, 290px) minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .comparator-controls,
+    .schedule-panel,
+    .comparison-panel {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 820px) {
+    .comparator-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .comparator-course-list {
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 560px) {
+    .comparator-section-heading {
+        flex-wrap: wrap;
+    }
+
+    .comparator-sort {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .comparator-sort select {
+        flex: 1;
+    }
+
+    .timetable-grid {
+        --timetable-day-height: 560px;
+        grid-template-columns: 58px repeat(5, minmax(108px, 1fr));
+        min-width: 610px;
+    }
+
+    .timetable-event {
+        padding: 2px;
+        font-size: 0.66rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .comparator-page *,
+    .comparator-page *::before,
+    .comparator-page *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

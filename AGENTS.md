@@ -14,13 +14,14 @@ This `AGENTS.md` is the authoritative development guide for the entire repositor
 
 | Path | Status | Current contents |
 | --- | --- | --- |
-| `portal/` | **Current team implementation** | Static multipage prototype. `portal/index.html` is the public Home; seven feature folders each contain a placeholder `index.html`; the shared header, sidebar, footer, dialogs, demo login, and language switch live in `portal/assets/css/common.css` and `portal/assets/js/common.js`. Only Home and the shared shell are interactive today. |
+| `portal/` | **Current team implementation** | Static multipage prototype. `portal/index.html` is the public Home; six feature folders remain placeholders. The public Course Comparator is implemented in `portal/comparator/` with workload comparison and a sample timetable conflict preview. The shared header, sidebar, footer, dialogs, demo login, and language switch live in `portal/assets/css/common.css` and `portal/assets/js/common.js`. |
 | `base.html` | Legacy reference | Pre-split single-file prototype with inline HTML, CSS, and JavaScript. It keeps every feature as an in-page section and uses in-memory demo state. Do not treat it as the active build target. |
 | `original/cityu-ee-guide.html` | Legacy reference | Original individual prototype: programme/course information, career information, internship information, and programme comparison. |
 | `original/EE4213_code_v6.html` | Legacy reference | Original individual prototype: degree audit, interactive flowchart, and recovery simulator. |
+| `original/comparator/` | Legacy reference | Original course workload comparison and sample timetable conflict preview. |
 | `README.md` | Course brief | Course project brief and submission requirements. |
 
-The portal uses separate shared CSS and JavaScript files; `base.html` and the files in `original/` use inline HTML, CSS, and JavaScript. There is no package manifest, build system, backend, framework, or automated test suite. The portal does have a client-side shared shell and uses `sessionStorage` for demo login and language state; there is no server-side persistence, database, or credential verification. `base.html` keeps the same demo state in memory only.
+The portal uses separate shared CSS and JavaScript files; `base.html` and the files in `original/` use inline HTML, CSS, and JavaScript. There is no package manifest, build system, backend, framework, or automated test suite. The portal has a client-side shared shell, uses `localStorage` for browser-local prototype accounts, and `sessionStorage` for login and language state. Login compares credentials with accounts registered in the same browser and origin; there is no server-side persistence, database, or real authentication. `base.html` retains its legacy unrestricted demo login in memory only.
 
 ## Portal structure and local run instructions
 
@@ -34,11 +35,15 @@ portal/
 ├── course-info/index.html
 ├── major-info/index.html
 ├── comparator/index.html
+├── comparator/comparator.css
+├── comparator/comparator.js
 ├── degree-audit/index.html
 ├── program-career/index.html
 ├── assets/
 │   ├── css/common.css
-│   └── js/common.js
+│   └── js/
+│       ├── common.js
+│       └── mock-data.js
 ├── AGENTS.md                     # Project development guide
 ├── README.md                     # Project requirements and guidelines
 ```
@@ -49,7 +54,7 @@ Each HTML file owns its page content. The shared shell (header, sidebar, footer,
 
 No extra software is needed beyond a web browser. Keep the whole `portal/` folder together, then open `portal/index.html` or the feature page you want to test (for example, `portal/degree-audit/index.html`) in the browser. The sidebar links can open the other pages.
 
-When opened this way with a `file://` URL, browser storage may not work across pages. The page will show a notice; demo login may need to be repeated on each feature page and will only unlock the page currently open. This is suitable for checking an individual page.
+When opened this way with a `file://` URL, browser storage may not work consistently across pages or browser sessions. The page shows a notice when storage access fails. Registration cannot succeed if account data cannot be saved. If only session storage is unavailable, login unlocks the current page and the account remains in local storage. Use the local server below to test account persistence and cross-page sessions reliably.
 
 Optionally, to test a login session while navigating between pages, a local server can be used if Python is already installed; no packages are needed. From the repository root, run:
 
@@ -76,7 +81,7 @@ Use these checkboxes to track the chart's feature pages. Checked items have a wo
 - [ ] **Course Workload Details Page** — Build it as a subpage at `portal/course-info/workload.html`, reachable from Course Information and other relevant flows. Port the existing course detail view from `original/cityu-ee-guide.html`. It currently shows a sample workload score, GPA, generic assessment items, and generated sample comments. Add clear workload detail/context and label mock or generated content so it cannot be mistaken for verified course data or real student feedback. Do not add it as a sidebar item.
 - [ ] **Course Feedback Collector** — Add an actual course feedback form and submission interaction, with input validation and mock feedback data associated with the selected course. The course detail view currently renders generated comments only; it has no feedback form or collection behavior. Keep generated examples distinct from user-submitted mock feedback. In `portal/`, plan it within the Course Information/course detail flow rather than a new sidebar item; its exact placement is still to confirm. Not implemented.
 - [x] **Degree Audit Helper** — The reference prototype is in `original/EE4213_code_v6.html` as the Degree Audit & Interactive Flowchart tab, including a completion checklist, semester planner, credit metrics, and prerequisite warnings. `portal/degree-audit/index.html` is a placeholder. This is a prototype counterpart, not a connection to official student records.
-- [x] **Course Comparator** — The reference prototype is in `original/cityu-ee-guide.html` as the Compare Programmes page, with two programme selectors and side-by-side comparison. `portal/comparator/index.html` is a placeholder.
+- [x] **Course Comparator** — Implemented in `portal/comparator/` as a public workload comparison with a sample weekly timetable and conflict summary. It uses shared course mock data where available and clearly labeled illustrative schedule/workload fixtures; it is not official course information. The read-only reference is `original/comparator/`.
 - [x] **Program Browser and Career Information** — The reference prototype is in `original/cityu-ee-guide.html` as programme search on Home and the Career page. The guide also has a separate Internships page; the chart marks internship opportunities as optional. `portal/program-career/index.html` is a placeholder.
 
 The chart also names **Major Information**, **Course Information**, and **Student Profile** as information areas. In `portal/` they appear as sidebar destinations (`portal/major-info/`, `portal/course-info/`, `portal/student-profile/`); in legacy `base.html` they are sections. Keep their mock data consistent across the relevant features; do not treat the current page-specific arrays and simulator state as an already-shared data model.
@@ -99,7 +104,7 @@ The portal presents these information areas and connected features as separate p
 - **Student Profile** (`portal/student-profile/`) — sidebar item; login required; placeholder; planned home of the Student Status view (subpage or section to confirm).
 - **Course Information** (`portal/course-info/`) — sidebar item; publicly browsable; placeholder; planned home of the Course Workload Details subpage (`workload.html`) and the Course Feedback flow.
 - **Major Information** (`portal/major-info/`) — sidebar item; publicly browsable; placeholder.
-- **Course Comparator** (`portal/comparator/`) — sidebar item; login required; placeholder.
+- **Course Comparator** (`portal/comparator/`) — publicly browsable sidebar item; implemented with sample workload comparison and timetable conflict preview.
 - **Degree Audit Helper** (`portal/degree-audit/`) — sidebar item; login required; placeholder; reference prototype in `original/EE4213_code_v6.html`.
 - **Program Browser and Career Information** (`portal/program-career/`) — sidebar item; login required; placeholder; reference prototype in `original/cityu-ee-guide.html`.
 
@@ -109,7 +114,7 @@ Student Status, Course Feedback, and Internship Opportunities are not separate s
 
 ## Shared mock data
 
-The planned portal pages need consistent **Course Information**, **Major Information**, and **Student Profile** mock data. The shared static data module is `portal/assets/js/mock-data.js`, exposed as `window.EE4213Data`. It contains course information and degree-audit curricula copied from `original/`, plus the comparison programmes from the guide. Existing pages have not yet been migrated to use this module, so page-local arrays and simulator state are not a shared source of truth. Keep the portal build-free:
+The planned portal pages need consistent **Course Information**, **Major Information**, and **Student Profile** mock data. The shared static data module is `portal/assets/js/mock-data.js`, exposed as `window.EE4213Data`. It contains course information and degree-audit curricula copied from `original/`, Comparator fixtures sourced from `original/comparator/app.js`, plus the comparison programmes from the guide. Keep the portal build-free:
 
 - **Use the shared JavaScript data file** for records needed by multiple pages. It works with both `file://` and a local static server, without fetch configuration or a backend. Treat the records as read-only; a page script can look up records by stable IDs rather than copying arrays.
 - **JSON files loaded with `fetch()`** keep data separate from code, but browsers commonly block local-file fetches. Use this only if pages are tested through the documented local server (or a later build/runtime provides a reliable loader).
@@ -123,7 +128,7 @@ Include the shared file before a page-specific deferred script, using a path rel
 <script src="course-info.js" defer></script>
 ```
 
-The module contains `courses` (76 unique course IDs, with existing English/Chinese titles, descriptions, credit units, sample workload/GPA where present, and curriculum-only records), `majors` (four degree-audit structures with course references, semesters, and source prerequisite/scheduling metadata), `comparisonProgrammes` (five programme-comparison records), and `generatedFeedbackTemplates` (three English-language comment sets from the guide's template generator). These generated comments are illustrative examples, not user-submitted feedback; do not present them as collected student reviews. Course records have a `courseId`; major records have a `majorId`; curriculum entries refer to courses by `courseId`. Some source records have English-only labels or no course description; do not invent missing translations or facts. The source prototypes contain no student profile records, so `studentProfiles` is intentionally empty. Do not infer or fabricate a student profile from the simulator defaults; only add a clearly labeled sample profile when a feature needs one and its fixture values are explicitly defined.
+The module contains `courses` (84 unique course IDs, with existing English/Chinese titles, descriptions, credit units, sample workload/GPA where present, and curriculum-only records), `majors` (four degree-audit structures with course references, semesters, and source prerequisite/scheduling metadata), `comparatorSemesterPresets` (sample semester course IDs), `comparisonProgrammes` (five programme-comparison records), and `generatedFeedbackTemplates` (three English-language comment sets from the guide's template generator). Nine course records have a `comparator` object with sample study-hour estimate, assessment-load label, difficulty, grading breakdown, and `scheduledMeetingTimes`. Comparator timetable records provide `days` arrays, a `time` range, meeting `type`, and `location`; they are illustrative fixtures copied from `original/comparator/app.js`, not current or official section schedules. Do not duplicate those records in page scripts or treat derived workload indices as source facts. These generated comments are illustrative examples, not user-submitted feedback; do not present them as collected student reviews. Course records have a `courseId`; major records have a `majorId`; curriculum entries refer to courses by `courseId`. Some source records have English-only labels or no course description; do not invent missing translations or facts. The source prototypes contain no student profile records, so `studentProfiles` is intentionally empty. Do not infer or fabricate a student profile from the simulator defaults; only add a clearly labeled sample profile when a feature needs one and its fixture values are explicitly defined.
 
 Keep any future student profile linked by stable IDs: use `majorId` for its major and `completedCourseIds` / `plannedCourseIds` for courses. Use bilingual fields for new user-facing labels, such as `{ "en": "Electrical Engineering", "zh": "電機工程學" }`, and keep page-specific presentation and derived values in the page code rather than duplicating source facts. Pages should handle missing IDs explicitly instead of silently substituting unrelated data. The shared fixtures are sample data only, not official university records or persistent student accounts; label them as mock/demo content in the UI and never put real student or sensitive data in them.
 
@@ -138,20 +143,20 @@ if (!course) {
 
 ## Login and registration states
 
-`portal/` implements a client-side (demo-only) login and registration state machine. `base.html` implements a legacy in-memory version of the same flow. Neither has a server, database, or credential verification; any input in the login or registration form is accepted.
+`portal/` implements a client-side (demo-only) login and registration state machine. Registration creates a browser-local account and logs in automatically; login requires matching registered credentials. Account names are trimmed and compared case-insensitively (1–100 characters); passwords are matched exactly, case-sensitively (6–128 characters, not all whitespace). Duplicate account names, unknown accounts, and incorrect passwords show bilingual inline errors without logging in. Accounts store their own navigator-visited flag. Old unrestricted sessions without a registered account are signed out. `base.html` retains the legacy in-memory flow accepting arbitrary nonempty input. Neither implementation has a server, database, or real authentication; browser-side state can be edited by the user.
 
 Common behavior:
 
 - **Login** and **Register** buttons are shown when the user is not logged in.
 - A **Logout** button and a user chip are shown when the user is logged in.
-- **Not logged in:** the main content shows Home. Only **Course Information** and **Major Information** sidebar items are browsable. All other sidebar items (Student Profile, Course Comparator, Degree Audit Helper, Program Browser & Career Information) are locked. Clicking a locked item opens a notice asking the user to login or register; the portal does not navigate, and a protected page opened directly shows the same notice instead of its content.
+- **Not logged in:** the main content shows Home. **Course Information**, **Major Information**, and **Course Comparator** sidebar items are browsable. The other protected sidebar items (Student Profile, Degree Audit Helper, Program Browser & Career Information) are locked. Clicking a locked item opens a notice asking the user to login or register; the portal does not navigate, and a protected page opened directly shows the same notice instead of its content.
 - **Logged in:** all sidebar items become clickable.
 - **First login or registration:** the portal navigates to the Registration Navigator. **Subsequent logins:** it navigates to Student Profile. Clicking **Register** always lands on the Registration Navigator, treating the session as first-time.
 - **Logout:** returns the user to Home and preserves the "navigator visited" state, so the next login goes to Student Profile.
 
 Storage differs by prototype:
 
-- **Portal (`portal/`)** — `portal/assets/js/common.js` stores `isLoggedIn`, `hasVisitedNavigator`, `userName`, and `language` in `sessionStorage` under `ee4213.portal.session.v1`. State survives page reloads and page changes in the same tab and origin. It is not shared across tabs, hosts, or ports, and may be unavailable under `file://`; in that case the page shows a notice and login only unlocks the current page.
+- **Portal (`portal/`)** — `portal/assets/js/common.js` stores `isLoggedIn`, `hasVisitedNavigator`, `userName`, and `language` in `sessionStorage` under `ee4213.portal.session.v1`. Accounts (`userName`, plaintext prototype `password`, `hasVisitedNavigator`) persist in `localStorage` under `ee4213.portal.demo-accounts.v1` across tab/browser closure, until site data is cleared. Use only made-up credentials during development and testing. Account UI uses product-facing username/password labels without student identifiers, email prompts, demo labels, or privacy slogans. This wording does not change the frontend-only architecture. Accounts previously saved in session storage migrate to local storage without overwriting an existing account with the same normalized username; the legacy copy is removed only after migration succeeds. Logout preserves accounts and their navigator history. Accounts are shared across tabs on the same browser profile and origin; login and language remain per-tab. Login/registration refresh account data before checking credentials, and storage events refresh other open tabs. Hosts, ports, browser profiles, and devices have separate stores. A failed account read/write shows an actionable error instead of reporting successful registration or login. If only session storage fails, login unlocks the current page and a notice asks the user to log in again with the existing account after navigating. A local static server supports reliable cross-page testing.
 - **Legacy `base.html`** — state is in memory only. `hasVisitedNavigator` resets on page reload, and the feature sections are switched in-page rather than by navigation.
 
 ## Development conventions
