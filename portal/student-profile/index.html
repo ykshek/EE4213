@@ -1,3 +1,4 @@
+<!-- portal/student-profile/index.html -->
 <!DOCTYPE html>
 <html lang="zh-HK">
 <head>
@@ -5,28 +6,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>學生個人檔案 | CityU EE Student Portal</title>
     <link rel="stylesheet" href="../assets/css/common.css">
-    <!-- Load page-specific CSS after common.css, and deferred JS after common.js. -->
+    <link rel="stylesheet" href="../assets/css/student-profile.css">
     <script src="../assets/js/common.js" defer></script>
+    <script src="../assets/js/mock-data.js" defer></script>
+    <script src="../assets/js/student-profile.js" defer></script>
 </head>
 <body data-page="profile" data-lang="zh">
-    <!-- Shared header, sidebar, footer and dialogs are mounted by common.js. -->
     <div class="layout">
         <main class="main" id="mainContent" tabindex="-1">
-            <!-- PAGE OWNER: develop this page inside #pageContent. -->
-            <section id="pageContent" class="page-content" aria-labelledby="pageTitle" hidden inert>
+            <section id="pageContent" class="page-content student-profile-page" aria-labelledby="pageTitle" hidden inert>
+
                 <div class="feature-header">
                     <h2 id="pageTitle">
                         <span class="lang-zh">👤 學生個人檔案</span>
                         <span class="lang-en">👤 Student Profile</span>
                     </h2>
+                    <p>
+                        <span class="lang-zh">以下資料來自你的註冊導航器設定。</span>
+                        <span class="lang-en">The information below comes from your Registration Navigator settings.</span>
+                    </p>
                 </div>
-                <div class="placeholder-card">
-                    <span class="emoji" aria-hidden="true">🚧</span>
-                    <span class="status-zh">此功能開發中</span>
-                    <span class="status-en">Under Development</span>
-                    <span class="hint lang-zh">此區塊為功能掛載預留位置，由負責組員整合。</span>
-                    <span class="hint lang-en">Reserved mount point for the assigned teammate to integrate this feature.</span>
+
+                <!-- ============ VIEW MODE ============ -->
+                <div id="viewMode">
+                    <div class="summary-grid">
+                        <div class="summary-card">
+                            <h4><span class="lang-zh">學生帳號</span><span class="lang-en">Student Account</span></h4>
+                            <p id="viewUserName">Student</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4><span class="lang-zh">主修</span><span class="lang-en">Major</span></h4>
+                            <p id="viewMajor">—</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4><span class="lang-zh">升學背景</span><span class="lang-en">Study Background</span></h4>
+                            <p id="viewTransfer">—</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4><span class="lang-zh">就讀年級</span><span class="lang-en">Year of Study</span></h4>
+                            <p id="viewYear">—</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4><span class="lang-zh">職涯目標</span><span class="lang-en">Career Goal</span></h4>
+                            <p id="viewGoal">—</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4><span class="lang-zh">興趣方向</span><span class="lang-en">Specialization</span></h4>
+                            <p id="viewSpec">—</p>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <span class="spacer"></span>
+                        <button class="btn-action" type="button" id="editBtn">
+                            <span class="lang-zh">修改資料</span>
+                            <span class="lang-en">Edit Profile</span>
+                        </button>
+                    </div>
                 </div>
+
+                <!-- ============ EDIT MODE ============ -->
+                <div id="editMode" hidden>
+                    <div class="card">
+                        <div class="form-group">
+                            <label>
+                                <span class="lang-zh">學生帳號</span>
+                                <span class="lang-en">Student Account</span>
+                            </label>
+                            <p id="editUserName" class="sp-readonly">Student</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <span class="lang-zh">主修</span>
+                                <span class="lang-en">Major</span>
+                            </label>
+                            <div class="chips" id="editMajorChips"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <span class="lang-zh">升學背景</span>
+                                <span class="lang-en">Study Background</span>
+                            </label>
+                            <div class="chips" id="editTransferChips"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <span class="lang-zh">就讀年級</span>
+                                <span class="lang-en">Year of Study</span>
+                            </label>
+                            <div class="chips" id="editYearChips"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <span class="lang-zh">職涯目標</span>
+                                <span class="lang-en">Career Goal</span>
+                            </label>
+                            <div class="chips" id="editGoalChips"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <span class="lang-zh">興趣方向</span>
+                                <span class="lang-en">Specialization</span>
+                            </label>
+                            <div class="chips" id="editSpecChips"></div>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="btn-secondary" type="button" id="cancelBtn">
+                            <span class="lang-zh">取消</span>
+                            <span class="lang-en">Cancel</span>
+                        </button>
+                        <button class="btn-action" type="button" id="saveBtn">
+                            <span class="lang-zh">儲存</span>
+                            <span class="lang-en">Save</span>
+                        </button>
+                    </div>
+                </div>
+
             </section>
             <noscript><p>請啟用 JavaScript 以使用導覽和登入功能。 / Enable JavaScript for navigation and login.</p></noscript>
         </main>
