@@ -7,7 +7,7 @@ This repository contains a high-fidelity prototype of a CityU Electrical Enginee
 - Home, Course Information, Major Information, and Course Comparator are publicly browsable.
 - Student Profile and Degree Audit Helper are implemented behind the demo login.
 - Course Workload Details and course feedback are implemented inside Course Information.
-- The Registration Navigator has a full multi-step UI and logic, but its page assets are currently not connected, so it is not functional yet.
+- The Registration Navigator has a full multi-step UI and logic, and its page assets are connected. It is functional.
 - Program Browser & Career Information is still a placeholder.
 - A dedicated Student Status page does not exist.
 
@@ -21,6 +21,8 @@ This `AGENTS.md` is the authoritative development guide for the entire repositor
 
 `README.md` is the user-facing project overview and retains the course project brief. When the two files disagree about implementation status, this file takes precedence. Update both when a change alters the documented feature set, structure, data model, or access rules.
 
+**After completing any work, update AGENTS.md to reflect the new state.** If your change affects feature status, file paths, access rules, or data model, ensure the documentation matches what you delivered. Do not leave AGENTS.md describing a feature as unimplemented when it is now working, or vice versa.
+
 Treat `original/` as read-only reference material unless a task explicitly asks to change it. Port reference behavior into the matching `portal/` page rather than editing the originals. Do not recreate `base.html` unless the team explicitly decides to restore it.
 
 ## Current implementation
@@ -28,7 +30,7 @@ Treat `original/` as read-only reference material unless a task explicitly asks 
 | Path | Status | Current contents |
 | --- | --- | --- |
 | `portal/index.html` | Implemented, public | Home landing page with programme overview, major cards, study areas, four-year journey, practical-learning section, career examples, official-resource links, and guest/member calls to action. Not listed in the sidebar. |
-| `portal/registration/index.html` | UI present, wiring incomplete | Six-step Registration Navigator: welcome, profile, goals, interests, checklist, summary. It is login-protected and not in the sidebar. The page currently loads neither its page CSS/JS nor `mock-data.js`, so `goToStep()` is undefined and the steps do not switch. |
+| `portal/registration/index.html` | Implemented | Six-step Registration Navigator: welcome, profile, goals, interests, checklist, summary. It is login-protected and not in the sidebar. The page loads `common.js`, `mock-data.js`, `registration.css`, and `registration.js`, and `goToStep()` is defined. |
 | `portal/student-profile/index.html` | Implemented, login-protected | View and edit the demo account name (read-only), major, entry route, year of study, career goal, and specialization. Reads and writes profile data in `sessionStorage`. |
 | `portal/course-info/index.html` | Implemented, public | Searchable course directory for 56 baseline EE entries (more after the official AIMS import). Supports search by code or Chinese/English title, preserves the query in the URL, and links to Workload Details. |
 | `portal/course-info/workload.html` | Implemented, public subpage | Course detail page: description, credits, optional official assessment block, workload metrics, 13-week busy-week timeline, student experiences, term filter, grade distribution, and a feedback form. |
@@ -85,12 +87,12 @@ portal/
     ├── css/
     │   ├── common.css
     │   ├── home.css
-    │   ├── registration.css      # Currently not linked by any page
+    │   ├── registration.css      # Unused; page loads portal/registration/registration.css
     │   └── student-profile.css
     └── js/
         ├── common.js
         ├── mock-data.js
-        ├── registration.js       # Currently not linked by any page
+        ├── registration.js       # Unused; page loads portal/registration/registration.js
         └── student-profile.js
 ```
 
@@ -147,7 +149,7 @@ Open `http://127.0.0.1:8765/` and stop the server with `Ctrl+C`. On Windows, use
 Checked items are implemented and reachable in the current portal. Unchecked items are missing, placeholders, or currently broken. Existing behavior is mock/demo behavior, not connected to live university systems.
 
 - [x] **Home Page** — Public landing page at `portal/index.html`; not in the sidebar. Includes programme, major, study-area, journey, career, and official-link content plus guest/member calls to action.
-- [ ] **Registration Navigator** — Six-step UI and logic exist in `portal/registration/`, but the page is currently not wired: it loads only `common.js`, its `#pageContent` lacks the `registration-page` class required by the scoped CSS, and the inline `goToStep()` handlers have no loaded script. The flow is login-protected and not in the sidebar. It is not functional until those links and classes are restored.
+- [x] **Registration Navigator** — Six-step UI and logic implemented in `portal/registration/`. The page loads `common.js`, `mock-data.js`, `registration.css`, and `registration.js`. `#pageContent` has the `registration-page` class. `goToStep()` is defined and exposed via `window.goToStep` for inline onclick handlers. Login-protected and not in the sidebar.
 - [x] **Student Profile** — Implemented at `portal/student-profile/`. Shows and edits major, entry route, year, career goal, and specialization. Profile values are stored in `sessionStorage`. This is not the broader Student Status page.
 - [ ] **Student Status Page** — No dedicated status view exists. Student Profile shows profile fields, and Degree Audit Helper shows credit metrics, checklists, and planned terms, but completed/planned courses and outstanding requirements are not combined into one page, and the two features do not share state.
 - [x] **Course Workload Details Page** — Implemented as the `workload.html` subpage under `portal/course-info/`. It shows course information, workload metrics, a 13-week busy-week timeline, reviews, and grade distribution. It is public and not a sidebar item.
@@ -163,7 +165,7 @@ Checked items are implemented and reachable in the current portal. Unchecked ite
 | Page | Path | Access | Sidebar | Current state |
 | --- | --- | --- | --- | --- |
 | Home | `portal/index.html` | Public | No | Implemented |
-| Registration Navigator | `portal/registration/` | Login required | No | UI present, wiring incomplete |
+| Registration Navigator | `portal/registration/` | Login required | No | Implemented |
 | Student Profile | `portal/student-profile/` | Login required | Yes | Implemented |
 | Course Information | `portal/course-info/` | Public | Yes | Implemented directory |
 | Course Workload Details | `portal/course-info/workload.html` | Public | No (subpage) | Implemented |
@@ -305,12 +307,12 @@ Account validation and persistence:
 - If only session storage fails, login unlocks the current page and a notice asks the user to log in again with the existing account after navigating.
 - Logout preserves accounts and their navigator history. It does not clear browser-local feedback or profile data.
 
-The Registration Navigator's current wiring problem is described in **Known gaps and risks**. Do not document it as a working end-to-end flow until fixed.
+The Registration Navigator is now wired and functional. Its remaining gaps (duplicate assets, unconsumed selection data) are described in **Known gaps and risks**.
 
 ## Known gaps and risks
 
-1. **Registration Navigator is not wired.** `portal/registration/index.html` loads only `../assets/js/common.js`. It does not load `registration.css`, `registration.js`, or `mock-data.js`; its section is `class="page-content"` rather than the `page-content registration-page` selector used by the scoped CSS; and its inline `onclick="goToStep(...)"` handlers have no function at runtime. As a result, the steps all render at once and the buttons throw. This is the highest-priority integration gap.
-2. **Duplicate registration assets differ.** `portal/registration/registration.css` and `.js` are not identical to `portal/assets/css/registration.css` and `portal/assets/js/registration.js`. The `assets/js` copy also loads and saves the profile key that Student Profile reads; the page-local copy does not. Choose one canonical pair, link it from the HTML, add the matching `registration-page` class, and remove or clearly retire the duplicate.
+1. **Registration Navigator is wired and functional.** `portal/registration/index.html` loads `common.js`, `mock-data.js`, `registration.css`, and `registration.js`. `#pageContent` has the `registration-page` class. `goToStep()` is defined and exposed via `window.goToStep`. The step navigation works as intended.
+2. **Duplicate registration assets differ.** `portal/registration/registration.css` and `.js` are not identical to `portal/assets/css/registration.css` and `portal/assets/js/registration.js`. The page loads the local copies (`portal/registration/`). The `portal/assets/` copies are unused by any page. Choose one canonical pair, retire the duplicate, and update the directory structure documentation.
 3. **Registration data is not consumed.** Selected courses are saved under `ee4213.registration.selectedCourses.v1`, but Student Profile and Degree Audit Helper do not read them. The registration flow ends by navigating to Student Profile; it does not feed the audit checklist or planner.
 4. **Program Browser & Career Information is a placeholder.** `comparisonProgrammes` and `generatedFeedbackTemplates` exist in shared data but are not rendered anywhere. The Home page's career section is not a substitute for the dedicated feature.
 5. **No Student Status page.** Student Profile shows profile fields only. Degree Audit Helper shows credit metrics and planning state but does not read profile or completed-course data from registration.
