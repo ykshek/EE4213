@@ -4,6 +4,8 @@
     const byId = id => document.getElementById(id);
     const weekNumbers = Array.from({ length: 13 }, (_, index) => index + 1);
     const storagePrefix = 'ee4213.portal.experiences.v1:';
+    const discussionStoragePrefix = 'ee4213.portal.discussions.v1:';
+
     const gradePoints = {
         'A+': 4.3, A: 4.0, 'A-': 3.7, 'B+': 3.3, B: 3.0, 'B-': 2.7,
         'C+': 2.3, C: 2.0, 'C-': 1.7, D: 1.0, F: 0.0
@@ -14,6 +16,7 @@
     ];
     const semesters = { A: ['A 學期', 'Semester A'], B: ['B 學期', 'Semester B'], Summer: ['暑期', 'Summer Term'] };
     const unknownTerm = ['未填寫學期', 'Study term not provided'];
+
     const assessment = {
         EE4213: {
             term: '2026/27 A',
@@ -27,6 +30,7 @@
             passing: ['持續評核及考試均須各達 30%。', 'At least 30% is required in each of continuous assessment and the examination.']
         }
     };
+
     const labels = {
         hours: ['每週課外時數', 'Weekly study hours'],
         project: ['專題負擔', 'Project workload'],
@@ -81,18 +85,18 @@
     }
 
     function getCourseTypeLabel(course) {
-    if (course.courseId === 'EE3070' || course.courseId === 'EE4090') {
-        return { label: { zh: '實用導向', en: 'Practical' }, type: 'practical' };
+        if (course.courseId === 'EE3070' || course.courseId === 'EE4090') {
+            return { label: { zh: '實用導向', en: 'Practical' }, type: 'practical' };
+        }
+        if (course.hasLab === true) {
+            return { label: { zh: '實用 + 理論', en: 'Practical + Theoretical' }, type: 'mixed' };
+        }
+        if (course.hasLab === false) {
+            return { label: { zh: '理論導向', en: 'Theoretical' }, type: 'theoretical' };
+        }
+        return null;
     }
-    if (course.hasLab === true) {
-        return { label: { zh: '實用 + 理論', en: 'Practical + Theoretical' }, type: 'mixed' };
-    }
-    if (course.hasLab === false) {
-        return { label: { zh: '理論導向', en: 'Theoretical' }, type: 'theoretical' };
-    }
-    return null;
-    }
-    
+
     function createBadge(course) {
         const typeInfo = getCourseTypeLabel(course);
         if (!typeInfo) return null;
@@ -579,6 +583,173 @@
         };
     }
 
+    function initDiscussionTab(courseId) {
+        const form = byId('discussion-form');
+        const titleInput = byId('discussion-title');
+        const contentInput = byId('discussion-content');
+        const listContainer = byId('discussion-list');
+        const emptyMsg = byId('empty-discussion');
+
+        const storageKey = discussionStoragePrefix + courseId;
+        let discussions = loadDiscussions(storageKey);
+
+        function loadDiscussions(key) {
+            try {
+                const raw = localStorage.getItem(key);
+                return raw ? JSON.parse(raw) : [];
+            } catch {
+                return [];
+            }
+        }
+
+        function saveDiscussions() {
+            try {
+                localStorage.setItem(storageKey, JSON.stringify(discussions));
+            } catch { /* ignore */ }
+        }
+
+        function getAuthor() {
+            const session = window.Portal.getSession();
+            return session && session.userName ? session.userName : 'Student';
+        }
+
+        function renderDiscussions() {
+            listContainer.replaceChildren();
+            if (discussions.length === 0) {
+                emptyMsg.hidden = false;
+                return;
+            }
+            emptyMsg.hidden = true;
+
+            // We only render root discussions here, then their nested replies inside
+            const roots = discussions.filter(d => !d.parentId);
+
+            for (const root of roots) {
+                const thread = element('div', undefined, 'discussion-thread');
+
+                // Header
+                const header = element('div', undefined, 'discussion-header');
+                const h4 = element('h4', root.title);
+                const meta = element('div', undefined, 'discussion-meta');
+                const timeStr = new Date(root.time).toLocaleString();
+                meta.textContent = `${root.author} · ${timeStr}`;
+                header.append(h4, meta);
+
+                // Content
+                const content = element('div', undefined, 'discussion-content');
+                content.textContent = root.content;
+
+                // Footer (Reply button)
+                const footer = element('div', undefined, 'discussion-footer');
+                const replyBtn = element('button', undefined, '');
+                replyBtn.type = 'button';
+                bilingual(replyBtn, '回覆', 'Reply');
+                replyBtn.addEventListener('click', () => showReplyForm(root.id, thread));
+                footer.append(replyBtn);
+
+                // Replies container
+                const repliesContainer = element('div', undefined, 'replies-list');
+
+                thread.append(header, content, footer, repliesContainer);
+                listContainer.append(thread);
+
+                renderReplies(root.id, repliesContainer);
+            }
+        }
+
+        function renderReplies(parentId, container) {
+            container.replaceChildren();
+            const children = discussions.filter(d => d.parentId === parentId).sort((a, b) => a.time - b.time);
+
+            for (const reply of children) {
+                const replyEl = element('div', undefined, 'reply-item');
+
+                const replyHeader = element('div', undefined, 'reply-header');
+                const meta = element('span');
+                const timeStr = new Date(reply.time).toLocaleString();
+                meta.textContent = `${reply.author} · ${timeStr}`;
+                replyHeader.append(meta);
+
+                const replyContent = element('div', undefined, 'reply-content');
+                replyContent.textContent = reply.content;
+
+                const actions = element('div', undefined, 'reply-actions');
+                const replyBtn = element('button');
+                replyBtn.type = 'button';
+                bilingual(replyBtn, '回覆', 'Reply');
+                replyBtn.addEventListener('click', () => showReplyForm(reply.id, replyEl));
+                actions.append(replyBtn);
+
+                replyEl.append(replyHeader, replyContent, actions);
+                container.append(replyEl);
+
+                // Render sub-replies
+                const subContainer = element('div', undefined, 'replies-list');
+                replyEl.append(subContainer);
+                renderReplies(reply.id, subContainer);
+            }
+        }
+
+        function showReplyForm(parentId, container) {
+            // Remove existing form if any
+            const existingForm = container.querySelector('.reply-form');
+            if (existingForm) existingForm.remove();
+
+            const formEl = element('form', undefined, 'reply-form');
+            const input = element('input');
+            input.type = 'text';
+            input.required = true;
+            input.placeholder = '輸入回覆... / Type reply...';
+
+            const btn = element('button', undefined, 'btn-action');
+            btn.type = 'submit';
+            bilingual(btn, '發送', 'Send');
+
+            formEl.append(input, btn);
+            container.append(formEl);
+            input.focus();
+
+            formEl.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const text = input.value.trim();
+                if (!text) return;
+
+                const newReply = {
+                    id: crypto.randomUUID(),
+                    parentId: parentId,
+                    author: getAuthor(),
+                    content: text,
+                    time: Date.now()
+                };
+                discussions.push(newReply);
+                saveDiscussions();
+                renderDiscussions();
+            });
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = titleInput.value.trim();
+            const content = contentInput.value.trim();
+            if (!title || !content) return;
+
+            const newDiscussion = {
+                id: crypto.randomUUID(),
+                parentId: null,
+                author: getAuthor(),
+                title: title,
+                content: content,
+                time: Date.now()
+            };
+            discussions.push(newDiscussion);
+            saveDiscussions();
+            form.reset();
+            renderDiscussions();
+        });
+
+        renderDiscussions();
+    }
+
     function initDetail() {
         const params = new URLSearchParams(location.search);
         const id = params.get('course')?.trim().toUpperCase();
@@ -620,6 +791,25 @@
         byId('course-detail').hidden = false;
         byId('readonly-course').hidden = !readOnly;
         byId('open-experience').hidden = readOnly;
+
+        // Init Tabs
+        const tabBtns = document.querySelectorAll('.course-tab-btn');
+        const tabContents = document.querySelectorAll('.course-tab-content');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+                tabContents.forEach(c => { c.classList.remove('active'); c.hidden = true; });
+
+                btn.classList.add('active');
+                btn.setAttribute('aria-selected', 'true');
+                const target = byId('tab-' + btn.dataset.tab);
+                if (target) {
+                    target.classList.add('active');
+                    target.hidden = false;
+                }
+            });
+        });
+
         const renderTimeline = initTimeline();
         const renderReviews = initReviews();
         const prefix = storagePrefix + courseId + ':';
@@ -675,6 +865,9 @@
             });
         }
         renderResponses();
+
+        // Init Discussion
+        initDiscussionTab(courseId);
     }
 
     if (byId('course-search')) initList();
