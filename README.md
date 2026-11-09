@@ -2,7 +2,7 @@
 
 A static, build-free high-fidelity prototype of a student guide for the Department of Electrical Engineering at City University of Hong Kong (CityUHK). It brings programme and major exploration, course discovery, workload comparison, degree planning, and a browser-local demo account flow together in one multipage portal.
 
-> **Prototype data only.** Course, major, workload, review, grade, and student data are sample or demo content. Nothing is connected to CityU AIMS, Canvas, or official student records, and nothing is saved on a server.
+> **Prototype data only.** Course, major, workload, review, grade, and student data are sample or demo content unless explicitly noted as an imported CityU catalogue/AIMS snapshot. Generated workload/GPA scores and machine translations are not official statistics. Nothing is connected live to CityU AIMS, Canvas, or official student records, and nothing is saved on a server.
 
 ## What works today
 
@@ -12,11 +12,11 @@ A static, build-free high-fidelity prototype of a student guide for the Departme
 | Demo accounts, login, and language switch | `portal/assets/js/common.js`, `portal/assets/css/common.css` | Implemented. Browser-local accounts, session state, first-login routing, locked-page notices, storage warnings, and a Chinese/English switch. |
 | Registration Navigator | `portal/registration/index.html` | UI and step logic are present, but the page is **not currently wired up**: it does not load its page CSS/JS or the shared data module, and its page-root class does not match the scoped CSS. The flow is login-protected and not in the sidebar. |
 | Student Profile | `portal/student-profile/` | Implemented. View and edit major, entry route, year, career goal, and specialization. Login-protected. |
-| Course Information directory | `portal/course-info/index.html` | Implemented. Searchable directory of 56 EE course entries with bilingual titles, credits, and practical/theoretical badges. Public. |
+| Course Information directory | `portal/course-info/index.html` | Implemented. Searchable directory of 56 baseline EE course entries (more after the official AIMS import) with bilingual titles, credits, and practical/theoretical badges. Public. |
 | Course Workload Details | `portal/course-info/workload.html` | Implemented. Course description, credits, workload metrics, 13-week busy-week timeline, student experiences, and grade distribution. Public subpage; not a sidebar item. |
 | Course Feedback Collector | `portal/course-info/workload.html` | Implemented. Validated feedback form saved per course in `localStorage`, mixed with deterministic fictional seed reviews for demonstration. |
 | Major Information | `portal/major-info/index.html` | Implemented. Bilingual overview of the four EE majors, the 2025/26 major-allocation summary, and official links. Public. |
-| Course Comparator | `portal/comparator/index.html` | Implemented. Compares nine sample courses, loads six sample semesters, detects timetable overlaps, and sorts workload metrics. Public. |
+| Course Comparator | `portal/comparator/index.html` | Implemented. Compares nine baseline sample courses, loads six sample semesters, detects timetable overlaps, and sorts workload metrics. The AIMS importer can add courses with official section/assessment data. Public. |
 | Degree Audit Helper | `portal/degree-audit/` | Implemented. Degree-audit checklist, semester planner, interactive flowchart, timetable conflict simulator, and prerequisite waiver preview. Login-protected; state is in memory only. |
 | Program Browser and Career Information | `portal/program-career/index.html` | Placeholder. Login-protected; career information currently appears only on the Home page. |
 | Student Status | — | No dedicated page yet. The Student Profile shows profile fields, and the Degree Audit Helper shows credit progress, but completed/planned courses are not combined into one status view. |
@@ -74,7 +74,9 @@ EE4213/
 │       ├── app.js
 │       └── styles.css
 ├── tools/
-│   └── aims-course-export-console.js # Manual AIMS HTML export helper
+│   ├── aims-course-export-console.js # Manual AIMS HTML export helper
+│   ├── import_course_exports.py      # Offline HTML/PDF enrichment and merge tool
+│   └── htmls/                        # Local AIMS export (gitignored)
 └── .github/skills/                   # Reusable course-method skills
 ```
 
@@ -111,12 +113,13 @@ Clearing site data removes all demo accounts, profiles, and feedback.
 
 ## Prototype data and limitations
 
-- Shared fixtures live in `portal/assets/js/mock-data.js` as `window.EE4213Data`: 84 course records, four major curricula, six sample-semester presets, nine Comparator courses, five comparison programmes, and three feedback templates.
+- Shared fixtures live in `portal/assets/js/mock-data.js` as `window.EE4213Data`: 84 baseline course records, four major curricula, six sample-semester presets, nine baseline Comparator courses, five comparison programmes, and three feedback templates. The optional importer enriches records and adds an `officialOfferings` audit object.
 - `studentProfiles` is intentionally empty. No real student data is included.
-- The course directory shows 56 EE entries. Comparator-only sample records are excluded except `EE4213`.
-- Comparator hours, difficulty, grading, and meeting times are illustrative fixtures, not current or official section data.
+- The baseline course directory shows 56 EE entries. Comparator-only sample records are excluded except `EE4213`. After an import, more EE codes can appear.
+- In the checked-in baseline, Comparator hours, difficulty, grading, and meeting times are illustrative fixtures. After an import, section times and assessment weights can come from the AIMS export/catalogue/PDF, while study hours, difficulty, and sample GPA remain generated.
 - Workload metrics and grade distributions combine deterministic fictional reviews from `portal/course-info/review-seed.js` with feedback submitted in the same browser. They are not official statistics or verified student feedback.
-- Only `EE4213` has an official assessment block, sourced from a CityU syllabus PDF. Treat other course information as prototype content and check official CityU sources before relying on it.
+- Only `EE4213` has an official assessment block rendered on the workload page, sourced from a CityU syllabus PDF. The importer stores additional catalogue/PDF assessment data under `officialOfferings`, but the workload page does not render it yet.
+- Imported data is a term-specific static snapshot, not a live feed. Chinese titles/descriptions are machine translations; verify official CityU sources before relying on them.
 - The Degree Audit Helper and Comparator keep their working state in memory; reloading the page resets it.
 - There is no internship page. Career information appears on the Home page; internship-related sample fields exist only in the unused `comparisonProgrammes` fixtures.
 
@@ -128,12 +131,14 @@ Clearing site data removes all demo accounts, profiles, and feedback.
 - Program Browser & Career Information is still a placeholder.
 - There is no dedicated Student Status page combining profile, completed/planned courses, and credit progress.
 - The Student Profile and Degree Audit Helper have separate data sources and do not synchronize.
+- Imported official data and generated sample scores coexist in `mock-data.js`; `officialOfferings` is not rendered by any page yet, and the importer is a manual, network-dependent developer tool.
 
 ## Documentation
 
 - `AGENTS.md` — authoritative development guide: page ownership, data model, access rules, conventions, HCI/HAI requirements, and validation.
 - `.github/skills/README.md` — reusable user-research, design, validation, and agile-planning skills.
 - `tools/aims-course-export-console.js` — optional, manually run console helper for exporting AIMS course pages in an authorized browser session. It is not part of the portal runtime.
+- `tools/import_course_exports.py` — optional Python 3.10+ importer that enriches `mock-data.js` from `tools/htmls`, CityU catalogue pages, and syllabus PDFs. Run `--dry-run` first; see `AGENTS.md` for commands and limits.
 
 ---
 
