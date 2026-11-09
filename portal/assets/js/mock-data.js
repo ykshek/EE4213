@@ -30,6 +30,7 @@
             "sampleWorkload": 3.1,
             "sampleMeanGpa": 3.05,
             "category": "core",
+            "hasLab": true,
             "comparator": {
                 "expectedStudyHoursPerWeek": 8,
                 "assessmentLoad": "High",
@@ -68,7 +69,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.3,
             "sampleMeanGpa": 2.95,
-            "category": "core"
+            "category": "core",
+            "hasLab": true
         },
         {
             "courseId": "EE1004",
@@ -83,7 +85,8 @@
             "creditUnits": 3,
             "sampleWorkload": 2.8,
             "sampleMeanGpa": 3.15,
-            "category": "core"
+            "category": "core",
+            "hasLab": true
         },
         {
             "courseId": "GE1354",
@@ -98,7 +101,8 @@
             "creditUnits": 3,
             "sampleWorkload": 2.9,
             "sampleMeanGpa": 3.2,
-            "category": "core"
+            "category": "core",
+            "hasLab": null
         },
         {
             "courseId": "EE2000",
@@ -113,7 +117,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.4,
             "sampleMeanGpa": 2.88,
-            "category": "core"
+            "category": "core",
+            "hasLab": true
         },
         {
             "courseId": "EE2004",
@@ -128,7 +133,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.5,
             "sampleMeanGpa": 2.75,
-            "category": "core"
+            "category": "core",
+            "hasLab": true
         },
         {
             "courseId": "EE2005",
@@ -143,7 +149,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.6,
             "sampleMeanGpa": 2.7,
-            "category": "core"
+            "category": "core",
+            "hasLab": true
         },
         {
             "courseId": "EE2066",
@@ -158,7 +165,8 @@
             "creditUnits": 3,
             "sampleWorkload": 2.4,
             "sampleMeanGpa": 3.4,
-            "category": "core"
+            "category": "core",
+            "hasLab": false
         },
         {
             "courseId": "EE2104",
@@ -173,7 +181,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.7,
             "sampleMeanGpa": 2.65,
-            "category": "core"
+            "category": "core",
+            "hasLab": false
         },
         {
             "courseId": "EE2108",
@@ -188,7 +197,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.2,
             "sampleMeanGpa": 3,
-            "category": "core"
+            "category": "core",
+            "hasLab": true
         },
         {
             "courseId": "EE3008",
@@ -203,7 +213,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.5,
             "sampleMeanGpa": 2.8,
-            "category": "core"
+            "category": "core",
+            "hasLab": false
         },
         {
             "courseId": "EE3070",
@@ -218,7 +229,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.8,
             "sampleMeanGpa": 3.1,
-            "category": "core"
+            "category": "core",
+            "hasLab": true
         },
         {
             "courseId": "EE3109",
@@ -233,7 +245,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.9,
             "sampleMeanGpa": 2.6,
-            "category": "core"
+            "category": "core",
+            "hasLab": true
         },
         {
             "courseId": "EE3114",
@@ -248,7 +261,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.6,
             "sampleMeanGpa": 2.85,
-            "category": "core"
+            "category": "core",
+            "hasLab": true
         },
         {
             "courseId": "EE3115",
@@ -263,7 +277,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.3,
             "sampleMeanGpa": 2.95,
-            "category": "core"
+            "category": "core",
+            "hasLab": true
         },
         {
             "courseId": "EE3121",
@@ -278,7 +293,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.4,
             "sampleMeanGpa": 2.9,
-            "category": "core"
+            "category": "core",
+            "hasLab": false
         },
         {
             "courseId": "EE3122",
@@ -293,7 +309,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.7,
             "sampleMeanGpa": 2.7,
-            "category": "core"
+            "category": "core",
+            "hasLab": true
         },
         {
             "courseId": "EE3123",
@@ -308,7 +325,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.2,
             "sampleMeanGpa": 3.05,
-            "category": "core"
+            "category": "core",
+            "hasLab": true
         },
         {
             "courseId": "EE3124",
@@ -323,7 +341,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.3,
             "sampleMeanGpa": 2.98,
-            "category": "core"
+            "category": "core",
+            "hasLab": true
         },
         {
             "courseId": "EE3210",
@@ -338,7 +357,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.8,
             "sampleMeanGpa": 2.55,
-            "category": "core"
+            "category": "core",
+            "hasLab": false
         },
         {
             "courseId": "EE4080",
@@ -353,7 +373,8 @@
             "creditUnits": 6,
             "sampleWorkload": 4.2,
             "sampleMeanGpa": 3.25,
-            "category": "core"
+            "category": "core",
+            "hasLab": null
         },
         {
             "courseId": "EE4090",
@@ -368,7 +389,8 @@
             "creditUnits": 0,
             "sampleWorkload": 2,
             "sampleMeanGpa": 3.5,
-            "category": "core"
+            "category": "core",
+            "hasLab": true
         },
         {
             "courseId": "CS2311",
@@ -383,7 +405,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3,
             "sampleMeanGpa": 3.1,
-            "category": "core"
+            "category": "core",
+            "hasLab": null
         },
         {
             "courseId": "MA2001",
@@ -398,7 +421,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.5,
             "sampleMeanGpa": 2.8,
-            "category": "core"
+            "category": "core",
+            "hasLab": null
         },
         {
             "courseId": "EE2331",
@@ -413,7 +437,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.4,
             "sampleMeanGpa": 2.9,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": false
         },
         {
             "courseId": "EE2800",
@@ -428,7 +453,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.6,
             "sampleMeanGpa": 2.75,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": true
         },
         {
             "courseId": "EE3009",
@@ -443,7 +469,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.2,
             "sampleMeanGpa": 3,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": true
         },
         {
             "courseId": "EE3206",
@@ -458,7 +485,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.1,
             "sampleMeanGpa": 3.15,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": false
         },
         {
             "courseId": "EE3220",
@@ -473,7 +501,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.8,
             "sampleMeanGpa": 2.7,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": true
         },
         {
             "courseId": "EE4015 / EE5410",
@@ -488,7 +517,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.7,
             "sampleMeanGpa": 2.65,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": false
         },
         {
             "courseId": "EE4016 / EE5438",
@@ -503,7 +533,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.5,
             "sampleMeanGpa": 3.05,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": false
         },
         {
             "courseId": "EE4017",
@@ -518,7 +549,8 @@
             "creditUnits": 3,
             "sampleWorkload": 2.7,
             "sampleMeanGpa": 3.3,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": true
         },
         {
             "courseId": "EE4035",
@@ -533,7 +565,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.3,
             "sampleMeanGpa": 2.95,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": true
         },
         {
             "courseId": "EE4036",
@@ -548,7 +581,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.4,
             "sampleMeanGpa": 2.85,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": false
         },
         {
             "courseId": "EE4045",
@@ -563,7 +597,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.5,
             "sampleMeanGpa": 2.9,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": false
         },
         {
             "courseId": "EE4101",
@@ -578,7 +613,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3,
             "sampleMeanGpa": 3.2,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": false
         },
         {
             "courseId": "EE4105",
@@ -593,7 +629,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.2,
             "sampleMeanGpa": 3,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": true
         },
         {
             "courseId": "EE4107",
@@ -608,7 +645,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.6,
             "sampleMeanGpa": 2.8,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": true
         },
         {
             "courseId": "EE4108",
@@ -623,7 +661,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.5,
             "sampleMeanGpa": 2.85,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": false
         },
         {
             "courseId": "EE4115",
@@ -638,7 +677,8 @@
             "creditUnits": 3,
             "sampleWorkload": 2.9,
             "sampleMeanGpa": 3.15,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": false
         },
         {
             "courseId": "EE4142",
@@ -653,7 +693,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.4,
             "sampleMeanGpa": 2.9,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": true
         },
         {
             "courseId": "EE4146",
@@ -668,7 +709,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.3,
             "sampleMeanGpa": 3.05,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": false
         },
         {
             "courseId": "EE4147",
@@ -683,7 +725,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.5,
             "sampleMeanGpa": 2.88,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": false
         },
         {
             "courseId": "EE4148",
@@ -698,7 +741,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.6,
             "sampleMeanGpa": 2.75,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": true
         },
         {
             "courseId": "EE4149",
@@ -713,7 +757,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.7,
             "sampleMeanGpa": 2.7,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": true
         },
         {
             "courseId": "EE4221",
@@ -728,7 +773,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.1,
             "sampleMeanGpa": 3.1,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": false
         },
         {
             "courseId": "EE4316",
@@ -743,7 +789,8 @@
             "creditUnits": 3,
             "sampleWorkload": 3.2,
             "sampleMeanGpa": 3,
-            "category": "elective"
+            "category": "elective",
+            "hasLab": false
         },
         {
             "courseId": "GE1401",
@@ -751,7 +798,8 @@
                 "en": "University English"
             },
             "creditUnits": 3,
-            "category": "general-education"
+            "category": "general-education",
+            "hasLab": null
         },
         {
             "courseId": "GE2410",
@@ -759,7 +807,8 @@
                 "en": "English for Engineering"
             },
             "creditUnits": 3,
-            "category": "general-education"
+            "category": "general-education",
+            "hasLab": null
         },
         {
             "courseId": "GE1501",
@@ -767,7 +816,8 @@
                 "en": "Chinese Civilisation"
             },
             "creditUnits": 3,
-            "category": "general-education"
+            "category": "general-education",
+            "hasLab": null
         },
         {
             "courseId": "GE_AREA1",
@@ -775,7 +825,8 @@
                 "en": "GE Area 1 - Arts & Humanities"
             },
             "creditUnits": 3,
-            "category": "general-education"
+            "category": "general-education",
+            "hasLab": null
         },
         {
             "courseId": "GE_AREA2",
@@ -783,7 +834,8 @@
                 "en": "GE Area 2 - Study of Societies"
             },
             "creditUnits": 3,
-            "category": "general-education"
+            "category": "general-education",
+            "hasLab": null
         },
         {
             "courseId": "GE_AREA3",
@@ -791,7 +843,8 @@
                 "en": "GE Area 3 - Science & Technology"
             },
             "creditUnits": 3,
-            "category": "general-education"
+            "category": "general-education",
+            "hasLab": null
         },
         {
             "courseId": "GE_RANDOM",
@@ -799,7 +852,8 @@
                 "en": "GE Area (Distributional)"
             },
             "creditUnits": 3,
-            "category": "general-education"
+            "category": "general-education",
+            "hasLab": null
         },
         {
             "courseId": "MA1200",
@@ -807,7 +861,8 @@
                 "en": "Calculus I"
             },
             "creditUnits": 3,
-            "category": "curriculum"
+            "category": "curriculum",
+            "hasLab": null
         },
         {
             "courseId": "MA1201",
@@ -815,7 +870,8 @@
                 "en": "Calculus II"
             },
             "creditUnits": 3,
-            "category": "curriculum"
+            "category": "curriculum",
+            "hasLab": null
         },
         {
             "courseId": "CS1302",
@@ -823,7 +879,8 @@
                 "en": "Intro to Computer Programming"
             },
             "creditUnits": 3,
-            "category": "curriculum"
+            "category": "curriculum",
+            "hasLab": null
         },
         {
             "courseId": "PHY1101",
@@ -831,7 +888,8 @@
                 "en": "Intro Classical Mechanics"
             },
             "creditUnits": 3,
-            "category": "curriculum"
+            "category": "curriculum",
+            "hasLab": null
         },
         {
             "courseId": "EE3001",
@@ -839,7 +897,8 @@
                 "en": "Foundations of Data Eng"
             },
             "creditUnits": 3,
-            "category": "curriculum"
+            "category": "curriculum",
+            "hasLab": false
         },
         {
             "courseId": "EE3211",
@@ -847,7 +906,8 @@
                 "en": "Modelling Techniques"
             },
             "creditUnits": 3,
-            "category": "curriculum"
+            "category": "curriculum",
+            "hasLab": false
         },
         {
             "courseId": "CS3103",
@@ -855,7 +915,8 @@
                 "en": "Operating Systems"
             },
             "creditUnits": 3,
-            "category": "curriculum"
+            "category": "curriculum",
+            "hasLab": null
         },
         {
             "courseId": "EE3315",
@@ -863,7 +924,8 @@
                 "en": "Internet Technology"
             },
             "creditUnits": 3,
-            "category": "curriculum"
+            "category": "curriculum",
+            "hasLab": true
         },
         {
             "courseId": "CS3402",
@@ -871,7 +933,8 @@
                 "en": "Database Systems"
             },
             "creditUnits": 3,
-            "category": "curriculum"
+            "category": "curriculum",
+            "hasLab": null
         },
         {
             "courseId": "EE4080 A",
@@ -879,7 +942,8 @@
                 "en": "Final Year Project (Part A)"
             },
             "creditUnits": 3,
-            "category": "curriculum"
+            "category": "curriculum",
+            "hasLab": null
         },
         {
             "courseId": "EE4080 B",
@@ -887,7 +951,8 @@
                 "en": "Final Year Project (Part B)"
             },
             "creditUnits": 3,
-            "category": "curriculum"
+            "category": "curriculum",
+            "hasLab": null
         },
         {
             "courseId": "TE_ELEC1",
@@ -895,7 +960,8 @@
                 "en": "Technical Elective 1"
             },
             "creditUnits": 3,
-            "category": "technical-elective"
+            "category": "technical-elective",
+            "hasLab": null
         },
         {
             "courseId": "TE_ELEC2",
@@ -903,7 +969,8 @@
                 "en": "Technical Elective 2"
             },
             "creditUnits": 3,
-            "category": "technical-elective"
+            "category": "technical-elective",
+            "hasLab": null
         },
         {
             "courseId": "TE_ELEC3",
@@ -911,7 +978,8 @@
                 "en": "Technical Elective 3"
             },
             "creditUnits": 3,
-            "category": "technical-elective"
+            "category": "technical-elective",
+            "hasLab": null
         },
         {
             "courseId": "TE_ELEC4",
@@ -919,7 +987,8 @@
                 "en": "Technical Elective 4"
             },
             "creditUnits": 3,
-            "category": "technical-elective"
+            "category": "technical-elective",
+            "hasLab": null
         },
         {
             "courseId": "TE_ELEC5",
@@ -927,7 +996,8 @@
                 "en": "Technical Elective 5"
             },
             "creditUnits": 3,
-            "category": "technical-elective"
+            "category": "technical-elective",
+            "hasLab": null
         },
         {
             "courseId": "EE2302",
@@ -935,7 +1005,8 @@
                 "en": "Foundations Info Eng & Crypto"
             },
             "creditUnits": 3,
-            "category": "curriculum"
+            "category": "curriculum",
+            "hasLab": false
         },
         {
             "courseId": "EE3331",
@@ -943,7 +1014,8 @@
                 "en": "Probability Models INFE"
             },
             "creditUnits": 3,
-            "category": "curriculum"
+            "category": "curriculum",
+            "hasLab": null
         },
         {
             "courseId": "EE2303",
@@ -951,7 +1023,8 @@
                 "en": "Applied AI Systems INFE"
             },
             "creditUnits": 3,
-            "category": "curriculum"
+            "category": "curriculum",
+            "hasLab": false
         },
         {
             "courseId": "EE3301",
@@ -959,7 +1032,8 @@
                 "en": "Quantitative Methods INFE"
             },
             "creditUnits": 3,
-            "category": "curriculum"
+            "category": "curriculum",
+            "hasLab": false
         },
         {
             "courseId": "EE3800",
@@ -967,7 +1041,8 @@
                 "en": "Semiconductor Materials"
             },
             "creditUnits": 3,
-            "category": "curriculum"
+            "category": "curriculum",
+            "hasLab": true
         },
         {
             "courseId": "EE3801",
@@ -975,7 +1050,8 @@
                 "en": "Microsystems & Nanotech"
             },
             "creditUnits": 3,
-            "category": "curriculum"
+            "category": "curriculum",
+            "hasLab": null
         },
         {
             "courseId": "EE2002",
@@ -983,6 +1059,7 @@
                 "en": "Circuit Theory"
             },
             "category": "comparator-sample",
+            "hasLab": null,
             "comparator": {
                 "expectedStudyHoursPerWeek": 10,
                 "assessmentLoad": "High",
@@ -1014,6 +1091,7 @@
                 "en": "Signals and Systems"
             },
             "category": "comparator-sample",
+            "hasLab": null,
             "comparator": {
                 "expectedStudyHoursPerWeek": 12,
                 "assessmentLoad": "Very High",
@@ -1045,6 +1123,7 @@
                 "en": "Electromagnetic Fields"
             },
             "category": "comparator-sample",
+            "hasLab": null,
             "comparator": {
                 "expectedStudyHoursPerWeek": 9,
                 "assessmentLoad": "Moderate",
@@ -1073,15 +1152,10 @@
         {
             "courseId": "EE4213",
             "titles": {
-                "en": "Human-Computer Interaction",
-                "zh": "人機互動"
+                "en": "Programming for Engineers"
             },
-            "descriptions": {
-                "en": "Study human-computer interaction through user research, prototyping, and usability evaluation.",
-                "zh": "透過使用者研究、製作原型及可用性評估，學習人機互動。"
-            },
-            "creditUnits": 3,
             "category": "comparator-sample",
+            "hasLab": false,
             "comparator": {
                 "expectedStudyHoursPerWeek": 11,
                 "assessmentLoad": "High",
@@ -1113,6 +1187,7 @@
                 "en": "Power Electronics"
             },
             "category": "comparator-sample",
+            "hasLab": null,
             "comparator": {
                 "expectedStudyHoursPerWeek": 14,
                 "assessmentLoad": "Very High",
@@ -1144,6 +1219,7 @@
                 "en": "Electronic Devices and Circuits"
             },
             "category": "comparator-sample",
+            "hasLab": null,
             "comparator": {
                 "expectedStudyHoursPerWeek": 10,
                 "assessmentLoad": "High",
@@ -1175,6 +1251,7 @@
                 "en": "Control Systems"
             },
             "category": "comparator-sample",
+            "hasLab": null,
             "comparator": {
                 "expectedStudyHoursPerWeek": 11,
                 "assessmentLoad": "High",
@@ -1206,6 +1283,7 @@
                 "en": "Renewable Energy Systems"
             },
             "category": "comparator-sample",
+            "hasLab": null,
             "comparator": {
                 "expectedStudyHoursPerWeek": 10,
                 "assessmentLoad": "Moderate",
@@ -1233,12 +1311,41 @@
         }
     ],
     "comparatorSemesterPresets": {
-        "2A": ["EE1001", "EE2002", "EE2201"],
-        "2B": ["EE1001", "EE2201", "EE3201", "EE3302"],
-        "3A": ["EE2002", "EE3101", "EE3201", "EE3302"],
-        "3B": ["EE3101", "EE3302", "EE4213", "EE4301"],
-        "4A": ["EE3101", "EE4213", "EE4301", "EE4402"],
-        "4B": ["EE3201", "EE4213", "EE4301", "EE4402"]
+        "2A": [
+            "EE1001",
+            "EE2002",
+            "EE2201"
+        ],
+        "2B": [
+            "EE1001",
+            "EE2201",
+            "EE3201",
+            "EE3302"
+        ],
+        "3A": [
+            "EE2002",
+            "EE3101",
+            "EE3201",
+            "EE3302"
+        ],
+        "3B": [
+            "EE3101",
+            "EE3302",
+            "EE4213",
+            "EE4301"
+        ],
+        "4A": [
+            "EE3101",
+            "EE4213",
+            "EE4301",
+            "EE4402"
+        ],
+        "4B": [
+            "EE3201",
+            "EE4213",
+            "EE4301",
+            "EE4402"
+        ]
     },
     "majors": [
         {
