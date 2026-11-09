@@ -16,114 +16,81 @@
         <main class="main" id="mainContent" tabindex="-1">
             <section id="pageContent" class="page-content home-page" aria-labelledby="pageTitle">
                 <div class="home-wrap">
-                    <section class="home-hero" aria-labelledby="pageTitle">
-                        <div class="hero-copy">
-                            <p class="hero-kicker">
-                                <span class="lang-zh">香港城市大學｜電機工程學系</span>
-                                <span class="lang-en">CITY UNIVERSITY OF HONG KONG · ELECTRICAL ENGINEERING</span>
-                            </p>
+                    <div class="home-landing">
+                        <section class="home-hero" aria-labelledby="pageTitle">
+                            <span class="hero-emoji" aria-hidden="true">🎓</span>
                             <h2 id="pageTitle">
-                                <span class="lang-zh">由好奇出發，<em>探索工程的無限可能。</em></span>
-                                <span class="lang-en">Start with curiosity.<em> Explore what engineering can do.</em></span>
+                                <span class="lang-zh">歡迎來到 CityU EE 學生平台</span>
+                                <span class="lang-en">Welcome to the CityU EE Student Portal</span>
                             </h2>
-                            <p class="hero-description">
-                                <span class="lang-zh">由電子、通訊到人工智能與能源系統，認識電機工程如何連繫科技與日常生活，並了解大學四年的學習旅程。</span>
-                                <span class="lang-en">From electronics and communications to AI and energy systems, discover how electrical engineering connects technology with everyday life—and what your four-year learning journey may look like.</span>
+                            <p data-guest-only>
+                                <span class="lang-zh">一站式學位規劃、課程資訊與學術支援。無需登入即可瀏覽課程資訊、主修資訊及課程比較器；登入後可使用學位審核及個人檔案等功能。</span>
+                                <span class="lang-en">Your one-stop platform for degree planning, course info, and academic support. Browse course info, major info, and the Course Comparator without logging in; sign in for features such as degree audit and your profile.</span>
+                            </p>
+                            <p data-member-only hidden>
+                                <span class="lang-zh">你已登入，可從側欄前往各功能頁，或繼續前往：</span>
+                                <span class="lang-en">You are logged in. Use the sidebar to open the feature pages, or continue to:</span>
                             </p>
                             <div class="hero-actions" data-guest-only>
-                                <a class="home-btn home-btn-gold" href="#programme">
-                                    <span class="lang-zh">探索課程</span><span class="lang-en">Explore the programme</span>
-                                    <span aria-hidden="true">↘</span>
-                                </a>
-                                <button type="button" class="home-btn home-btn-glass" data-auth="login">
-                                    <span class="lang-zh">學生登入</span><span class="lang-en">Student login</span>
+                                <button type="button" class="hero-btn hero-btn-primary" data-auth="login">
+                                    <span class="lang-zh">立即登入</span><span class="lang-en">Login Now</span>
+                                </button>
+                                <button type="button" class="hero-btn hero-btn-outline" data-auth="register">
+                                    <span class="lang-zh">註冊新帳號</span><span class="lang-en">Create Account</span>
                                 </button>
                             </div>
                             <div class="hero-actions" data-member-only hidden>
-                                <button type="button" class="home-btn home-btn-gold" data-nav="profile">
-                                    <span class="lang-zh">前往學生個人檔案</span><span class="lang-en">Open Student Profile</span>
-                                    <span aria-hidden="true">→</span>
+                                <button type="button" class="hero-btn hero-btn-primary" data-nav="profile">
+                                    <span class="lang-zh">學生個人檔案</span><span class="lang-en">Student Profile</span>
                                 </button>
-                                <button type="button" class="home-btn home-btn-glass" data-nav="registration">
+                                <button type="button" class="hero-btn hero-btn-outline" data-nav="registration">
                                     <span class="lang-zh">註冊導航器</span><span class="lang-en">Registration Navigator</span>
                                 </button>
                             </div>
-                            <p class="hero-footnote">
-                                <span class="lang-zh">課程及收生資料或會更新，請以大學及 JUPAS 最新公布為準。</span>
-                                <span class="lang-en">Programme and admission details may change. Check the latest CityUHK and JUPAS announcements.</span>
-                            </p>
+                        </section>
+
+                        <div class="home-features">
+                            <a class="home-feature-card" href="course-info/index.html">
+                                <span class="fc-icon" aria-hidden="true">📚</span>
+                                <span class="fc-arrow" aria-hidden="true">→</span>
+                                <span class="fc-title"><span class="lang-zh">課程資訊</span><span class="lang-en">Course Information</span></span>
+                                <span class="fc-description"><span class="lang-zh">查閱課程資料</span><span class="lang-en">Browse course details</span></span>
+                            </a>
+                            <a class="home-feature-card" href="major-info/index.html">
+                                <span class="fc-icon" aria-hidden="true">🎓</span>
+                                <span class="fc-arrow" aria-hidden="true">→</span>
+                                <span class="fc-title"><span class="lang-zh">主修資訊</span><span class="lang-en">Major Information</span></span>
+                                <span class="fc-description"><span class="lang-zh">查看主修結構</span><span class="lang-en">Explore major structures</span></span>
+                            </a>
+                            <button class="home-feature-card" type="button" data-nav="degree-audit">
+                                <span class="fc-icon" aria-hidden="true">✅</span>
+                                <span class="fc-arrow" data-member-only hidden aria-hidden="true">→</span>
+                                <span class="fc-title"><span class="lang-zh">學位審核輔助</span><span class="lang-en">Degree Audit Helper</span></span>
+                                <span class="fc-description"><span class="lang-zh">檢查學分進度</span><span class="lang-en">Check credit progress</span></span>
+                                <span class="fc-status" data-guest-only>
+                                    <span class="lang-zh">需登入</span><span class="lang-en">Sign-in required</span>
+                                </span>
+                            </button>
+                            <a class="home-feature-card" href="comparator/index.html">
+                                <span class="fc-icon" aria-hidden="true">⚖️</span>
+                                <span class="fc-arrow" aria-hidden="true">→</span>
+                                <span class="fc-title"><span class="lang-zh">課程比較器</span><span class="lang-en">Course Comparator</span></span>
+                                <span class="fc-description"><span class="lang-zh">比較課業量與上課時間</span><span class="lang-en">Compare workload and class times</span></span>
+                            </a>
                         </div>
+                        <a class="home-programme-link" href="#programme">
+                            <span class="lang-zh">查看課程概覽</span><span class="lang-en">Explore the programme</span>
+                            <span aria-hidden="true">↓</span>
+                        </a>
+                    </div>
 
-                        <div class="hero-art" aria-hidden="true">
-                            <div class="art-orbit orbit-one"></div>
-                            <div class="art-orbit orbit-two"></div>
-                            <div class="art-glow"></div>
-                            <svg class="circuit-art" viewBox="0 0 520 430" role="presentation" focusable="false">
-                                <defs>
-                                    <linearGradient id="circuitStroke" x1="0" y1="0" x2="1" y2="1">
-                                        <stop offset="0" stop-color="#f5d77d" />
-                                        <stop offset="1" stop-color="#ffffff" />
-                                    </linearGradient>
-                                    <linearGradient id="chipFill" x1="0" y1="0" x2="1" y2="1">
-                                        <stop offset="0" stop-color="#fff0bd" />
-                                        <stop offset="1" stop-color="#d5a93e" />
-                                    </linearGradient>
-                                </defs>
-                                <g fill="none" stroke="url(#circuitStroke)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".78">
-                                    <path d="M30 92h92l38 38h54M22 270h90l40-40h48M356 52h-56l-42 42v35M492 174h-78l-33 33h-32M482 330h-90l-38-38h-37M78 370h76l34-34h38" />
-                                    <path d="M80 48v36h54l27 27M438 80h-58l-28 28v45M468 270h-48l-32-32h-30M126 322h42l35-35" opacity=".48" />
-                                </g>
-                                <g fill="#f5d77d">
-                                    <circle cx="30" cy="92" r="5"/><circle cx="22" cy="270" r="5"/><circle cx="492" cy="174" r="5"/>
-                                    <circle cx="482" cy="330" r="5"/><circle cx="80" cy="48" r="5"/><circle cx="438" cy="80" r="5"/>
-                                </g>
-                                <g transform="translate(170 112)">
-                                    <rect x="0" y="0" width="190" height="190" rx="28" fill="#180b20" stroke="#f5d77d" stroke-width="2.5" />
-                                    <rect x="22" y="22" width="146" height="146" rx="18" fill="url(#chipFill)" opacity=".12" stroke="#f5d77d" stroke-width="1.4" />
-                                    <path d="M-15 42h15M-15 77h15M-15 112h15M-15 147h15M190 42h15M190 77h15M190 112h15M190 147h15M42-15v15M77-15v15M112-15v15M147-15v15M42 190v15M77 190v15M112 190v15M147 190v15" stroke="#f5d77d" stroke-width="4" stroke-linecap="round" />
-                                    <path d="M95 48v35m0 24v35M48 95h35m24 0h35" stroke="#f5d77d" stroke-width="3" stroke-linecap="round" />
-                                    <circle cx="95" cy="95" r="37" fill="url(#chipFill)" opacity=".95" />
-                                    <path d="M77 96l12 12 25-28" fill="none" stroke="#4d1830" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
-                                </g>
-                                <g fill="#ffffff" opacity=".9">
-                                    <circle cx="118" cy="184" r="3"/><circle cx="402" cy="120" r="3"/><circle cx="400" cy="350" r="3"/><circle cx="112" cy="340" r="3"/>
-                                </g>
-                            </svg>
-                            <div class="art-label label-top"><span class="label-dot"></span> ELECTRONICS</div>
-                            <div class="art-label label-bottom"><span class="label-dot"></span> INTELLIGENT SYSTEMS</div>
-                            <div class="art-caption">
-                                <span class="caption-small">ENGINEERING</span>
-                                <strong>IDEAS INTO IMPACT</strong>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section class="home-facts" aria-label="Programme at a glance">
-                        <article class="fact-card">
-                            <span class="fact-icon" aria-hidden="true">◷</span>
-                            <div><strong>4 <span class="lang-zh">年</span><span class="lang-en">years</span></strong><p><span class="lang-zh">全日制本科課程</span><span class="lang-en">Full-time undergraduate programme</span></p></div>
-                        </article>
-                        <article class="fact-card">
-                            <span class="fact-icon" aria-hidden="true">⌁</span>
-                            <div><strong>JS1205</strong><p><span class="lang-zh">JUPAS 課程編號</span><span class="lang-en">JUPAS catalogue number</span></p></div>
-                        </article>
-                        <article class="fact-card">
-                            <span class="fact-icon" aria-hidden="true">◇</span>
-                            <div><strong>4 <span class="lang-zh">個</span><span class="lang-en">major options</span></strong><p><span class="lang-zh">完成第一年後選擇主修</span><span class="lang-en">Major selection after Year 1</span></p></div>
-                        </article>
-                        <article class="fact-card">
-                            <span class="fact-icon" aria-hidden="true">✳</span>
-                            <div><strong>5 <span class="lang-zh">大方向</span><span class="lang-en">study areas</span></strong><p><span class="lang-zh">跨越多個科技範疇</span><span class="lang-en">Explore diverse technology fields</span></p></div>
-                        </article>
-                    </section>
-
-                    <section class="home-section programme-section" id="programme" aria-labelledby="programmeTitle">
+                    <section class="home-section programme-section" id="programme" aria-labelledby="programmeTitle" tabindex="-1">
                         <div class="section-heading">
                             <div>
                                 <p class="section-kicker"><span class="lang-zh">認識課程</span><span class="lang-en">THE PROGRAMME</span></p>
                                 <h2 id="programmeTitle"><span class="lang-zh">先建立工程基礎，再找到你的專業方向。</span><span class="lang-en">Build a shared foundation. Then find your specialisation.</span></h2>
                             </div>
-                            <p class="section-intro"><span class="lang-zh">透過共同的第一年學習，認識電機工程的不同領域，再按個人興趣及學系安排選擇主修。</span><span class="lang-en">Begin with a common first-year foundation, explore different areas of electrical engineering, and then select a major based on your interests and departmental arrangements.</span></p>
+                            <p class="section-intro"><span class="lang-zh">第一年修讀共同基礎課程，再按興趣和學系安排選擇主修。</span><span class="lang-en">Start with a common first year, then choose a major based on your interests and departmental arrangements.</span></p>
                         </div>
 
                         <div class="programme-panel">
@@ -149,14 +116,10 @@
 
                     <section class="home-section study-section" id="study-areas" aria-labelledby="studyTitle">
                         <div class="section-heading">
-                            <div>
-                                <p class="section-kicker"><span class="lang-zh">探索學習範疇</span><span class="lang-en">WHAT YOU CAN EXPLORE</span></p>
-                                <h2 id="studyTitle"><span class="lang-zh">電機工程，不止於電力。</span><span class="lang-en">Electrical engineering is more than electricity.</span></h2>
-                            </div>
-                            <p class="section-intro"><span class="lang-zh">從晶片到無線網絡，從智能裝置到能源系統，工程知識連繫不同科技及應用。</span><span class="lang-en">From chips and wireless networks to smart devices and energy systems, engineering connects a wide range of technologies and applications.</span></p>
+                            <h2 id="studyTitle"><span class="lang-zh">學習範疇</span><span class="lang-en">Study areas</span></h2>
                         </div>
                         <div class="study-grid">
-                            <article class="study-card study-card-featured">
+                            <article class="study-card">
                                 <span class="study-symbol" aria-hidden="true">▦</span><span class="study-index">01 / HARDWARE</span>
                                 <h3><span class="lang-zh">電子及微電子</span><span class="lang-en">Electronics &amp; Microelectronics</span></h3>
                                 <p><span class="lang-zh">研究電子電路、電子器件及集成電路，應用於電子產品、晶片及硬件系統。</span><span class="lang-en">Explore electronic circuits, devices, and integrated circuits used in products, chips, and hardware systems.</span></p>
@@ -190,7 +153,7 @@
                                 <p class="section-kicker"><span class="lang-zh">四年學習旅程</span><span class="lang-en">YOUR FOUR-YEAR JOURNEY</span></p>
                                 <h2 id="journeyTitle"><span class="lang-zh">由基礎知識，走向實際工程項目。</span><span class="lang-en">From fundamentals to real engineering projects.</span></h2>
                             </div>
-                            <p class="section-intro"><span class="lang-zh">以下是協助準學生理解大學學習進程的概覽，並非官方逐年課程表。</span><span class="lang-en">This is an illustrative overview to help prospective students understand the learning journey, not an official year-by-year course list.</span></p>
+                            <p class="section-intro"><span class="lang-zh">四年學習概覽僅供參考。</span><span class="lang-en">An illustrative overview of four years of study.</span></p>
                         </div>
                         <div class="journey-list">
                             <article class="journey-step"><span class="journey-year">YEAR 01</span><div class="journey-node">01</div><div class="journey-copy"><h3><span class="lang-zh">建立基礎</span><span class="lang-en">Build the foundations</span></h3><p><span class="lang-zh">學習數學、科學及工程基礎，初步認識電機工程和基本編程。</span><span class="lang-en">Develop foundations in mathematics, science, and engineering, with an introduction to electrical engineering and basic programming.</span></p></div></article>
@@ -216,11 +179,8 @@
 
                     <section class="home-section careers-section" id="careers" aria-labelledby="careersTitle">
                         <div class="section-heading">
-                            <div>
-                                <p class="section-kicker"><span class="lang-zh">未來發展</span><span class="lang-en">WHERE IT CAN LEAD</span></p>
-                                <h2 id="careersTitle"><span class="lang-zh">讓工程能力，連接不同產業。</span><span class="lang-en">Take engineering skills into different industries.</span></h2>
-                            </div>
-                            <p class="section-intro"><span class="lang-zh">以下是相關職業方向例子；實際工作內容會因公司及職位而有所不同。</span><span class="lang-en">These are examples of possible career directions. Actual responsibilities vary by employer and role.</span></p>
+                            <h2 id="careersTitle"><span class="lang-zh">職涯方向</span><span class="lang-en">Career paths</span></h2>
+                            <p class="section-intro"><span class="lang-zh">以下為職業例子，職責因僱主和職位而異。</span><span class="lang-en">Example roles. Responsibilities vary by employer and position.</span></p>
                         </div>
                         <div class="career-grid">
                             <article><span aria-hidden="true">▣</span><h3><span class="lang-zh">電子／硬件工程師</span><span class="lang-en">Electronics / Hardware Engineer</span></h3><p><span class="lang-zh">設計、測試及改良電子電路或硬件產品。</span><span class="lang-en">Design, test, and improve electronic circuits or hardware products.</span></p></article>
