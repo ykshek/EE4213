@@ -80,6 +80,27 @@
         bilingual(node, units + ' 學分', units + (units === 1 ? ' credit unit' : ' credit units'));
     }
 
+    function getCourseTypeLabel(course) {
+    if (course.courseId === 'EE3070' || course.courseId === 'EE4090') {
+        return { label: { zh: '實用導向', en: 'Practical' }, type: 'practical' };
+    }
+    if (course.hasLab === true) {
+        return { label: { zh: '實用 + 理論', en: 'Practical + Theoretical' }, type: 'mixed' };
+    }
+    if (course.hasLab === false) {
+        return { label: { zh: '理論導向', en: 'Theoretical' }, type: 'theoretical' };
+    }
+    return null;
+    }
+    
+    function createBadge(course) {
+        const typeInfo = getCourseTypeLabel(course);
+        if (!typeInfo) return null;
+        const badge = element('span', undefined, 'course-type-badge ' + typeInfo.type);
+        bilingual(badge, typeInfo.label.zh, typeInfo.label.en);
+        return badge;
+    }
+
     function isStudyTerm(value) {
         if (typeof value !== 'string') return false;
         const match = /^(\d{4})\/(\d{2}) (A|B|Summer)$/.exec(value);
@@ -105,14 +126,18 @@
             const title = element('span', undefined, 'course-directory-title');
             fieldText(title, course.titles || { en: course.courseId });
             name.append(title);
+
+            const badge = createBadge(course);
+            if (badge) name.append(badge);
+
             const credits = element('span', undefined, 'course-directory-credits');
             if (course.creditUnits != null) {
                 creditsText(credits, course.creditUnits);
             }
             if (assessment[course.courseId]) {
-                const badge = element('span', undefined, 'course-assessment-badge');
-                bilingual(badge, '已核實評核', 'Verified assessment');
-                name.append(badge);
+                const assessmentBadge = element('span', undefined, 'course-assessment-badge');
+                bilingual(assessmentBadge, '已核實評核', 'Verified assessment');
+                name.append(assessmentBadge);
             }
             const arrow = element('span', '→', 'course-directory-arrow');
             arrow.setAttribute('aria-hidden', 'true');
@@ -147,7 +172,6 @@
         function updateQuery() {
             if (search.value.trim()) url.searchParams.set('q', search.value.trim());
             else url.searchParams.delete('q');
-            // Direct file browsing also works when history updates are restricted.
             try { history.replaceState(null, '', url); } catch { /* Links still carry the search term. */ }
             filter();
         }
@@ -570,6 +594,22 @@
         const readOnly = courseId.includes('/');
         byId('detail-code').textContent = courseId;
         byId('detail-code').hidden = false;
+
+        // Render course type label
+        const typeContainer = byId('course-type-container');
+        const typeInfo = getCourseTypeLabel(course);
+        if (typeInfo) {
+            const badge = createBadge(course);
+            if (badge) typeContainer.appendChild(badge);
+
+            const note = document.createElement('div');
+            note.className = 'alert alert-info course-type-note';
+            note.innerHTML = '<span class="lang-zh">此分類基於課程是否包含實驗（Lab）僅供參考，實際課程性質可能因學期與教師安排而異。</span><span class="lang-en">This classification is based on whether the course includes a Lab and is for reference only. The actual course nature may vary depending on the semester and instructor.</span>';
+            typeContainer.appendChild(note);
+
+            typeContainer.hidden = false;
+        }
+
         fieldText(byId('pageTitle'), titles || { en: courseId });
         fieldText(byId('course-description'), descriptions || { zh: '暫未有課程簡介。', en: 'A course description is currently unavailable.' });
         if (creditUnits != null) {
@@ -610,7 +650,6 @@
             initForm(courseId, response => {
                 let persisted = false;
                 try {
-                    // Separate keys allow two tabs to add responses without replacing each other's data.
                     const unique = crypto.getRandomValues(new Uint32Array(4)).join('-');
                     localStorage.setItem(prefix + unique, JSON.stringify(response));
                     persisted = true;
