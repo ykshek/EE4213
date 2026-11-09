@@ -1,8 +1,147 @@
-_The below is copied and summarized from the submission page._
+# CityU EE Student Portal
+
+A static, build-free high-fidelity prototype of a student guide for the Department of Electrical Engineering at City University of Hong Kong (CityUHK). It brings programme and major exploration, course discovery, workload comparison, degree planning, and a browser-local demo account flow together in one multipage portal.
+
+> **Prototype data only.** Course, major, workload, review, grade, and student data are sample or demo content. Nothing is connected to CityU AIMS, Canvas, or official student records, and nothing is saved on a server.
+
+## What works today
+
+| Feature | Location | Status |
+| --- | --- | --- |
+| Home page | `portal/index.html` | Implemented. Public landing page with programme, study-area, learning-journey, career, and official-resource sections. Not listed in the sidebar. |
+| Demo accounts, login, and language switch | `portal/assets/js/common.js`, `portal/assets/css/common.css` | Implemented. Browser-local accounts, session state, first-login routing, locked-page notices, storage warnings, and a Chinese/English switch. |
+| Registration Navigator | `portal/registration/index.html` | UI and step logic are present, but the page is **not currently wired up**: it does not load its page CSS/JS or the shared data module, and its page-root class does not match the scoped CSS. The flow is login-protected and not in the sidebar. |
+| Student Profile | `portal/student-profile/` | Implemented. View and edit major, entry route, year, career goal, and specialization. Login-protected. |
+| Course Information directory | `portal/course-info/index.html` | Implemented. Searchable directory of 56 EE course entries with bilingual titles, credits, and practical/theoretical badges. Public. |
+| Course Workload Details | `portal/course-info/workload.html` | Implemented. Course description, credits, workload metrics, 13-week busy-week timeline, student experiences, and grade distribution. Public subpage; not a sidebar item. |
+| Course Feedback Collector | `portal/course-info/workload.html` | Implemented. Validated feedback form saved per course in `localStorage`, mixed with deterministic fictional seed reviews for demonstration. |
+| Major Information | `portal/major-info/index.html` | Implemented. Bilingual overview of the four EE majors, the 2025/26 major-allocation summary, and official links. Public. |
+| Course Comparator | `portal/comparator/index.html` | Implemented. Compares nine sample courses, loads six sample semesters, detects timetable overlaps, and sorts workload metrics. Public. |
+| Degree Audit Helper | `portal/degree-audit/` | Implemented. Degree-audit checklist, semester planner, interactive flowchart, timetable conflict simulator, and prerequisite waiver preview. Login-protected; state is in memory only. |
+| Program Browser and Career Information | `portal/program-career/index.html` | Placeholder. Login-protected; career information currently appears only on the Home page. |
+| Student Status | — | No dedicated page yet. The Student Profile shows profile fields, and the Degree Audit Helper shows credit progress, but completed/planned courses are not combined into one status view. |
+
+The former root-level `base.html` prototype has been removed. The files under `original/` remain as read-only source references.
+
+## Repository structure
+
+```text
+EE4213/
+├── AGENTS.md                         # Authoritative development guide
+├── README.md                         # This file; course brief appended below
+├── LICENSE
+├── portal/                           # Current team implementation
+│   ├── index.html                    # Home (public, not in sidebar)
+│   ├── registration/
+│   │   └── index.html                # Multi-step UI; asset wiring incomplete
+│   ├── student-profile/
+│   │   └── index.html
+│   ├── course-info/
+│   │   ├── index.html                # Course directory
+│   │   ├── workload.html             # Workload details + feedback
+│   │   ├── course-info.css
+│   │   ├── course-info.js
+│   │   └── review-seed.js            # Deterministic fictional reviews
+│   ├── major-info/
+│   │   ├── index.html
+│   │   └── major-info.css
+│   ├── comparator/
+│   │   ├── index.html
+│   │   ├── comparator.css
+│   │   └── comparator.js
+│   ├── degree-audit/
+│   │   ├── index.html
+│   │   ├── index.css
+│   │   └── index.js
+│   ├── program-career/
+│   │   └── index.html                # Placeholder
+│   └── assets/
+│       ├── css/
+│       │   ├── common.css            # Shared shell and base components
+│       │   ├── home.css
+│       │   ├── registration.css      # Currently not linked by a page
+│       │   └── student-profile.css
+│       └── js/
+│           ├── common.js             # Shared shell, auth, language, storage
+│           ├── mock-data.js          # Shared course/major/comparator fixtures
+│           ├── registration.js       # Currently not linked by a page
+│           └── student-profile.js
+├── original/                         # Read-only reference prototypes
+│   ├── cityu-ee-guide.html
+│   ├── EE4213_code_v6.html
+│   └── comparator/
+│       ├── index.html
+│       ├── app.js
+│       └── styles.css
+├── tools/
+│   └── aims-course-export-console.js # Manual AIMS HTML export helper
+└── .github/skills/                   # Reusable course-method skills
+```
+
+There is no package manifest, framework, bundler, backend, database, or automated test suite. Pages are plain HTML, CSS, and JavaScript.
+
+## Run the prototype
+
+No installation is needed beyond a modern web browser.
+
+### Open a page directly
+
+Keep the `portal/` folder together, then open `portal/index.html` in a browser. The sidebar links open the other pages. Opening individual pages with a `file://` URL is the quickest way to test them, but browser storage may be unavailable or inconsistent across pages; the portal shows a notice when that happens.
+
+### Run a local static server (recommended for login and storage)
+
+From the repository root:
+
+```sh
+python -m http.server 8765 --bind 127.0.0.1 --directory portal
+```
+
+Open <http://127.0.0.1:8765/> and stop the server with `Ctrl+C`. On Windows, use `py` instead of `python` if that is the available command. Use only made-up credentials when testing.
+
+## Accounts and access
+
+- **Public pages:** Home, Course Information (including Workload Details), Major Information, and Course Comparator.
+- **Login-protected pages:** Registration Navigator, Student Profile, Degree Audit Helper, and Program Browser & Career Information.
+- **Account storage:** demo accounts are saved in `localStorage` under `ee4213.portal.demo-accounts.v1`. Passwords are stored in plain text; this is a prototype, not real authentication.
+- **Session storage:** login state, the navigator-visited flag, and language preference are saved in `sessionStorage` under `ee4213.portal.session.v1`, so they are per tab.
+- **Routing:** registration or a first login opens the Registration Navigator; later logins open Student Profile; logout returns to Home. Clicking Register always lands on the Registration Navigator.
+- **Profile and feedback data:** the profile uses `sessionStorage` under `ee4213.registration.profile.v1`; course feedback uses `localStorage` keys beginning `ee4213.portal.experiences.v1:`.
+
+Clearing site data removes all demo accounts, profiles, and feedback.
+
+## Prototype data and limitations
+
+- Shared fixtures live in `portal/assets/js/mock-data.js` as `window.EE4213Data`: 84 course records, four major curricula, six sample-semester presets, nine Comparator courses, five comparison programmes, and three feedback templates.
+- `studentProfiles` is intentionally empty. No real student data is included.
+- The course directory shows 56 EE entries. Comparator-only sample records are excluded except `EE4213`.
+- Comparator hours, difficulty, grading, and meeting times are illustrative fixtures, not current or official section data.
+- Workload metrics and grade distributions combine deterministic fictional reviews from `portal/course-info/review-seed.js` with feedback submitted in the same browser. They are not official statistics or verified student feedback.
+- Only `EE4213` has an official assessment block, sourced from a CityU syllabus PDF. Treat other course information as prototype content and check official CityU sources before relying on it.
+- The Degree Audit Helper and Comparator keep their working state in memory; reloading the page resets it.
+- There is no internship page. Career information appears on the Home page; internship-related sample fields exist only in the unused `comparisonProgrammes` fixtures.
+
+## Known gaps
+
+- The Registration Navigator needs its page assets reconnected before the step buttons work; see `AGENTS.md` for the exact mismatch.
+- `portal/registration/` and `portal/assets/` contain two different copies of the registration CSS and JavaScript. One canonical pair should be linked and the duplicate removed.
+- The Registration Navigator's selected courses are stored in `sessionStorage` but are not read by the Student Profile or Degree Audit Helper.
+- Program Browser & Career Information is still a placeholder.
+- There is no dedicated Student Status page combining profile, completed/planned courses, and credit progress.
+- The Student Profile and Degree Audit Helper have separate data sources and do not synchronize.
+
+## Documentation
+
+- `AGENTS.md` — authoritative development guide: page ownership, data model, access rules, conventions, HCI/HAI requirements, and validation.
+- `.github/skills/README.md` — reusable user-research, design, validation, and agile-planning skills.
+- `tools/aims-course-export-console.js` — optional, manually run console helper for exporting AIMS course pages in an authorized browser session. It is not part of the portal runtime.
+
+---
+
+# Course project brief
+
+_The following is copied and summarized from the course submission page and remains the source of the assignment requirements._
 
 Team members will present their individual projects and demonstrate their prototypes to teammates. Your team will then decide what to include or exclude in your final group prototype, treating it as a subsequent iteration. This decision should be based on research evidence collected from target users and a thorough evaluation. From this iterated version, your team will collectively create user stories and conduct sprint planning and development. The purpose of this group project is to provide you with hands-on experience with User-Centric Application Design and the Scrum Development Process.
-
- 
 
 ## Prerequisite:
 
@@ -55,8 +194,6 @@ If your team were to repeat this exercise, what would you do differently?
 ### Appendix
 Photographs accompanying the observation report or video recordings that document the validation tests are mandatory for your submission.(Failure to provide this information will result in a substantial mark deduction)
 
- 
-
 ## Deliverables & Remarks:
 
 ### 1. Group Presentation: Prepare a presentation of approximately 15–25 slides for a maximum of 12 minutes. The presentation should communicate the most important evidence, design decisions, and prototype outcomes rather than reproduce the full report. It should cover:
@@ -77,7 +214,7 @@ Photographs accompanying the observation report or video recordings that documen
   For software applications, you shall submit:
 
   A video hosted on YouTube demonstrating how your application works. (example: https://youtu.be/e67j3LBk1iA&t=39)
-  Your code or a link to your final high-fidelity prototype. 
+  Your code or a link to your final high-fidelity prototype.
 
   For hardware prototype, you shall submit a video hosted on YouTube demonstrating how it During the presentation, you should bring your hardware product and be able to demonstrate exactly the same user experience as shown in the video.
   In both cases, no extra marks will be given if the actual deliverable in the presentation is better than what's captured in the video.
@@ -155,7 +292,7 @@ g)   Appendix
 
   Each group is required to submit a soft copy of your presentation, your report and any supporting materials via the CANVAS link by 17 Nov 2026 12:00 noon.
   Each group should present their project using at most 12 minutes during one of the last 2 lessons.
-  Late submissions will not be accepted. You will not be able to present, and the system won't allow uploads after the deadline. 
+  Late submissions will not be accepted. You will not be able to present, and the system won't allow uploads after the deadline.
   All presentation decks will be pre-loaded on the lecture room's computer. Include all your presentation materials, URLs and visuals within your submitted presentation deck.
   To maximize your learning opportunities, student workload at each group on the project should be evenly distributed, besides, we encourage all teammates to participate equally during the presentation too.
   At the end of the course, you'll complete a confidential peer evaluation form via a provided link on the CANVAS. This assessment is crucial for fair recognition of each team member's contributions. Please provide honest, constructive feedback to accurately reflect individual performance within the team.
@@ -196,46 +333,32 @@ g)   Appendix
 
   Assess the evidence of teamwork and collaboration throughout the project (Your team contribution will be graded by your teammates.)
 
- 
-
 ## FAQs
 
 Q: What does “theme”, "epic" and “user story” mean?
 
 A: This will be covered in week 9’s class - Agile Development & Implementation
 
- 
-
 Q: What is a functional high-fidelity prototype?
 
 A: A high-fidelity prototype is a polished simulation of your final product that demonstrates complete functionality. It's a highly detailed, interactive representation that closely resembles the final design. This type of prototype includes visual design details and real content to showcase the look and feel of the end product. It also features robust interactivity and functionality to provide a more realistic user experience. (example:
 https://youtu.be/e67j3LBk1iA&t=39 Starting from 0:39s)
 
- 
-
 Q: If we decided to work on a hardware solution, how should we submit the final product?
 
 A: To submit your hardware final product, you shall record a video demonstrating how it works. During the presentation, you should be able to bring it back to the lecture room and demonstrate exactly the same user experience as shown in the video. No extra marks will be given if the actual deliverable is better than what's captured in the video.
-
- 
 
 Q: Can the prototype be hosted on our local drive?
 
 A: Your prototype should be hosted on a cloud server. Since during the presentation, all presentation materials such as visuals, videos and/or demo links in your submitted dec be pre-loaded on the lecture room's computer.
 
- 
-
 Q: What if I don't have a working prototype? (i.e., just pure ideas and drawings but following almost all your steps) How many points will be deducted?
 
 A: Iterative Improvement and Final Prototype contribute at least 40% of the final mark, i.e., at least 40 marks out of 100 will be deducted.
 
- 
-
 Q: How many points will be deducted for late submission?
 
 A: 40% of the points will be deducted.
-
- 
 
 Q: Does our group project have to include an AI-driven feature?
 
