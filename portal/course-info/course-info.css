@@ -109,9 +109,9 @@
     cursor: pointer;
 }
 
-    .course-search-clear:hover {
-        text-decoration: underline;
-    }
+.course-search-clear:hover {
+    text-decoration: underline;
+}
 
 .course-directory {
     border: 1px solid var(--border-color);
@@ -127,13 +127,13 @@
     padding: 9px 16px;
 }
 
-    .course-directory-heading :is(h3, .course-count) {
-        margin: 0;
-    }
+.course-directory-heading :is(h3, .course-count) {
+    margin: 0;
+}
 
-    .course-directory-heading .course-count {
-        font-weight: 400;
-    }
+.course-directory-heading .course-count {
+    font-weight: 400;
+}
 
 .course-directory-list {
     list-style: none;
@@ -141,9 +141,9 @@
     margin: 0;
 }
 
-    .course-directory-list li:not([hidden]) ~ li:not([hidden]) {
-        border-top: 1px solid #e2e8f0;
-    }
+.course-directory-list li:not([hidden]) ~ li:not([hidden]) {
+    border-top: 1px solid #e2e8f0;
+}
 
 .course-directory-columns,
 .course-directory .course-directory-link {
@@ -231,23 +231,23 @@
     white-space: nowrap;
 }
 
-    .course-type-badge.practical {
-        background: #e0f2fe;
-        color: #0369a1;
-        border: 1px solid #bae6fd;
-    }
+.course-type-badge.practical {
+    background: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+}
 
-    .course-type-badge.mixed {
-        background: #fef9c3;
-        color: #854d0e;
-        border: 1px solid #fef08a;
-    }
+.course-type-badge.mixed {
+    background: #fef9c3;
+    color: #854d0e;
+    border: 1px solid #fef08a;
+}
 
-    .course-type-badge.theoretical {
-        background: #f1f5f9;
-        color: #475569;
-        border: 1px solid #cbd5e1;
-    }
+.course-type-badge.theoretical {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+}
 
 .course-type-note {
     margin-top: 10px;
@@ -291,23 +291,23 @@
     margin: 14px 0 0;
 }
 
-    .workload-metrics > div,
-    .course-reviews > li {
-        padding: 12px;
-        border: 1px solid var(--border-color);
-        border-radius: 6px;
-        background: #f8fafc;
-    }
+.workload-metrics > div,
+.course-reviews > li {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: #f8fafc;
+}
 
-    .workload-metrics dt {
-        color: var(--text-muted);
-        font-size: 0.85rem;
-    }
+.workload-metrics dt {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
 
-    .workload-metrics dd {
-        margin: 4px 0 0;
-        font-weight: 700;
-    }
+.workload-metrics dd {
+    margin: 4px 0 0;
+    font-weight: 700;
+}
 
 #course-prerequisite {
     margin-top: 8px;
@@ -321,9 +321,9 @@
     margin: 12px 0;
 }
 
-    .course-review-filter label {
-        font-weight: 700;
-    }
+.course-review-filter label {
+    font-weight: 700;
+}
 
 .grade-bars {
     display: grid;
@@ -334,13 +334,13 @@
     list-style: none;
 }
 
-    .grade-bars li {
-        display: grid;
-        grid-template-columns: 5rem minmax(0, 1fr) 4.5rem;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.9rem;
-    }
+.grade-bars li {
+    display: grid;
+    grid-template-columns: 5rem minmax(0, 1fr) 4.5rem;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
 
 .grade-track {
     height: 10px;
@@ -348,12 +348,12 @@
     background: #e2e8f0;
 }
 
-    .grade-track > span {
-        display: block;
-        height: 100%;
-        border-radius: inherit;
-        background: var(--cityu-maroon);
-    }
+.grade-track > span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--cityu-maroon);
+}
 
 .workload-timeline {
     display: grid;
@@ -377,12 +377,12 @@
     font-size: 0.8rem;
 }
 
-    .timeline-week[aria-pressed="true"] {
-        border-color: var(--cityu-maroon);
-        box-shadow: inset 0 0 0 1px var(--cityu-maroon);
-        background: #f9edf0;
-        font-weight: 700;
-    }
+.timeline-week[aria-pressed="true"] {
+    border-color: var(--cityu-maroon);
+    box-shadow: inset 0 0 0 1px var(--cityu-maroon);
+    background: #f9edf0;
+    font-weight: 700;
+}
 
 .week-meter {
     display: flex;
@@ -393,12 +393,12 @@
     border-radius: 3px;
 }
 
-    .week-meter > span {
-        width: 100%;
-        min-height: 2px;
-        border-radius: 3px;
-        background: var(--cityu-maroon);
-    }
+.week-meter > span {
+    width: 100%;
+    min-height: 2px;
+    border-radius: 3px;
+    background: var(--cityu-maroon);
+}
 
 .week-detail,
 .submission-status {
@@ -409,15 +409,15 @@
     color: var(--cityu-maroon);
 }
 
-    .submission-status:empty {
-        display: none;
-    }
+.submission-status:empty {
+    display: none;
+}
 
-    .submission-status.is-temporary {
-        border-left: 5px solid #a56a00;
-        background: #fff9e8;
-        color: #493710;
-    }
+.submission-status.is-temporary {
+    border-left: 5px solid #a56a00;
+    background: #fff9e8;
+    color: #493710;
+}
 
 .experience-fields {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -488,6 +488,184 @@
     margin-top: 6px;
     overflow-wrap: anywhere;
     white-space: pre-wrap;
+}
+
+/* ============ TABS ============ */
+.course-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.course-tab-btn {
+    padding: 12px 20px;
+    border: none;
+    background: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+.course-tab-btn:hover {
+    color: var(--cityu-maroon);
+}
+
+.course-tab-btn.active {
+    color: var(--cityu-maroon);
+    border-bottom-color: var(--cityu-maroon);
+    background: #fff9f9;
+}
+
+.course-tab-content {
+    display: none;
+    animation: fadeIn 0.25s ease;
+}
+
+.course-tab-content.active {
+    display: block;
+}
+
+/* ============ DISCUSSION ============ */
+.discussion-form {
+    background: #f8fafc;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.discussion-form .form-group {
+    margin-bottom: 0;
+}
+
+.discussion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.discussion-thread {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.discussion-header {
+    padding: 14px 16px;
+    background: #fcfcfc;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.discussion-header h4 {
+    margin: 0 0 4px 0;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.discussion-meta {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.discussion-content {
+    padding: 16px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.discussion-footer {
+    padding: 8px 16px;
+    background: #fafafa;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.discussion-footer button {
+    font-size: 0.8rem;
+    background: none;
+    border: none;
+    color: var(--cityu-maroon);
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.discussion-footer button:hover {
+    text-decoration: underline;
+}
+
+.replies-list {
+    background: #f9fafb;
+    padding: 0 16px;
+}
+
+.reply-item {
+    padding: 12px 0;
+    border-bottom: 1px dashed #e2e8f0;
+    font-size: 0.85rem;
+}
+
+.reply-item:last-child {
+    border-bottom: none;
+}
+
+.reply-header {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reply-content {
+    line-height: 1.4;
+    margin-bottom: 6px;
+    white-space: pre-wrap;
+}
+
+.reply-actions {
+    font-size: 0.75rem;
+}
+
+.reply-actions button {
+    background: none;
+    border: none;
+    color: var(--cityu-maroon);
+    cursor: pointer;
+    padding: 0;
+}
+
+.reply-actions button:hover {
+    text-decoration: underline;
+}
+
+.reply-form {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.reply-form input {
+    flex: 1;
+    min-height: 32px;
+    padding: 4px 8px;
+    font-size: 0.85rem;
+}
+
+.reply-form button {
+    min-height: 32px;
+    padding: 0 12px;
+    font-size: 0.85rem;
 }
 
 @media (min-width: 1024px) {
