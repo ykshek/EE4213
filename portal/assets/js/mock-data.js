@@ -15,6 +15,106 @@
             "original/comparator/app.js"
         ]
     },
+    "internships": [
+        {
+            "id": "ic-design",
+            "title": { "zh": "IC 設計與半導體實習", "en": "IC Design & Semiconductor Internship" },
+            "description": { 
+                "zh": "參與晶片設計、驗證或測試流程，學習使用業界標準 EDA 工具，將課堂理論轉化為實作經驗。", 
+                "en": "Participate in chip design, verification, or testing, learning industry-standard EDA tools and turning classroom theory into practical experience." 
+            },
+            "companies": [
+                "ASM Pacific Technology",
+                "Huawei Tech. Investment Co., Ltd (Internship Program)",
+                "AITO TECHNOLOGY LTD (Internship Program)",
+                "RediX Technology Company Limited (Internship Program)"
+            ],
+            "skills": ["Verilog", "VLSI Design", "C/C++"],
+            "recommendedCourses": ["EE3220", "EE3122"]
+        },
+        {
+            "id": "telecom",
+            "title": { "zh": "通訊與網路實習", "en": "Telecommunications & Networking Internship" },
+            "description": { 
+                "zh": "參與 5G 網路架構、無線通訊系統測試或網路優化專案，了解現代通訊技術的實際部署。", 
+                "en": "Participate in 5G network architecture, wireless system testing, or network optimization projects to understand real-world deployment of modern communications." 
+            },
+            "companies": [
+                "Huawei Tech. Investment Co., Ltd (Internship Program)",
+                "NTT Com Asia Limited (Internship Program)",
+                "PCCW",
+                "HKT"
+            ],
+            "skills": ["Network Protocols", "RF Engineering", "Python"],
+            "recommendedCourses": ["EE3008", "EE4036"]
+        },
+        {
+            "id": "power",
+            "title": { "zh": "電力與能源系統實習", "en": "Power & Energy Systems Internship" },
+            "description": { 
+                "zh": "參與電力系統分析、再生能源整合或電網維護，探索可持續能源的工程解決方案。", 
+                "en": "Participate in power system analysis, renewable energy integration, or grid maintenance, exploring engineering solutions for sustainable energy." 
+            },
+            "companies": [
+                "CLP Power",
+                "HK Electric",
+                "Siemens",
+                "Saint-Gobain Hong Kong Limited (Internship Program)"
+            ],
+            "skills": ["Power Systems", "MATLAB", "Control Theory"],
+            "recommendedCourses": ["EE3123", "EE4101"]
+        },
+        {
+            "id": "software-data",
+            "title": { "zh": "軟體與資料分析實習", "en": "Software & Data Analytics Internship" },
+            "description": { 
+                "zh": "運用 Python、機器學習框架或雲端技術，處理大數據並開發企業級應用程式。", 
+                "en": "Apply Python, machine learning frameworks, or cloud technologies to process big data and develop enterprise applications." 
+            },
+            "companies": [
+                "HSBC Tech",
+                "Meta",
+                "SenseTime",
+                "Seeds Financial Group (Internship Program)",
+                "Third Bridge Group Limited (Internship Program)"
+            ],
+            "skills": ["Python", "SQL", "Machine Learning"],
+            "recommendedCourses": ["EE4146", "EE4016 / EE5438"]
+        },
+        {
+            "id": "embedded-iot",
+            "title": { "zh": "嵌入式系統與物聯網實習", "en": "Embedded Systems & IoT Internship" },
+            "description": { 
+                "zh": "開發微控制器韌體、整合感測器，並將實體裝置連上雲端，參與智慧城市或智慧家居專案。", 
+                "en": "Develop microcontroller firmware, integrate sensors, and connect physical devices to the cloud in smart city or smart home projects." 
+            },
+            "companies": [
+                "DJI",
+                "Philips",
+                "Techtronic Industries",
+                "AWIL Group Limited (Internship Program)"
+            ],
+            "skills": ["C/C++", "Microcontrollers", "RTOS"],
+            "recommendedCourses": ["EE2004", "EE3122"]
+        },
+        {
+            "id": "ai-signal",
+            "title": { "zh": "人工智慧與訊號處理實習", "en": "AI & Signal Processing Internship" },
+            "description": { 
+                "zh": "將數位訊號處理與深度學習技術應用於電腦視覺、語音辨識或醫療影像分析。", 
+                "en": "Apply digital signal processing and deep learning techniques to computer vision, speech recognition, or medical image analysis." 
+            },
+            "companies": [
+                "NVIDIA",
+                "Lenovo",
+                "HKUST Research Labs",
+                "LANGYA AI LIMITED (Internship Program)",
+                "Huawei Tech. Investment Co., Ltd (Internship Program)"
+            ],
+            "skills": ["PyTorch", "Digital Signal Processing", "Computer Vision"],
+            "recommendedCourses": ["EE4015 / EE5410", "EE4016 / EE5438"]
+        }
+    ],
     "courses": [
         {
             "courseId": "EE1001",

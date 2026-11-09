@@ -3,32 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>課程瀏覽與職涯資訊 | CityU EE Student Portal</title>
+    <title>實習與職涯 | CityU EE Student Portal</title>
     <link rel="stylesheet" href="../assets/css/common.css">
-    <!-- Load page-specific CSS after common.css, and deferred JS after common.js. -->
+    <link rel="stylesheet" href="program-career.css">
     <script src="../assets/js/common.js" defer></script>
+    <script src="../assets/js/mock-data.js" defer></script>
+    <script src="program-career.js" defer></script>
 </head>
 <body data-page="program-career" data-lang="zh">
-    <!-- Shared header, sidebar, footer and dialogs are mounted by common.js. -->
     <div class="layout">
         <main class="main" id="mainContent" tabindex="-1">
-            <!-- PAGE OWNER: develop this page inside #pageContent. -->
-            <section id="pageContent" class="page-content" aria-labelledby="pageTitle" hidden inert>
+            <section id="pageContent" class="page-content program-career-page" aria-labelledby="pageTitle" hidden inert>
+
                 <div class="feature-header">
                     <h2 id="pageTitle">
-                        <span class="lang-zh">💼 課程瀏覽與職涯資訊</span>
-                        <span class="lang-en">💼 Program Browser &amp; Career Information</span>
+                        <span class="lang-zh">💼 實習與職涯</span>
+                        <span class="lang-en">💼 Internships & Career</span>
                     </h2>
+                    <p>
+                        <span class="lang-zh">探索適合你的實習領域，並查看學長姐的實習經驗分享。</span>
+                        <span class="lang-en">Explore internship fields suited for you and view experiences shared by senior students.</span>
+                    </p>
                 </div>
-                <div class="placeholder-card">
-                    <span class="emoji" aria-hidden="true">🚧</span>
-                    <span class="status-zh">此功能開發中</span>
-                    <span class="status-en">Under Development</span>
-                    <span class="hint lang-zh">此區塊為功能掛載預留位置，由負責組員整合。</span>
-                    <span class="hint lang-en">Reserved mount point for the assigned teammate to integrate this feature.</span>
+
+                <div class="career-tabs" role="tablist">
+                    <button class="career-tab-btn active" id="tab-btn-opportunities" role="tab" aria-selected="true" aria-controls="tab-opportunities" data-tab="opportunities">
+                        <span class="lang-zh">實習機會</span><span class="lang-en">Opportunities</span>
+                    </button>
+                    <button class="career-tab-btn" id="tab-btn-experience" role="tab" aria-selected="false" aria-controls="tab-experience" data-tab="experience">
+                        <span class="lang-zh">經驗分享區</span><span class="lang-en">Experience Board</span>
+                    </button>
                 </div>
+
+                <div id="tab-opportunities" class="career-tab-content active" role="tabpanel" aria-labelledby="tab-btn-opportunities">
+
+                    <section class="card ee-internship-card" style="margin-bottom: 24px;">
+                        <h3>
+                            <a href="https://www.ee.cityu.edu.hk/zh-hk/current_students/opportunities/internships" target="_blank" rel="noopener" class="official-link">
+                                <span class="lang-zh">EE 學系官方實習計畫 (EE4085/4086/4087)</span>
+                                <span class="lang-en">EE Department Internship Programs</span>
+                            </a>
+                        </h3>
+                        <p class="course-hint">
+                            <span class="lang-zh">與業界合作，提供 4 至 12 個月的全職實習機會，幫助你累積實戰經驗並抵免學分。</span>
+                            <span class="lang-en">In collaboration with industry, offering 4 to 12-month full-time internships to gain real-world experience and earn credit waivers.</span>
+                        </p>
+
+                        <div class="intern-table-wrapper">
+                            <table class="intern-table">
+                                <thead>
+                                    <tr>
+                                        <th><span class="lang-zh">實習長度</span><span class="lang-en">Duration</span></th>
+                                        <th><span class="lang-zh">可抵免課程</span><span class="lang-en">Waiver</span></th>
+                                        <th><span class="lang-zh">學分</span><span class="lang-en">Credits</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>4 <span class="lang-zh">個月</span><span class="lang-en">months</span></td>
+                                        <td>EE2066, EE4090</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8 <span class="lang-zh">個月</span><span class="lang-en">months</span></td>
+                                        <td>EE2066, EE4090, <span class="lang-zh">一門主修選修</span><span class="lang-en">One Major Elective</span></td>
+                                        <td>6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12 <span class="lang-zh">個月</span><span class="lang-en">months</span></td>
+                                        <td>EE2066, EE4090, EE4080 (<span class="lang-zh">畢業專題</span><span class="lang-en">FYP</span>)</td>
+                                        <td>9</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p class="course-hint" style="margin-top: 12px;">
+                            <span class="lang-zh">如需更多資訊，請參閱 <a href="https://www.ee.cityu.edu.hk/zh-hk/current_students/opportunities/internships" target="_blank" rel="noopener">官方 EE 實習計畫網站</a>。</span>
+                            <span class="lang-en">For more information, please refer to the <a href="https://www.ee.cityu.edu.hk/zh-hk/current_students/opportunities/internships" target="_blank" rel="noopener">official EE Internship Programs website</a>.</span>
+                        </p>
+                    </section>
+
+                    <!-- College of Engineering Other Schemes -->
+                    <section class="card coop-schemes-card" style="margin-bottom: 24px;">
+                        <h3>
+                            <span class="lang-zh">工學院其他實習計畫</span>
+                            <span class="lang-en">College of Engineering Other Schemes</span>
+                        </h3>
+                        <div class="coop-links-grid">
+                            <a href="https://www.cityu.edu.hk/ceng/student-life/co-op-education-centre/industrial-attachment-scheme-ias" target="_blank" rel="noopener" class="coop-link-card">
+                                <strong><span class="lang-zh">工業實習計畫 (IAS)</span><span class="lang-en">Industrial Attachment Scheme (IAS)</span></strong>
+                                <span class="lang-zh">暑期全職實習（倒數第二年），累積業界經驗。</span>
+                                <span class="lang-en">Summer full-time placement (penultimate year) to gain industry experience.</span>
+                            </a>
+                            <a href="https://www.cityu.edu.hk/ceng/student-life/co-op-education-centre/oversea-internship-scheme-ois" target="_blank" rel="noopener" class="coop-link-card">
+                                <strong><span class="lang-zh">海外實習計畫 (OIS)</span><span class="lang-en">Overseas Internship Scheme (OIS)</span></strong>
+                                <span class="lang-zh">前往海外企業實習，拓展國際視野。</span>
+                                <span class="lang-en">Intern abroad to broaden your international perspective.</span>
+                            </a>
+                            <a href="https://www.cityu.edu.hk/ceng/student-life/co-op-education-centre/itc-stem-internship-scheme" target="_blank" rel="noopener" class="coop-link-card">
+                                <strong><span class="lang-zh">ITC STEM 實習計畫</span><span class="lang-en">ITC STEM Internship Scheme</span></strong>
+                                <span class="lang-zh">政府創新科技署資助的 STEM 相關實習。</span>
+                                <span class="lang-en">Government ITC-funded internships in STEM fields.</span>
+                            </a>
+                        </div>
+                        <p class="coop-footer-hint">
+                            <span class="lang-zh">其他實習資訊可於 <a href="https://www.cityu.edu.hk/ceng/student-life/co-op-education-centre" target="_blank" rel="noopener">Co-op Education Centre</a> 查閱。</span>
+                            <span class="lang-en">Other internship information can be found at the <a href="https://www.cityu.edu.hk/ceng/student-life/co-op-education-centre" target="_blank" rel="noopener">Co-op Education Centre</a>.</span>
+                        </p>
+                    </section>
+
+                    <h3 style="margin-top: 32px; margin-bottom: 16px;">
+                        <span class="lang-zh">業界實習機會</span>
+                        <span class="lang-en">Industry Internship Opportunities</span>
+                    </h3>
+
+                    <div class="internship-grid" id="internshipGrid">
+                    </div>
+                </div>
+
+                <div id="tab-experience" class="career-tab-content" role="tabpanel" aria-labelledby="tab-btn-experience" hidden>
+                    <section class="card discussion-section">
+                        <h3>
+                            <span class="lang-zh">實習經驗分享</span><span class="lang-en">Internship Experience Board</span>
+                        </h3>
+                        <p class="course-hint">
+                            <span class="lang-zh">分享你的面試過程、工作內容或實習建議，也可以回覆他人的討論。</span>
+                            <span class="lang-en">Share your interview process, work content, or internship advice. You can also reply to others.</span>
+                        </p>
+
+                        <form id="experience-form" class="experience-form">
+                            <div class="form-group">
+                                <input type="text" id="experience-title" required placeholder="討論標題 / Discussion Title (e.g., ASM Interview Experience)" maxlength="100">
+                            </div>
+                            <div class="form-group">
+                                <textarea id="experience-content" required placeholder="分享你的經驗或問題... / Share your experience or questions..." rows="3" maxlength="1000"></textarea>
+                            </div>
+                            <div class="actions">
+                                <button type="submit" class="btn-action">
+                                    <span class="lang-zh">發布分享</span><span class="lang-en">Post Share</span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <div id="experience-list" class="discussion-list">
+                        </div>
+                        <p id="empty-experience" class="course-hint">
+                            <span class="lang-zh">目前沒有經驗分享。成為第一個分享的人吧！</span>
+                            <span class="lang-en">No shares yet. Be the first to share your experience!</span>
+                        </p>
+                    </section>
+                </div>
+
             </section>
-            <noscript><p>請啟用 JavaScript 以使用導覽和登入功能。 / Enable JavaScript for navigation and login.</p></noscript>
+            <noscript><p>請啟用 JavaScript 以查看實習資訊。 / Enable JavaScript to view internship information.</p></noscript>
         </main>
     </div>
 </body>
