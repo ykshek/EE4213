@@ -8,20 +8,40 @@
     const data = {
     "metadata": {
         "isMockData": true,
-        "description": "Static prototype data adapted from original HTML prototypes, including illustrative Comparator fixtures with whole-hour demo meeting times; not official or live student/course records.",
+        "description": "Static prototype data with official CityU AIMS/catalogue data imported by tools/import_course_exports.py; workload, GPA and difficulty values remain generated sample values.",
         "sources": [
             "original/cityu-ee-guide.html",
             "original/EE4213_code_v6.html",
-            "original/comparator/app.js"
-        ]
+            "original/comparator/app.js",
+            "tools/htmls (CityU AIMS course/class exports)",
+            "CityU Undergraduate Catalogue course pages",
+            "CityU course syllabus PDFs"
+        ],
+        "containsOfficialData": true,
+        "officialImport": {
+            "term": "Semester B 2026/27",
+            "asOf": "November 04, 2026 14:41 PM",
+            "importedAt": "2026-11-09T09:50:08+00:00",
+            "courseCount": 69,
+            "catalogueUrlTemplate": "https://www.cityu.edu.hk/catalogue/ug/current/course/{code}.htm",
+            "syllabusUrlTemplates": [
+                "https://www.cityu.edu.hk/catalogue/ug/202627/course/{code}.pdf",
+                "https://www.cityu.edu.hk/ug/202627/course/{code}.pdf"
+            ],
+            "translation": "Google Translate (zh-TW)",
+            "sampleScores": "Deterministically generated from the course code. Not official workload or GPA statistics."
+        }
     },
     "internships": [
         {
             "id": "ic-design",
-            "title": { "zh": "IC 設計與半導體實習", "en": "IC Design & Semiconductor Internship" },
-            "description": { 
-                "zh": "參與晶片設計、驗證或測試流程，學習使用業界標準 EDA 工具，將課堂理論轉化為實作經驗。", 
-                "en": "Participate in chip design, verification, or testing, learning industry-standard EDA tools and turning classroom theory into practical experience." 
+            "title": {
+                "zh": "IC 設計與半導體實習",
+                "en": "IC Design & Semiconductor Internship"
+            },
+            "description": {
+                "zh": "參與晶片設計、驗證或測試流程，學習使用業界標準 EDA 工具，將課堂理論轉化為實作經驗。",
+                "en": "Participate in chip design, verification, or testing, learning industry-standard EDA tools and turning classroom theory into practical experience."
             },
             "companies": [
                 "ASM Pacific Technology",
@@ -29,15 +49,25 @@
                 "AITO TECHNOLOGY LTD (Internship Program)",
                 "RediX Technology Company Limited (Internship Program)"
             ],
-            "skills": ["Verilog", "VLSI Design", "C/C++"],
-            "recommendedCourses": ["EE3220", "EE3122"]
+            "skills": [
+                "Verilog",
+                "VLSI Design",
+                "C/C++"
+            ],
+            "recommendedCourses": [
+                "EE3220",
+                "EE3122"
+            ]
         },
         {
             "id": "telecom",
-            "title": { "zh": "通訊與網路實習", "en": "Telecommunications & Networking Internship" },
-            "description": { 
-                "zh": "參與 5G 網路架構、無線通訊系統測試或網路優化專案，了解現代通訊技術的實際部署。", 
-                "en": "Participate in 5G network architecture, wireless system testing, or network optimization projects to understand real-world deployment of modern communications." 
+            "title": {
+                "zh": "通訊與網路實習",
+                "en": "Telecommunications & Networking Internship"
+            },
+            "description": {
+                "zh": "參與 5G 網路架構、無線通訊系統測試或網路優化專案，了解現代通訊技術的實際部署。",
+                "en": "Participate in 5G network architecture, wireless system testing, or network optimization projects to understand real-world deployment of modern communications."
             },
             "companies": [
                 "Huawei Tech. Investment Co., Ltd (Internship Program)",
@@ -45,15 +75,25 @@
                 "PCCW",
                 "HKT"
             ],
-            "skills": ["Network Protocols", "RF Engineering", "Python"],
-            "recommendedCourses": ["EE3008", "EE4036"]
+            "skills": [
+                "Network Protocols",
+                "RF Engineering",
+                "Python"
+            ],
+            "recommendedCourses": [
+                "EE3008",
+                "EE4036"
+            ]
         },
         {
             "id": "power",
-            "title": { "zh": "電力與能源系統實習", "en": "Power & Energy Systems Internship" },
-            "description": { 
-                "zh": "參與電力系統分析、再生能源整合或電網維護，探索可持續能源的工程解決方案。", 
-                "en": "Participate in power system analysis, renewable energy integration, or grid maintenance, exploring engineering solutions for sustainable energy." 
+            "title": {
+                "zh": "電力與能源系統實習",
+                "en": "Power & Energy Systems Internship"
+            },
+            "description": {
+                "zh": "參與電力系統分析、再生能源整合或電網維護，探索可持續能源的工程解決方案。",
+                "en": "Participate in power system analysis, renewable energy integration, or grid maintenance, exploring engineering solutions for sustainable energy."
             },
             "companies": [
                 "CLP Power",
@@ -61,15 +101,25 @@
                 "Siemens",
                 "Saint-Gobain Hong Kong Limited (Internship Program)"
             ],
-            "skills": ["Power Systems", "MATLAB", "Control Theory"],
-            "recommendedCourses": ["EE3123", "EE4101"]
+            "skills": [
+                "Power Systems",
+                "MATLAB",
+                "Control Theory"
+            ],
+            "recommendedCourses": [
+                "EE3123",
+                "EE4101"
+            ]
         },
         {
             "id": "software-data",
-            "title": { "zh": "軟體與資料分析實習", "en": "Software & Data Analytics Internship" },
-            "description": { 
-                "zh": "運用 Python、機器學習框架或雲端技術，處理大數據並開發企業級應用程式。", 
-                "en": "Apply Python, machine learning frameworks, or cloud technologies to process big data and develop enterprise applications." 
+            "title": {
+                "zh": "軟體與資料分析實習",
+                "en": "Software & Data Analytics Internship"
+            },
+            "description": {
+                "zh": "運用 Python、機器學習框架或雲端技術，處理大數據並開發企業級應用程式。",
+                "en": "Apply Python, machine learning frameworks, or cloud technologies to process big data and develop enterprise applications."
             },
             "companies": [
                 "HSBC Tech",
@@ -78,15 +128,25 @@
                 "Seeds Financial Group (Internship Program)",
                 "Third Bridge Group Limited (Internship Program)"
             ],
-            "skills": ["Python", "SQL", "Machine Learning"],
-            "recommendedCourses": ["EE4146", "EE4016 / EE5438"]
+            "skills": [
+                "Python",
+                "SQL",
+                "Machine Learning"
+            ],
+            "recommendedCourses": [
+                "EE4146",
+                "EE4016 / EE5438"
+            ]
         },
         {
             "id": "embedded-iot",
-            "title": { "zh": "嵌入式系統與物聯網實習", "en": "Embedded Systems & IoT Internship" },
-            "description": { 
-                "zh": "開發微控制器韌體、整合感測器，並將實體裝置連上雲端，參與智慧城市或智慧家居專案。", 
-                "en": "Develop microcontroller firmware, integrate sensors, and connect physical devices to the cloud in smart city or smart home projects." 
+            "title": {
+                "zh": "嵌入式系統與物聯網實習",
+                "en": "Embedded Systems & IoT Internship"
+            },
+            "description": {
+                "zh": "開發微控制器韌體、整合感測器，並將實體裝置連上雲端，參與智慧城市或智慧家居專案。",
+                "en": "Develop microcontroller firmware, integrate sensors, and connect physical devices to the cloud in smart city or smart home projects."
             },
             "companies": [
                 "DJI",
@@ -94,15 +154,25 @@
                 "Techtronic Industries",
                 "AWIL Group Limited (Internship Program)"
             ],
-            "skills": ["C/C++", "Microcontrollers", "RTOS"],
-            "recommendedCourses": ["EE2004", "EE3122"]
+            "skills": [
+                "C/C++",
+                "Microcontrollers",
+                "RTOS"
+            ],
+            "recommendedCourses": [
+                "EE2004",
+                "EE3122"
+            ]
         },
         {
             "id": "ai-signal",
-            "title": { "zh": "人工智慧與訊號處理實習", "en": "AI & Signal Processing Internship" },
-            "description": { 
-                "zh": "將數位訊號處理與深度學習技術應用於電腦視覺、語音辨識或醫療影像分析。", 
-                "en": "Apply digital signal processing and deep learning techniques to computer vision, speech recognition, or medical image analysis." 
+            "title": {
+                "zh": "人工智慧與訊號處理實習",
+                "en": "AI & Signal Processing Internship"
+            },
+            "description": {
+                "zh": "將數位訊號處理與深度學習技術應用於電腦視覺、語音辨識或醫療影像分析。",
+                "en": "Apply digital signal processing and deep learning techniques to computer vision, speech recognition, or medical image analysis."
             },
             "companies": [
                 "NVIDIA",
@@ -111,8 +181,15 @@
                 "LANGYA AI LIMITED (Internship Program)",
                 "Huawei Tech. Investment Co., Ltd (Internship Program)"
             ],
-            "skills": ["PyTorch", "Digital Signal Processing", "Computer Vision"],
-            "recommendedCourses": ["EE4015 / EE5410", "EE4016 / EE5438"]
+            "skills": [
+                "PyTorch",
+                "Digital Signal Processing",
+                "Computer Vision"
+            ],
+            "recommendedCourses": [
+                "EE4015 / EE5410",
+                "EE4016 / EE5438"
+            ]
         }
     ],
     "courses": [
@@ -123,37 +200,64 @@
                 "zh": "數碼技術基礎"
             },
             "descriptions": {
-                "en": "Introduces number systems, Boolean algebra, logic gates and basic digital circuits.",
-                "zh": "介紹數字系統、布爾代數、邏輯閘及基本數碼電路。"
+                "en": "This course is aimed at providing students with an understanding of the basic mathematical and fundamental concepts required for Foundations of Digital Techniques.",
+                "zh": "本課程旨在讓學生了解數位科技基礎所需的基本數學和基本概念。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.1,
-            "sampleMeanGpa": 3.05,
+            "sampleWorkload": 4.5,
+            "sampleMeanGpa": 3.43,
             "category": "core",
             "hasLab": true,
             "comparator": {
-                "expectedStudyHoursPerWeek": 8,
-                "assessmentLoad": "High",
-                "difficulty": 4,
+                "expectedStudyHoursPerWeek": 13,
+                "assessmentLoad": "Very High",
+                "difficulty": 5,
                 "gradingComponents": {
-                    "assignments": 30,
                     "midterm": 20,
-                    "final": 50
+                    "assignments": 10,
+                    "final": 70
                 },
                 "scheduledMeetingTimes": [
                     {
                         "type": "Class",
-                        "time": "12:00 pm - 3:00 pm",
-                        "days": ["W"],
-                        "location": "Li Dak Sum Yip Yio Chin A Bldg 4307"
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "LI 1507",
+                        "crn": "10638",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "SUNG Chi Wan"
                     },
                     {
-                        "type": "Class",
-                        "time": "12:00 pm - 3:00 pm",
-                        "days": ["T"],
-                        "location": "Yeung Kin Man Acad Building P4701"
+                        "type": "Lab",
+                        "time": "15:00 - 16:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG G7610",
+                        "crn": "11028",
+                        "section": "L01",
+                        "dateRange": "31/01/2027 - 13/02/2027",
+                        "instructor": "SUNG Chi Wan"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "15:00 - 16:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG G7620",
+                        "crn": "11030",
+                        "section": "L02",
+                        "dateRange": "31/01/2027 - 13/02/2027",
+                        "instructor": "SUNG Chi Wan"
                     }
-                ]
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
             }
         },
         {
@@ -163,14 +267,65 @@
                 "zh": "電機工程原理"
             },
             "descriptions": {
-                "en": "Covers fundamental electrical concepts: voltage, current, resistance, power and basic circuit laws.",
-                "zh": "涵蓋基本電學概念：電壓、電流、電阻、功率及基本電路定律。"
+                "en": "This course is aimed at providing students with an understanding of the concepts, impacts, and basic principles of electronic engineering.",
+                "zh": "本課程旨在讓學生了解電子工程的概念、影響和基本原理。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.3,
-            "sampleMeanGpa": 2.95,
+            "sampleWorkload": 3.5,
+            "sampleMeanGpa": 3.21,
             "category": "core",
-            "hasLab": true
+            "hasLab": true,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 10,
+                "assessmentLoad": "Very High",
+                "difficulty": 3,
+                "gradingComponents": {
+                    "midterm": 18,
+                    "assignments": 22,
+                    "final": 60
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 2505",
+                        "crn": "10639",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TSE Chi Kong"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "17:00 - 18:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG G7610",
+                        "crn": "10640",
+                        "section": "L01",
+                        "dateRange": "28/02/2027 - 06/03/2027",
+                        "instructor": "TSE Chi Kong"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "17:00 - 18:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG G7620",
+                        "crn": "10640",
+                        "section": "L01",
+                        "dateRange": "28/02/2027 - 06/03/2027",
+                        "instructor": "TSE Chi Kong"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE1004",
@@ -179,14 +334,77 @@
                 "zh": "資訊系統及數據分析基礎"
             },
             "descriptions": {
-                "en": "Introduces basic data handling, information systems and simple data analysis techniques.",
-                "zh": "介紹基本數據處理、資訊系統及簡單數據分析技術。"
+                "en": "This course is designed to introduce the students to concepts, impacts, and basic principles of data and information systems. Applied examples will be introduced, analysed, solved. The laboratories of this course will cover introductory probability problems and statistics of real-life data, geometric transformation, and applications of eigenvalues and eigenvectors to data analysis.",
+                "zh": "本課程旨在向學生介紹數據和資訊系統的概念、影響和基本原理。將介紹、分析、解決應用實例。本課程的實驗室將涵蓋介紹性機率問題和現實生活資料的統計、幾何變換以及特徵值和特徵向量在資料分析中的應用。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 2.8,
-            "sampleMeanGpa": 3.15,
+            "sampleWorkload": 2.6,
+            "sampleMeanGpa": 3.52,
             "category": "core",
-            "hasLab": true
+            "hasLab": true,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 7,
+                "assessmentLoad": "High",
+                "difficulty": 2,
+                "gradingComponents": {
+                    "midterm": 30,
+                    "assignments": 20,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "17:00 - 19:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG LT-17",
+                        "crn": "11643",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "SONG Qun"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "13:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B7530",
+                        "crn": "11644",
+                        "section": "L01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "SONG Qun"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "13:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B7540",
+                        "crn": "11645",
+                        "section": "L02",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "SONG Qun"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "13:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B7701",
+                        "crn": "11646",
+                        "section": "L03",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "SONG Qun"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "GE1354",
@@ -195,14 +413,65 @@
                 "zh": "電子設計導論"
             },
             "descriptions": {
-                "en": "Hands-on introduction to electronic design principles and simple circuit building.",
-                "zh": "透過實踐介紹電子設計原理及簡單電路製作。"
+                "en": "Since the invention of first electronic transistor in 1947, there is a tremendous development of electronic technology over the past 70 years. Nowadays, electronic technology has been penetrating almost every aspect of our life and creating huge impact in our community. A few examples are mobile phones, TV, and Octopus card which are all popular electronic products used by everyone. In fact, our ways of living are greatly influenced by these technologies. All these products consist of a key electronic component – a tiny computer chip for executing all the desired functions of the devices or appliances. Attributed to the years of efforts by different scientists and engineers, these computer chips are now much faster, smaller, cheaper and easier for users even without much technical background. Regardless of your science or arts background, have you ever thought about building an electronic product to control a system or to measure signals such as heart pulses? In fact, there are endless ideas in applying these fascinating computer chips in project design relevant to your specific needs. The course teaches the basic electronic systems, signals and basic computing theory. The aim of this course is to develop students from different disciplines on their fundamental understanding of simple electronic systems, in order to allow students to turn their ideas into a simple design work, supplemented by lectures and hands-on training. At the final four weeks of the course, students from different majors will form multi-disciplinary project groups for exploring real problems and their possible electronic and computing design. Each project group will be provided with a low-cost and easy-to-use tiny computer board (unit) with some build-in features for sensing body movements, displaying texts and graphics, informing the environmental temperature, etc., that allow the students to realize their own functional products.",
+                "zh": "自1947年發明第一個電子電晶體以來，70年來電子技術取得了巨大的發展。如今，電子技術已經滲透到我們生活的幾乎各個方面，並對我們的社會產生了巨大的影響。手機、電視、八達通卡等都是大家常用的電子產品。事實上，我們的生活方式很大程度上受到這些科技的影響。所有這些產品都包含一個關鍵的電子元件——一個微型電腦晶片，用於執行設備或電器的所有所需功能。經過不同科學家和工程師多年的努力，這些電腦晶片現在變得更快、更小、更便宜，即使沒有太多技術背景的用戶也更容易使用。無論您的科學或藝術背景如何，您是否曾經考慮過建造電子產品來控制系統或測量心臟脈衝等訊號？事實上，在與您的特定需求相關的專案設計中應用這些令人著迷的電腦晶片有無數的想法。本課程教授基本電子系統、訊號和基本計算理論。本課程的目的是培養不同學科的學生對簡單電子系統的基本理解，以便讓學生將他們的想法轉化為簡單的設計作品，並輔以講座和實踐培訓。在課程的最後四個星期，來自不同專業的學生將組成多學科專案組，探索實際問題及其可能的電子和計算設計。每個專案組將配備一個低成本且易於使用的微型電腦板（單元），其內建一些功能，用於感應身體運動、顯示文字和圖形、告知環境溫度等，讓學生實現自己的功能產品。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 2.9,
-            "sampleMeanGpa": 3.2,
+            "sampleWorkload": 4.6,
+            "sampleMeanGpa": 2.16,
             "category": "core",
-            "hasLab": null
+            "hasLab": true,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 13,
+                "assessmentLoad": "High",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "project": 20,
+                    "midterm": 30,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Lab",
+                        "time": "15:00 - 16:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG G7610",
+                        "crn": "11321",
+                        "section": "L01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LI Kerui"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "15:00 - 16:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG G7620",
+                        "crn": "11322",
+                        "section": "L02",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LI Kerui"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "17:00 - 18:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG G7610",
+                        "crn": "11323",
+                        "section": "L03",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LI Kerui"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE2000",
@@ -211,14 +480,89 @@
                 "zh": "邏輯電路設計"
             },
             "descriptions": {
-                "en": "Design of combinational and sequential logic circuits using modern digital techniques.",
-                "zh": "使用現代數碼技術設計組合及時序邏輯電路。"
+                "en": "The aim is to provide students with an understanding of the concepts and design of logic circuits, including (i) various devices, techniques for analyzing and designing combinational circuits and sequential circuits, circuit design and implementation techniques, and (ii) Hardware Description Language (HDL) modelling and synthesis of combinational and synchronous sequential circuit, circuit implementation with FPGA devices. The electrical characteristics of selected logic families are also covered.",
+                "zh": "目的是讓學生了解邏輯電路的概念和設計，包括（i）各種裝置、組合電路和時序電路的分析和設計技術、電路設計和實現技術，以及（ii）組合和同步時序電路的硬體描述語言（HDL）建模和綜合、FPGA裝置的電路實現。也涵蓋了所選邏輯系列的電氣特性。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.4,
-            "sampleMeanGpa": 2.88,
+            "sampleWorkload": 2.9,
+            "sampleMeanGpa": 3.17,
             "category": "core",
-            "hasLab": true
+            "hasLab": true,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 8,
+                "assessmentLoad": "High",
+                "difficulty": 5,
+                "gradingComponents": {
+                    "midterm": 25,
+                    "assignments": 25,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "16:00 - 18:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG G7510",
+                        "crn": "10032",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WONG Hei"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG B7540",
+                        "crn": "15174",
+                        "section": "L01",
+                        "dateRange": "11/01/2027 - 20/02/2027",
+                        "instructor": "WONG Hei"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "19:00 - 21:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG B7540",
+                        "crn": "15175",
+                        "section": "L02",
+                        "dateRange": "11/01/2027 - 20/02/2027",
+                        "instructor": "WONG Hei"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "13:00 - 13:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B4302",
+                        "crn": "10136",
+                        "section": "T01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WONG Hei"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 12:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "LAU 5-205",
+                        "crn": "11648",
+                        "section": "T02",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WONG Hei"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE2004",
@@ -227,14 +571,63 @@
                 "zh": "微電腦系統"
             },
             "descriptions": {
-                "en": "Fundamentals of microcomputer architecture, assembly language and interfacing.",
-                "zh": "微電腦架構、組合語言及介面的基礎知識。"
+                "en": "Students will gain knowledge about the basic structure of modern computer systems, programming concepts at the assembly level, the concepts of instruction set architecture, datapath, control unit, memory system, and I/O interfaces.",
+                "zh": "學生將獲得有關現代電腦系統的基本結構、彙編級程式設計概念、指令集架構、資料路徑、控制單元、儲存系統和 I/O 介面的概念的知識。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.5,
-            "sampleMeanGpa": 2.75,
+            "sampleWorkload": 3.3,
+            "sampleMeanGpa": 3.85,
             "category": "core",
-            "hasLab": true
+            "hasLab": false,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 11,
+                "assessmentLoad": "High",
+                "difficulty": 5,
+                "gradingComponents": {
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Tutorial",
+                        "time": "13:00 - 14:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG B7701",
+                        "crn": "10255",
+                        "section": "T01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LEUNG Chi Sing A."
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 10:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B7701",
+                        "crn": "10256",
+                        "section": "T02",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LEUNG Chi Sing A."
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "13:00 - 14:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG B7701",
+                        "crn": "13510",
+                        "section": "T03",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LEUNG Chi Sing A."
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE2005",
@@ -243,14 +636,65 @@
                 "zh": "電子器件及電路"
             },
             "descriptions": {
-                "en": "Study of diodes, transistors and basic analogue electronic circuits.",
-                "zh": "研習二極體、電晶體及基本模擬電子電路。"
+                "en": "The aim of this course is to provide students with the basic principles of electronic circuits and devices for analyzing simple circuits, and the characteristics of some commonly used electronic devices.",
+                "zh": "本課程的目的是為學生提供分析簡單電路的電子電路和裝置的基本原理，以及一些常用電子裝置的特性。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.6,
-            "sampleMeanGpa": 2.7,
+            "sampleWorkload": 2.6,
+            "sampleMeanGpa": 3.99,
             "category": "core",
-            "hasLab": true
+            "hasLab": true,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 7,
+                "assessmentLoad": "High",
+                "difficulty": 3,
+                "gradingComponents": {
+                    "midterm": 30,
+                    "assignments": 10,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG LT-15",
+                        "crn": "11649",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TAN Siew Chong, LI Kerui"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG G7610",
+                        "crn": "11651",
+                        "section": "L01",
+                        "dateRange": "21/02/2027 - 27/02/2027",
+                        "instructor": "TAN Siew Chong, LI Kerui"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "19:00 - 21:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG G7610",
+                        "crn": "11652",
+                        "section": "L02",
+                        "dateRange": "21/02/2027 - 27/02/2027",
+                        "instructor": "LI Kerui, TAN Siew Chong"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE2066",
@@ -259,14 +703,39 @@
                 "zh": "工程師與社會"
             },
             "descriptions": {
-                "en": "Explores the role of engineers in society, ethics, sustainability and professional practice.",
-                "zh": "探討工程師在社會中的角色、倫理、可持續發展及專業實踐。"
+                "en": "Students will gain knowledge about the obligations, roles and professional conduct of engineers in a modern society. It stimulates students to develop a basic awareness of the legal, environmental and socio-economic factors that have a significant impact on engineering design. Students will analyze these factors, evaluate professional responsibilities, apply critical thinking to real-world scenarios, and develop an understanding of ethical considerations in engineering practice. Industry professionals are invited to deliver some of the lectures, aiming to provide students with an understanding of social analysis adequate for the society in which they will work. Through engaging with lectures, case studies, and guest speaker sessions, students will cultivate insights into the social dimensions of engineering, equipping them to become responsible professionals capable of addressing the challenges in our rapidly evolving world.",
+                "zh": "學生將了解現代社會工程師的義務、角色和職業行為。它激發學生對對工程設計有重大影響的法律、環境和社會經濟因素的基本認識。學生將分析這些因素，評估專業責任，將批判性思考應用於現實場景，並加深對工程實踐中道德考慮的理解。邀請行業專業人士進行一些講座，旨在讓學生了解適合他們將要工作的社會的社會分析。透過參加講座、案例研究和客座演講，學生將培養對工程社會維度的洞察力，使他們成為負責任的專業人士，能夠應對快速發展的世界中的挑戰。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 2.4,
-            "sampleMeanGpa": 3.4,
+            "sampleWorkload": 4.0,
+            "sampleMeanGpa": 3.49,
             "category": "core",
-            "hasLab": false
+            "hasLab": false,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 13,
+                "assessmentLoad": "Very High",
+                "difficulty": 3,
+                "gradingComponents": {
+                    "final": 30
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG LT-6",
+                        "crn": "12809",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN L H Leanne"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE2104",
@@ -275,14 +744,53 @@
                 "zh": "電磁學導論"
             },
             "descriptions": {
-                "en": "Basic concepts of electric and magnetic fields and their applications in engineering.",
-                "zh": "電場及磁場的基本概念及其在工程上的應用。"
+                "en": "This course aims to introduce the basic principles of electromagnetics for electrical engineering. It emphasizes on solving fundamental problems in electrostatics and magnetostatics, while providing elementary understanding on the Maxwell's equations.",
+                "zh": "本課程旨在介紹電機工程電磁學的基本原理。它強調解決靜電學和靜磁學的基本問題，同時提供對麥克斯韋方程組的基本理解。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.7,
-            "sampleMeanGpa": 2.65,
+            "sampleWorkload": 4.9,
+            "sampleMeanGpa": 2.04,
             "category": "core",
-            "hasLab": false
+            "hasLab": false,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 14,
+                "assessmentLoad": "Very High",
+                "difficulty": 2,
+                "gradingComponents": {
+                    "midterm": 15,
+                    "assignments": 15,
+                    "final": 70
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG LT-6",
+                        "crn": "13292",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN Sze Chun"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 12:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "LI 6606",
+                        "crn": "13295",
+                        "section": "T01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN Sze Chun"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE2108",
@@ -307,14 +815,28 @@
                 "zh": "通訊原理"
             },
             "descriptions": {
-                "en": "Fundamentals of analogue and digital communication systems.",
-                "zh": "模擬及數碼通訊系統的基本原理。"
+                "en": "In this course, students will gain knowledge about the principles of point-to-point communication. Students will learn to understand various modulation schemes for both analog and digital signal transmission. Additionally, students will develop the skills to analyze the performance of these schemes in terms of signal-to-noise ratio, bandwidth requirements, and error performance.",
+                "zh": "在本課程中，學生將獲得有關點對點通訊原理的知識。學生將學習了解模擬和數位訊號傳輸的各種調製方案。此外，學生還將培養在信噪比、頻寬要求和錯誤性能方面分析這些方案性能的技能。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.5,
-            "sampleMeanGpa": 2.8,
+            "sampleWorkload": 4.4,
+            "sampleMeanGpa": 4.0,
             "category": "core",
-            "hasLab": false
+            "hasLab": false,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 12,
+                "assessmentLoad": "High",
+                "difficulty": 2,
+                "gradingComponents": {
+                    "midterm": 40,
+                    "assignments": 10,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE3070",
@@ -323,14 +845,39 @@
                 "zh": "設計專題"
             },
             "descriptions": {
-                "en": "Team-based design project solving real engineering problems.",
-                "zh": "以小組形式進行設計專題，解決實際工程問題。"
+                "en": "The aim of this course is to enable students to work together in a group on a design project. Through the design project, students will be nurtured and be able to demonstrate their creativity, innovation and its impact on society. Working in a group will allow students to resolve issues that arise technically and personally. Students will become familiar with the concept of product design, such as, component tolerances, production constraints, safety requirements, and EMC standards through a case study.",
+                "zh": "本課程的目的是使學生能夠以小組形式合作完成設計專案。透過設計項目，學生將得到培養並能夠展示他們的創造力、創新及其對社會的影響。小組合作將使學生能夠解決技術上和個人上出現的問題。學生將透過案例研究熟悉產品設計的概念，例如組件公差、生產限制、安全要求和 EMC 標準。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.8,
-            "sampleMeanGpa": 3.1,
+            "sampleWorkload": 4.8,
+            "sampleMeanGpa": 3.19,
             "category": "core",
-            "hasLab": true
+            "hasLab": true,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 15,
+                "assessmentLoad": "Very High",
+                "difficulty": 3,
+                "gradingComponents": {
+                    "project": 100
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Lab",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG G7620",
+                        "crn": "12812",
+                        "section": "L03",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHUNG Shu Hung H."
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE3109",
@@ -339,14 +886,53 @@
                 "zh": "應用電磁學"
             },
             "descriptions": {
-                "en": "Advanced applications of electromagnetic theory in engineering systems.",
-                "zh": "電磁理論在工程系統中的進階應用。"
+                "en": "The aim of this course is to provide students with fundamental electromagnetic theories and techniques for working as a communication engineers.",
+                "zh": "本課程的目的是為學生提供作為通訊工程師工作的基本電磁理論和技術。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.9,
-            "sampleMeanGpa": 2.6,
+            "sampleWorkload": 3.0,
+            "sampleMeanGpa": 2.61,
             "category": "core",
-            "hasLab": true
+            "hasLab": true,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 8,
+                "assessmentLoad": "High",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "midterm": 30,
+                    "assignments": 20,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "13:00 - 15:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG LT-4",
+                        "crn": "10530",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WONG Man Hon Alex"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LAU 15-231",
+                        "crn": "10531",
+                        "section": "L01",
+                        "dateRange": "07/03/2027 - 13/03/2027",
+                        "instructor": "WONG Man Hon Alex"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE3114",
@@ -371,14 +957,53 @@
                 "zh": "應用光電子器件"
             },
             "descriptions": {
-                "en": "Principles and applications of optoelectronic devices (LEDs, lasers, photodetectors).",
-                "zh": "光電子器件（LED、激光、光探測器）的原理及應用。"
+                "en": "In this course, students will learn, understand, and appreciate the basic concepts of semiconductor physics and the working principles of semiconductor optoelectronic devices, such as light-emitting diodes, laser diodes, and photodiodes. These devices are the essential components in today's consumer optoelectronics, IT communication, robotic control, industrial instrumentation, and so on.",
+                "zh": "在本課程中，學生將學習、理解和欣賞半導體物理學的基本概念以及半導體光電器件（例如發光二極管、雷射二極體和光電二極體）的工作原理。這些元件是當今消費光電、IT 通訊、機器人控制、工業儀器等領域的重要組成部分。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.3,
-            "sampleMeanGpa": 2.95,
+            "sampleWorkload": 4.8,
+            "sampleMeanGpa": 2.29,
             "category": "core",
-            "hasLab": true
+            "hasLab": true,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 15,
+                "assessmentLoad": "Very High",
+                "difficulty": 3,
+                "gradingComponents": {
+                    "midterm": 20,
+                    "assignments": 20,
+                    "final": 60
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG LT-16",
+                        "crn": "11214",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TAN Chaoliang"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG G7610",
+                        "crn": "11216",
+                        "section": "L01",
+                        "dateRange": "28/02/2027 - 06/03/2027",
+                        "instructor": "TAN Chaoliang"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE3121",
@@ -387,14 +1012,66 @@
                 "zh": "電機工程微分方程"
             },
             "descriptions": {
-                "en": "Mathematical methods for solving differential equations in EE problems.",
-                "zh": "解決電機工程問題中微分方程的數學方法。"
+                "en": "This course introduces differential equations for solving practical problems of electrical and electronic engineering, including power conversion, wireless communication and circuit analysis. It is to help students develop the ability to carry out engineering analyses for engineering problems involving differential questions.",
+                "zh": "本課程介紹用於解決電氣和電子工程實際問題的微分方程，包括功率轉換、無線通訊和電路分析。就是幫助學生培養涉及微分問題的工程問題進行工程分析的能力。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.4,
-            "sampleMeanGpa": 2.9,
+            "sampleWorkload": 4.4,
+            "sampleMeanGpa": 2.92,
             "category": "core",
-            "hasLab": false
+            "hasLab": false,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 14,
+                "assessmentLoad": "High",
+                "difficulty": 3,
+                "gradingComponents": {
+                    "midterm": 30,
+                    "assignments": 15,
+                    "project": 5,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG LT-17",
+                        "crn": "11658",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA EE015"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "17:00 - 17:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B4302",
+                        "crn": "11659",
+                        "section": "T01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA EE015"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 15:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG Y4702",
+                        "crn": "11852",
+                        "section": "T02",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA EE015"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE3122",
@@ -403,14 +1080,63 @@
                 "zh": "模擬電路基礎"
             },
             "descriptions": {
-                "en": "Design and analysis of analogue circuits including amplifiers and filters.",
-                "zh": "模擬電路（包括放大器及濾波器）的設計與分析。"
+                "en": "The aims of the course are to present the techniques used in the analysis of analogue circuits and to apply them to a spectrum of different uses.",
+                "zh": "本課程的目的是介紹模擬電路分析中使用的技術，並將其應用於各種不同的用途。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.7,
-            "sampleMeanGpa": 2.7,
+            "sampleWorkload": 4.2,
+            "sampleMeanGpa": 3.16,
             "category": "core",
-            "hasLab": true
+            "hasLab": true,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 14,
+                "assessmentLoad": "High",
+                "difficulty": 3,
+                "gradingComponents": {
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "16:00 - 18:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG LT-16",
+                        "crn": "12031",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "BASU Arindam"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG G7610",
+                        "crn": "12032",
+                        "section": "L01",
+                        "dateRange": "07/03/2027 - 13/03/2027",
+                        "instructor": "BASU Arindam"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG G7620",
+                        "crn": "12032",
+                        "section": "L01",
+                        "dateRange": "07/03/2027 - 13/03/2027",
+                        "instructor": "BASU Arindam"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE3123",
@@ -435,14 +1161,42 @@
                 "zh": "電機及驅動導論"
             },
             "descriptions": {
-                "en": "Principles of electric machines (motors & generators) and drive systems.",
-                "zh": "電機（馬達及發電機）及驅動系統的原理。"
+                "en": "To introduce (i) the operating principles of electric machines and drives, including AC and DC machines; and (ii) the applications of various types of drives in automation systems, electric vehicles, and robotics.",
+                "zh": "介紹 (i) 馬達和驅動器的工作原理，包括交流和直流馬達； (ii) 各種類型的驅動器在自動化系統、電動車和機器人的應用。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.3,
-            "sampleMeanGpa": 2.98,
+            "sampleWorkload": 4.4,
+            "sampleMeanGpa": 3.72,
             "category": "core",
-            "hasLab": true
+            "hasLab": false,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 14,
+                "assessmentLoad": "High",
+                "difficulty": 5,
+                "gradingComponents": {
+                    "assignments": 5,
+                    "midterm": 30,
+                    "project": 15,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG B4702",
+                        "crn": "11962",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "JIANG Chaoqiang"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE3210",
@@ -451,14 +1205,28 @@
                 "zh": "信號與系統"
             },
             "descriptions": {
-                "en": "Analysis of continuous and discrete-time signals and linear systems.",
-                "zh": "連續及離散時間信號與線性系統的分析。"
+                "en": "Students will gain a solid understanding of the fundamental concepts and tools vital for the analysis of signals and systems. In addition, they will acquire foundational knowledge and skills that are applicable across a broad spectrum of scientific and engineering disciplines, including but not limited to communications, control, and signal processing.",
+                "zh": "學生將深入了解對於訊號和系統分析至關重要的基本概念和工具。此外，他們還將獲得適用於廣泛的科學和工程學科的基礎知識和技能，包括但不限於通訊、控制和訊號處理。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.8,
-            "sampleMeanGpa": 2.55,
+            "sampleWorkload": 3.4,
+            "sampleMeanGpa": 2.32,
             "category": "core",
-            "hasLab": false
+            "hasLab": false,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 9,
+                "assessmentLoad": "High",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "midterm": 40,
+                    "assignments": 20,
+                    "final": 40
+                },
+                "scheduledMeetingTimes": [],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE4080",
@@ -467,14 +1235,26 @@
                 "zh": "專題研究"
             },
             "descriptions": {
-                "en": "Final Year Project – independent research or design work under supervision.",
-                "zh": "畢業專題 – 在指導下進行獨立研究或設計工作。"
+                "en": "This course is to provide students the options to undertake either academic project (Part A) or industrial project (Part B). Part A: Academic Project The aim of this academic project is to nurture student's ability to complete a project that integrates and applies what has been learnt in the programme. Students will be guided in the organization and management a substantial individual project that initiates creativity, innovation and intellectual abilities. Part B: Industrial Project The aim of this part is to nurture student's ability, in collaboration with industry, to complete an industrial project that integrates and applies what has been learnt in the taught undergraduate courses. Students will be guided in co-operation with the electronic related industry while nurturing students with a spirit of professionalism. The result will strengthen employability by meeting the needs of industry.",
+                "zh": "本課程為學生提供承擔學術計畫（A 部分）或工業計畫（B 部分）的選擇。 A 部分：學術計畫 此學術計畫的目的是培養學生完成專案的能力，以整合和應用課程中所學知識。學生將被指導組織和管理一個重要的個人項目，以激發創造力、創新和智力。 B 部分：工業項目 這部分的目的是培養學生與工業界合作的能力，以完成一個工業項目，整合並應用在本科教學課程中所學到的知識。引導學生與電子相關產業合作，同時培養學生的專業。其結果將透過滿足工業需求來增強就業能力。"
             },
             "creditUnits": 6,
-            "sampleWorkload": 4.2,
-            "sampleMeanGpa": 3.25,
+            "sampleWorkload": 3.5,
+            "sampleMeanGpa": 2.4,
             "category": "core",
-            "hasLab": null
+            "hasLab": false,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 11,
+                "assessmentLoad": "Very High",
+                "difficulty": 3,
+                "gradingComponents": {
+                    "assignments": 100
+                },
+                "scheduledMeetingTimes": [],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE4090",
@@ -499,14 +1279,63 @@
                 "zh": "電腦程式設計"
             },
             "descriptions": {
-                "en": "Programming fundamentals for engineering applications.",
-                "zh": "工程應用的程式設計基礎。"
+                "en": "This course aims to equip the students with in-depth concepts and techniques of programming using a high-level object-oriented programming language and to develop practical skills in producing quality programs.",
+                "zh": "本課程旨在讓學生掌握使用高級物件導向程式語言進行程式設計的深入概念和技術，並培養編寫高品質程式的實用技能。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3,
-            "sampleMeanGpa": 3.1,
+            "sampleWorkload": 3.8,
+            "sampleMeanGpa": 3.49,
             "category": "core",
-            "hasLab": null
+            "hasLab": true,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 12,
+                "assessmentLoad": "Very High",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "final": 60
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "LI 3508",
+                        "crn": "10315",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN Wing Kwong"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "15:00 - 15:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG B7520",
+                        "crn": "10316",
+                        "section": "L01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN Wing Kwong"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "16:00 - 16:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG B7520",
+                        "crn": "10443",
+                        "section": "L02",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN Wing Kwong"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "MA2001",
@@ -515,14 +1344,63 @@
                 "zh": "多變量微積分及線性代數"
             },
             "descriptions": {
-                "en": "Advanced mathematics needed for engineering analysis.",
-                "zh": "工程分析所需的高等數學。"
+                "en": "This course aims to introduce important ideas in Linear Algebra and Advanced Calculus necessary for an understanding of their application to Science and Engineering. It will help students develop the ability to think quantitatively and analyse problems critically.",
+                "zh": "本課程旨在介紹線性代數和高級微積分中的重要思想，以幫助理解它們在科學和工程中的應用。它將幫助學生培養定量思考和批判性分析問題的能力。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.5,
-            "sampleMeanGpa": 2.8,
+            "sampleWorkload": 4.2,
+            "sampleMeanGpa": 2.63,
             "category": "core",
-            "hasLab": null
+            "hasLab": false,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 13,
+                "assessmentLoad": "Very High",
+                "difficulty": 2,
+                "gradingComponents": {
+                    "final": 70
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "13:00 - 14:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG LT-10",
+                        "crn": "10463",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LIU Lizuo"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "13:00 - 14:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG LT-10",
+                        "crn": "10463",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LIU Lizuo"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 12:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG LT-10",
+                        "crn": "10510",
+                        "section": "T01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "IP Long Fung Harry"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE2331",
@@ -531,14 +1409,41 @@
                 "zh": "數據結構與算法"
             },
             "descriptions": {
-                "en": "Common data structures and algorithms used in engineering software.",
-                "zh": "工程軟件常用的數據結構與算法。"
+                "en": "The students will learn the fundamental concepts of data structures and algorithm design, and to cultivate systematic programming discipline.",
+                "zh": "學生將學習資料結構和演算法設計的基本概念，並培養系統的程式學科。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.4,
-            "sampleMeanGpa": 2.9,
+            "sampleWorkload": 3.3,
+            "sampleMeanGpa": 3.05,
             "category": "elective",
-            "hasLab": false
+            "hasLab": false,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 8,
+                "assessmentLoad": "High",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "midterm": 25,
+                    "assignments": 25,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Tutorial",
+                        "time": "18:00 - 18:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG B7701",
+                        "crn": "10086",
+                        "section": "T01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "SUN Yanni"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE2800",
@@ -547,14 +1452,65 @@
                 "zh": "工程師半導體物理"
             },
             "descriptions": {
-                "en": "Physics of semiconductor materials and devices.",
-                "zh": "半導體材料及器件的物理學。"
+                "en": "The course aims to give students a fundamental understanding of semiconductor physic and its applications to realize various semiconductor devices. The working mechanism of the selected devices will be studied.",
+                "zh": "本課程旨在讓學生對半導體物理及其實現各種半導體裝置的應用有基本的了解。将研究所选器件的工作机制。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.6,
-            "sampleMeanGpa": 2.75,
+            "sampleWorkload": 3.5,
+            "sampleMeanGpa": 2.11,
             "category": "elective",
-            "hasLab": true
+            "hasLab": true,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 11,
+                "assessmentLoad": "High",
+                "difficulty": 2,
+                "gradingComponents": {
+                    "midterm": 30,
+                    "assignments": 30,
+                    "final": 40
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Lab",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG G7610",
+                        "crn": "12811",
+                        "section": "L01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WANG Cheng"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG G7620",
+                        "crn": "12811",
+                        "section": "L01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WANG Cheng"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "13:00 - 13:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG Y4702",
+                        "crn": "15082",
+                        "section": "T01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WANG Cheng"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE3009",
@@ -563,14 +1519,53 @@
                 "zh": "數據通訊與網絡"
             },
             "descriptions": {
-                "en": "Principles of computer networks and data communication protocols.",
-                "zh": "電腦網絡及數據通訊協議的原理。"
+                "en": "Students will gain knowledge about the basic principles of data communications and IP networking.",
+                "zh": "學生將獲得有關數據通訊和 IP 網路基本原理的知識。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.2,
-            "sampleMeanGpa": 3,
+            "sampleWorkload": 4.0,
+            "sampleMeanGpa": 3.65,
             "category": "elective",
-            "hasLab": true
+            "hasLab": true,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 12,
+                "assessmentLoad": "Very High",
+                "difficulty": 2,
+                "gradingComponents": {
+                    "midterm": 30,
+                    "assignments": 10,
+                    "final": 60
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG LT-8",
+                        "crn": "10403",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN Chi Hung S."
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG B7701",
+                        "crn": "11654",
+                        "section": "L02",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN Chi Hung S."
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE3206",
@@ -579,14 +1574,54 @@
                 "zh": "物件導向程式設計及應用"
             },
             "descriptions": {
-                "en": "Object-oriented programming concepts and practical applications.",
-                "zh": "物件導向程式設計概念及實際應用。"
+                "en": "The aim of this course is to provide students with an understanding of the object-oriented design and programming techniques. Java, a prime object-oriented programming language, is used to illustrate this programming paradigm.",
+                "zh": "本課程的目的是讓學生了解物件導向的設計和程式設計技術。 Java 是一種主要的物件導向程式語言，用來說明這種程式設計範例。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.1,
-            "sampleMeanGpa": 3.15,
+            "sampleWorkload": 3.9,
+            "sampleMeanGpa": 2.16,
             "category": "elective",
-            "hasLab": false
+            "hasLab": false,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 12,
+                "assessmentLoad": "High",
+                "difficulty": 5,
+                "gradingComponents": {
+                    "midterm": 20,
+                    "assignments": 15,
+                    "project": 15,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "S"
+                        ],
+                        "location": "YEUNG B7701",
+                        "crn": "11958",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LI Haoliang, TIAN Xing"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "S"
+                        ],
+                        "location": "YEUNG LT-15",
+                        "crn": "11958",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LI Haoliang, TIAN Xing"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE3220",
@@ -595,14 +1630,89 @@
                 "zh": "系統單晶片設計"
             },
             "descriptions": {
-                "en": "Design of complex digital systems on a single chip (SoC).",
-                "zh": "在單一晶片上設計複雜數碼系統（SoC）。"
+                "en": "This course aims to introduce the building components, fundamental concepts, and design considerations of System-on-Chip (SoC) for up-to-date embedded microcontroller MCU design with Hardware Description Language (HDL) and ARM instruction set architecture (ISA). The course covers complete design flow from initial specifications down to final implementations with ARM processor board and FPGA for rapid prototyping. Students will learn microcontroller concepts, Software design basics, processor core architecture and interrupt system, C as implemented in assembly language, embedded memory mapping and system, peripherals and standard I/O interfacing, embedded ARM processor on System-on-Chip, such as Field-Programmable Gate Array (FPGA). The course emphasizes hands-on exercises of using Electronic Design Automation (EDA) tools, including ARM Development Studio, ARM mbed, Xilinx Vivado, and Xilinx Vitis, to the design of System-on-Chip (SoC) implemented on FPGA chip.",
+                "zh": "本課程旨在介紹採用硬體描述語言 (HDL) 和 ARM 指令集架構 (ISA) 進行最新嵌入式微控制器 MCU 設計的系統單晶片 (SoC) 的建置元件、基本概念和設計注意事項。本課程涵蓋了從初始規格到使用 ARM 處理器板和 FPGA 進行快速原型設計的最終實現的完整設計流程。學生將學習微控制器概念、軟體設計基礎、處理器核心架構和中斷系統、使用彙編語言實現的 C、嵌入式記憶體映射和系統、週邊裝置和標準 I/O 介面、系統單晶片嵌入式 ARM 處理器，例如現場可程式閘陣列 (FPGA)。本課程強調使用電子設計自動化 (EDA) 工具（包括 ARM Development Studio、ARM mbed、Xilinx Vivado 和 Xilinx Vitis）進行在 FPGA 晶片上實現的系統單晶片 (SoC) 設計的實踐練習。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.8,
-            "sampleMeanGpa": 2.7,
+            "sampleWorkload": 4.7,
+            "sampleMeanGpa": 3.01,
             "category": "elective",
-            "hasLab": true
+            "hasLab": true,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 13,
+                "assessmentLoad": "High",
+                "difficulty": 2,
+                "gradingComponents": {
+                    "midterm": 30,
+                    "assignments": 20,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI 6606",
+                        "crn": "12034",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHEUNG Chak Chung Ray, HUNG Siu Ying Patrick"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG B7701",
+                        "crn": "12035",
+                        "section": "L01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHEUNG Chak Chung Ray, HUNG Siu Ying Patrick"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI G600",
+                        "crn": "12036",
+                        "section": "L02",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHEUNG Chak Chung Ray, HUNG Siu Ying Patrick"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 15:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG LT-11",
+                        "crn": "12037",
+                        "section": "T01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHEUNG Chak Chung Ray, HUNG Siu Ying Patrick"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 12:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "LI 1610",
+                        "crn": "12038",
+                        "section": "T02",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHEUNG Chak Chung Ray, HUNG Siu Ying Patrick"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE4015 / EE5410",
@@ -675,14 +1785,41 @@
                 "zh": "無線通訊"
             },
             "descriptions": {
-                "en": "Modern wireless communication technologies and systems.",
-                "zh": "現代無線通訊技術及系統。"
+                "en": "The course aims to provide students with an understanding of the concepts/techniques/basic principles and the most update knowledge in wireless communications.",
+                "zh": "本課程旨在讓學生了解無線通訊的概念/技術/基本原理和最新知識。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.4,
-            "sampleMeanGpa": 2.85,
+            "sampleWorkload": 3.5,
+            "sampleMeanGpa": 2.33,
             "category": "elective",
-            "hasLab": false
+            "hasLab": false,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 11,
+                "assessmentLoad": "High",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "midterm": 40,
+                    "assignments": 25,
+                    "final": 35
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG G4302",
+                        "crn": "15084",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "DAI Lin"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE4045",
@@ -707,14 +1844,53 @@
                 "zh": "可持續能源系統"
             },
             "descriptions": {
-                "en": "Renewable energy systems and sustainable power technologies.",
-                "zh": "可再生能源系統及可持續電力技術。"
+                "en": "The aim of this course is to provide students with an understanding of the concepts / techniques / basic principles of power conversion techniques and their applications.",
+                "zh": "本課程的目的是讓學生了解功率轉換技術的概念/技術/基本原理及其應用。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3,
-            "sampleMeanGpa": 3.2,
+            "sampleWorkload": 3.3,
+            "sampleMeanGpa": 2.99,
             "category": "elective",
-            "hasLab": false
+            "hasLab": false,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 11,
+                "assessmentLoad": "High",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "midterm": 35,
+                    "assignments": 15,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "18:00 - 20:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG G5-216",
+                        "crn": "15062",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "POU Josep"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "18:00 - 18:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG P4704",
+                        "crn": "15063",
+                        "section": "T01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "POU Josep"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE4105",
@@ -751,18 +1927,45 @@
         {
             "courseId": "EE4108",
             "titles": {
-                "en": "Antennas for Wireless Communications and Sensing",
-                "zh": "無線通訊及感測天線"
+                "en": "Antennas for Wireless Communications and Sensing Connectivity",
+                "zh": "用於無線通訊和感測連接的天線"
             },
             "descriptions": {
-                "en": "Antenna design for wireless communication and sensing applications.",
-                "zh": "無線通訊及感測應用的天線設計。"
+                "en": "This course aims to provide students with essential techniques for the analysis and design of popular antennas for modern wireless communications. Emphasis is placed on the understanding of principles of operation. Basic measurement techniques will be learned.",
+                "zh": "本课程旨在为学生提供分析和设计现代无线通信流行天线的基本技术。重點放在對操作原理的理解。將學習基本的測量技術。"
             },
             "creditUnits": 3,
             "sampleWorkload": 3.5,
-            "sampleMeanGpa": 2.85,
+            "sampleMeanGpa": 3.58,
             "category": "elective",
-            "hasLab": false
+            "hasLab": false,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 12,
+                "assessmentLoad": "High",
+                "difficulty": 2,
+                "gradingComponents": {
+                    "midterm": 36,
+                    "assignments": 24,
+                    "final": 40
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 3601",
+                        "crn": "15818",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LEUNG Kwok Wa"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE4115",
@@ -803,14 +2006,41 @@
                 "zh": "數據工程及機器學習"
             },
             "descriptions": {
-                "en": "Data processing pipelines and machine learning applications.",
-                "zh": "數據處理流程及機器學習應用。"
+                "en": "This course aim is to introduce the concept, techniques and fundamental background to informatics and learning systems.",
+                "zh": "本課程的目的是介紹資訊學和學習系統的概念、技術和基本背景。"
             },
             "creditUnits": 3,
-            "sampleWorkload": 3.3,
-            "sampleMeanGpa": 3.05,
+            "sampleWorkload": 4.4,
+            "sampleMeanGpa": 3.12,
             "category": "elective",
-            "hasLab": false
+            "hasLab": false,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 15,
+                "assessmentLoad": "High",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "midterm": 35,
+                    "assignments": 15,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 6606",
+                        "crn": "13456",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LI Haoliang"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE4147",
@@ -895,29 +2125,893 @@
         {
             "courseId": "GE1401",
             "titles": {
-                "en": "University English"
+                "en": "University English",
+                "zh": "大學英語"
             },
             "creditUnits": 3,
             "category": "general-education",
-            "hasLab": null
+            "hasLab": false,
+            "descriptions": {
+                "en": "This course aims to give students the necessary competence in rhetoric and writing in English so that they can use the English language effectively to think, reason, argue and express themselves. Students will develop a sense of their own strengths and weaknesses as English writers and discover how they can make their writing more logical, innovative and persuasive. This course will aid in developing students' reading, writing, critical thinking, and teamwork skills by scaffolding them through collaboratively designing an infographic (information visualization), and the multi-drafting and peer review process of writing an argumentative essay. The overall goal is for students to become autonomous writers and self-editors.",
+                "zh": "本課程旨在培養學生必要的英語修辭和寫作能力，使他們能夠有效地使用英語來思考、推理、論證和表達自己。學生將了解自己作為英語作家的優勢和劣勢，並發現如何使自己的寫作更具邏輯性、創新性和說服力。本課程將透過協作設計資訊圖表（資訊視覺化）以及撰寫議論文的多重起草和同儕審查過程來培養學生的閱讀、寫作、批判性思維和團隊合作技能。總體目標是讓學生成為自主作家和自我編輯。"
+            },
+            "sampleWorkload": 4.6,
+            "sampleMeanGpa": 3.2,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 15,
+                "assessmentLoad": "Very High",
+                "difficulty": 2,
+                "gradingComponents": {
+                    "assignments": 100
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "LI 2409",
+                        "crn": "10253",
+                        "section": "T01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC015"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI 2415",
+                        "crn": "10738",
+                        "section": "T02",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC015"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 2415",
+                        "crn": "11833",
+                        "section": "T03",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC015"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 2312",
+                        "crn": "11834",
+                        "section": "T04",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC015"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "LI 2407",
+                        "crn": "13534",
+                        "section": "T05",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC015"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI 2415",
+                        "crn": "14986",
+                        "section": "T06",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC020"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "LI 2415",
+                        "crn": "14987",
+                        "section": "T07",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC020"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "18:00 - 20:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI 2415",
+                        "crn": "11882",
+                        "section": "T61",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC015"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "GE2410",
             "titles": {
-                "en": "English for Engineering"
+                "en": "English for Engineering",
+                "zh": "工程英語"
             },
             "creditUnits": 3,
             "category": "general-education",
-            "hasLab": null
+            "hasLab": false,
+            "descriptions": {
+                "en": "This course is designed to provide engineering students with the necessary oral and written skills required for effective communication in academic and workplace contexts, both with experts in their field and lay persons. It begins by introducing them to the principles of good academic practice, which are also presented as a model for ethical workplace practice, and thus help them to avoid issues such as plagiarism. The main part then leads on to developing research and summarising skills that form the basis for the later activities. Students next learn to apply these skills to conducting technical presentations, as well as in group discussions that culminate in project planning activities. After this predominantly oral part of the course, the focus shifts to developing an understanding of and practicing various types of written communication, such as reports and other types of business communication.",
+                "zh": "本課程旨在為工程專業的學生提供必要的口頭和書面技能，以便在學術和工作場所中與各自領域的專家和非專業人士進行有效的溝通。首先向他們介紹良好學術實踐的原則，這些原則也被視為工作場所道德實踐的典範，從而幫助他們避免抄襲等問題。然後，主要部分將引導您進行研究和總結技能，為後續活動奠定基礎。接下來，學生將學習將這些技能應用於進行技術演示以及小組討論，最終形成專案規劃活動。在課程的主要口頭部分之後，重點轉移到理解和練習各種類型的書面溝通，例如報告和其他類型的業務溝通。"
+            },
+            "sampleWorkload": 4.6,
+            "sampleMeanGpa": 3.75,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 15,
+                "assessmentLoad": "Very High",
+                "difficulty": 3,
+                "gradingComponents": {
+                    "assignments": 100
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 1314",
+                        "crn": "10295",
+                        "section": "T01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC008"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "LI 1314",
+                        "crn": "11569",
+                        "section": "T02",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC008"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG Y5-202",
+                        "crn": "10296",
+                        "section": "T03",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC008"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "LI 1410",
+                        "crn": "10297",
+                        "section": "T04",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC008"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "LI 1402",
+                        "crn": "10298",
+                        "section": "T05",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC008"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI 2405",
+                        "crn": "13183",
+                        "section": "T06",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC008"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "LI 3500",
+                        "crn": "10299",
+                        "section": "T07",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC008"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG Y5-205",
+                        "crn": "10396",
+                        "section": "T08",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC009"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI 3500",
+                        "crn": "13184",
+                        "section": "T09",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC009"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG Y5-302",
+                        "crn": "10397",
+                        "section": "T10",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC009"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 1310",
+                        "crn": "10398",
+                        "section": "T11",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC009"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI 1314",
+                        "crn": "10400",
+                        "section": "T13",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC009"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 1310",
+                        "crn": "10401",
+                        "section": "T14",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC009"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B5-208",
+                        "crn": "10429",
+                        "section": "T15",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC010"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "LI 1402",
+                        "crn": "10430",
+                        "section": "T16",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC010"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "16:00 - 18:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG B4302",
+                        "crn": "10431",
+                        "section": "T17",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC010"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG B5-309",
+                        "crn": "13185",
+                        "section": "T18",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC010"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG Y5-202",
+                        "crn": "10432",
+                        "section": "T19",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC010"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 1310",
+                        "crn": "10433",
+                        "section": "T20",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC010"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "16:00 - 18:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG B5-310",
+                        "crn": "13186",
+                        "section": "T21",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC010"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B5-207",
+                        "crn": "10850",
+                        "section": "T23",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC011"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG B5-308",
+                        "crn": "10849",
+                        "section": "T24",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC011"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 2310",
+                        "crn": "11128",
+                        "section": "T25",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC011"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "LI 2413",
+                        "crn": "13188",
+                        "section": "T26",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC011"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "LI 2310",
+                        "crn": "13189",
+                        "section": "T27",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC011"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "16:00 - 18:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG B5-210",
+                        "crn": "13178",
+                        "section": "T29",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC012"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "16:00 - 18:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI 1400",
+                        "crn": "13179",
+                        "section": "T30",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC012"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "LI 1410",
+                        "crn": "13180",
+                        "section": "T31",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC012"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "LI 1410",
+                        "crn": "13191",
+                        "section": "T32",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC012"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 2306",
+                        "crn": "13181",
+                        "section": "T33",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC012"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "LI 2405",
+                        "crn": "14141",
+                        "section": "T34",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC012"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "16:00 - 18:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B5-308",
+                        "crn": "14142",
+                        "section": "T35",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC013"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "LI 1402",
+                        "crn": "14512",
+                        "section": "T36",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC013"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "LI 2407",
+                        "crn": "14988",
+                        "section": "T37",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC013"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "S"
+                        ],
+                        "location": "YEUNG B5-307",
+                        "crn": "14989",
+                        "section": "T38",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC013"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 3500",
+                        "crn": "14990",
+                        "section": "T39",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC013"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG B5-210",
+                        "crn": "14991",
+                        "section": "T40",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC013"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG B5-210",
+                        "crn": "14992",
+                        "section": "T41",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC013"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 2409",
+                        "crn": "15740",
+                        "section": "T42",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC027"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI 1402",
+                        "crn": "15741",
+                        "section": "T43",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC028"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "LI 2413",
+                        "crn": "12964",
+                        "section": "TA1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC011"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "LAU 5-205",
+                        "crn": "11380",
+                        "section": "TB1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC014"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "LAU 5-206",
+                        "crn": "13645",
+                        "section": "TB2",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC014"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LAU 6-211",
+                        "crn": "13192",
+                        "section": "TB4",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA LC014"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "GE1501",
             "titles": {
-                "en": "Chinese Civilisation"
+                "en": "Chinese Civilisation - History and Philosophy",
+                "zh": "中華文明-歷史與哲學"
             },
             "creditUnits": 3,
             "category": "general-education",
-            "hasLab": null
+            "hasLab": false,
+            "descriptions": {
+                "en": "This course will critically examine Chinese historical themes and philosophical concepts from various perspectives. All learning activities, including large-class lectures, discussions, and an online platform, will cover selected topics of Chinese history and philosophy. By learning selected topics, students will be able to appreciate individual-society-state relationships; and hence to develop a sense of civility. These central themes will run through the course as the main thread in order to foster a better understanding of Chinese nation and state building from antiquity to the present. The discussions in all TLAs will touch on the real-life issues to connect the past with the present. In addition to reading texts, multimedia (such as film, music, visual arts, Websites etc.) is employed and fieldtrips are coordinated to keep afresh the experience of learning Chinese civilisation.",
+                "zh": "本課程將從不同角度批判性地審視中國歷史主題和哲學概念。所有學習活動，包括大班講座、討論和線上平台，都將涵蓋中國歷史和哲學的選定主題。透過學習選定的主題，學生將能夠理解個人-社會-國家的關係；從而培養文明意識。這些中心主題將作為主線貫穿整個課程，以加深對從古至今中華民族和國家建設的理解。所有 TLA 中的討論都將觸及現實生活中的問題，以連結過去和現在。除了閱讀文本外，還利用多媒體（如電影、音樂、視覺藝術、網站等）並協調實地考察，以保持學習中華文明的新體驗。"
+            },
+            "sampleWorkload": 3.0,
+            "sampleMeanGpa": 2.65,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 10,
+                "assessmentLoad": "Low",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "assignments": 5
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI 1601",
+                        "crn": "10187",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHEUNG Sharon W K"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG Y4302",
+                        "crn": "10188",
+                        "section": "C02",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHUI Lisa L S"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG Y4702",
+                        "crn": "10189",
+                        "section": "C03",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHUI Lisa L S"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI 1301",
+                        "crn": "10258",
+                        "section": "C05",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LAM Hok Chung"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI 1511",
+                        "crn": "10259",
+                        "section": "C06",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LI Lin"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "LI 2513",
+                        "crn": "10571",
+                        "section": "C07",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LI Lin"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI 1301",
+                        "crn": "10573",
+                        "section": "C09",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WONG Marianne P Y"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG Y4702",
+                        "crn": "10851",
+                        "section": "C10",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WONG King Chung"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 1511",
+                        "crn": "12495",
+                        "section": "C11",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LO Kar Kee"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "LI 3601",
+                        "crn": "12496",
+                        "section": "C12",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LAM Hok Chung"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 1301",
+                        "crn": "12499",
+                        "section": "C15",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "SHI Ying"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI 1406",
+                        "crn": "14017",
+                        "section": "C17",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "NG Ka Ho"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG LT-13",
+                        "crn": "15623",
+                        "section": "CA3",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "HUI Jonathan York Heng"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG LT-15",
+                        "crn": "12078",
+                        "section": "CB1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "NG Pak Sheung"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG LT-15",
+                        "crn": "12906",
+                        "section": "CB2",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "NG Pak Sheung"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "GE_AREA1",
@@ -958,38 +3052,766 @@
         {
             "courseId": "MA1200",
             "titles": {
-                "en": "Calculus I"
+                "en": "Calculus and Basic Linear Algebra I",
+                "zh": "微積分和基礎線性代數 I"
             },
             "creditUnits": 3,
             "category": "curriculum",
-            "hasLab": null
+            "hasLab": false,
+            "descriptions": {
+                "en": "This is the first of two required courses designed for students pursuing studies in engineering or science. It aims to equip students with mathematical skills and methods essential for study of calculus and linear algebra, develop fluency in concepts and techniques from differential calculus, and provide students with mathematical training for all further study in science/engineering and its applications.",
+                "zh": "這是為攻讀工程或科學專業的學生設計的兩門必修課程中的第一門。它的目的是讓學生掌握微積分和線性代數學習所需的數學技能和方法，熟練微積分的概念和技術，並為學生在科學/工程及其應用方面的進一步學習提供數學訓練。"
+            },
+            "sampleWorkload": 4.1,
+            "sampleMeanGpa": 2.44,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 13,
+                "assessmentLoad": "Very High",
+                "difficulty": 2,
+                "gradingComponents": {
+                    "final": 70
+                },
+                "scheduledMeetingTimes": [],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "MA1201",
             "titles": {
-                "en": "Calculus II"
+                "en": "Calculus and Basic Linear Algebra II",
+                "zh": "微積分與基礎線性代數 II"
             },
             "creditUnits": 3,
             "category": "curriculum",
-            "hasLab": null
+            "hasLab": false,
+            "descriptions": {
+                "en": "This is the second of two required courses designed for students pursuing studies in engineering or science. The course aims to develop fluency in concepts and techniques from integral calculus, linear algebra and complex numbers, and provide students with mathematical training for all further study in science/engineering and its applications.",
+                "zh": "這是為攻讀工程或科學專業的學生設計的兩門必修課程中的第二門。本課程旨在培養學生流利地掌握積分、線性代數和複數的概念和技術，並為學生在科學/工程及其應用方面的進一步學習提供數學訓練。"
+            },
+            "sampleWorkload": 3.4,
+            "sampleMeanGpa": 3.86,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 11,
+                "assessmentLoad": "Very High",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "final": 70
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 13:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG LT-6",
+                        "crn": "12304",
+                        "section": "CA1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN Oi Man E."
+                    },
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 13:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG LT-17",
+                        "crn": "12304",
+                        "section": "CA1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN Oi Man E."
+                    },
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 13:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "MMW 3420",
+                        "crn": "14850",
+                        "section": "CB1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA MA003"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 13:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG LT-5",
+                        "crn": "14850",
+                        "section": "CB1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA MA003"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 13:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG LT-5",
+                        "crn": "12697",
+                        "section": "CC1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WONG Alex"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 13:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG LT-6",
+                        "crn": "12697",
+                        "section": "CC1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WONG Alex"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 13:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG LT-18",
+                        "crn": "11594",
+                        "section": "CD1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN Chi Pak"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 13:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG LT-18",
+                        "crn": "11594",
+                        "section": "CD1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN Chi Pak"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "10:00 - 11:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "MMW 3420",
+                        "crn": "11595",
+                        "section": "CE1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "QIU Weifeng"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "15:00 - 16:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG LT-5",
+                        "crn": "11595",
+                        "section": "CE1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "QIU Weifeng"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "10:00 - 11:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG LT-6",
+                        "crn": "14854",
+                        "section": "CF1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA MA005"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "15:00 - 16:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG LT-17",
+                        "crn": "14854",
+                        "section": "CF1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA MA005"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "10:00 - 11:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG LT-17",
+                        "crn": "12300",
+                        "section": "CG1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN Chi Pak"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "15:00 - 16:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG LT-18",
+                        "crn": "12300",
+                        "section": "CG1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN Chi Pak"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "10:00 - 11:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG LT-5",
+                        "crn": "12695",
+                        "section": "CH1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WONG Alex"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "15:00 - 16:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG LT-6",
+                        "crn": "12695",
+                        "section": "CH1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WONG Alex"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "14:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG P4701",
+                        "crn": "11596",
+                        "section": "TA1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "FANG Zehua"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 15:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG P4704",
+                        "crn": "11597",
+                        "section": "TA2",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "FANG Zehua"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "18:00 - 18:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG B4702",
+                        "crn": "11598",
+                        "section": "TA3",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "HU Hanyu"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "14:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG P4302",
+                        "crn": "14855",
+                        "section": "TB1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA MA007"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 15:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG P4302",
+                        "crn": "14856",
+                        "section": "TB2",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA MA007"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "18:00 - 18:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG P4302",
+                        "crn": "14857",
+                        "section": "TB3",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA MA007"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "14:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG P4704",
+                        "crn": "11599",
+                        "section": "TC1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "HU Hanyu"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 15:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B4702",
+                        "crn": "11600",
+                        "section": "TC2",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LIU Xiao"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "18:00 - 18:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG P4704",
+                        "crn": "11601",
+                        "section": "TC3",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LIU Xiao"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "14:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B4702",
+                        "crn": "12305",
+                        "section": "TD1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "ZENG Xianhao"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 15:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B4302",
+                        "crn": "12306",
+                        "section": "TD2",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "ZENG Xianhao"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "18:00 - 18:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG B4302",
+                        "crn": "12307",
+                        "section": "TD3",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "GUO Jin"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "11:00 - 11:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG B4302",
+                        "crn": "12698",
+                        "section": "TE1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "GUO Jin"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 12:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG P4302",
+                        "crn": "12699",
+                        "section": "TE2",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LI Shufan"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 12:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG P4703",
+                        "crn": "12700",
+                        "section": "TE3",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LI Shufan"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "11:00 - 11:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG P4302",
+                        "crn": "14858",
+                        "section": "TF1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA MA008"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 12:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG B4702",
+                        "crn": "14859",
+                        "section": "TF2",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA MA008"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 12:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG P4302",
+                        "crn": "14860",
+                        "section": "TF3",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA MA008"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "11:00 - 11:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG B4702",
+                        "crn": "13685",
+                        "section": "TG1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LIU Songwei"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 12:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG B4302",
+                        "crn": "13689",
+                        "section": "TG2",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LIU Songwei"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 12:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B4702",
+                        "crn": "13687",
+                        "section": "TG3",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "FIAZ Mudassar"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "11:00 - 11:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG P4704",
+                        "crn": "13688",
+                        "section": "TH1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "FIAZ Mudassar"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 12:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG P4704",
+                        "crn": "13686",
+                        "section": "TH2",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WANG Mingyang"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 12:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG P4701",
+                        "crn": "13690",
+                        "section": "TH3",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WANG Mingyang"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "CS1302",
             "titles": {
-                "en": "Intro to Computer Programming"
+                "en": "Introduction to Computer Programming",
+                "zh": "電腦程式設計概論"
             },
             "creditUnits": 3,
             "category": "curriculum",
-            "hasLab": null
+            "hasLab": true,
+            "descriptions": {
+                "en": "This course aims to introduce to students key concepts, techniques, and good practices of programming using Python.",
+                "zh": "本課程旨在向學生介紹使用 Python 進行程式設計的關鍵概念、技術和良好實踐。"
+            },
+            "sampleWorkload": 3.9,
+            "sampleMeanGpa": 2.32,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 10,
+                "assessmentLoad": "High",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "MMW 2450",
+                        "crn": "11677",
+                        "section": "CA1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WONG Helena"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG LT-17",
+                        "crn": "11686",
+                        "section": "CC1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LEE Ka Chun K."
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "14:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "LI 4109",
+                        "crn": "11678",
+                        "section": "LA1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WONG Helena"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "12:00 - 12:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "LI 4109",
+                        "crn": "11682",
+                        "section": "LA2",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WONG Helena"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "17:00 - 17:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "LI 4109",
+                        "crn": "12010",
+                        "section": "LA3",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WONG Helena"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "13:00 - 13:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "LI 4109",
+                        "crn": "13681",
+                        "section": "LA4",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WONG Helena"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "16:00 - 16:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "LI 4109",
+                        "crn": "11683",
+                        "section": "LB1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN Chung"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "10:00 - 10:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "LI 4109",
+                        "crn": "11687",
+                        "section": "LB2",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN Chung"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "18:00 - 18:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "LI 4109",
+                        "crn": "11688",
+                        "section": "LB3",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN Chung"
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "12:00 - 12:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 4109",
+                        "crn": "11689",
+                        "section": "LC1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LEE Ka Chun K."
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "11:00 - 11:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 4109",
+                        "crn": "12318",
+                        "section": "LC2",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LEE Ka Chun K."
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "10:00 - 10:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "LI 4109",
+                        "crn": "12013",
+                        "section": "LC3",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LEE Ka Chun K."
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "PHY1101",
             "titles": {
-                "en": "Intro Classical Mechanics"
+                "en": "Introductory Classical Mechanics",
+                "zh": "經典力學導論"
             },
             "creditUnits": 3,
             "category": "curriculum",
-            "hasLab": null
+            "hasLab": false,
+            "descriptions": {
+                "en": "This course introduces classical mechanics, covering topics related to kinematics, Newton's laws of motion, gravity, momentum, angular momentum, work, energy, motion of rigid body, etc. The course will be heavily calculus based and serves as the first course for physics major. Basic calculus and vector calculus are introduced at the beginning. The goal of this course is to develop a conceptual understanding of core physics concepts, to make students familiar with the fundamental methodology of physics, and to provide a solid foundation for subsequent physics courses.",
+                "zh": "本課程介紹經典力學，涵蓋運動學、牛頓運動定律、重力、動量、角動量、功、能量、剛體運動等相關主題。課程以微積分為基礎，作為物理專業的第一門課程。首先介紹了基本微積分和向量微積分。本課程的目標是培養學生對核心物理概念的概念性理解，使學生熟悉物理的基本方法論，並為後續物理課程打下堅實的基礎。"
+            },
+            "sampleWorkload": 4.9,
+            "sampleMeanGpa": 3.5,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 14,
+                "assessmentLoad": "Very High",
+                "difficulty": 2,
+                "gradingComponents": {
+                    "midterm": 30,
+                    "final": 70
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 13:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "MMW 2450",
+                        "crn": "13155",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WANG Xin Sunny, ZHONG Yiming"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "14:00 - 14:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "MMW 2450",
+                        "crn": "13156",
+                        "section": "T01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WANG Xin Sunny"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE3001",
@@ -1003,38 +3825,389 @@
         {
             "courseId": "EE3211",
             "titles": {
-                "en": "Modelling Techniques"
+                "en": "Modelling Techniques",
+                "zh": "建模技術"
             },
             "creditUnits": 3,
             "category": "curriculum",
-            "hasLab": false
+            "hasLab": false,
+            "descriptions": {
+                "en": "This course aims to develop students' ability to formulate, analyse and solve statistical or engineering problems using software tools, such as R. The goal of the course is to train students to become effective modellers who can build sound models to solve statistical or engineering problems in various functional areas.",
+                "zh": "本課程旨在培養學生使用 R 等軟體工具制定、分析和解決統計或工程問題的能力。本課程的目標是培養學生成為有效的建模者，能夠建立合理的模型來解決各個功能領域的統計或工程問題。"
+            },
+            "sampleWorkload": 3.5,
+            "sampleMeanGpa": 2.49,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 11,
+                "assessmentLoad": "Very High",
+                "difficulty": 5,
+                "gradingComponents": {
+                    "midterm": 35,
+                    "assignments": 35,
+                    "final": 30
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG LT-15",
+                        "crn": "11436",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN Kei Hang Katie"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "CS3103",
             "titles": {
-                "en": "Operating Systems"
+                "en": "Operating Systems",
+                "zh": "作業系統"
             },
             "creditUnits": 3,
             "category": "curriculum",
-            "hasLab": null
+            "hasLab": false,
+            "descriptions": {
+                "en": "This course aims to introduce the concepts, roles and functionality of operating systems, which are an essential part of any computer system. By going through the major areas in the development of operating systems including process management, memory management, scheduling, I/O and disk management, students are expected to gain a broad understanding of key approaches to operating system design and implementation. By discussing the design issues of different approaches, students should be able to analyse the trade-offs and contrast their performance in satisfying different system and application requirements.",
+                "zh": "本課程旨在介紹作業系統的概念、角色和功能，作業系統是任何電腦系統的重要組成部分。透過學習作業系統開發的主要領域，包括進程管理、記憶體管理、調度、I/O 和磁碟管理，學生有望對作業系統設計和實現的關鍵方法有廣泛的了解。透過討論不同方法的設計問題，學生應該能夠分析權衡並比較其在滿足不同系統和應用程式要求方面的表現。"
+            },
+            "sampleWorkload": 2.8,
+            "sampleMeanGpa": 2.68,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 7,
+                "assessmentLoad": "Very High",
+                "difficulty": 5,
+                "gradingComponents": {
+                    "assignments": 17,
+                    "other": 8,
+                    "midterm": 15,
+                    "final": 60
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "14:00 - 16:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG LT-2",
+                        "crn": "10021",
+                        "section": "CA1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "YIN Zhimeng, WANG Haodi"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG LT-6",
+                        "crn": "10897",
+                        "section": "CC1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "YIN Zhimeng, WANG Haodi"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "12:00 - 12:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG B7520",
+                        "crn": "10022",
+                        "section": "TA1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WANG Haodi"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "17:00 - 17:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B7520",
+                        "crn": "10023",
+                        "section": "TA2",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WANG Haodi"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "13:00 - 13:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG B7520",
+                        "crn": "10024",
+                        "section": "TA3",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WANG Haodi"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "16:00 - 16:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B7520",
+                        "crn": "10992",
+                        "section": "TA4",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WANG Haodi"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "17:00 - 17:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG B7520",
+                        "crn": "10331",
+                        "section": "TC1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "YIN Zhimeng"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 15:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B7520",
+                        "crn": "10898",
+                        "section": "TC2",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "YIN Zhimeng"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "10:00 - 10:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG B7520",
+                        "crn": "15073",
+                        "section": "TC3",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "YIN Zhimeng"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE3315",
             "titles": {
-                "en": "Internet Technology"
+                "en": "Internet Technology",
+                "zh": "網際網路科技"
             },
             "creditUnits": 3,
             "category": "curriculum",
-            "hasLab": true
+            "hasLab": true,
+            "descriptions": {
+                "en": "The students will learn the knowledge of key technologies and protocols in the TCP/IP protocol suite, network control plane. It will look at technologies which transform the Internet from its data-only roots to a true multi-service network that can handle voice, video and multimedia with comparable quality and reliability.",
+                "zh": "學生將學習TCP/IP協定族、網路控制平面等關鍵技術和協定知識。它將著眼於將互聯網從純數據轉變為真正的多服務網絡的技術，能夠以相當的品質和可靠性處理語音、視頻和多媒體。"
+            },
+            "sampleWorkload": 4.1,
+            "sampleMeanGpa": 3.27,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 13,
+                "assessmentLoad": "High",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "midterm": 30,
+                    "assignments": 20,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG LT-6",
+                        "crn": "10493",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WONG Wing Ming E."
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "16:00 - 18:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B7701",
+                        "crn": "10494",
+                        "section": "L01",
+                        "dateRange": "14/02/2027 - 20/02/2027",
+                        "instructor": "WONG Wing Ming E."
+                    },
+                    {
+                        "type": "Lab",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG B7701",
+                        "crn": "10495",
+                        "section": "L02",
+                        "dateRange": "14/02/2027 - 20/02/2027",
+                        "instructor": "WONG Wing Ming E."
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "CS3402",
             "titles": {
-                "en": "Database Systems"
+                "en": "Database Systems",
+                "zh": "資料庫系統"
             },
             "creditUnits": 3,
             "category": "curriculum",
-            "hasLab": null
+            "hasLab": false,
+            "descriptions": {
+                "en": "This course is aimed at equipping students with the knowledge of database design, as well as, the ability to use database management systems in an effective manner. The course will also provide an insight into database management techniques and concepts, namely, indexing, query optimization, transactions, concurrency control, and database recovery.",
+                "zh": "本課程旨在使學生掌握資料庫設計知識以及有效使用資料庫管理系統的能力。課程還將深入介紹資料庫管理技術和概念，即索引、查詢最佳化、事務、並發控制和資料庫復原。"
+            },
+            "sampleWorkload": 3.5,
+            "sampleMeanGpa": 3.56,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 10,
+                "assessmentLoad": "Very High",
+                "difficulty": 3,
+                "gradingComponents": {
+                    "final": 25
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LAU LT-501",
+                        "crn": "10025",
+                        "section": "CA1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "ZHOU Qian, MA Xiaoyue"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "11:00 - 11:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B7520",
+                        "crn": "10026",
+                        "section": "TA1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "ZHOU Qian, MA Xiaoyue"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "13:00 - 13:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B7520",
+                        "crn": "10027",
+                        "section": "TA2",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "ZHOU Qian, MA Xiaoyue"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 15:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG B7520",
+                        "crn": "10028",
+                        "section": "TA3",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "ZHOU Qian, MA Xiaoyue"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "16:00 - 16:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG B7520",
+                        "crn": "11443",
+                        "section": "TA4",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "ZHOU Qian, MA Xiaoyue"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "14:00 - 14:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG B7520",
+                        "crn": "11620",
+                        "section": "TB1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHEUNG Man Hon Michael, MA Xiaoyue"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "14:00 - 14:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG B7520",
+                        "crn": "11621",
+                        "section": "TB2",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHEUNG Man Hon Michael, MA Xiaoyue"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "11:00 - 11:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG B7520",
+                        "crn": "11622",
+                        "section": "TB3",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHEUNG Man Hon Michael, MA Xiaoyue"
+                    },
+                    {
+                        "type": "Tutorial",
+                        "time": "15:00 - 15:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG B7520",
+                        "crn": "11623",
+                        "section": "TB4",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHEUNG Man Hon Michael, MA Xiaoyue"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE4080 A",
@@ -1111,20 +4284,100 @@
         {
             "courseId": "EE3331",
             "titles": {
-                "en": "Probability Models INFE"
+                "en": "Probability Models in Information Engineering",
+                "zh": "資訊工程中的機率模型"
             },
             "creditUnits": 3,
             "category": "curriculum",
-            "hasLab": null
+            "hasLab": false,
+            "descriptions": {
+                "en": "This course introduces probability models and their applications to major areas of information engineering, including digital communications, signal processing and computer networks. The aims are to elucidate the fundamental concepts of probability theory through examples, to explain the importance of random variables and unconditional/conditional distributions, and to develop the student ability in solving problems with randomness and uncertainty. This course is project-based, which provides hands-on experience to students and conveys the relevance and usefulness of probability modelling to practical engineering problems that undergraduate students can appreciate.",
+                "zh": "本课程介绍概率模型及其在信息工程主要领域的应用，包括数字通信、信号处理和计算机网络。目的是透過實例闡明機率論的基本概念，解釋隨機變數和無條件/條件分佈的重要性，培養學生解決隨機性和不確定性問題的能力。本課程以專案為基礎，為學生提供實務經驗，並傳達機率建模與本科生可以理解的實際工程問題的相關性和有用性。"
+            },
+            "sampleWorkload": 4.4,
+            "sampleMeanGpa": 3.16,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 12,
+                "assessmentLoad": "High",
+                "difficulty": 3,
+                "gradingComponents": {
+                    "midterm": 30,
+                    "assignments": 20,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG LT-14",
+                        "crn": "11663",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "NEKOUEI Ehsan"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE2303",
             "titles": {
-                "en": "Applied AI Systems INFE"
+                "en": "Applied AI Systems in Information Engineering: Lifecycle and Human-Centered Design",
+                "zh": "資訊工程中的應用人工智慧系統：生命週期與以人為本的設計"
             },
             "creditUnits": 3,
             "category": "curriculum",
-            "hasLab": false
+            "hasLab": false,
+            "descriptions": {
+                "en": "In this course, students explore the full lifecycle of AI system development within the context of information engineering, with a strong emphasis on understanding user needs and aligning solutions with business objectives. Students begin by learning how to conduct user requirement analysis and translate stakeholder expectations into actionable design goals. They investigate how AI applications are planned, developed, deployed, and maintained in real-world business environments, considering factors such as scalability, cost-efficiency, and ethical implications. A key focus is placed on the business logistics behind AI product development, including resource planning, cross-functional collaboration, and market alignment. Through a major group project, students work in teams to design and prototype AI solutions that address real-world challenges, integrating technical development with user-centered and business-driven thinking. This collaborative experience prepares students to contribute effectively to interdisciplinary teams and lead AI initiatives that are both innovative and impactful.",
+                "zh": "在本課程中，學生將在資訊工程背景下探索人工智慧系統開發的整個生命週期，重點關注理解用戶需求並使解決方案與業務目標保持一致。學生首先學習如何進行使用者需求分析並將利害關係人的期望轉化為可行的設計目標。他們研究如何在現實商業環境中規劃、開發、部署和維護人工智慧應用程序，同時考慮可擴展性、成本效率和道德影響等因素。重點關注人工智慧產品開發背後的業務物流，包括資源規劃、跨職能協作和市場協調。透過一個主要的小組項目，學生以團隊的形式設計和原型化人工智慧解決方案，以應對現實世界的挑戰，將技術開發與以用戶為中心和業務驅動的思維相結合。這種協作經驗使學生能夠為跨學科團隊做出有效貢獻，並領導具有創新性和影響力的人工智慧計畫。"
+            },
+            "sampleWorkload": 4.1,
+            "sampleMeanGpa": 2.34,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 12,
+                "assessmentLoad": "Very High",
+                "difficulty": 5,
+                "gradingComponents": {
+                    "midterm": 25,
+                    "project": 45,
+                    "final": 30
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG B7530",
+                        "crn": "15107",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LEUNG Chi Sing A."
+                    },
+                    {
+                        "type": "Class",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG B7540",
+                        "crn": "15107",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LEUNG Chi Sing A."
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         },
         {
             "courseId": "EE3301",
@@ -1173,13 +4426,17 @@
                     {
                         "type": "Class",
                         "time": "9:00 am - 12:00 pm",
-                        "days": ["M"],
+                        "days": [
+                            "M"
+                        ],
                         "location": "Academic 1 2001"
                     },
                     {
                         "type": "Tutorial",
                         "time": "1:00 pm - 2:00 pm",
-                        "days": ["F"],
+                        "days": [
+                            "F"
+                        ],
                         "location": "Academic 1 2512"
                     }
                 ]
@@ -1205,13 +4462,17 @@
                     {
                         "type": "Class",
                         "time": "9:00 am - 12:00 pm",
-                        "days": ["T"],
+                        "days": [
+                            "T"
+                        ],
                         "location": "YEUNG Kin Man Building P4704"
                     },
                     {
                         "type": "Lab",
                         "time": "3:00 pm - 6:00 pm",
-                        "days": ["Th"],
+                        "days": [
+                            "Th"
+                        ],
                         "location": "EEE Laboratory 3"
                     }
                 ]
@@ -1237,13 +4498,17 @@
                     {
                         "type": "Class",
                         "time": "3:00 pm - 6:00 pm",
-                        "days": ["W"],
+                        "days": [
+                            "W"
+                        ],
                         "location": "CSE Labs 1"
                     },
                     {
                         "type": "Tutorial",
                         "time": "11:00 am - 12:00 pm",
-                        "days": ["F"],
+                        "days": [
+                            "F"
+                        ],
                         "location": "Academic 2 3030"
                     }
                 ]
@@ -1269,13 +4534,17 @@
                     {
                         "type": "Class",
                         "time": "12:00 pm - 3:00 pm",
-                        "days": ["T"],
+                        "days": [
+                            "T"
+                        ],
                         "location": "YEUNG Kin Man Building P4701"
                     },
                     {
                         "type": "Lab",
                         "time": "3:00 pm - 6:00 pm",
-                        "days": ["Th"],
+                        "days": [
+                            "Th"
+                        ],
                         "location": "Innovation Hub 3104"
                     }
                 ]
@@ -1301,13 +4570,17 @@
                     {
                         "type": "Class",
                         "time": "9:00 am - 12:00 pm",
-                        "days": ["M"],
+                        "days": [
+                            "M"
+                        ],
                         "location": "Energy Centre 3402"
                     },
                     {
                         "type": "Lab",
                         "time": "12:00 pm - 3:00 pm",
-                        "days": ["F"],
+                        "days": [
+                            "F"
+                        ],
                         "location": "Energy Centre 3405"
                     }
                 ]
@@ -1333,13 +4606,17 @@
                     {
                         "type": "Class",
                         "time": "9:00 am - 12:00 pm",
-                        "days": ["W"],
+                        "days": [
+                            "W"
+                        ],
                         "location": "YEUNG Kin Man Building P4701"
                     },
                     {
                         "type": "Tutorial",
                         "time": "2:00 pm - 3:00 pm",
-                        "days": ["F"],
+                        "days": [
+                            "F"
+                        ],
                         "location": "Academic 2 3505"
                     }
                 ]
@@ -1365,13 +4642,17 @@
                     {
                         "type": "Class",
                         "time": "9:00 am - 12:00 pm",
-                        "days": ["M"],
+                        "days": [
+                            "M"
+                        ],
                         "location": "Academic 1 2102"
                     },
                     {
                         "type": "Tutorial",
                         "time": "3:00 pm - 4:00 pm",
-                        "days": ["W"],
+                        "days": [
+                            "W"
+                        ],
                         "location": "YEUNG Kin Man Building P4704"
                     }
                 ]
@@ -1397,19 +4678,17903 @@
                     {
                         "type": "Class",
                         "time": "3:00 pm - 6:00 pm",
-                        "days": ["Th"],
+                        "days": [
+                            "Th"
+                        ],
                         "location": "Energy Centre 3402"
                     },
                     {
                         "type": "Project",
                         "time": "9:00 am - 12:00 pm",
-                        "days": ["F"],
+                        "days": [
+                            "F"
+                        ],
                         "location": "Energy Centre 3405"
                     }
                 ]
             }
+        },
+        {
+            "courseId": "EE4016",
+            "category": "official-offering",
+            "titles": {
+                "en": "Applications of AI with Deep Learning",
+                "zh": "人工智慧與深度學習的應用"
+            },
+            "descriptions": {
+                "en": "This course will introduce the basics of Artificial Intelligence (AI) with a specific focus on deep learning, and its representative applications in engineering. In this course, students will learn the essential foundations of AI, from algorithms to programming tools. Students will gain a solid understanding of AI by building systems with modern platforms such as Python and its associated deep learning libraries.",
+                "zh": "本課程將介紹人工智慧（AI）的基礎知識，特別關注深度學習及其在工程中的代表性應用。在本課程中，學生將學習人工智慧的基本基礎，從演算法到程式設計工具。學生將透過使用 Python 及其相關深度學習庫等現代平台建立系統，獲得對人工智慧的深入理解。"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 3.3,
+            "sampleMeanGpa": 3.56,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 10,
+                "assessmentLoad": "High",
+                "difficulty": 2,
+                "gradingComponents": {
+                    "midterm": 15,
+                    "assignments": 15,
+                    "project": 20,
+                    "final": 50
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI 6603",
+                        "crn": "13989",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "PO Lai Man"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE4086",
+            "category": "official-offering",
+            "titles": {
+                "en": "Internship: Advanced Topics in Electrical Engineering",
+                "zh": "實習：電機工程高級主題"
+            },
+            "descriptions": {
+                "en": "The students will have opportunities to: appreciate a real working environment under the guidance of experts obtain technical knowledge of an area, including the relevant theories integrate the knowledge they acquired and apply it in a real work setting The course is conducted at the host company, whereby students are jointly supervised by the host mentor and the EE supervisor. The students should select a technical topic related to the internship's work and report the technical content.",
+                "zh": "學生將有機會： 在專家的指導下體驗真實的工作環境 獲得某個領域的技術知識，包括相關理論 整合所獲得的知識並將其應用到實際工作環境中 課程在東道公司進行，學生由東道主導師和EE主管共同監督。學生應選擇與實習工作相關的技術主題並報告技術內容。"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 3.1,
+            "sampleMeanGpa": 3.17,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 8,
+                "assessmentLoad": "Very High",
+                "difficulty": 3,
+                "gradingComponents": {
+                    "assignments": 65,
+                    "other": 35
+                },
+                "scheduledMeetingTimes": [],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE4087",
+            "category": "official-offering",
+            "titles": {
+                "en": "Internship: Industrial Project",
+                "zh": "實習：工業項目"
+            },
+            "descriptions": {
+                "en": "The students will have opportunities to: appreciate a real working environment under the guidance of experts; integrate the knowledge they acquired and apply it in a real work setting; appreciate team work, group / organizational behaviour in a work environment; gain real work experience, which will enhance their competitiveness in an increasingly challenging job market The program is conducted at the host company, whereby students are jointly supervised by the host mentor and the EE supervisor. Students will complete their Final Year Project at the host company.",
+                "zh": "學生將有機會：在專家的指導下體驗真實的工作環境；整合他們所獲得的知識並將其應用到實際的工作環境中；欣賞工作環境中的團隊合作、團體/組織行為；獲得真正的工作經驗，這將增強他們在日益具有挑戰性的就業市場中的競爭力。該計劃在東道公司進行，學生由東道導師和EE主管共同監督。學生將在主辦公司完成他們的期末專案。"
+            },
+            "creditUnits": 6,
+            "hasLab": false,
+            "sampleWorkload": 4.2,
+            "sampleMeanGpa": 3.08,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 13,
+                "assessmentLoad": "Very High",
+                "difficulty": 4,
+                "gradingComponents": {
+                    "assignments": 100
+                },
+                "scheduledMeetingTimes": [],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE4215",
+            "category": "official-offering",
+            "titles": {
+                "en": "Cybersecurity Technology",
+                "zh": "網路安全技術"
+            },
+            "descriptions": {
+                "en": "This course aims to provide students with an understanding of the principles of cybersecurity and computer security technologies, including the principles of ethical hacking, cryptography, and blockchain technologies.",
+                "zh": "本課程旨在讓學生了解網路安全和電腦安全技術的原理，包括道德駭客、密碼學和區塊鏈技術的原理。"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 4.6,
+            "sampleMeanGpa": 3.96,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 15,
+                "assessmentLoad": "High",
+                "difficulty": 3,
+                "gradingComponents": {
+                    "midterm": 30,
+                    "project": 15,
+                    "assignments": 20,
+                    "final": 35
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG B7540",
+                        "crn": "13991",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "YEUNG Kai Hau Alan"
+                    },
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG G5-314",
+                        "crn": "13991",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "YEUNG Kai Hau Alan"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE4803",
+            "category": "official-offering",
+            "titles": {
+                "en": "Analog IC Design",
+                "zh": "模擬IC設計"
+            },
+            "descriptions": {
+                "en": "This course is aimed at providing students with an understanding of Analog Integrated Circuit (IC) design as well as provide exposure to the CAD software used in the IC design industry through hands-on projects.",
+                "zh": "本課程旨在讓學生了解類比積體電路 (IC) 設計，並透過實作專案接觸 IC 設計產業中使用的 CAD 軟體。"
+            },
+            "creditUnits": 3,
+            "hasLab": true,
+            "sampleWorkload": 3.6,
+            "sampleMeanGpa": 3.62,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 10,
+                "assessmentLoad": "High",
+                "difficulty": 2,
+                "gradingComponents": {
+                    "final": 40
+                },
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Lab",
+                        "time": "12:00 - 14:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "YEUNG B7530",
+                        "crn": "15076",
+                        "section": "L01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "BASU Arindam, NG Chik Wai"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE5410",
+            "category": "official-offering",
+            "titles": {
+                "en": "Signal Processing",
+                "zh": "訊號處理"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 3.8,
+            "sampleMeanGpa": 3.2,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 12,
+                "assessmentLoad": "Low",
+                "difficulty": 5,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "19:00 - 21:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "BOC R4057",
+                        "crn": "12757",
+                        "section": "C61",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "SO Hing Cheung"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE5430",
+            "category": "official-offering",
+            "titles": {
+                "en": "Advanced CMOS Technology",
+                "zh": "先進的CMOS技術"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 4.0,
+            "sampleMeanGpa": 3.85,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 12,
+                "assessmentLoad": "Low",
+                "difficulty": 4,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "19:00 - 21:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "YEUNG LT-2",
+                        "crn": "15130",
+                        "section": "C61",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHEN Mu Ku"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE5437",
+            "category": "official-offering",
+            "titles": {
+                "en": "Internet of Things Technologies for Future City Applications",
+                "zh": "未來城市應用的物聯網技術"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 4.7,
+            "sampleMeanGpa": 3.82,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 15,
+                "assessmentLoad": "Low",
+                "difficulty": 4,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI 3508",
+                        "crn": "14036",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LAM Hiu Fung"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE5608",
+            "category": "official-offering",
+            "titles": {
+                "en": "Modern Cloud Architecture and Deployment Practice",
+                "zh": "現代雲端架構與部署實踐"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 2.7,
+            "sampleMeanGpa": 2.73,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 7,
+                "assessmentLoad": "Low",
+                "difficulty": 5,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "13:00 - 15:50",
+                        "days": [
+                            "S"
+                        ],
+                        "location": "YEUNG LT-2",
+                        "crn": "15142",
+                        "section": "CA1",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "TBA EE011"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE5811",
+            "category": "official-offering",
+            "titles": {
+                "en": "Topics in Computer Vision",
+                "zh": "電腦視覺主題"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 3.5,
+            "sampleMeanGpa": 3.11,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 11,
+                "assessmentLoad": "Low",
+                "difficulty": 4,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "LI 2505",
+                        "crn": "14039",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "YAN Hong"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE5815",
+            "category": "official-offering",
+            "titles": {
+                "en": "Topics in Security Technology",
+                "zh": "安全技術專題"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 2.7,
+            "sampleMeanGpa": 3.18,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 8,
+                "assessmentLoad": "Low",
+                "difficulty": 2,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE6427",
+            "category": "official-offering",
+            "titles": {
+                "en": "Modern Power Electronics",
+                "zh": "現代電力電子技術"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 2.8,
+            "sampleMeanGpa": 3.85,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 8,
+                "assessmentLoad": "Low",
+                "difficulty": 5,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "ICP B-101",
+                        "crn": "14040",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "HUI Shu Yuen R."
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE6435",
+            "category": "official-offering",
+            "titles": {
+                "en": "Multi-Dimensional Data Modeling and its Applications",
+                "zh": "多維資料建模及其應用"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 3.8,
+            "sampleMeanGpa": 3.05,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 11,
+                "assessmentLoad": "Low",
+                "difficulty": 3,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "W"
+                        ],
+                        "location": "LI 2505",
+                        "crn": "12764",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "YUEN Shiu Yin K."
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE6611",
+            "category": "official-offering",
+            "titles": {
+                "en": "Directed Studies for Taught Postgraduate Students",
+                "zh": "研究生指導學習"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 3.7,
+            "sampleMeanGpa": 2.71,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 12,
+                "assessmentLoad": "Low",
+                "difficulty": 2,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE6619",
+            "category": "official-offering",
+            "titles": {
+                "en": "Antenna Design for Wireless Communications",
+                "zh": "無線通訊天線設計"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 4.4,
+            "sampleMeanGpa": 3.6,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 15,
+                "assessmentLoad": "Low",
+                "difficulty": 3,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "09:00 - 11:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG P4703",
+                        "crn": "12882",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LUK Kwai Man"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE6620",
+            "category": "official-offering",
+            "titles": {
+                "en": "Linear Systems Theory and Design",
+                "zh": "線性系統理論與設計"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 4.2,
+            "sampleMeanGpa": 2.3,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 11,
+                "assessmentLoad": "Low",
+                "difficulty": 3,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE6621",
+            "category": "official-offering",
+            "titles": {
+                "en": "Computational Physiology and Neural Systems",
+                "zh": "計算生理學和神經系統"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 2.8,
+            "sampleMeanGpa": 3.42,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 10,
+                "assessmentLoad": "Low",
+                "difficulty": 5,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE6622",
+            "category": "official-offering",
+            "titles": {
+                "en": "Topics in Smart Grids",
+                "zh": "智慧電網主題"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 2.6,
+            "sampleMeanGpa": 3.88,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 7,
+                "assessmentLoad": "Low",
+                "difficulty": 4,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "15:00 - 17:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "CMC M9001",
+                        "crn": "14043",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "LI Chaojie"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE6627",
+            "category": "official-offering",
+            "titles": {
+                "en": "Quantitative Finance: Principles and Applications",
+                "zh": "數量金融：原理與應用"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 3.5,
+            "sampleMeanGpa": 3.74,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 12,
+                "assessmentLoad": "Low",
+                "difficulty": 2,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "19:00 - 21:50",
+                        "days": [
+                            "T"
+                        ],
+                        "location": "YEUNG LT-16",
+                        "crn": "15158",
+                        "section": "C61",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WANG Cheng"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE6680",
+            "category": "official-offering",
+            "titles": {
+                "en": "Dissertation",
+                "zh": "論文"
+            },
+            "creditUnits": 6,
+            "hasLab": false,
+            "sampleWorkload": 3.6,
+            "sampleMeanGpa": 3.04,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 12,
+                "assessmentLoad": "Low",
+                "difficulty": 2,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE6680D",
+            "category": "official-offering",
+            "titles": {
+                "en": "Dissertation",
+                "zh": "論文"
+            },
+            "creditUnits": 6,
+            "hasLab": false,
+            "sampleWorkload": 3.5,
+            "sampleMeanGpa": 3.87,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 9,
+                "assessmentLoad": "Low",
+                "difficulty": 4,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE6691",
+            "category": "official-offering",
+            "titles": {
+                "en": "Applied Research Internship Scheme in Electrical Engineering",
+                "zh": "電機工程應用研究實習計劃"
+            },
+            "creditUnits": 12,
+            "hasLab": false,
+            "sampleWorkload": 4.0,
+            "sampleMeanGpa": 2.72,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 13,
+                "assessmentLoad": "Low",
+                "difficulty": 2,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE8001",
+            "category": "official-offering",
+            "titles": {
+                "en": "Guided Studies",
+                "zh": "指導研究"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 3.2,
+            "sampleMeanGpa": 2.88,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 11,
+                "assessmentLoad": "Low",
+                "difficulty": 3,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Seminar",
+                        "time": "10:00 - 12:50",
+                        "days": [
+                            "S"
+                        ],
+                        "location": "LAU 6-213",
+                        "crn": "10159",
+                        "section": "S01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "CHAN L H Leanne, CHEN Mu Ku"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE8402",
+            "category": "official-offering",
+            "titles": {
+                "en": "Advanced Topics in Power and Energy Systems",
+                "zh": "電力和能源系統高級主題"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 3.6,
+            "sampleMeanGpa": 2.75,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 12,
+                "assessmentLoad": "Low",
+                "difficulty": 2,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Class",
+                        "time": "13:00 - 15:50",
+                        "days": [
+                            "M"
+                        ],
+                        "location": "BOC R4057",
+                        "crn": "15163",
+                        "section": "C01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "ZHU Yue"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE8404",
+            "category": "official-offering",
+            "titles": {
+                "en": "Nanotechnology for Devices and Microsystems",
+                "zh": "設備和微系統奈米技術"
+            },
+            "creditUnits": 3,
+            "hasLab": false,
+            "sampleWorkload": 4.1,
+            "sampleMeanGpa": 3.67,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 13,
+                "assessmentLoad": "Low",
+                "difficulty": 4,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE8461",
+            "category": "official-offering",
+            "titles": {
+                "en": "Research Seminar I",
+                "zh": "研究研討會一"
+            },
+            "creditUnits": 0.5,
+            "hasLab": false,
+            "sampleWorkload": 2.7,
+            "sampleMeanGpa": 3.02,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 8,
+                "assessmentLoad": "Low",
+                "difficulty": 2,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Seminar",
+                        "time": "15:00 - 16:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG P4701",
+                        "crn": "10073",
+                        "section": "S01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WU Gengbo, BASU Arindam"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
+        },
+        {
+            "courseId": "EE8462",
+            "category": "official-offering",
+            "titles": {
+                "en": "Research Seminar II",
+                "zh": "研究研討會二"
+            },
+            "creditUnits": 0.5,
+            "hasLab": false,
+            "sampleWorkload": 4.7,
+            "sampleMeanGpa": 3.98,
+            "comparator": {
+                "expectedStudyHoursPerWeek": 14,
+                "assessmentLoad": "Low",
+                "difficulty": 2,
+                "gradingComponents": {},
+                "scheduledMeetingTimes": [
+                    {
+                        "type": "Seminar",
+                        "time": "15:00 - 16:50",
+                        "days": [
+                            "F"
+                        ],
+                        "location": "YEUNG P4701",
+                        "crn": "10033",
+                        "section": "S01",
+                        "dateRange": "11/01/2027 - 17/04/2027",
+                        "instructor": "WU Gengbo, BASU Arindam"
+                    }
+                ],
+                "source": "cityu-aims-export+cityu-catalogue",
+                "term": "Semester B 2026/27",
+                "note": "Section times and assessment weights come from the CityU AIMS export/catalogue; study hours, difficulty and sample GPA are deterministically generated demo values."
+            }
         }
     ],
+    "officialOfferings": {
+        "term": "Semester B 2026/27",
+        "asOf": "November 04, 2026 14:41 PM",
+        "source": "tools/htmls + CityU catalogue + CityU syllabus PDFs",
+        "courses": {
+            "CS1302": {
+                "courseId": "CS1302",
+                "title": "Introduction to Computer Programming",
+                "offeringUnit": "Computer Science",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:31 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "CS1102 CS1302A",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/CS1302.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/CS1302.pdf",
+                "catalogue": {
+                    "title": "Introduction to Computer Programming",
+                    "description": "This course aims to introduce to students key concepts, techniques, and good practices of programming using Python.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2,
+                    "tasks": [],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "11677",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "66",
+                        "capacity": "240",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Helena",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "MMW",
+                                "room": "2450"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "IEEG",
+                                "ITME",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11681",
+                        "section": "CB1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "42",
+                        "capacity": "165",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Chung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-18"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU3",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "BME",
+                                "MASE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11686",
+                        "section": "CC1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "77",
+                        "capacity": "165",
+                        "waitlistAvailable": "N",
+                        "instructor": "LEE Ka Chun K.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-17"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BENGEGU4",
+                                "BSCSIU3",
+                                "BSCSIU4"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "M.E.",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11690",
+                        "section": "CD1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "6",
+                        "capacity": "6",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Chung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-18"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11679",
+                        "section": "CE1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "6",
+                        "capacity": "6",
+                        "waitlistAvailable": "N",
+                        "instructor": "LEE Ka Chun K.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-17"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11678",
+                        "section": "LA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "12",
+                        "capacity": "60",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Helena",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "14:00 - 14:50",
+                                "building": "LI",
+                                "room": "4109"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "IEEG",
+                                "ITME",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11682",
+                        "section": "LA2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "38",
+                        "capacity": "60",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Helena",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 12:50",
+                                "building": "LI",
+                                "room": "4109"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "IEEG",
+                                "ITME",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12010",
+                        "section": "LA3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "5",
+                        "capacity": "60",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Helena",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "17:00 - 17:50",
+                                "building": "LI",
+                                "room": "4109"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "IEEG",
+                                "ITME",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13681",
+                        "section": "LA4",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "11",
+                        "capacity": "60",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Helena",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "13:00 - 13:50",
+                                "building": "LI",
+                                "room": "4109"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "IEEG",
+                                "ITME",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11683",
+                        "section": "LB1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "20",
+                        "capacity": "55",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Chung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "16:00 - 16:50",
+                                "building": "LI",
+                                "room": "4109"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU3",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "BME",
+                                "MASE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11687",
+                        "section": "LB2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "9",
+                        "capacity": "55",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Chung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "10:00 - 10:50",
+                                "building": "LI",
+                                "room": "4109"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU3",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "BME",
+                                "MASE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11688",
+                        "section": "LB3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "13",
+                        "capacity": "55",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Chung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "18:00 - 18:50",
+                                "building": "LI",
+                                "room": "4109"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU3",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "BME",
+                                "MASE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11689",
+                        "section": "LC1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "21",
+                        "capacity": "55",
+                        "waitlistAvailable": "N",
+                        "instructor": "LEE Ka Chun K.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "12:00 - 12:50",
+                                "building": "LI",
+                                "room": "4109"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BENGEGU4",
+                                "BSCSIU3",
+                                "BSCSIU4"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "M.E.",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12318",
+                        "section": "LC2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "13",
+                        "capacity": "55",
+                        "waitlistAvailable": "N",
+                        "instructor": "LEE Ka Chun K.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "11:00 - 11:50",
+                                "building": "LI",
+                                "room": "4109"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BENGEGU4",
+                                "BSCSIU3",
+                                "BSCSIU4"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "M.E.",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12013",
+                        "section": "LC3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "43",
+                        "capacity": "55",
+                        "waitlistAvailable": "N",
+                        "instructor": "LEE Ka Chun K.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "10:00 - 10:50",
+                                "building": "LI",
+                                "room": "4109"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BENGEGU4",
+                                "BSCSIU3",
+                                "BSCSIU4"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "M.E.",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11680",
+                        "section": "LD1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "2",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Chung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "16:00 - 16:50",
+                                "building": "LI",
+                                "room": "4109"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12319",
+                        "section": "LD2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "2",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Chung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "10:00 - 10:50",
+                                "building": "LI",
+                                "room": "4109"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11684",
+                        "section": "LD3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "2",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Chung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "18:00 - 18:50",
+                                "building": "LI",
+                                "room": "4109"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "15436",
+                        "section": "LE1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "2",
+                        "waitlistAvailable": "N",
+                        "instructor": "LEE Ka Chun K.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "12:00 - 12:50",
+                                "building": "LI",
+                                "room": "4109"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "15437",
+                        "section": "LE2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "2",
+                        "waitlistAvailable": "N",
+                        "instructor": "LEE Ka Chun K.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "11:00 - 11:50",
+                                "building": "LI",
+                                "room": "4109"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "15438",
+                        "section": "LE3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "2",
+                        "waitlistAvailable": "N",
+                        "instructor": "LEE Ka Chun K.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "10:00 - 10:50",
+                                "building": "LI",
+                                "room": "4109"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 385,
+                    "rows": [
+                        {
+                            "programme": "BDEGCA",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "94"
+                        },
+                        {
+                            "programme": "BDEGMNE",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "88"
+                        },
+                        {
+                            "programme": "BENGBDU3",
+                            "major": "BME",
+                            "cohort": "2026",
+                            "headcount": "2"
+                        },
+                        {
+                            "programme": "BENGBDU4",
+                            "major": "BME",
+                            "cohort": "2026",
+                            "headcount": "71"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "MASE",
+                            "cohort": "2026",
+                            "headcount": "5"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "IEEG",
+                            "cohort": "2026",
+                            "headcount": "22"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ITME",
+                            "cohort": "2026",
+                            "headcount": "58"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "MASE",
+                            "cohort": "2026",
+                            "headcount": "45"
+                        }
+                    ]
+                }
+            },
+            "CS2311": {
+                "courseId": "CS2311",
+                "title": "Computer Programming",
+                "offeringUnit": "Computer Science",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:31 PM",
+                "prerequisites": "CS1102 or CS1302",
+                "exclusiveCourses": "CS1315 CS2313 CS2360",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/CS2311.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/CS2311.pdf",
+                "catalogue": {
+                    "title": "Computer Programming",
+                    "description": "This course aims to equip the students with in-depth concepts and techniques of programming using a high-level object-oriented programming language and to develop practical skills in producing quality programs.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 40,
+                    "examination": 60,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 40,
+                    "examination": 60,
+                    "examinationDurationHours": 2,
+                    "tasks": [],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "10315",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "143",
+                        "capacity": "146",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Wing Kwong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "3508"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "A.E.",
+                                "CDE",
+                                "CFFT",
+                                "ELEL",
+                                "INFE",
+                                "M.E.",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10877",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "56",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Wing Kwong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "3508"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "A.E.",
+                                "CDE",
+                                "CFFT",
+                                "ELEL",
+                                "INFE",
+                                "M.E.",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10783",
+                        "section": "CB1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "14",
+                        "capacity": "14",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Wing Kwong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "3508"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10316",
+                        "section": "L01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "34",
+                        "capacity": "37",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Wing Kwong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "15:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "A.E.",
+                                "CDE",
+                                "CFFT",
+                                "ELEL",
+                                "INFE",
+                                "M.E.",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10443",
+                        "section": "L02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "37",
+                        "capacity": "37",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Wing Kwong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "16:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "A.E.",
+                                "CDE",
+                                "CFFT",
+                                "ELEL",
+                                "INFE",
+                                "M.E.",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13673",
+                        "section": "L03",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "72",
+                        "capacity": "72",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Wing Kwong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "10:00 - 10:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "A.E.",
+                                "CDE",
+                                "CFFT",
+                                "ELEL",
+                                "INFE",
+                                "M.E.",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10878",
+                        "section": "LA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "28",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Wing Kwong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "15:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "A.E.",
+                                "CDE",
+                                "CFFT",
+                                "ELEL",
+                                "INFE",
+                                "M.E.",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11493",
+                        "section": "LA2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "28",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Wing Kwong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "16:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "A.E.",
+                                "CDE",
+                                "CFFT",
+                                "ELEL",
+                                "INFE",
+                                "M.E.",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10784",
+                        "section": "LB1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "7",
+                        "capacity": "7",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Wing Kwong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "15:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10785",
+                        "section": "LB2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "7",
+                        "capacity": "7",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Wing Kwong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "16:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 96,
+                    "rows": [
+                        {
+                            "programme": "BSCCBU4",
+                            "major": "CFFT",
+                            "cohort": "2025",
+                            "headcount": "3"
+                        },
+                        {
+                            "programme": "BSCCBU4",
+                            "major": "CFFT",
+                            "cohort": "2026",
+                            "headcount": "93"
+                        }
+                    ]
+                }
+            },
+            "CS3103": {
+                "courseId": "CS3103",
+                "title": "Operating Systems",
+                "offeringUnit": "Computer Science",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:32 PM",
+                "prerequisites": "(CS2115 or EE2004) and (CS2310 or CS2311 or CS2360)",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/CS3103.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/CS3103.pdf",
+                "catalogue": {
+                    "title": "Operating Systems",
+                    "description": "This course aims to introduce the concepts, roles and functionality of operating systems, which are an essential part of any computer system. By going through the major areas in the development of operating systems including process management, memory management, scheduling, I/O and disk management, students are expected to gain a broad understanding of key approaches to operating system design and implementation. By discussing the design issues of different approaches, students should be able to analyse the trade-offs and contrast their performance in satisfying different system and application requirements.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 40,
+                    "examination": 60,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 40,
+                    "examination": 60,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Programming assignments",
+                            "cilos": "2, 5",
+                            "weight": 17,
+                            "component": "assignments"
+                        },
+                        {
+                            "label": "Case study",
+                            "cilos": "1, 2",
+                            "weight": 8,
+                            "component": "other"
+                        },
+                        {
+                            "label": "Mid-term quiz",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 15,
+                            "component": "midterm"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "10021",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "31",
+                        "capacity": "212",
+                        "waitlistAvailable": "N",
+                        "instructor": "YIN Zhimeng, WANG Haodi",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "14:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "LT-2"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D008"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11990",
+                        "section": "CB1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "8",
+                        "capacity": "8",
+                        "waitlistAvailable": "N",
+                        "instructor": "YIN Zhimeng, WANG Haodi",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "14:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "LT-2"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10897",
+                        "section": "CC1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "78",
+                        "capacity": "153",
+                        "waitlistAvailable": "N",
+                        "instructor": "YIN Zhimeng, WANG Haodi",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-6"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "CYBE",
+                                "INFE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11122",
+                        "section": "CD1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "27",
+                        "capacity": "27",
+                        "waitlistAvailable": "N",
+                        "instructor": "YIN Zhimeng, WANG Haodi",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-6"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10022",
+                        "section": "TA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "5",
+                        "capacity": "53",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Haodi",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "12:00 - 12:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D008"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10023",
+                        "section": "TA2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "5",
+                        "capacity": "53",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Haodi",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "17:00 - 17:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D008"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10024",
+                        "section": "TA3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "15",
+                        "capacity": "53",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Haodi",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "13:00 - 13:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D008"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10992",
+                        "section": "TA4",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "6",
+                        "capacity": "53",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Haodi",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "16:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D008"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11123",
+                        "section": "TB1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "2",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Haodi",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "12:00 - 12:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11124",
+                        "section": "TB2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "2",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Haodi",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "17:00 - 17:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11640",
+                        "section": "TB3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "2",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Haodi",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "13:00 - 13:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11641",
+                        "section": "TB4",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "2",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Haodi",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "16:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10331",
+                        "section": "TC1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "24",
+                        "capacity": "51",
+                        "waitlistAvailable": "N",
+                        "instructor": "YIN Zhimeng",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "17:00 - 17:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "CYBE",
+                                "INFE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10898",
+                        "section": "TC2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "26",
+                        "capacity": "51",
+                        "waitlistAvailable": "N",
+                        "instructor": "YIN Zhimeng",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "15:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "CYBE",
+                                "INFE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "15073",
+                        "section": "TC3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "28",
+                        "capacity": "51",
+                        "waitlistAvailable": "N",
+                        "instructor": "YIN Zhimeng",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "10:00 - 10:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "CYBE",
+                                "INFE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11991",
+                        "section": "TD1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "9",
+                        "capacity": "9",
+                        "waitlistAvailable": "N",
+                        "instructor": "YIN Zhimeng",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "17:00 - 17:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11992",
+                        "section": "TD2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "9",
+                        "capacity": "9",
+                        "waitlistAvailable": "N",
+                        "instructor": "YIN Zhimeng",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "15:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "15074",
+                        "section": "TD3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "9",
+                        "capacity": "9",
+                        "waitlistAvailable": "N",
+                        "instructor": "YIN Zhimeng",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "10:00 - 10:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 256,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2024",
+                            "headcount": "40"
+                        },
+                        {
+                            "programme": "BSCCCU3",
+                            "major": "CSC1",
+                            "cohort": "2026",
+                            "headcount": "27"
+                        },
+                        {
+                            "programme": "BSCCCU3",
+                            "major": "CYBE",
+                            "cohort": "2026",
+                            "headcount": "10"
+                        },
+                        {
+                            "programme": "BSCCCU4",
+                            "major": "CSC1",
+                            "cohort": "2025",
+                            "headcount": "151"
+                        },
+                        {
+                            "programme": "BSCCCU4",
+                            "major": "CYBE",
+                            "cohort": "2025",
+                            "headcount": "25"
+                        },
+                        {
+                            "programme": "DBSCBSC1",
+                            "major": "D004",
+                            "cohort": "2023",
+                            "headcount": "3"
+                        }
+                    ]
+                }
+            },
+            "CS3402": {
+                "courseId": "CS3402",
+                "title": "Database Systems",
+                "offeringUnit": "Computer Science",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:32 PM",
+                "prerequisites": "CS2310 or CS2311 or CS2313 or CS2315 or CS2360 or CS1315",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/CS3402.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/CS3402.pdf",
+                "catalogue": {
+                    "title": "Database Systems",
+                    "description": "This course is aimed at equipping students with the knowledge of database design, as well as, the ability to use database management systems in an effective manner. The course will also provide an insight into database management techniques and concepts, namely, indexing, query optimization, transactions, concurrency control, and database recovery.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 40,
+                    "examination": 60,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 40,
+                    "examination": 60,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Midterm Examination",
+                            "cilos": "1, 2, 3",
+                            "weight": 25,
+                            "component": "final"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "10025",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "53",
+                        "capacity": "252",
+                        "waitlistAvailable": "N",
+                        "instructor": "ZHOU Qian, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "LAU",
+                                "room": "LT-501"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CSC",
+                                "CSC1",
+                                "CYBE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11619",
+                        "section": "CB1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "68",
+                        "capacity": "279",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Man Hon Michael, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "LT-1"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "BOM",
+                                "CDE",
+                                "DSC",
+                                "DSE1",
+                                "GOM",
+                                "INFE",
+                                "M.E."
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11624",
+                        "section": "CC1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "28",
+                        "capacity": "28",
+                        "waitlistAvailable": "N",
+                        "instructor": "ZHOU Qian, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "LAU",
+                                "room": "LT-501"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10776",
+                        "section": "CD1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "9",
+                        "capacity": "9",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Man Hon Michael, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "LT-1"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10026",
+                        "section": "TA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "12",
+                        "capacity": "63",
+                        "waitlistAvailable": "N",
+                        "instructor": "ZHOU Qian, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "11:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CSC",
+                                "CSC1"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10027",
+                        "section": "TA2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "14",
+                        "capacity": "63",
+                        "waitlistAvailable": "N",
+                        "instructor": "ZHOU Qian, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "13:00 - 13:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CSC",
+                                "CSC1"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10028",
+                        "section": "TA3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "16",
+                        "capacity": "63",
+                        "waitlistAvailable": "N",
+                        "instructor": "ZHOU Qian, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CSC",
+                                "CSC1"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11443",
+                        "section": "TA4",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "11",
+                        "capacity": "63",
+                        "waitlistAvailable": "N",
+                        "instructor": "ZHOU Qian, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "16:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CSC",
+                                "CSC1"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11620",
+                        "section": "TB1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "12",
+                        "capacity": "69",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Man Hon Michael, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "14:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "BOM",
+                                "CDE",
+                                "DSC",
+                                "DSE1",
+                                "GOM",
+                                "INFE",
+                                "M.E."
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11621",
+                        "section": "TB2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "16",
+                        "capacity": "70",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Man Hon Michael, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "14:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "BOM",
+                                "CDE",
+                                "DSC",
+                                "DSE1",
+                                "GOM",
+                                "INFE",
+                                "M.E."
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11622",
+                        "section": "TB3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "12",
+                        "capacity": "70",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Man Hon Michael, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "11:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "BOM",
+                                "CDE",
+                                "DSC",
+                                "DSE1",
+                                "GOM",
+                                "INFE",
+                                "M.E."
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11623",
+                        "section": "TB4",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "28",
+                        "capacity": "70",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Man Hon Michael, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "15:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "BOM",
+                                "CDE",
+                                "DSC",
+                                "DSE1",
+                                "GOM",
+                                "INFE",
+                                "M.E."
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11625",
+                        "section": "TC1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "7",
+                        "capacity": "7",
+                        "waitlistAvailable": "N",
+                        "instructor": "ZHOU Qian, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "11:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11626",
+                        "section": "TC2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "7",
+                        "capacity": "7",
+                        "waitlistAvailable": "N",
+                        "instructor": "ZHOU Qian, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "13:00 - 13:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11627",
+                        "section": "TC3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "7",
+                        "capacity": "7",
+                        "waitlistAvailable": "N",
+                        "instructor": "ZHOU Qian, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11628",
+                        "section": "TC4",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "7",
+                        "capacity": "7",
+                        "waitlistAvailable": "N",
+                        "instructor": "ZHOU Qian, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "16:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10881",
+                        "section": "TD1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "3",
+                        "capacity": "3",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Man Hon Michael, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "14:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10777",
+                        "section": "TD2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "2",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Man Hon Michael, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "14:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10778",
+                        "section": "TD3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "2",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Man Hon Michael, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "11:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12295",
+                        "section": "TD4",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "2",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Man Hon Michael, MA Xiaoyue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "15:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "B7520"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 410,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "CDE",
+                            "cohort": "2025",
+                            "headcount": "14"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "CDE",
+                            "cohort": "2024",
+                            "headcount": "47"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2024",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BSCCCU2",
+                            "major": "CSC1",
+                            "cohort": "2026",
+                            "headcount": "24"
+                        },
+                        {
+                            "programme": "BSCCCU2",
+                            "major": "DSC",
+                            "cohort": "2026",
+                            "headcount": "7"
+                        },
+                        {
+                            "programme": "BSCCCU2",
+                            "major": "DSE1",
+                            "cohort": "2026",
+                            "headcount": "3"
+                        },
+                        {
+                            "programme": "BSCCCU3",
+                            "major": "CSC1",
+                            "cohort": "2026",
+                            "headcount": "28"
+                        },
+                        {
+                            "programme": "BSCCCU3",
+                            "major": "CYBE",
+                            "cohort": "2026",
+                            "headcount": "10"
+                        },
+                        {
+                            "programme": "BSCCCU3",
+                            "major": "DSC",
+                            "cohort": "2026",
+                            "headcount": "7"
+                        },
+                        {
+                            "programme": "BSCCCU3",
+                            "major": "DSE1",
+                            "cohort": "2026",
+                            "headcount": "7"
+                        },
+                        {
+                            "programme": "BSCCCU4",
+                            "major": "DSE1",
+                            "cohort": "2023",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BSCCCU4",
+                            "major": "CSC1",
+                            "cohort": "2025",
+                            "headcount": "137"
+                        },
+                        {
+                            "programme": "BSCCCU4",
+                            "major": "DSC",
+                            "cohort": "2025",
+                            "headcount": "86"
+                        },
+                        {
+                            "programme": "BSCCCU4",
+                            "major": "DSE1",
+                            "cohort": "2025",
+                            "headcount": "37"
+                        }
+                    ]
+                }
+            },
+            "EE1001": {
+                "courseId": "EE1001",
+                "title": "Foundations of Digital Techniques",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:40 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE1001.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE1001.pdf",
+                "catalogue": {
+                    "title": "Foundations of Digital Techniques",
+                    "description": "This course is aimed at providing students with an understanding of the basic mathematical and fundamental concepts required for Foundations of Digital Techniques.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 30,
+                    "examination": 70,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 30,
+                    "examination": 70,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 2)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 20,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 5,
+                            "component": "assignments"
+                        },
+                        {
+                            "label": "Lab Exercises/ Reports",
+                            "cilos": "5",
+                            "weight": 5,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "10638",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "135",
+                        "waitlistAvailable": "N",
+                        "instructor": "SUNG Chi Wan",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "1507"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE"
+                            ],
+                            "majors": [
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10860",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "15",
+                        "capacity": "15",
+                        "waitlistAvailable": "N",
+                        "instructor": "SUNG Chi Wan",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "1507"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11028",
+                        "section": "L01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "75",
+                        "waitlistAvailable": "N",
+                        "instructor": "SUNG Chi Wan",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "31/01/2027 - 13/02/2027",
+                                "day": "T",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "21/02/2027 - 27/02/2027",
+                                "day": "T",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "07/03/2027 - 13/03/2027",
+                                "day": "T",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE"
+                            ],
+                            "majors": [
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11030",
+                        "section": "L02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "60",
+                        "waitlistAvailable": "N",
+                        "instructor": "SUNG Chi Wan",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "31/01/2027 - 13/02/2027",
+                                "day": "T",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            },
+                            {
+                                "dateRange": "21/02/2027 - 27/02/2027",
+                                "day": "T",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            },
+                            {
+                                "dateRange": "07/03/2027 - 13/03/2027",
+                                "day": "T",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE"
+                            ],
+                            "majors": [
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11029",
+                        "section": "LA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "15",
+                        "capacity": "15",
+                        "waitlistAvailable": "N",
+                        "instructor": "SUNG Chi Wan",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "31/01/2027 - 13/02/2027",
+                                "day": "T",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            },
+                            {
+                                "dateRange": "21/02/2027 - 27/02/2027",
+                                "day": "T",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            },
+                            {
+                                "dateRange": "07/03/2027 - 13/03/2027",
+                                "day": "T",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE",
+                                "U"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 134,
+                    "rows": [
+                        {
+                            "programme": "BDEGEE",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "134"
+                        }
+                    ]
+                }
+            },
+            "EE1002": {
+                "courseId": "EE1002",
+                "title": "Principles of Electrical Engineering",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:40 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE1002.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE1002.pdf",
+                "catalogue": {
+                    "title": "Principles of Electrical Engineering",
+                    "description": "This course is aimed at providing students with an understanding of the concepts, impacts, and basic principles of electronic engineering.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 40,
+                    "examination": 60,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 40,
+                    "examination": 60,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 1)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 18,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 12,
+                            "component": "assignments"
+                        },
+                        {
+                            "label": "Lab exercises and reports",
+                            "cilos": "3, 4",
+                            "weight": 10,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "10639",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "6",
+                        "capacity": "147",
+                        "waitlistAvailable": "N",
+                        "instructor": "TSE Chi Kong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "15:00 - 17:50",
+                                "building": "LI",
+                                "room": "2505"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE"
+                            ],
+                            "majors": [
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10863",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "3",
+                        "capacity": "8",
+                        "waitlistAvailable": "N",
+                        "instructor": "TSE Chi Kong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "15:00 - 17:50",
+                                "building": "LI",
+                                "room": "2505"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13267",
+                        "section": "CB1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "5",
+                        "capacity": "5",
+                        "waitlistAvailable": "N",
+                        "instructor": "TSE Chi Kong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "15:00 - 17:50",
+                                "building": "LI",
+                                "room": "2505"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ITME"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10640",
+                        "section": "L01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "6",
+                        "capacity": "147",
+                        "waitlistAvailable": "N",
+                        "instructor": "TSE Chi Kong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "28/02/2027 - 06/03/2027",
+                                "day": "W",
+                                "time": "17:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "28/02/2027 - 06/03/2027",
+                                "day": "W",
+                                "time": "17:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            },
+                            {
+                                "dateRange": "14/03/2027 - 27/03/2027",
+                                "day": "W",
+                                "time": "17:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "14/03/2027 - 27/03/2027",
+                                "day": "W",
+                                "time": "17:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE"
+                            ],
+                            "majors": [
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12600",
+                        "section": "LA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "3",
+                        "capacity": "8",
+                        "waitlistAvailable": "N",
+                        "instructor": "TSE Chi Kong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "28/02/2027 - 06/03/2027",
+                                "day": "W",
+                                "time": "17:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "28/02/2027 - 06/03/2027",
+                                "day": "W",
+                                "time": "17:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            },
+                            {
+                                "dateRange": "14/03/2027 - 27/03/2027",
+                                "day": "W",
+                                "time": "17:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "14/03/2027 - 27/03/2027",
+                                "day": "W",
+                                "time": "17:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13268",
+                        "section": "LB1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "5",
+                        "capacity": "5",
+                        "waitlistAvailable": "N",
+                        "instructor": "TSE Chi Kong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "28/02/2027 - 06/03/2027",
+                                "day": "W",
+                                "time": "17:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "28/02/2027 - 06/03/2027",
+                                "day": "W",
+                                "time": "17:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            },
+                            {
+                                "dateRange": "14/03/2027 - 27/03/2027",
+                                "day": "W",
+                                "time": "17:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "14/03/2027 - 27/03/2027",
+                                "day": "W",
+                                "time": "17:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ITME"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 146,
+                    "rows": [
+                        {
+                            "programme": "BDEGEE",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "141"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2024",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "3"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        }
+                    ]
+                }
+            },
+            "EE1004": {
+                "courseId": "EE1004",
+                "title": "Foundations of Information Systems and Data Analysis",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:40 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE1004.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE1004.pdf",
+                "catalogue": {
+                    "title": "Foundations of Information Systems and Data Analysis",
+                    "description": "This course is designed to introduce the students to concepts, impacts, and basic principles of data and information systems. Applied examples will be introduced, analysed, solved. The laboratories of this course will cover introductory probability problems and statistics of real-life data, geometric transformation, and applications of eigenvalues and eigenvectors to data analysis.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min. 2) and short tests",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 30,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "# Assignments and Lab Assignments (total: 5)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 20,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "11643",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "6",
+                        "capacity": "147",
+                        "waitlistAvailable": "N",
+                        "instructor": "SONG Qun",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "17:00 - 19:50",
+                                "building": "YEUNG",
+                                "room": "LT-17"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11965",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "3",
+                        "capacity": "12",
+                        "waitlistAvailable": "N",
+                        "instructor": "SONG Qun",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "17:00 - 19:50",
+                                "building": "YEUNG",
+                                "room": "LT-17"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11644",
+                        "section": "L01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "53",
+                        "waitlistAvailable": "N",
+                        "instructor": "SONG Qun",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "13:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B7530"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11645",
+                        "section": "L02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "4",
+                        "capacity": "53",
+                        "waitlistAvailable": "N",
+                        "instructor": "SONG Qun",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "13:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11646",
+                        "section": "L03",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "41",
+                        "waitlistAvailable": "N",
+                        "instructor": "SONG Qun",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "13:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11966",
+                        "section": "LA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "3",
+                        "capacity": "12",
+                        "waitlistAvailable": "N",
+                        "instructor": "SONG Qun",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "13:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE",
+                                "U"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 150,
+                    "rows": [
+                        {
+                            "programme": "BDEGEE",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "141"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2024",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "CDE",
+                            "cohort": "2025",
+                            "headcount": "4"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "3"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        }
+                    ]
+                }
+            },
+            "EE2000": {
+                "courseId": "EE2000",
+                "title": "Logic Circuit Design",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:40 PM",
+                "prerequisites": "EE1001 or EE1002",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE2000.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE2000.pdf",
+                "catalogue": {
+                    "title": "Logic Circuit Design",
+                    "description": "The aim is to provide students with an understanding of the concepts and design of logic circuits, including (i) various devices, techniques for analyzing and designing combinational circuits and sequential circuits, circuit design and implementation techniques, and (ii) Hardware Description Language (HDL) modelling and synthesis of combinational and synchronous sequential circuit, circuit implementation with FPGA devices. The electrical characteristics of selected logic families are also covered.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 2)",
+                            "cilos": "1, 2, 3, 4, 6",
+                            "weight": 25,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4, 6",
+                            "weight": 10,
+                            "component": "assignments"
+                        },
+                        {
+                            "label": "Lab Exercises/ Reports",
+                            "cilos": "1, 2, 3, 4, 5, 6",
+                            "weight": 15,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "10032",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "22",
+                        "capacity": "82",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Hei",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7510"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12554",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "3",
+                        "capacity": "3",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Hei",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7510"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ITME"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "15174",
+                        "section": "L01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "9",
+                        "capacity": "43",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Hei",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 20/02/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            },
+                            {
+                                "dateRange": "28/02/2027 - 06/03/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            },
+                            {
+                                "dateRange": "14/03/2027 - 20/03/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            },
+                            {
+                                "dateRange": "28/03/2027 - 03/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            },
+                            {
+                                "dateRange": "11/04/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "15175",
+                        "section": "L02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "13",
+                        "capacity": "39",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Hei",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 20/02/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            },
+                            {
+                                "dateRange": "28/02/2027 - 06/03/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            },
+                            {
+                                "dateRange": "14/03/2027 - 20/03/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            },
+                            {
+                                "dateRange": "28/03/2027 - 03/04/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            },
+                            {
+                                "dateRange": "11/04/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "15176",
+                        "section": "LA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "3",
+                        "capacity": "3",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Hei",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 20/02/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            },
+                            {
+                                "dateRange": "28/02/2027 - 06/03/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            },
+                            {
+                                "dateRange": "14/03/2027 - 20/03/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            },
+                            {
+                                "dateRange": "28/03/2027 - 03/04/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            },
+                            {
+                                "dateRange": "11/04/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ITME"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10136",
+                        "section": "T01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "10",
+                        "capacity": "43",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Hei",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "13:00 - 13:50",
+                                "building": "YEUNG",
+                                "room": "B4302"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11648",
+                        "section": "T02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "12",
+                        "capacity": "39",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Hei",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 12:50",
+                                "building": "LAU",
+                                "room": "5-205"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12556",
+                        "section": "TA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "3",
+                        "capacity": "3",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Hei",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 12:50",
+                                "building": "LAU",
+                                "room": "5-205"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ITME"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 60,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "ELEL",
+                            "cohort": "2026",
+                            "headcount": "10"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "CDE",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "49"
+                        }
+                    ]
+                }
+            },
+            "EE2004": {
+                "courseId": "EE2004",
+                "title": "Microcomputer Systems",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:40 PM",
+                "prerequisites": "EE2000 and CS2311",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE2004.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE2004.pdf",
+                "catalogue": {
+                    "title": "Microcomputer Systems",
+                    "description": "Students will gain knowledge about the basic structure of modern computer systems, programming concepts at the assembly level, the concepts of instruction set architecture, datapath, control unit, memory system, and I/O interfaces.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 3,
+                    "examination": 50,
+                    "examinationDurationHours": 2,
+                    "tasks": [],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "10254",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "31",
+                        "capacity": "165",
+                        "waitlistAvailable": "N",
+                        "instructor": "LEUNG Chi Sing A.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "LT-18"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11963",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "15",
+                        "waitlistAvailable": "N",
+                        "instructor": "LEUNG Chi Sing A.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "LT-18"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BENGEGU2"
+                            ],
+                            "majors": [
+                                "ELEL"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10255",
+                        "section": "T01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "17",
+                        "capacity": "60",
+                        "waitlistAvailable": "N",
+                        "instructor": "LEUNG Chi Sing A.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "13:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10256",
+                        "section": "T02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "8",
+                        "capacity": "60",
+                        "waitlistAvailable": "N",
+                        "instructor": "LEUNG Chi Sing A.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "09:00 - 10:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13510",
+                        "section": "T03",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "6",
+                        "capacity": "45",
+                        "waitlistAvailable": "N",
+                        "instructor": "LEUNG Chi Sing A.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "13:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11964",
+                        "section": "TA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "15",
+                        "waitlistAvailable": "N",
+                        "instructor": "LEUNG Chi Sing A.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "13:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BENGEGU2"
+                            ],
+                            "majors": [
+                                "ELEL"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 148,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "CDE",
+                            "cohort": "2026",
+                            "headcount": "19"
+                        },
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "ELEL",
+                            "cohort": "2026",
+                            "headcount": "14"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "CDE",
+                            "cohort": "2026",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "INFE",
+                            "cohort": "2026",
+                            "headcount": "2"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "CDE",
+                            "cohort": "2025",
+                            "headcount": "55"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2025",
+                            "headcount": "57"
+                        }
+                    ]
+                }
+            },
+            "EE2005": {
+                "courseId": "EE2005",
+                "title": "Electronic Devices and Circuits",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:40 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE2005.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE2005.pdf",
+                "catalogue": {
+                    "title": "Electronic Devices and Circuits",
+                    "description": "The aim of this course is to provide students with the basic principles of electronic circuits and devices for analyzing simple circuits, and the characteristics of some commonly used electronic devices.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 2)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 30,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 10,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "11649",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "28",
+                        "capacity": "87",
+                        "waitlistAvailable": "N",
+                        "instructor": "TAN Siew Chong, LI Kerui",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "LT-15"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13288",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "3",
+                        "capacity": "3",
+                        "waitlistAvailable": "N",
+                        "instructor": "TAN Siew Chong, LI Kerui",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "LT-15"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ITME"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11651",
+                        "section": "L01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "5",
+                        "capacity": "45",
+                        "waitlistAvailable": "N",
+                        "instructor": "TAN Siew Chong, LI Kerui",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "21/02/2027 - 27/02/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "07/03/2027 - 13/03/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "21/03/2027 - 27/03/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "04/04/2027 - 10/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11652",
+                        "section": "L02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "23",
+                        "capacity": "42",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Kerui, TAN Siew Chong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "21/02/2027 - 27/02/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "07/03/2027 - 13/03/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "21/03/2027 - 27/03/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "04/04/2027 - 10/04/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13291",
+                        "section": "LA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "3",
+                        "capacity": "3",
+                        "waitlistAvailable": "N",
+                        "instructor": "TAN Siew Chong, LI Kerui",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "21/02/2027 - 27/02/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "07/03/2027 - 13/03/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "21/03/2027 - 27/03/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "04/04/2027 - 10/04/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ITME"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 59,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "CDE",
+                            "cohort": "2026",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "CDE",
+                            "cohort": "2025",
+                            "headcount": "58"
+                        }
+                    ]
+                }
+            },
+            "EE2066": {
+                "courseId": "EE2066",
+                "title": "Engineers in Society",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE2066.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE2066.pdf",
+                "catalogue": {
+                    "title": "Engineers in Society",
+                    "description": "Students will gain knowledge about the obligations, roles and professional conduct of engineers in a modern society. It stimulates students to develop a basic awareness of the legal, environmental and socio-economic factors that have a significant impact on engineering design. Students will analyze these factors, evaluate professional responsibilities, apply critical thinking to real-world scenarios, and develop an understanding of ethical considerations in engineering practice. Industry professionals are invited to deliver some of the lectures, aiming to provide students with an understanding of social analysis adequate for the society in which they will work. Through engaging with lectures, case studies, and guest speaker sessions, students will cultivate insights into the social dimensions of engineering, equipping them to become responsible professionals capable of addressing the challenges in our rapidly evolving world.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 70,
+                    "examination": 30,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 70,
+                    "examination": 30,
+                    "examinationDurationHours": 2,
+                    "tasks": [],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "12809",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "120",
+                        "capacity": "120",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN L H Leanne",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-6"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE2104": {
+                "courseId": "EE2104",
+                "title": "Introduction to Electromagnetics",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "(MA1201 or MA1301) and (EE1002 or PHY1201 or PHY1202 or PHY1101 or MBE2029)",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE2104.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE2104.pdf",
+                "catalogue": {
+                    "title": "Introduction to Electromagnetics",
+                    "description": "This course aims to introduce the basic principles of electromagnetics for electrical engineering. It emphasizes on solving fundamental problems in electrostatics and magnetostatics, while providing elementary understanding on the Maxwell's equations.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 30,
+                    "examination": 70,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 30,
+                    "examination": 70,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 1)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 15,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 15,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "13292",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "31",
+                        "capacity": "120",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Sze Chun",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "LT-6"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13293",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "25",
+                        "capacity": "30",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Sze Chun",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "LT-6"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BENGEGU2",
+                                "BENGEGU3"
+                            ],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "15443",
+                        "section": "CB1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "20",
+                        "capacity": "20",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Sze Chun",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "LT-6"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BENGBDU3",
+                                "BENGBDU4"
+                            ],
+                            "majors": [
+                                "BME"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13295",
+                        "section": "T01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "31",
+                        "capacity": "120",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Sze Chun",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "12:00 - 12:50",
+                                "building": "LI",
+                                "room": "6606"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13296",
+                        "section": "TA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "25",
+                        "capacity": "30",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Sze Chun",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "12:00 - 12:50",
+                                "building": "LI",
+                                "room": "6606"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BENGEGU2",
+                                "BENGEGU3"
+                            ],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "15444",
+                        "section": "TB1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "20",
+                        "capacity": "20",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Sze Chun",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "12:00 - 12:50",
+                                "building": "LI",
+                                "room": "6606"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BENGBDU3",
+                                "BENGBDU4"
+                            ],
+                            "majors": [
+                                "BME"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 94,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "ELEL",
+                            "cohort": "2026",
+                            "headcount": "4"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "ELEL",
+                            "cohort": "2024",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "51"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "MEE",
+                            "cohort": "2025",
+                            "headcount": "38"
+                        }
+                    ]
+                }
+            },
+            "EE2303": {
+                "courseId": "EE2303",
+                "title": "Applied AI Systems in Information Engineering: Lifecycle and Human-Centered Design",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "CS2311",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE2303.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE2303.pdf",
+                "catalogue": {
+                    "title": "Applied AI Systems in Information Engineering: Lifecycle and Human-Centered Design",
+                    "description": "In this course, students explore the full lifecycle of AI system development within the context of information engineering, with a strong emphasis on understanding user needs and aligning solutions with business objectives. Students begin by learning how to conduct user requirement analysis and translate stakeholder expectations into actionable design goals. They investigate how AI applications are planned, developed, deployed, and maintained in real-world business environments, considering factors such as scalability, cost-efficiency, and ethical implications. A key focus is placed on the business logistics behind AI product development, including resource planning, cross-functional collaboration, and market alignment. Through a major group project, students work in teams to design and prototype AI solutions that address real-world challenges, integrating technical development with user-centered and business-driven thinking. This collaborative experience prepares students to contribute effectively to interdisciplinary teams and lead AI initiatives that are both innovative and impactful.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 70,
+                    "examination": 30,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 70,
+                    "examination": 30,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests(min.: 2)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 25,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments and/ or project",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 45,
+                            "component": "project"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "15107",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "25",
+                        "capacity": "90",
+                        "waitlistAvailable": "N",
+                        "instructor": "LEUNG Chi Sing A.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "15:00 - 17:50",
+                                "building": "YEUNG",
+                                "room": "B7530"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "15:00 - 17:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "INFE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 65,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "INFE",
+                            "cohort": "2026",
+                            "headcount": "2"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2025",
+                            "headcount": "63"
+                        }
+                    ]
+                }
+            },
+            "EE2331": {
+                "courseId": "EE2331",
+                "title": "Data Structures and Algorithms",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "CS2311",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE2331.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE2331.pdf",
+                "catalogue": {
+                    "title": "Data Structures and Algorithms",
+                    "description": "The students will learn the fundamental concepts of data structures and algorithm design, and to cultivate systematic programming discipline.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 2)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 25,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 25,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "10085",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "30",
+                        "capacity": "100",
+                        "waitlistAvailable": "N",
+                        "instructor": "SUN Yanni",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "16:00 - 18:50",
+                                "building": "LI",
+                                "room": "6603"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "INFE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13411",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "10",
+                        "capacity": "10",
+                        "waitlistAvailable": "N",
+                        "instructor": "SUN Yanni",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "16:00 - 18:50",
+                                "building": "LI",
+                                "room": "6603"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10086",
+                        "section": "T01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "30",
+                        "capacity": "100",
+                        "waitlistAvailable": "N",
+                        "instructor": "SUN Yanni",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "18:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "INFE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13412",
+                        "section": "TA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "10",
+                        "capacity": "10",
+                        "waitlistAvailable": "N",
+                        "instructor": "SUN Yanni",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "18:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 70,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "CDE",
+                            "cohort": "2026",
+                            "headcount": "8"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "CDE",
+                            "cohort": "2026",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "CDE",
+                            "cohort": "2025",
+                            "headcount": "61"
+                        }
+                    ]
+                }
+            },
+            "EE2800": {
+                "courseId": "EE2800",
+                "title": "Semiconductor Physics for Engineers",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "EE2005 and (MA1200 or MA1201 or MA1300 or MA1301)",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE2800.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE2800.pdf",
+                "catalogue": {
+                    "title": "Semiconductor Physics for Engineers",
+                    "description": "The course aims to give students a fundamental understanding of semiconductor physic and its applications to realize various semiconductor devices. The working mechanism of the selected devices will be studied.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 60,
+                    "examination": 40,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 60,
+                    "examination": 40,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 2)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 30,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 20,
+                            "component": "assignments"
+                        },
+                        {
+                            "label": "Lab Exercises/ Reports (min.: 2)",
+                            "cilos": "1, 2, 4",
+                            "weight": 10,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "12810",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "26",
+                        "capacity": "67",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Cheng",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B4702"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12811",
+                        "section": "L01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "26",
+                        "capacity": "67",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Cheng",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "15082",
+                        "section": "T01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "26",
+                        "capacity": "67",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Cheng",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "13:00 - 13:50",
+                                "building": "YEUNG",
+                                "room": "Y4702"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 41,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "MEE",
+                            "cohort": "2026",
+                            "headcount": "2"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "MEE",
+                            "cohort": "2025",
+                            "headcount": "39"
+                        }
+                    ]
+                }
+            },
+            "EE3008": {
+                "courseId": "EE3008",
+                "title": "Principles of Communications",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "MA2001 and EE3210",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE3008.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE3008.pdf",
+                "catalogue": {
+                    "title": "Principles of Communications",
+                    "description": "In this course, students will gain knowledge about the principles of point-to-point communication. Students will learn to understand various modulation schemes for both analog and digital signal transmission. Additionally, students will develop the skills to analyze the performance of these schemes in terms of signal-to-noise ratio, bandwidth requirements, and error performance.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 2)",
+                            "cilos": "1, 2, 3, 4, 5",
+                            "weight": 40,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4, 5",
+                            "weight": 10,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "10069",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "48",
+                        "capacity": "88",
+                        "waitlistAvailable": "N",
+                        "instructor": "YU Xianghao Alex",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "LT-16"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 40,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "INFE",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2024",
+                            "headcount": "39"
+                        }
+                    ]
+                }
+            },
+            "EE3009": {
+                "courseId": "EE3009",
+                "title": "Data Communications and Networking",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "EE1001 or EE1002",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE3009.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE3009.pdf",
+                "catalogue": {
+                    "title": "Data Communications and Networking",
+                    "description": "Students will gain knowledge about the basic principles of data communications and IP networking.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 40,
+                    "examination": 60,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 40,
+                    "examination": 60,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 2)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 30,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 3,
+                            "component": "assignments"
+                        },
+                        {
+                            "label": "Lab Exercises/ Reports",
+                            "cilos": "1",
+                            "weight": 7,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "10403",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "28",
+                        "capacity": "95",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Chi Hung S.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-8"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "INFE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12557",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "25",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Chi Hung S.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-8"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10491",
+                        "section": "L01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "24",
+                        "capacity": "60",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Chi Hung S.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "INFE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11654",
+                        "section": "L02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "4",
+                        "capacity": "35",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Chi Hung S.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "INFE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12558",
+                        "section": "LA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "25",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Chi Hung S.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 67,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "INFE",
+                            "cohort": "2026",
+                            "headcount": "2"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2024",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "CDE",
+                            "cohort": "2025",
+                            "headcount": "5"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2025",
+                            "headcount": "59"
+                        }
+                    ]
+                }
+            },
+            "EE3070": {
+                "courseId": "EE3070",
+                "title": "Design Project",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "EE2004",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE3070.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE3070.pdf",
+                "catalogue": {
+                    "title": "Design Project",
+                    "description": "The aim of this course is to enable students to work together in a group on a design project. Through the design project, students will be nurtured and be able to demonstrate their creativity, innovation and its impact on society. Working in a group will allow students to resolve issues that arise technically and personally. Students will become familiar with the concept of product design, such as, component tolerances, production constraints, safety requirements, and EMC standards through a case study.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 100,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": 100,
+                    "examination": 0,
+                    "examinationDurationHours": null,
+                    "tasks": [
+                        {
+                            "label": "Project: Proposal, logbook, demonstrations, reports, presentation",
+                            "cilos": "1, 2, 3, 4, 5",
+                            "weight": 100,
+                            "component": "project"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "11803",
+                        "section": "L01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "30",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHUNG Shu Hung H.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12007",
+                        "section": "L02",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "30",
+                        "waitlistAvailable": "N",
+                        "instructor": "PO Lai Man",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12812",
+                        "section": "L03",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "3",
+                        "capacity": "30",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHUNG Shu Hung H.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11802",
+                        "section": "LA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "4",
+                        "capacity": "4",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHUNG Shu Hung H.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13330",
+                        "section": "LA2",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "4",
+                        "capacity": "4",
+                        "waitlistAvailable": "N",
+                        "instructor": "PO Lai Man",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13331",
+                        "section": "LA3",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "4",
+                        "capacity": "4",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHUNG Shu Hung H.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 83,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "6"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "MEE",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "CDE",
+                            "cohort": "2024",
+                            "headcount": "9"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ELEL",
+                            "cohort": "2024",
+                            "headcount": "33"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2024",
+                            "headcount": "10"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "MEE",
+                            "cohort": "2024",
+                            "headcount": "24"
+                        }
+                    ]
+                }
+            },
+            "EE3109": {
+                "courseId": "EE3109",
+                "title": "Applied Electromagnetics",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "EE2104 and (MA3001 or EE3121)",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE3109.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE3109.pdf",
+                "catalogue": {
+                    "title": "Applied Electromagnetics",
+                    "description": "The aim of this course is to provide students with fundamental electromagnetic theories and techniques for working as a communication engineers.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 2)",
+                            "cilos": "1, 2, 3, 4, 5",
+                            "weight": 30,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4, 5",
+                            "weight": 10,
+                            "component": "assignments"
+                        },
+                        {
+                            "label": "Lab Exercises/ Reports",
+                            "cilos": "1, 2, 3, 4, 5",
+                            "weight": 10,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "10530",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "67",
+                        "capacity": "110",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Man Hon Alex",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "13:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "LT-4"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13317",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "10",
+                        "capacity": "10",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Man Hon Alex",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "13:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "LT-4"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10531",
+                        "section": "L01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "38",
+                        "capacity": "60",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Man Hon Alex",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "07/03/2027 - 13/03/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "LAU",
+                                "room": "15-231"
+                            },
+                            {
+                                "dateRange": "21/03/2027 - 27/03/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "LAU",
+                                "room": "15-231"
+                            },
+                            {
+                                "dateRange": "04/04/2027 - 10/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "LAU",
+                                "room": "15-231"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10532",
+                        "section": "L02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "29",
+                        "capacity": "50",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Man Hon Alex",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "14/03/2027 - 20/03/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "LAU",
+                                "room": "15-231"
+                            },
+                            {
+                                "dateRange": "28/03/2027 - 03/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "LAU",
+                                "room": "15-231"
+                            },
+                            {
+                                "dateRange": "11/04/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "LAU",
+                                "room": "15-231"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13313",
+                        "section": "LA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "10",
+                        "capacity": "10",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Man Hon Alex",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "14/03/2027 - 20/03/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "LAU",
+                                "room": "15-231"
+                            },
+                            {
+                                "dateRange": "28/03/2027 - 03/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "LAU",
+                                "room": "15-231"
+                            },
+                            {
+                                "dateRange": "11/04/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "LAU",
+                                "room": "15-231"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 43,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "ELEL",
+                            "cohort": "2024",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ELEL",
+                            "cohort": "2024",
+                            "headcount": "42"
+                        }
+                    ]
+                }
+            },
+            "EE3115": {
+                "courseId": "EE3115",
+                "title": "Applied Optoelectronic Devices",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "EE2005 or EE2301",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE3115.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE3115.pdf",
+                "catalogue": {
+                    "title": "Applied Optoelectronic Devices",
+                    "description": "In this course, students will learn, understand, and appreciate the basic concepts of semiconductor physics and the working principles of semiconductor optoelectronic devices, such as light-emitting diodes, laser diodes, and photodiodes. These devices are the essential components in today's consumer optoelectronics, IT communication, robotic control, industrial instrumentation, and so on.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 40,
+                    "examination": 60,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 40,
+                    "examination": 60,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 1)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 20,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min.: 2)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 10,
+                            "component": "assignments"
+                        },
+                        {
+                            "label": "Lab Exercises/ Reports",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 10,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "11214",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "23",
+                        "capacity": "120",
+                        "waitlistAvailable": "N",
+                        "instructor": "TAN Chaoliang",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "LT-16"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11216",
+                        "section": "L01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "12",
+                        "capacity": "60",
+                        "waitlistAvailable": "N",
+                        "instructor": "TAN Chaoliang",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "28/02/2027 - 06/03/2027",
+                                "day": "M",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "28/03/2027 - 03/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13370",
+                        "section": "L02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "11",
+                        "capacity": "60",
+                        "waitlistAvailable": "N",
+                        "instructor": "TAN Chaoliang",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "28/02/2027 - 06/03/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "28/03/2027 - 03/04/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 97,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "8"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "MEE",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ELEL",
+                            "cohort": "2024",
+                            "headcount": "53"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "MEE",
+                            "cohort": "2024",
+                            "headcount": "34"
+                        }
+                    ]
+                }
+            },
+            "EE3121": {
+                "courseId": "EE3121",
+                "title": "Differential Equations for Electrical Engineering",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "MA2001",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE3121.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE3121.pdf",
+                "catalogue": {
+                    "title": "Differential Equations for Electrical Engineering",
+                    "description": "This course introduces differential equations for solving practical problems of electrical and electronic engineering, including power conversion, wireless communication and circuit analysis. It is to help students develop the ability to carry out engineering analyses for engineering problems involving differential questions.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 2)",
+                            "cilos": "1, 2, 3",
+                            "weight": 30,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4, 5",
+                            "weight": 15,
+                            "component": "assignments"
+                        },
+                        {
+                            "label": "Project",
+                            "cilos": "4, 5",
+                            "weight": 5,
+                            "component": "project"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "11658",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "55",
+                        "capacity": "151",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA EE015",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "15:00 - 17:50",
+                                "building": "YEUNG",
+                                "room": "LT-17"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11659",
+                        "section": "T01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "25",
+                        "capacity": "75",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA EE015",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "17:00 - 17:50",
+                                "building": "YEUNG",
+                                "room": "B4302"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11852",
+                        "section": "T02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "30",
+                        "capacity": "76",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA EE015",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "15:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "Y4702"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 96,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "2"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "8"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "50"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "MEE",
+                            "cohort": "2025",
+                            "headcount": "36"
+                        }
+                    ]
+                }
+            },
+            "EE3122": {
+                "courseId": "EE3122",
+                "title": "Analogue Circuit Fundamentals",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "EE2005 or EE2301",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE3122.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE3122.pdf",
+                "catalogue": {
+                    "title": "Analogue Circuit Fundamentals",
+                    "description": "The aims of the course are to present the techniques used in the analysis of analogue circuits and to apply them to a spectrum of different uses.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2,
+                    "tasks": [],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "12031",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "16",
+                        "capacity": "109",
+                        "waitlistAvailable": "N",
+                        "instructor": "BASU Arindam",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "LT-16"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12032",
+                        "section": "L01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "11",
+                        "capacity": "55",
+                        "waitlistAvailable": "N",
+                        "instructor": "BASU Arindam",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "07/03/2027 - 13/03/2027",
+                                "day": "M",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "07/03/2027 - 13/03/2027",
+                                "day": "M",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            },
+                            {
+                                "dateRange": "21/03/2027 - 27/03/2027",
+                                "day": "M",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "21/03/2027 - 27/03/2027",
+                                "day": "M",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            },
+                            {
+                                "dateRange": "04/04/2027 - 10/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "04/04/2027 - 10/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12033",
+                        "section": "L02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "5",
+                        "capacity": "54",
+                        "waitlistAvailable": "N",
+                        "instructor": "BASU Arindam",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "07/03/2027 - 13/03/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "07/03/2027 - 13/03/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            },
+                            {
+                                "dateRange": "21/03/2027 - 27/03/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "21/03/2027 - 27/03/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            },
+                            {
+                                "dateRange": "04/04/2027 - 10/04/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            },
+                            {
+                                "dateRange": "04/04/2027 - 10/04/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 93,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "4"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "MEE",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ELEL",
+                            "cohort": "2024",
+                            "headcount": "53"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "MEE",
+                            "cohort": "2024",
+                            "headcount": "34"
+                        }
+                    ]
+                }
+            },
+            "EE3124": {
+                "courseId": "EE3124",
+                "title": "Introduction to Electric Machines and Drives",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "EE3123",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE3124.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE3124.pdf",
+                "catalogue": {
+                    "title": "Introduction to Electric Machines and Drives",
+                    "description": "To introduce (i) the operating principles of electric machines and drives, including AC and DC machines; and (ii) the applications of various types of drives in automation systems, electric vehicles, and robotics.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "#Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 5,
+                            "component": "assignments"
+                        },
+                        {
+                            "label": "Tests (min.: 2)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 30,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "Mini-project",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 15,
+                            "component": "project"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "11962",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "18",
+                        "capacity": "80",
+                        "waitlistAvailable": "N",
+                        "instructor": "JIANG Chaoqiang",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B4702"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 62,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "2"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "8"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ELEL",
+                            "cohort": "2024",
+                            "headcount": "52"
+                        }
+                    ]
+                }
+            },
+            "EE3206": {
+                "courseId": "EE3206",
+                "title": "Object-Oriented Programming and Applications",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "EE2331",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE3206.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE3206.pdf",
+                "catalogue": {
+                    "title": "Object-Oriented Programming and Applications",
+                    "description": "The aim of this course is to provide students with an understanding of the object-oriented design and programming techniques. Java, a prime object-oriented programming language, is used to illustrate this programming paradigm.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2.5
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2.5,
+                    "tasks": [
+                        {
+                            "label": "Tests",
+                            "cilos": "1, 3, 4, 5",
+                            "weight": 20,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (3 to 4)",
+                            "cilos": "1, 2, 3, 4, 5",
+                            "weight": 15,
+                            "component": "assignments"
+                        },
+                        {
+                            "label": "Group project",
+                            "cilos": "1, 2, 6",
+                            "weight": 15,
+                            "component": "project"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "11958",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "55",
+                        "capacity": "98",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Haoliang, TIAN Xing",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "S",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "S",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-15"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "INFE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12132",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "10",
+                        "capacity": "10",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Haoliang, TIAN Xing",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "S",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "S",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-15"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 43,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "INFE",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2024",
+                            "headcount": "42"
+                        }
+                    ]
+                }
+            },
+            "EE3210": {
+                "courseId": "EE3210",
+                "title": "Signals and Systems",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "MA1201 or MA1301 or EE1002",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE3210.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE3210.pdf",
+                "catalogue": {
+                    "title": "Signals and Systems",
+                    "description": "Students will gain a solid understanding of the fundamental concepts and tools vital for the analysis of signals and systems. In addition, they will acquire foundational knowledge and skills that are applicable across a broad spectrum of scientific and engineering disciplines, including but not limited to communications, control, and signal processing.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 60,
+                    "examination": 40,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 60,
+                    "examination": 40,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 2)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 40,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 20,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "11957",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "44",
+                        "capacity": "155",
+                        "waitlistAvailable": "N",
+                        "instructor": "WU Gengbo",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "LT-18"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 111,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "CDE",
+                            "cohort": "2025",
+                            "headcount": "15"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "55"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "MEE",
+                            "cohort": "2025",
+                            "headcount": "39"
+                        },
+                        {
+                            "programme": "EXGB",
+                            "major": "0000",
+                            "cohort": "0000",
+                            "headcount": "2"
+                        }
+                    ]
+                }
+            },
+            "EE3211": {
+                "courseId": "EE3211",
+                "title": "Modelling Techniques",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "EE3001",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE3211.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE3211.pdf",
+                "catalogue": {
+                    "title": "Modelling Techniques",
+                    "description": "This course aims to develop students' ability to formulate, analyse and solve statistical or engineering problems using software tools, such as R. The goal of the course is to train students to become effective modellers who can build sound models to solve statistical or engineering problems in various functional areas.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 70,
+                    "examination": 30,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 70,
+                    "examination": 30,
+                    "examinationDurationHours": 23,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 2)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 35,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 35,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "11436",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "37",
+                        "capacity": "110",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Kei Hang Katie",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "LT-15"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 73,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "CDE",
+                            "cohort": "2025",
+                            "headcount": "6"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "CDE",
+                            "cohort": "2025",
+                            "headcount": "11"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "CDE",
+                            "cohort": "2025",
+                            "headcount": "56"
+                        }
+                    ]
+                }
+            },
+            "EE3220": {
+                "courseId": "EE3220",
+                "title": "System-on-Chip Design",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "EE2004",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE3220.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE3220.pdf",
+                "catalogue": {
+                    "title": "System-on-Chip Design",
+                    "description": "This course aims to introduce the building components, fundamental concepts, and design considerations of System-on-Chip (SoC) for up-to-date embedded microcontroller MCU design with Hardware Description Language (HDL) and ARM instruction set architecture (ISA). The course covers complete design flow from initial specifications down to final implementations with ARM processor board and FPGA for rapid prototyping. Students will learn microcontroller concepts, Software design basics, processor core architecture and interrupt system, C as implemented in assembly language, embedded memory mapping and system, peripherals and standard I/O interfacing, embedded ARM processor on System-on-Chip, such as Field-Programmable Gate Array (FPGA). The course emphasizes hands-on exercises of using Electronic Design Automation (EDA) tools, including ARM Development Studio, ARM mbed, Xilinx Vivado, and Xilinx Vitis, to the design of System-on-Chip (SoC) implemented on FPGA chip.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 2)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 30,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 10,
+                            "component": "assignments"
+                        },
+                        {
+                            "label": "Lab Exercises/ Reports",
+                            "cilos": "3, 4",
+                            "weight": 10,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "12034",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "74",
+                        "capacity": "168",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Chak Chung Ray, HUNG Siu Ying Patrick",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "LI",
+                                "room": "6606"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12035",
+                        "section": "L01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "37",
+                        "capacity": "84",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Chak Chung Ray, HUNG Siu Ying Patrick",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12036",
+                        "section": "L02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "37",
+                        "capacity": "84",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Chak Chung Ray, HUNG Siu Ying Patrick",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "G600"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12037",
+                        "section": "T01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "37",
+                        "capacity": "84",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Chak Chung Ray, HUNG Siu Ying Patrick",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "15:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "LT-11"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12038",
+                        "section": "T02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "37",
+                        "capacity": "84",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Chak Chung Ray, HUNG Siu Ying Patrick",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "12:00 - 12:50",
+                                "building": "LI",
+                                "room": "1610"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 94,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "CDE",
+                            "cohort": "2025",
+                            "headcount": "6"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "CDE",
+                            "cohort": "2025",
+                            "headcount": "15"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "MEE",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "CDE",
+                            "cohort": "2024",
+                            "headcount": "48"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "MEE",
+                            "cohort": "2024",
+                            "headcount": "24"
+                        }
+                    ]
+                }
+            },
+            "EE3315": {
+                "courseId": "EE3315",
+                "title": "Internet Technology",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE3315.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE3315.pdf",
+                "catalogue": {
+                    "title": "Internet Technology",
+                    "description": "The students will learn the knowledge of key technologies and protocols in the TCP/IP protocol suite, network control plane. It will look at technologies which transform the Internet from its data-only roots to a true multi-service network that can handle voice, video and multimedia with comparable quality and reliability.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 2)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 30,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 10,
+                            "component": "assignments"
+                        },
+                        {
+                            "label": "Lab Exercises/ Reports",
+                            "cilos": "5",
+                            "weight": 10,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "10493",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "49",
+                        "capacity": "167",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Wing Ming E.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-6"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "INFE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12820",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "3",
+                        "capacity": "3",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Wing Ming E.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-6"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ITME"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10494",
+                        "section": "L01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "16",
+                        "capacity": "43",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Wing Ming E.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "14/02/2027 - 20/02/2027",
+                                "day": "M",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            },
+                            {
+                                "dateRange": "28/02/2027 - 06/03/2027",
+                                "day": "M",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            },
+                            {
+                                "dateRange": "14/03/2027 - 20/03/2027",
+                                "day": "M",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            },
+                            {
+                                "dateRange": "28/03/2027 - 03/04/2027",
+                                "day": "M",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "INFE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10495",
+                        "section": "L02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "12",
+                        "capacity": "43",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Wing Ming E.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "14/02/2027 - 20/02/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            },
+                            {
+                                "dateRange": "28/02/2027 - 06/03/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            },
+                            {
+                                "dateRange": "14/03/2027 - 20/03/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            },
+                            {
+                                "dateRange": "28/03/2027 - 03/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "INFE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10496",
+                        "section": "L03",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "11",
+                        "capacity": "42",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Wing Ming E.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "21/02/2027 - 27/02/2027",
+                                "day": "M",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            },
+                            {
+                                "dateRange": "07/03/2027 - 13/03/2027",
+                                "day": "M",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            },
+                            {
+                                "dateRange": "21/03/2027 - 27/03/2027",
+                                "day": "M",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            },
+                            {
+                                "dateRange": "04/04/2027 - 10/04/2027",
+                                "day": "M",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "INFE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11001",
+                        "section": "L04",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "10",
+                        "capacity": "39",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Wing Ming E.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "21/02/2027 - 27/02/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            },
+                            {
+                                "dateRange": "07/03/2027 - 13/03/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            },
+                            {
+                                "dateRange": "21/03/2027 - 27/03/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            },
+                            {
+                                "dateRange": "04/04/2027 - 10/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "INFE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12825",
+                        "section": "LA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "3",
+                        "capacity": "3",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Wing Ming E.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "21/02/2027 - 27/02/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            },
+                            {
+                                "dateRange": "07/03/2027 - 13/03/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            },
+                            {
+                                "dateRange": "21/03/2027 - 27/03/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            },
+                            {
+                                "dateRange": "04/04/2027 - 10/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ITME"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 118,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "CDE",
+                            "cohort": "2025",
+                            "headcount": "15"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "INFE",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "CDE",
+                            "cohort": "2024",
+                            "headcount": "51"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2024",
+                            "headcount": "51"
+                        }
+                    ]
+                }
+            },
+            "EE3331": {
+                "courseId": "EE3331",
+                "title": "Probability Models in Information Engineering",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "MA2001",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE3331.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE3331.pdf",
+                "catalogue": {
+                    "title": "Probability Models in Information Engineering",
+                    "description": "This course introduces probability models and their applications to major areas of information engineering, including digital communications, signal processing and computer networks. The aims are to elucidate the fundamental concepts of probability theory through examples, to explain the importance of random variables and unconditional/conditional distributions, and to develop the student ability in solving problems with randomness and uncertainty. This course is project-based, which provides hands-on experience to students and conveys the relevance and usefulness of probability modelling to practical engineering problems that undergraduate students can appreciate.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min: 2) and quizzes",
+                            "cilos": "1, 2, 3",
+                            "weight": 30,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments and Lab Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 20,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "11663",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "63",
+                        "capacity": "115",
+                        "waitlistAvailable": "N",
+                        "instructor": "NEKOUEI Ehsan",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "YEUNG",
+                                "room": "LT-14"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "INFE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12979",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "15",
+                        "capacity": "15",
+                        "waitlistAvailable": "N",
+                        "instructor": "NEKOUEI Ehsan",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "YEUNG",
+                                "room": "LT-14"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 52,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "INFE",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2025",
+                            "headcount": "51"
+                        }
+                    ]
+                }
+            },
+            "EE4016": {
+                "courseId": "EE4016",
+                "title": "Applications of AI with Deep Learning",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "MA2001 and EE2331",
+                "exclusiveCourses": "EE5438",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE4016.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE4016.pdf",
+                "catalogue": {
+                    "title": "Applications of AI with Deep Learning",
+                    "description": "This course will introduce the basics of Artificial Intelligence (AI) with a specific focus on deep learning, and its representative applications in engineering. In this course, students will learn the essential foundations of AI, from algorithms to programming tools. Students will gain a solid understanding of AI by building systems with modern platforms such as Python and its associated deep learning libraries.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min. 2)",
+                            "cilos": "1, 2, 3",
+                            "weight": 15,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "Assignments (min. 3)",
+                            "cilos": "1, 2, 3",
+                            "weight": 15,
+                            "component": "assignments"
+                        },
+                        {
+                            "label": "Group Project",
+                            "cilos": "1, 2, 3",
+                            "weight": 20,
+                            "component": "project"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "13989",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "100",
+                        "capacity": "100",
+                        "waitlistAvailable": "N",
+                        "instructor": "PO Lai Man",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "6603"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE4036": {
+                "courseId": "EE4036",
+                "title": "Wireless Communications",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "EE3008",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE4036.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE4036.pdf",
+                "catalogue": {
+                    "title": "Wireless Communications",
+                    "description": "The course aims to provide students with an understanding of the concepts/techniques/basic principles and the most update knowledge in wireless communications.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 65,
+                    "examination": 35,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 65,
+                    "examination": 35,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min: 2)",
+                            "cilos": "1, 2, 3, 4, 5",
+                            "weight": 40,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min: 3)",
+                            "cilos": "1, 2, 3, 4, 5",
+                            "weight": 25,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "15084",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "80",
+                        "capacity": "80",
+                        "waitlistAvailable": "N",
+                        "instructor": "DAI Lin",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "G4302"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE4080": {
+                "courseId": "EE4080",
+                "title": "Project",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE4080.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE4080.pdf",
+                "catalogue": {
+                    "title": "Project",
+                    "description": "This course is to provide students the options to undertake either academic project (Part A) or industrial project (Part B). Part A: Academic Project The aim of this academic project is to nurture student's ability to complete a project that integrates and applies what has been learnt in the programme. Students will be guided in the organization and management a substantial individual project that initiates creativity, innovation and intellectual abilities. Part B: Industrial Project The aim of this part is to nurture student's ability, in collaboration with industry, to complete an industrial project that integrates and applies what has been learnt in the taught undergraduate courses. Students will be guided in co-operation with the electronic related industry while nurturing students with a spirit of professionalism. The result will strengthen employability by meeting the needs of industry.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 6,
+                    "continuousAssessment": 100,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": 100,
+                    "examination": 0,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "11795",
+                        "section": "D01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "0",
+                        "waitlistAvailable": "N",
+                        "instructor": "NEKOUEI Ehsan",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "",
+                                "time": "",
+                                "building": "",
+                                "room": ""
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE4086": {
+                "courseId": "EE4086",
+                "title": "Internship: Advanced Topics in Electrical Engineering",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:41 PM",
+                "prerequisites": "EE4085",
+                "exclusiveCourses": "EE4081 EE4082 EE4083 EE4084 EE4087",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE4086.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE4086.pdf",
+                "catalogue": {
+                    "title": "Internship: Advanced Topics in Electrical Engineering",
+                    "description": "The students will have opportunities to: appreciate a real working environment under the guidance of experts obtain technical knowledge of an area, including the relevant theories integrate the knowledge they acquired and apply it in a real work setting The course is conducted at the host company, whereby students are jointly supervised by the host mentor and the EE supervisor. The students should select a technical topic related to the internship's work and report the technical content.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 100,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": 100,
+                    "examination": 0,
+                    "examinationDurationHours": null,
+                    "tasks": [
+                        {
+                            "label": "Placement report for actual placement work in training company",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 30,
+                            "component": "assignments"
+                        },
+                        {
+                            "label": "Feedback from academic supervisor based on company feedback, and visit & placement report",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 35,
+                            "component": "assignments"
+                        },
+                        {
+                            "label": "Placement presentation",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 35,
+                            "component": "other"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "13427",
+                        "section": "D01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "0",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Wing Ming E.",
+                        "mediumOfInstruction": "English & Others",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "",
+                                "time": "",
+                                "building": "",
+                                "room": ""
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE4087": {
+                "courseId": "EE4087",
+                "title": "Internship: Industrial Project",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "EE4085",
+                "exclusiveCourses": "EE4081 EE4082 EE4083 EE4084 EE4086",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE4087.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE4087.pdf",
+                "catalogue": {
+                    "title": "Internship: Industrial Project",
+                    "description": "The students will have opportunities to: appreciate a real working environment under the guidance of experts; integrate the knowledge they acquired and apply it in a real work setting; appreciate team work, group / organizational behaviour in a work environment; gain real work experience, which will enhance their competitiveness in an increasingly challenging job market The program is conducted at the host company, whereby students are jointly supervised by the host mentor and the EE supervisor. Students will complete their Final Year Project at the host company.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27, Summer 2027",
+                    "creditUnits": 6,
+                    "continuousAssessment": 100,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": 100,
+                    "examination": 0,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "13428",
+                        "section": "D01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "0",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Wing Ming E.",
+                        "mediumOfInstruction": "English & Others",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "",
+                                "time": "",
+                                "building": "",
+                                "room": ""
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE4101": {
+                "courseId": "EE4101",
+                "title": "Sustainable Energy Systems",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "EE3110 or EE3122",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE4101.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE4101.pdf",
+                "catalogue": {
+                    "title": "Sustainable Energy Systems",
+                    "description": "The aim of this course is to provide students with an understanding of the concepts / techniques / basic principles of power conversion techniques and their applications.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 23,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 2)",
+                            "cilos": "1, 2, 3",
+                            "weight": 35,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min.: 3)",
+                            "cilos": "1, 2, 3",
+                            "weight": 15,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "15062",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "45",
+                        "capacity": "45",
+                        "waitlistAvailable": "N",
+                        "instructor": "POU Josep",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "18:00 - 20:50",
+                                "building": "YEUNG",
+                                "room": "G5-216"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "15063",
+                        "section": "T01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "45",
+                        "capacity": "45",
+                        "waitlistAvailable": "N",
+                        "instructor": "POU Josep",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "18:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "P4704"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE4108": {
+                "courseId": "EE4108",
+                "title": "Antennas for Wireless Communications and Sensing Connectivity",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "EE2104",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE4108.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE4108.pdf",
+                "catalogue": {
+                    "title": "Antennas for Wireless Communications and Sensing Connectivity",
+                    "description": "This course aims to provide students with essential techniques for the analysis and design of popular antennas for modern wireless communications. Emphasis is placed on the understanding of principles of operation. Basic measurement techniques will be learned.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 60,
+                    "examination": 40,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 60,
+                    "examination": 40,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 2)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 36,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min.: 3)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 9,
+                            "component": "assignments"
+                        },
+                        {
+                            "label": "Lab Exercises/ Reports",
+                            "cilos": "4, 5, 6",
+                            "weight": 15,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "15818",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "50",
+                        "capacity": "50",
+                        "waitlistAvailable": "N",
+                        "instructor": "LEUNG Kwok Wa",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "3601"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "ELEL",
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE4146": {
+                "courseId": "EE4146",
+                "title": "Data Engineering and Machine Learning",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "(MA3001 or EE3121) or EE3001 or (MA3160 or EE3331)",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE4146.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE4146.pdf",
+                "catalogue": {
+                    "title": "Data Engineering and Machine Learning",
+                    "description": "This course aim is to introduce the concept, techniques and fundamental background to informatics and learning systems.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests (min.: 2)",
+                            "cilos": "1, 2, 3",
+                            "weight": 35,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "#Assignments (min.: 3)",
+                            "cilos": "1, 2, 3",
+                            "weight": 15,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "13456",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "86",
+                        "capacity": "140",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Haoliang",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "15:00 - 17:50",
+                                "building": "LI",
+                                "room": "6606"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 54,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "CDE",
+                            "cohort": "2025",
+                            "headcount": "6"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "CDE",
+                            "cohort": "2024",
+                            "headcount": "48"
+                        }
+                    ]
+                }
+            },
+            "EE4215": {
+                "courseId": "EE4215",
+                "title": "Cybersecurity Technology",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "EE3315",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE4215.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE4215.pdf",
+                "catalogue": {
+                    "title": "Cybersecurity Technology",
+                    "description": "This course aims to provide students with an understanding of the principles of cybersecurity and computer security technologies, including the principles of ethical hacking, cryptography, and blockchain technologies.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 65,
+                    "examination": 35,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 65,
+                    "examination": 35,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Tests/Quizzes (at least 2)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 30,
+                            "component": "midterm"
+                        },
+                        {
+                            "label": "Mini-project",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 15,
+                            "component": "project"
+                        },
+                        {
+                            "label": "#Assignments (at least 3)",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 20,
+                            "component": "assignments"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "13991",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "60",
+                        "capacity": "60",
+                        "waitlistAvailable": "N",
+                        "instructor": "YEUNG Kai Hau Alan",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "G5-314"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "INFE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE4803": {
+                "courseId": "EE4803",
+                "title": "Analog IC Design",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "EE3122",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE4803.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE4803.pdf",
+                "catalogue": {
+                    "title": "Analog IC Design",
+                    "description": "This course is aimed at providing students with an understanding of Analog Integrated Circuit (IC) design as well as provide exposure to the CAD software used in the IC design industry through hands-on projects.",
+                    "offeringTerm": "Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 60,
+                    "examination": 40,
+                    "examinationDurationHours": 2.5
+                },
+                "assessment": {
+                    "continuousAssessment": 60,
+                    "examination": 40,
+                    "examinationDurationHours": 2.5,
+                    "tasks": [],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "15075",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "40",
+                        "capacity": "40",
+                        "waitlistAvailable": "N",
+                        "instructor": "BASU Arindam, NG Chik Wai",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "Y5-202"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "15076",
+                        "section": "L01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "40",
+                        "capacity": "40",
+                        "waitlistAvailable": "N",
+                        "instructor": "BASU Arindam, NG Chik Wai",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B7530"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "MEE"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE5410": {
+                "courseId": "EE5410",
+                "title": "Signal Processing",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "EE3008 or EE3112 or EE3210",
+                "exclusiveCourses": "EE4015",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE5410.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE5410.pdf",
+                "catalogue": {
+                    "title": "Signal Processing",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 3,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "12757",
+                        "section": "C61",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "61",
+                        "capacity": "61",
+                        "waitlistAvailable": ":22",
+                        "instructor": "SO Hing Cheung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "BOC",
+                                "room": "R4057"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSEEE",
+                                "MSEEEBM",
+                                "MSEEEIR",
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSEIEIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12758",
+                        "section": "CP1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "128",
+                        "capacity": "128",
+                        "waitlistAvailable": ":13",
+                        "instructor": "SO Hing Cheung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "BOC",
+                                "room": "R4057"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSCIE",
+                                "MSCIEBM",
+                                "MSCIEIR",
+                                "MSMIT1",
+                                "MSMITBM2",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12759",
+                        "section": "CQ1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "21",
+                        "capacity": "21",
+                        "waitlistAvailable": ":3",
+                        "instructor": "SO Hing Cheung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "BOC",
+                                "room": "R4057"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "EE2/C",
+                                "EE2/M",
+                                "EE2/P"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13996",
+                        "section": "CR1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "5",
+                        "capacity": "5",
+                        "waitlistAvailable": ":1",
+                        "instructor": "SO Hing Cheung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "BOC",
+                                "room": "R4057"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "14049",
+                        "section": "CS1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "P",
+                        "available": "5",
+                        "capacity": "5",
+                        "waitlistAvailable": "N",
+                        "instructor": "SO Hing Cheung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "19:00 - 21:50",
+                                "building": "BOC",
+                                "room": "R4057"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MFACM"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE5430": {
+                "courseId": "EE5430",
+                "title": "Advanced CMOS Technology",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "EE4104",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE5430.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE5430.pdf",
+                "catalogue": {
+                    "title": "Advanced CMOS Technology",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 3,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "15130",
+                        "section": "C61",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P",
+                        "available": "202",
+                        "capacity": "202",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEN Mu Ku",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "LT-2"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSEEE",
+                                "MSEEEBM",
+                                "MSEEEIR",
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSEIEIR2",
+                                "MSMIT1",
+                                "MSMITBM2",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13263",
+                        "section": "CP1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "18",
+                        "capacity": "18",
+                        "waitlistAvailable": ":3",
+                        "instructor": "CHEN Mu Ku",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "LT-2"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "EE2/C",
+                                "EE2/M",
+                                "EE2/P"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE5437": {
+                "courseId": "EE5437",
+                "title": "Internet of Things Technologies for Future City Applications",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "EE2004 or EE3220",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE5437.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE5437.pdf",
+                "catalogue": {
+                    "title": "Internet of Things Technologies for Future City Applications",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 3,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "14036",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "131",
+                        "capacity": "131",
+                        "waitlistAvailable": ":22",
+                        "instructor": "LAM Hiu Fung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "3508"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSEEE",
+                                "MSEEEBM",
+                                "MSEEEIR",
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSEIEIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14037",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "48",
+                        "capacity": "48",
+                        "waitlistAvailable": ":13",
+                        "instructor": "LAM Hiu Fung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "3508"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSCIE",
+                                "MSCIEBM",
+                                "MSCIEIR",
+                                "MSMIT1",
+                                "MSMITBM2",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14056",
+                        "section": "CB1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "16",
+                        "capacity": "16",
+                        "waitlistAvailable": ":3",
+                        "instructor": "LAM Hiu Fung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "3508"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "EE2/C",
+                                "EE2/M",
+                                "EE2/P"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14047",
+                        "section": "CC1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "P R",
+                        "available": "5",
+                        "capacity": "5",
+                        "waitlistAvailable": "N",
+                        "instructor": "LAM Hiu Fung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "3508"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MFACM"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14048",
+                        "section": "CD1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "5",
+                        "capacity": "5",
+                        "waitlistAvailable": ":2",
+                        "instructor": "LAM Hiu Fung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "3508"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSDTTI"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "15244",
+                        "section": "CE1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "5",
+                        "capacity": "5",
+                        "waitlistAvailable": "N",
+                        "instructor": "LAM Hiu Fung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "3508"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSAIDI"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE5608": {
+                "courseId": "EE5608",
+                "title": "Modern Cloud Architecture and Deployment Practice",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE5608.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE5608.pdf",
+                "catalogue": {
+                    "title": "Modern Cloud Architecture and Deployment Practice",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 3,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "15142",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P",
+                        "available": "160",
+                        "capacity": "160",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA EE011",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "S",
+                                "time": "13:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "LT-2"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSCIE",
+                                "MSCIEBM",
+                                "MSCIEIR",
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSEIEIR2",
+                                "MSMIT1",
+                                "MSMITBM2",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE5811": {
+                "courseId": "EE5811",
+                "title": "Topics in Computer Vision",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "(MA3150 or MA3151) and (MA3160 or EE3313) and CS2363",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE5811.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE5811.pdf",
+                "catalogue": {
+                    "title": "Topics in Computer Vision",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 3,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "14039",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "184",
+                        "capacity": "184",
+                        "waitlistAvailable": ":14",
+                        "instructor": "YAN Hong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "2505"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSCIE",
+                                "MSCIEBM",
+                                "MSCIEIR",
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSEIEIR2",
+                                "MSMIT1",
+                                "MSMITBM2",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14057",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "16",
+                        "capacity": "16",
+                        "waitlistAvailable": ":4",
+                        "instructor": "YAN Hong",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "2505"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "EE2/C",
+                                "EE2/M",
+                                "EE2/P"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE5815": {
+                "courseId": "EE5815",
+                "title": "Topics in Security Technology",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE5815.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE5815.pdf",
+                "catalogue": {
+                    "title": "Topics in Security Technology",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 3,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "15146",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "202",
+                        "capacity": "202",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Chak Chung Ray",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7530"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-2"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSCIE",
+                                "MSCIEBM",
+                                "MSCIEIR",
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSEIEIR2",
+                                "MSMIT1",
+                                "MSMITBM2",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "15148",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "18",
+                        "capacity": "18",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Chak Chung Ray",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7530"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B7540"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-2"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "EE2/C",
+                                "EE2/M",
+                                "EE2/P"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE6427": {
+                "courseId": "EE6427",
+                "title": "Modern Power Electronics",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "EE4101",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE6427.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE6427.pdf",
+                "catalogue": {
+                    "title": "Modern Power Electronics",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 3,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "14040",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "202",
+                        "capacity": "202",
+                        "waitlistAvailable": ":12",
+                        "instructor": "HUI Shu Yuen R.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "09:00 - 11:50",
+                                "building": "ICP",
+                                "room": "B-101"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSEEE",
+                                "MSEEEBM",
+                                "MSEEEIR",
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSEIEIR2",
+                                "MSMIT1",
+                                "MSMITBM2",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14058",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "17",
+                        "capacity": "18",
+                        "waitlistAvailable": ":2",
+                        "instructor": "HUI Shu Yuen R.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "09:00 - 11:50",
+                                "building": "ICP",
+                                "room": "B-101"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "EE2/C",
+                                "EE2/M",
+                                "EE2/P"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 1,
+                    "rows": [
+                        {
+                            "programme": "EE2/C",
+                            "major": "0000",
+                            "cohort": "2026",
+                            "headcount": "1"
+                        }
+                    ]
+                }
+            },
+            "EE6435": {
+                "courseId": "EE6435",
+                "title": "Multi-Dimensional Data Modeling and its Applications",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE6435.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE6435.pdf",
+                "catalogue": {
+                    "title": "Multi-Dimensional Data Modeling and its Applications",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 3,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "12764",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "143",
+                        "capacity": "143",
+                        "waitlistAvailable": ":11",
+                        "instructor": "YUEN Shiu Yin K.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "LI",
+                                "room": "2505"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSCIE",
+                                "MSCIEBM",
+                                "MSCIEIR",
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSEIEIR2",
+                                "MSMIT1",
+                                "MSMITBM2",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12765",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "12",
+                        "capacity": "12",
+                        "waitlistAvailable": ":3",
+                        "instructor": "YUEN Shiu Yin K.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "LI",
+                                "room": "2505"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "EE2/C",
+                                "EE2/M",
+                                "EE2/P"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "15289",
+                        "section": "CB1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "5",
+                        "capacity": "5",
+                        "waitlistAvailable": "N",
+                        "instructor": "YUEN Shiu Yin K.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "LI",
+                                "room": "2505"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSAIDI"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE6611": {
+                "courseId": "EE6611",
+                "title": "Directed Studies for Taught Postgraduate Students",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "EE6680 EE6680D",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE6611.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE6611.pdf",
+                "catalogue": {
+                    "title": "Directed Studies for Taught Postgraduate Students",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 3,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "10158",
+                        "section": "D01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "P",
+                        "available": "10",
+                        "capacity": "10",
+                        "waitlistAvailable": "N",
+                        "instructor": "YUEN Shiu Yin K.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "",
+                                "time": "",
+                                "building": "",
+                                "room": ""
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSCIE",
+                                "MSCIEBM",
+                                "MSCIEIR",
+                                "MSEEE",
+                                "MSEEEBM",
+                                "MSEEEIR",
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSEIEIR2",
+                                "MSMIT1",
+                                "MSMITBM2",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE6619": {
+                "courseId": "EE6619",
+                "title": "Antenna Design for Wireless Communications",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "EE3109",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE6619.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE6619.pdf",
+                "catalogue": {
+                    "title": "Antenna Design for Wireless Communications",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 3,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "12882",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "54",
+                        "capacity": "54",
+                        "waitlistAvailable": ":10",
+                        "instructor": "LUK Kwai Man",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "P4703"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSEEE",
+                                "MSEEEBM",
+                                "MSEEEIR",
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSEIEIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12883",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "20",
+                        "capacity": "20",
+                        "waitlistAvailable": ":6",
+                        "instructor": "LUK Kwai Man",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "P4703"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSCIE",
+                                "MSCIEBM",
+                                "MSCIEIR",
+                                "MSMIT1",
+                                "MSMITBM2",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12884",
+                        "section": "CB1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "5",
+                        "capacity": "6",
+                        "waitlistAvailable": ":2",
+                        "instructor": "LUK Kwai Man",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "P4703"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "EE2/C",
+                                "EE2/M",
+                                "EE2/P"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 1,
+                    "rows": [
+                        {
+                            "programme": "EE2/C",
+                            "major": "0000",
+                            "cohort": "2026",
+                            "headcount": "1"
+                        }
+                    ]
+                }
+            },
+            "EE6620": {
+                "courseId": "EE6620",
+                "title": "Linear Systems Theory and Design",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "MA2170 or EE3210 or EE3118",
+                "exclusiveCourses": "EE5411",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE6620.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE6620.pdf",
+                "catalogue": {
+                    "title": "Linear Systems Theory and Design",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 3,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "12477",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "104",
+                        "capacity": "104",
+                        "waitlistAvailable": ":18",
+                        "instructor": "CHEN Jie",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "16:00 - 18:50",
+                                "building": "LI",
+                                "room": "2505"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSEEE",
+                                "MSEEEBM",
+                                "MSEEEIR",
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSEIEIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12478",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "39",
+                        "capacity": "39",
+                        "waitlistAvailable": ":11",
+                        "instructor": "CHEN Jie",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "16:00 - 18:50",
+                                "building": "LI",
+                                "room": "2505"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSCIE",
+                                "MSCIEBM",
+                                "MSCIEIR",
+                                "MSMIT1",
+                                "MSMITBM2",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12479",
+                        "section": "CB1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "12",
+                        "capacity": "12",
+                        "waitlistAvailable": ":3",
+                        "instructor": "CHEN Jie",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "16:00 - 18:50",
+                                "building": "LI",
+                                "room": "2505"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "EE2/C",
+                                "EE2/M",
+                                "EE2/P"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12480",
+                        "section": "CC1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "5",
+                        "capacity": "5",
+                        "waitlistAvailable": ":1",
+                        "instructor": "CHEN Jie",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "16:00 - 18:50",
+                                "building": "LI",
+                                "room": "2505"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSEM1"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE6621": {
+                "courseId": "EE6621",
+                "title": "Computational Physiology and Neural Systems",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "BME6122 BME8133",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE6621.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE6621.pdf",
+                "catalogue": {
+                    "title": "Computational Physiology and Neural Systems",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 3,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "13526",
+                        "section": "C61",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "64",
+                        "capacity": "64",
+                        "waitlistAvailable": ":12",
+                        "instructor": "CHAN Ho Man",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "LT-16"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSEEE",
+                                "MSEEEBM",
+                                "MSEEEIR",
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSEIEIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13527",
+                        "section": "CP1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "23",
+                        "capacity": "23",
+                        "waitlistAvailable": ":7",
+                        "instructor": "CHAN Ho Man",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "LT-16"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSCIE",
+                                "MSCIEBM",
+                                "MSCIEIR",
+                                "MSMIT1",
+                                "MSMITBM2",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13528",
+                        "section": "CQ1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "7",
+                        "capacity": "8",
+                        "waitlistAvailable": ":2",
+                        "instructor": "CHAN Ho Man",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "LT-16"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "EE2/C",
+                                "EE2/M",
+                                "EE2/P"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "15151",
+                        "section": "CR1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "5",
+                        "capacity": "5",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Ho Man",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "LT-16"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSAIDI"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 1,
+                    "rows": [
+                        {
+                            "programme": "EE2/C",
+                            "major": "0000",
+                            "cohort": "2026",
+                            "headcount": "1"
+                        }
+                    ]
+                }
+            },
+            "EE6622": {
+                "courseId": "EE6622",
+                "title": "Topics in Smart Grids",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE6622.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE6622.pdf",
+                "catalogue": {
+                    "title": "Topics in Smart Grids",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 3,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "14043",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "138",
+                        "capacity": "138",
+                        "waitlistAvailable": ":12",
+                        "instructor": "LI Chaojie",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "15:00 - 17:50",
+                                "building": "CMC",
+                                "room": "M9001"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSEEE",
+                                "MSEEEBM",
+                                "MSEEEIR",
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSEIEIR2",
+                                "MSMIT1",
+                                "MSMITBM2",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14061",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "R",
+                        "available": "11",
+                        "capacity": "12",
+                        "waitlistAvailable": ":2",
+                        "instructor": "LI Chaojie",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "15:00 - 17:50",
+                                "building": "CMC",
+                                "room": "M9001"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "EE2/C",
+                                "EE2/M",
+                                "EE2/P"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 1,
+                    "rows": [
+                        {
+                            "programme": "EE2/C",
+                            "major": "0000",
+                            "cohort": "2026",
+                            "headcount": "1"
+                        }
+                    ]
+                }
+            },
+            "EE6627": {
+                "courseId": "EE6627",
+                "title": "Quantitative Finance: Principles and Applications",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "MA2001",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE6627.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE6627.pdf",
+                "catalogue": {
+                    "title": "Quantitative Finance: Principles and Applications",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 3,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "15158",
+                        "section": "C61",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "87",
+                        "capacity": "87",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Cheng",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "LT-16"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSEEE",
+                                "MSEEEBM",
+                                "MSEEEIR",
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSEIEIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "15159",
+                        "section": "CP1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "33",
+                        "capacity": "33",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Cheng",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "19:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "LT-16"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSCIE",
+                                "MSCIEBM",
+                                "MSCIEIR",
+                                "MSMIT1",
+                                "MSMITBM2",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE6680": {
+                "courseId": "EE6680",
+                "title": "Dissertation",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "EE6611 EE6691",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE6680.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE6680.pdf",
+                "catalogue": {
+                    "title": "Dissertation",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 6,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "10094",
+                        "section": "D01",
+                        "creditUnits": "6",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "P",
+                        "available": "5",
+                        "capacity": "5",
+                        "waitlistAvailable": "N",
+                        "instructor": "YUEN Shiu Yin K.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "",
+                                "time": "",
+                                "building": "",
+                                "room": ""
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSCIE",
+                                "MSCIEBM",
+                                "MSCIEIR",
+                                "MSEEE",
+                                "MSEEEBM",
+                                "MSEEEIR",
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSEIEIR2",
+                                "MSMIT1",
+                                "MSMITBM2",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE6680D": {
+                "courseId": "EE6680D",
+                "title": "Dissertation",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:42 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "EE6611 EE6691",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE6680D.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE6680D.pdf",
+                "catalogue": {
+                    "title": "Dissertation",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 6,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "10247",
+                        "section": "D01",
+                        "creditUnits": "6",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "P",
+                        "available": "50",
+                        "capacity": "50",
+                        "waitlistAvailable": "N",
+                        "instructor": "YUEN Shiu Yin K.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "",
+                                "time": "",
+                                "building": "",
+                                "room": ""
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSMIT1",
+                                "MSMITBM2"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE6691": {
+                "courseId": "EE6691",
+                "title": "Applied Research Internship Scheme in Electrical Engineering",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:43 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "EE6680 EE6680D EE6690",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE6691.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE6691.pdf",
+                "catalogue": {
+                    "title": "Applied Research Internship Scheme in Electrical Engineering",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 12,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "12831",
+                        "section": "D01",
+                        "creditUnits": "12",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "P",
+                        "available": "2",
+                        "capacity": "2",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Chi Hung S.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "",
+                                "time": "",
+                                "building": "",
+                                "room": ""
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSCIEIR",
+                                "MSEEEIR",
+                                "MSEIEIR",
+                                "MSEIEIR2",
+                                "MSMITIR",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE8001": {
+                "courseId": "EE8001",
+                "title": "Guided Studies",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:43 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE8001.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE8001.pdf",
+                "catalogue": {
+                    "title": "Guided Studies",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 3,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "10159",
+                        "section": "S01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "R",
+                        "available": "57",
+                        "capacity": "60",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN L H Leanne, CHEN Mu Ku",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "S",
+                                "time": "10:00 - 12:50",
+                                "building": "LAU",
+                                "room": "6-213"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "EE2/C",
+                                "EE2/M",
+                                "EE2/P"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 3,
+                    "rows": [
+                        {
+                            "programme": "EE2/C",
+                            "major": "0000",
+                            "cohort": "2026",
+                            "headcount": "3"
+                        }
+                    ]
+                }
+            },
+            "EE8402": {
+                "courseId": "EE8402",
+                "title": "Advanced Topics in Power and Energy Systems",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:43 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE8402.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE8402.pdf",
+                "catalogue": {
+                    "title": "Advanced Topics in Power and Energy Systems",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 3,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "15163",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "138",
+                        "capacity": "138",
+                        "waitlistAvailable": "N",
+                        "instructor": "ZHU Yue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "13:00 - 15:50",
+                                "building": "BOC",
+                                "room": "R4057"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSEEE",
+                                "MSEEEBM",
+                                "MSEEEIR",
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSEIEIR2",
+                                "MSMIT1",
+                                "MSMITBM2",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "15165",
+                        "section": "CB1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P R",
+                        "available": "12",
+                        "capacity": "12",
+                        "waitlistAvailable": "N",
+                        "instructor": "ZHU Yue",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "13:00 - 15:50",
+                                "building": "BOC",
+                                "room": "R4057"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "EE2/C",
+                                "EE2/M",
+                                "EE2/P"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE8404": {
+                "courseId": "EE8404",
+                "title": "Nanotechnology for Devices and Microsystems",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:43 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE8404.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE8404.pdf",
+                "catalogue": {
+                    "title": "Nanotechnology for Devices and Microsystems",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 3,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "15540",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "P",
+                        "available": "138",
+                        "capacity": "138",
+                        "waitlistAvailable": "N",
+                        "instructor": "PANG Stella W.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "3508"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "P1610"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "MSEEE",
+                                "MSEEEBM",
+                                "MSEEEIR",
+                                "MSEIE2",
+                                "MSEIEBM2",
+                                "MSEIEIR2",
+                                "MSMIT1",
+                                "MSMITBM2",
+                                "MSMITIR2"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "15541",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "R",
+                        "available": "12",
+                        "capacity": "12",
+                        "waitlistAvailable": "N",
+                        "instructor": "PANG Stella W.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "3508"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "P1610"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "EE2/C",
+                                "EE2/M",
+                                "EE2/P"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE8461": {
+                "courseId": "EE8461",
+                "title": "Research Seminar I",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:43 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE8461.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE8461.pdf",
+                "catalogue": {
+                    "title": "Research Seminar I",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 0.5,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "10073",
+                        "section": "S01",
+                        "creditUnits": ".5",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "R",
+                        "available": "30",
+                        "capacity": "30",
+                        "waitlistAvailable": "N",
+                        "instructor": "WU Gengbo, BASU Arindam",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "P4701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "EE2/C",
+                                "EE2/P"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "EE8462": {
+                "courseId": "EE8462",
+                "title": "Research Seminar II",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:43 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/EE8462.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/EE8462.pdf",
+                "catalogue": {
+                    "title": "Research Seminar II",
+                    "description": "",
+                    "offeringTerm": "",
+                    "creditUnits": 0.5,
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": null,
+                    "examination": null,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "catalogue"
+                },
+                "sections": [
+                    {
+                        "crn": "10033",
+                        "section": "S01",
+                        "creditUnits": ".5",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "R",
+                        "available": "47",
+                        "capacity": "50",
+                        "waitlistAvailable": "N",
+                        "instructor": "WU Gengbo, BASU Arindam",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "P4701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "EE2/C",
+                                "EE2/P"
+                            ],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 3,
+                    "rows": [
+                        {
+                            "programme": "EE2/C",
+                            "major": "0000",
+                            "cohort": "2026",
+                            "headcount": "3"
+                        }
+                    ]
+                }
+            },
+            "GE1354": {
+                "courseId": "GE1354",
+                "title": "Introduction to Electronic Design",
+                "offeringUnit": "Electrical Engineering",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:48 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/GE1354.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/GE1354.pdf",
+                "catalogue": {
+                    "title": "Introduction to Electronic Design",
+                    "description": "Since the invention of first electronic transistor in 1947, there is a tremendous development of electronic technology over the past 70 years. Nowadays, electronic technology has been penetrating almost every aspect of our life and creating huge impact in our community. A few examples are mobile phones, TV, and Octopus card which are all popular electronic products used by everyone. In fact, our ways of living are greatly influenced by these technologies. All these products consist of a key electronic component – a tiny computer chip for executing all the desired functions of the devices or appliances. Attributed to the years of efforts by different scientists and engineers, these computer chips are now much faster, smaller, cheaper and easier for users even without much technical background. Regardless of your science or arts background, have you ever thought about building an electronic product to control a system or to measure signals such as heart pulses? In fact, there are endless ideas in applying these fascinating computer chips in project design relevant to your specific needs. The course teaches the basic electronic systems, signals and basic computing theory. The aim of this course is to develop students from different disciplines on their fundamental understanding of simple electronic systems, in order to allow students to turn their ideas into a simple design work, supplemented by lectures and hands-on training. At the final four weeks of the course, students from different majors will form multi-disciplinary project groups for exploring real problems and their possible electronic and computing design. Each project group will be provided with a low-cost and easy-to-use tiny computer board (unit) with some build-in features for sensing body movements, displaying texts and graphics, informing the environmental temperature, etc., that allow the students to realize their own functional products.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 50,
+                    "examination": 50,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Project: demo, presentation, report. laboratories",
+                            "cilos": "1, 2, 3, 4, 5",
+                            "weight": 20,
+                            "component": "project"
+                        },
+                        {
+                            "label": "Tests (min.: 2) & quizzes",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 30,
+                            "component": "midterm"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "11320",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "134",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Kerui",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "BOC",
+                                "room": "LT401"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11485",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "21",
+                        "capacity": "21",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Kerui",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "BOC",
+                                "room": "LT401"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11486",
+                        "section": "CB1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "15",
+                        "capacity": "15",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Kerui",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "BOC",
+                                "room": "LT401"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11321",
+                        "section": "L01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "45",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Kerui",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11322",
+                        "section": "L02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "45",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Kerui",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11323",
+                        "section": "L03",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "44",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Kerui",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "17:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11487",
+                        "section": "LA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "7",
+                        "capacity": "7",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Kerui",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11489",
+                        "section": "LA2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "7",
+                        "capacity": "7",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Kerui",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11491",
+                        "section": "LA3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "7",
+                        "capacity": "7",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Kerui",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "17:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "CDE",
+                                "ELEL",
+                                "INFE",
+                                "MEE",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11488",
+                        "section": "LB1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "5",
+                        "capacity": "5",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Kerui",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11490",
+                        "section": "LB2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "5",
+                        "capacity": "5",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Kerui",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "G7620"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11492",
+                        "section": "LB3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "5",
+                        "capacity": "5",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Kerui",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "17:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "G7610"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 134,
+                    "rows": [
+                        {
+                            "programme": "BDEGEE",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "134"
+                        }
+                    ]
+                }
+            },
+            "GE1401": {
+                "courseId": "GE1401",
+                "title": "University English",
+                "offeringUnit": "English",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:45 PM",
+                "prerequisites": "LC0200A or LC0200B",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/GE1401.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/GE1401.pdf",
+                "catalogue": {
+                    "title": "University English",
+                    "description": "This course aims to give students the necessary competence in rhetoric and writing in English so that they can use the English language effectively to think, reason, argue and express themselves. Students will develop a sense of their own strengths and weaknesses as English writers and discover how they can make their writing more logical, innovative and persuasive. This course will aid in developing students' reading, writing, critical thinking, and teamwork skills by scaffolding them through collaboratively designing an infographic (information visualization), and the multi-drafting and peer review process of writing an argumentative essay. The overall goal is for students to become autonomous writers and self-editors.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27, Summer 2027",
+                    "creditUnits": 3,
+                    "continuousAssessment": 100,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": 100,
+                    "examination": 0,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "10767",
+                        "section": "A01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "200",
+                        "capacity": "200",
+                        "waitlistAvailable": "N",
+                        "instructor": "",
+                        "mediumOfInstruction": "English",
+                        "meetings": [],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10768",
+                        "section": "A02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "200",
+                        "capacity": "200",
+                        "waitlistAvailable": "N",
+                        "instructor": "",
+                        "mediumOfInstruction": "English",
+                        "meetings": [],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10253",
+                        "section": "T01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "25",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC015",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "2409"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10738",
+                        "section": "T02",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "25",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC015",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "2415"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11833",
+                        "section": "T03",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "25",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC015",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "15:00 - 17:50",
+                                "building": "LI",
+                                "room": "2415"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11834",
+                        "section": "T04",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "25",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC015",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "2312"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13534",
+                        "section": "T05",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "25",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC015",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "2407"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14986",
+                        "section": "T06",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "25",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC020",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "2415"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14987",
+                        "section": "T07",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "25",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC020",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "15:00 - 17:50",
+                                "building": "LI",
+                                "room": "2415"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11882",
+                        "section": "T61",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "25",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC015",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "18:00 - 20:50",
+                                "building": "LI",
+                                "room": "2415"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "GE1501": {
+                "courseId": "GE1501",
+                "title": "Chinese Civilisation - History and Philosophy",
+                "offeringUnit": "Chinese and History",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:45 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/GE1501.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/GE1501.pdf",
+                "catalogue": {
+                    "title": "Chinese Civilisation - History and Philosophy",
+                    "description": "This course will critically examine Chinese historical themes and philosophical concepts from various perspectives. All learning activities, including large-class lectures, discussions, and an online platform, will cover selected topics of Chinese history and philosophy. By learning selected topics, students will be able to appreciate individual-society-state relationships; and hence to develop a sense of civility. These central themes will run through the course as the main thread in order to foster a better understanding of Chinese nation and state building from antiquity to the present. The discussions in all TLAs will touch on the real-life issues to connect the past with the present. In addition to reading texts, multimedia (such as film, music, visual arts, Websites etc.) is employed and fieldtrips are coordinated to keep afresh the experience of learning Chinese civilisation.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27, Summer 2027",
+                    "creditUnits": 3,
+                    "continuousAssessment": 100,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": 5,
+                    "examination": 0,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "10187",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "74",
+                        "capacity": "74",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHEUNG Sharon W K",
+                        "mediumOfInstruction": "Cantonese",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "1601"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10188",
+                        "section": "C02",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "74",
+                        "capacity": "74",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHUI Lisa L S",
+                        "mediumOfInstruction": "Cantonese",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "Y4302"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10189",
+                        "section": "C03",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "74",
+                        "capacity": "74",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHUI Lisa L S",
+                        "mediumOfInstruction": "Cantonese",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "Y4702"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10257",
+                        "section": "C04",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "74",
+                        "capacity": "74",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Marianne P Y",
+                        "mediumOfInstruction": "Cantonese",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "15:00 - 17:50",
+                                "building": "LI",
+                                "room": "1511"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10258",
+                        "section": "C05",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "74",
+                        "capacity": "74",
+                        "waitlistAvailable": "N",
+                        "instructor": "LAM Hok Chung",
+                        "mediumOfInstruction": "Cantonese",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "1301"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10259",
+                        "section": "C06",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "74",
+                        "capacity": "74",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Lin",
+                        "mediumOfInstruction": "Cantonese",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "1511"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10571",
+                        "section": "C07",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "74",
+                        "capacity": "74",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Lin",
+                        "mediumOfInstruction": "Cantonese",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "2513"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10572",
+                        "section": "C08",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "74",
+                        "capacity": "74",
+                        "waitlistAvailable": "N",
+                        "instructor": "LO Kar Kee",
+                        "mediumOfInstruction": "Cantonese",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "2301"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10573",
+                        "section": "C09",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "74",
+                        "capacity": "74",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Marianne P Y",
+                        "mediumOfInstruction": "Cantonese",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "LI",
+                                "room": "1301"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10851",
+                        "section": "C10",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "74",
+                        "capacity": "74",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG King Chung",
+                        "mediumOfInstruction": "Cantonese",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "Y4702"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12495",
+                        "section": "C11",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "74",
+                        "capacity": "74",
+                        "waitlistAvailable": "N",
+                        "instructor": "LO Kar Kee",
+                        "mediumOfInstruction": "Cantonese",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "1511"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12496",
+                        "section": "C12",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "74",
+                        "capacity": "74",
+                        "waitlistAvailable": "N",
+                        "instructor": "LAM Hok Chung",
+                        "mediumOfInstruction": "Cantonese",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "3601"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12497",
+                        "section": "C13",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "74",
+                        "capacity": "74",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Marianne P Y",
+                        "mediumOfInstruction": "Cantonese",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "P4703"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12498",
+                        "section": "C14",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "74",
+                        "capacity": "74",
+                        "waitlistAvailable": "N",
+                        "instructor": "NG Ka Ho",
+                        "mediumOfInstruction": "Cantonese",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "1511"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12499",
+                        "section": "C15",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "71",
+                        "capacity": "71",
+                        "waitlistAvailable": "N",
+                        "instructor": "SHI Ying",
+                        "mediumOfInstruction": "Putonghua",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "1301"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12500",
+                        "section": "C16",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "71",
+                        "capacity": "71",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA CAH10",
+                        "mediumOfInstruction": "Putonghua",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "Y4302"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14017",
+                        "section": "C17",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "71",
+                        "capacity": "71",
+                        "waitlistAvailable": "N",
+                        "instructor": "NG Ka Ho",
+                        "mediumOfInstruction": "Putonghua",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "1406"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "15623",
+                        "section": "CA3",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "5",
+                        "capacity": "5",
+                        "waitlistAvailable": "N",
+                        "instructor": "HUI Jonathan York Heng",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "YEUNG",
+                                "room": "LT-13"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "EXFB",
+                                "EXGB",
+                                "VSTB"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12078",
+                        "section": "CB1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "86",
+                        "capacity": "86",
+                        "waitlistAvailable": "N",
+                        "instructor": "NG Pak Sheung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "LT-15"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12906",
+                        "section": "CB2",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "86",
+                        "capacity": "86",
+                        "waitlistAvailable": "N",
+                        "instructor": "NG Pak Sheung",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "YEUNG",
+                                "room": "LT-15"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13465",
+                        "section": "CB3",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "77",
+                        "capacity": "77",
+                        "waitlistAvailable": "N",
+                        "instructor": "HUI Jonathan York Heng",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "YEUNG",
+                                "room": "LT-13"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "GE2410": {
+                "courseId": "GE2410",
+                "title": "English for Engineering",
+                "offeringUnit": "English",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 14:45 PM",
+                "prerequisites": "LC0200A or LC0200B",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/GE2410.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/GE2410.pdf",
+                "catalogue": {
+                    "title": "English for Engineering",
+                    "description": "This course is designed to provide engineering students with the necessary oral and written skills required for effective communication in academic and workplace contexts, both with experts in their field and lay persons. It begins by introducing them to the principles of good academic practice, which are also presented as a model for ethical workplace practice, and thus help them to avoid issues such as plagiarism. The main part then leads on to developing research and summarising skills that form the basis for the later activities. Students next learn to apply these skills to conducting technical presentations, as well as in group discussions that culminate in project planning activities. After this predominantly oral part of the course, the focus shifts to developing an understanding of and practicing various types of written communication, such as reports and other types of business communication.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27, Summer 2027",
+                    "creditUnits": 3,
+                    "continuousAssessment": 100,
+                    "examination": null,
+                    "examinationDurationHours": null
+                },
+                "assessment": {
+                    "continuousAssessment": 100,
+                    "examination": 0,
+                    "examinationDurationHours": null,
+                    "tasks": [],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "10838",
+                        "section": "A01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "60",
+                        "capacity": "1163",
+                        "waitlistAvailable": "N",
+                        "instructor": "",
+                        "mediumOfInstruction": "English",
+                        "meetings": [],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10839",
+                        "section": "A02",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1163",
+                        "capacity": "1163",
+                        "waitlistAvailable": "N",
+                        "instructor": "",
+                        "mediumOfInstruction": "English",
+                        "meetings": [],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGCCU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCEGU2",
+                                "BSCEGU3",
+                                "BSCEGU4",
+                                "BSCSEEU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10295",
+                        "section": "T01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC008",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "1314"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11569",
+                        "section": "T02",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC008",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "1314"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10296",
+                        "section": "T03",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC008",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "15:00 - 17:50",
+                                "building": "YEUNG",
+                                "room": "Y5-202"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10297",
+                        "section": "T04",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC008",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "1410"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10298",
+                        "section": "T05",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC008",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "15:00 - 17:50",
+                                "building": "LI",
+                                "room": "1402"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13183",
+                        "section": "T06",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC008",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "2405"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10299",
+                        "section": "T07",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC008",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "3500"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10396",
+                        "section": "T08",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "5",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC009",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "15:00 - 17:50",
+                                "building": "YEUNG",
+                                "room": "Y5-205"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13184",
+                        "section": "T09",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC009",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "3500"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10397",
+                        "section": "T10",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC009",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "Y5-302"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10398",
+                        "section": "T11",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC009",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "1310"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10399",
+                        "section": "T12",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC009",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "2407"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10400",
+                        "section": "T13",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC009",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 17:50",
+                                "building": "LI",
+                                "room": "1314"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10401",
+                        "section": "T14",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "3",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC009",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "15:00 - 17:50",
+                                "building": "LI",
+                                "room": "1310"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10429",
+                        "section": "T15",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC010",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B5-208"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10430",
+                        "section": "T16",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC010",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "1402"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10431",
+                        "section": "T17",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC010",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "B4302"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13185",
+                        "section": "T18",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC010",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B5-309"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10432",
+                        "section": "T19",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC010",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "12:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "Y5-202"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10433",
+                        "section": "T20",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC010",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "1310"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13186",
+                        "section": "T21",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC010",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "B5-310"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13187",
+                        "section": "T22",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC011",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B5-310"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10850",
+                        "section": "T23",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC011",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B5-207"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "10849",
+                        "section": "T24",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "5",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC011",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "15:00 - 17:50",
+                                "building": "YEUNG",
+                                "room": "B5-308"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11128",
+                        "section": "T25",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC011",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "2310"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13188",
+                        "section": "T26",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC011",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "2413"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13189",
+                        "section": "T27",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC011",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "2310"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13190",
+                        "section": "T28",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC012",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B5-210"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13178",
+                        "section": "T29",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC012",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "B5-210"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13179",
+                        "section": "T30",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC012",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "16:00 - 18:50",
+                                "building": "LI",
+                                "room": "1400"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13180",
+                        "section": "T31",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC012",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "1410"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13191",
+                        "section": "T32",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC012",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "1410"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13181",
+                        "section": "T33",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC012",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "2306"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14141",
+                        "section": "T34",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC012",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "2405"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14142",
+                        "section": "T35",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC013",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "16:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "B5-308"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14512",
+                        "section": "T36",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC013",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "1402"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14988",
+                        "section": "T37",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC013",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "15:00 - 17:50",
+                                "building": "LI",
+                                "room": "2407"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14989",
+                        "section": "T38",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC013",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "S",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B5-307"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14990",
+                        "section": "T39",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC013",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "3500"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14991",
+                        "section": "T40",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC013",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "15:00 - 17:50",
+                                "building": "YEUNG",
+                                "room": "B5-210"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "14992",
+                        "section": "T41",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "1",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC013",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B5-210"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "15740",
+                        "section": "T42",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "0",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC027",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "12:00 - 14:50",
+                                "building": "LI",
+                                "room": "2409"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "15741",
+                        "section": "T43",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC028",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "09:00 - 11:50",
+                                "building": "LI",
+                                "room": "1402"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "12964",
+                        "section": "TA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "5",
+                        "capacity": "25",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC011",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "15:00 - 17:50",
+                                "building": "LI",
+                                "room": "2413"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11380",
+                        "section": "TB1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "22",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC014",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "15:00 - 17:50",
+                                "building": "LAU",
+                                "room": "5-205"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13645",
+                        "section": "TB2",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "6",
+                        "capacity": "22",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC014",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "09:00 - 11:50",
+                                "building": "LAU",
+                                "room": "5-206"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "11379",
+                        "section": "TB3",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "3",
+                        "capacity": "22",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC014",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "09:00 - 11:50",
+                                "building": "LAU",
+                                "room": "6-211"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13192",
+                        "section": "TB4",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "2",
+                        "capacity": "22",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA LC014",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 14:50",
+                                "building": "LAU",
+                                "room": "6-211"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 1103,
+                    "rows": [
+                        {
+                            "programme": "BDEGCA",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "56"
+                        },
+                        {
+                            "programme": "BDEGEE",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "162"
+                        },
+                        {
+                            "programme": "BDEGMNE",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "70"
+                        },
+                        {
+                            "programme": "BDSEE",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "18"
+                        },
+                        {
+                            "programme": "BDSEE1",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "13"
+                        },
+                        {
+                            "programme": "BENGBDU3",
+                            "major": "BME",
+                            "cohort": "2026",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGBDU4",
+                            "major": "BME",
+                            "cohort": "2025",
+                            "headcount": "12"
+                        },
+                        {
+                            "programme": "BENGBDU4",
+                            "major": "BME",
+                            "cohort": "2026",
+                            "headcount": "54"
+                        },
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "ARCE",
+                            "cohort": "2026",
+                            "headcount": "3"
+                        },
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "CDE",
+                            "cohort": "2026",
+                            "headcount": "7"
+                        },
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "ELEL",
+                            "cohort": "2026",
+                            "headcount": "13"
+                        },
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "ITME",
+                            "cohort": "2026",
+                            "headcount": "19"
+                        },
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "M.E.",
+                            "cohort": "2026",
+                            "headcount": "4"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "A.E.",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "ARCE",
+                            "cohort": "2025",
+                            "headcount": "9"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "CDE",
+                            "cohort": "2025",
+                            "headcount": "7"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "CEG",
+                            "cohort": "2025",
+                            "headcount": "3"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "5"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "ITME",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "M.E.",
+                            "cohort": "2025",
+                            "headcount": "11"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "MEE",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "A.E.",
+                            "cohort": "2026",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "CDE",
+                            "cohort": "2026",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "ELEL",
+                            "cohort": "2026",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "MASE",
+                            "cohort": "2026",
+                            "headcount": "4"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "MEE",
+                            "cohort": "2026",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "A.E.",
+                            "cohort": "2025",
+                            "headcount": "13"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ARCE",
+                            "cohort": "2025",
+                            "headcount": "4"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "CDE",
+                            "cohort": "2025",
+                            "headcount": "22"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "CEG",
+                            "cohort": "2025",
+                            "headcount": "16"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "24"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "IEEG",
+                            "cohort": "2025",
+                            "headcount": "6"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2025",
+                            "headcount": "34"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ITME",
+                            "cohort": "2025",
+                            "headcount": "13"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "M.E.",
+                            "cohort": "2025",
+                            "headcount": "17"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "MASE",
+                            "cohort": "2025",
+                            "headcount": "24"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "MEE",
+                            "cohort": "2025",
+                            "headcount": "16"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "NRE",
+                            "cohort": "2025",
+                            "headcount": "5"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "IEEG",
+                            "cohort": "2026",
+                            "headcount": "13"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ITME",
+                            "cohort": "2026",
+                            "headcount": "39"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "MASE",
+                            "cohort": "2026",
+                            "headcount": "24"
+                        },
+                        {
+                            "programme": "BENGSEEU2",
+                            "major": "EVE",
+                            "cohort": "2026",
+                            "headcount": "3"
+                        },
+                        {
+                            "programme": "BENGSEEU4",
+                            "major": "ESE",
+                            "cohort": "2025",
+                            "headcount": "14"
+                        },
+                        {
+                            "programme": "BENGSEEU4",
+                            "major": "EVE",
+                            "cohort": "2025",
+                            "headcount": "14"
+                        },
+                        {
+                            "programme": "BSCCCU2",
+                            "major": "CSC1",
+                            "cohort": "2026",
+                            "headcount": "19"
+                        },
+                        {
+                            "programme": "BSCCCU2",
+                            "major": "DSE1",
+                            "cohort": "2026",
+                            "headcount": "3"
+                        },
+                        {
+                            "programme": "BSCCCU3",
+                            "major": "CSC1",
+                            "cohort": "2025",
+                            "headcount": "20"
+                        },
+                        {
+                            "programme": "BSCCCU3",
+                            "major": "DSE1",
+                            "cohort": "2025",
+                            "headcount": "2"
+                        },
+                        {
+                            "programme": "BSCCCU3",
+                            "major": "CSC1",
+                            "cohort": "2026",
+                            "headcount": "7"
+                        },
+                        {
+                            "programme": "BSCCCU3",
+                            "major": "CYBE",
+                            "cohort": "2026",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BSCCCU3",
+                            "major": "DSE1",
+                            "cohort": "2026",
+                            "headcount": "2"
+                        },
+                        {
+                            "programme": "BSCCCU4",
+                            "major": "CSC1",
+                            "cohort": "2025",
+                            "headcount": "42"
+                        },
+                        {
+                            "programme": "BSCCCU4",
+                            "major": "CYBE",
+                            "cohort": "2025",
+                            "headcount": "17"
+                        },
+                        {
+                            "programme": "BSCCCU4",
+                            "major": "DSE1",
+                            "cohort": "2025",
+                            "headcount": "6"
+                        },
+                        {
+                            "programme": "BSCCCU4",
+                            "major": "CSC1",
+                            "cohort": "2026",
+                            "headcount": "132"
+                        },
+                        {
+                            "programme": "BSCCCU4",
+                            "major": "CYBE",
+                            "cohort": "2026",
+                            "headcount": "14"
+                        },
+                        {
+                            "programme": "BSCCCU4",
+                            "major": "DSE1",
+                            "cohort": "2026",
+                            "headcount": "11"
+                        },
+                        {
+                            "programme": "BSCEGU2",
+                            "major": "ARSV",
+                            "cohort": "2026",
+                            "headcount": "9"
+                        },
+                        {
+                            "programme": "BSCEGU3",
+                            "major": "ARSV",
+                            "cohort": "2025",
+                            "headcount": "5"
+                        },
+                        {
+                            "programme": "BSCEGU4",
+                            "major": "ARSV",
+                            "cohort": "2025",
+                            "headcount": "12"
+                        },
+                        {
+                            "programme": "DBENGBBA",
+                            "major": "D006",
+                            "cohort": "2025",
+                            "headcount": "4"
+                        },
+                        {
+                            "programme": "DBENGBBA",
+                            "major": "D006",
+                            "cohort": "2026",
+                            "headcount": "9"
+                        },
+                        {
+                            "programme": "DBSCBSC1",
+                            "major": "D008",
+                            "cohort": "2025",
+                            "headcount": "4"
+                        },
+                        {
+                            "programme": "DBSCBSC1",
+                            "major": "D008",
+                            "cohort": "2026",
+                            "headcount": "5"
+                        }
+                    ]
+                }
+            },
+            "MA1200": {
+                "courseId": "MA1200",
+                "title": "Calculus and Basic Linear Algebra I",
+                "offeringUnit": "Mathematics",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 15:03 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "MA1006 MA1400 MA1508",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/MA1200.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/MA1200.pdf",
+                "catalogue": {
+                    "title": "Calculus and Basic Linear Algebra I",
+                    "description": "This is the first of two required courses designed for students pursuing studies in engineering or science. It aims to equip students with mathematical skills and methods essential for study of calculus and linear algebra, develop fluency in concepts and techniques from differential calculus, and provide students with mathematical training for all further study in science/engineering and its applications.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27, Summer 2027",
+                    "creditUnits": 3,
+                    "continuousAssessment": 30,
+                    "examination": 70,
+                    "examinationDurationHours": 3
+                },
+                "assessment": {
+                    "continuousAssessment": 30,
+                    "examination": 70,
+                    "examinationDurationHours": 3,
+                    "tasks": [],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "11593",
+                        "section": "CP1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "140",
+                        "capacity": "140",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Jingjing",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "18:00 - 20:50",
+                                "building": "YEUNG",
+                                "room": "LT-10"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCEGU2",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARCE",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ECE",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "SURV",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11806",
+                        "section": "TP1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "140",
+                        "capacity": "140",
+                        "waitlistAvailable": "N",
+                        "instructor": "NIU Xuanzhe",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "R",
+                                "time": "21:00 - 21:50",
+                                "building": "YEUNG",
+                                "room": "LT-10"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCEGU2",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARCE",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ECE",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "SURV",
+                                "U"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 0,
+                    "rows": []
+                }
+            },
+            "MA1201": {
+                "courseId": "MA1201",
+                "title": "Calculus and Basic Linear Algebra II",
+                "offeringUnit": "Mathematics",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 15:03 PM",
+                "prerequisites": "MA1200 or MA1300",
+                "exclusiveCourses": "MA1006 MA1401 MA1508",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/MA1201.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/MA1201.pdf",
+                "catalogue": {
+                    "title": "Calculus and Basic Linear Algebra II",
+                    "description": "This is the second of two required courses designed for students pursuing studies in engineering or science. The course aims to develop fluency in concepts and techniques from integral calculus, linear algebra and complex numbers, and provide students with mathematical training for all further study in science/engineering and its applications.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27, Summer 2027",
+                    "creditUnits": 3,
+                    "continuousAssessment": 30,
+                    "examination": 70,
+                    "examinationDurationHours": 3
+                },
+                "assessment": {
+                    "continuousAssessment": 30,
+                    "examination": 70,
+                    "examinationDurationHours": 3,
+                    "tasks": [],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "12304",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "49",
+                        "capacity": "198",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Oi Man E.",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 13:50",
+                                "building": "YEUNG",
+                                "room": "LT-6"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 13:50",
+                                "building": "YEUNG",
+                                "room": "LT-17"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "14850",
+                        "section": "CB1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "96",
+                        "capacity": "198",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA MA003",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 13:50",
+                                "building": "MMW",
+                                "room": "3420"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 13:50",
+                                "building": "YEUNG",
+                                "room": "LT-5"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12697",
+                        "section": "CC1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "106",
+                        "capacity": "198",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Alex",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 13:50",
+                                "building": "YEUNG",
+                                "room": "LT-5"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 13:50",
+                                "building": "YEUNG",
+                                "room": "LT-6"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11594",
+                        "section": "CD1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "39",
+                        "capacity": "198",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Chi Pak",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 13:50",
+                                "building": "YEUNG",
+                                "room": "LT-18"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 13:50",
+                                "building": "YEUNG",
+                                "room": "LT-18"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11595",
+                        "section": "CE1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "39",
+                        "capacity": "198",
+                        "waitlistAvailable": "N",
+                        "instructor": "QIU Weifeng",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "10:00 - 11:50",
+                                "building": "MMW",
+                                "room": "3420"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "LT-5"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "14854",
+                        "section": "CF1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "29",
+                        "capacity": "198",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA MA005",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "10:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-6"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "LT-17"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12300",
+                        "section": "CG1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "87",
+                        "capacity": "198",
+                        "waitlistAvailable": "N",
+                        "instructor": "CHAN Chi Pak",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "10:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-17"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "LT-18"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12695",
+                        "section": "CH1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "58",
+                        "capacity": "198",
+                        "waitlistAvailable": "N",
+                        "instructor": "WONG Alex",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "10:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "LT-5"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "15:00 - 16:50",
+                                "building": "YEUNG",
+                                "room": "LT-6"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11596",
+                        "section": "TA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "29",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "FANG Zehua",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "14:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "P4701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11597",
+                        "section": "TA2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "6",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "FANG Zehua",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "15:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "P4704"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11598",
+                        "section": "TA3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "14",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "HU Hanyu",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "18:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "B4702"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "14855",
+                        "section": "TB1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "18",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA MA007",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "14:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "P4302"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "14856",
+                        "section": "TB2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "20",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA MA007",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "15:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "P4302"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "14857",
+                        "section": "TB3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "58",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA MA007",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "18:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "P4302"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11599",
+                        "section": "TC1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "29",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "HU Hanyu",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "14:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "P4704"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11600",
+                        "section": "TC2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "24",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "LIU Xiao",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "15:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "B4702"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "11601",
+                        "section": "TC3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "53",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "LIU Xiao",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "18:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "P4704"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12305",
+                        "section": "TD1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "ZENG Xianhao",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "14:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "B4702"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12306",
+                        "section": "TD2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "6",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "ZENG Xianhao",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "15:00 - 15:50",
+                                "building": "YEUNG",
+                                "room": "B4302"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12307",
+                        "section": "TD3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "33",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "GUO Jin",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "F",
+                                "time": "18:00 - 18:50",
+                                "building": "YEUNG",
+                                "room": "B4302"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12698",
+                        "section": "TE1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "30",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "GUO Jin",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "11:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B4302"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12699",
+                        "section": "TE2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Shufan",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 12:50",
+                                "building": "YEUNG",
+                                "room": "P4302"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "12700",
+                        "section": "TE3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "10",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "LI Shufan",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 12:50",
+                                "building": "YEUNG",
+                                "room": "P4703"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "14858",
+                        "section": "TF1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "29",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA MA008",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "11:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "P4302"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "14859",
+                        "section": "TF2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "6",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA MA008",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 12:50",
+                                "building": "YEUNG",
+                                "room": "B4702"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "14860",
+                        "section": "TF3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "Full",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "TBA MA008",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 12:50",
+                                "building": "YEUNG",
+                                "room": "P4302"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13685",
+                        "section": "TG1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "27",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "LIU Songwei",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "11:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "B4702"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13689",
+                        "section": "TG2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "17",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "LIU Songwei",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 12:50",
+                                "building": "YEUNG",
+                                "room": "B4302"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13687",
+                        "section": "TG3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "43",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "FIAZ Mudassar",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 12:50",
+                                "building": "YEUNG",
+                                "room": "B4702"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13688",
+                        "section": "TH1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "35",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "FIAZ Mudassar",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "11:00 - 11:50",
+                                "building": "YEUNG",
+                                "room": "P4704"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13686",
+                        "section": "TH2",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "16",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Mingyang",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 12:50",
+                                "building": "YEUNG",
+                                "room": "P4704"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13690",
+                        "section": "TH3",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "N",
+                        "level": "B",
+                        "available": "7",
+                        "capacity": "66",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Mingyang",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "M",
+                                "time": "12:00 - 12:50",
+                                "building": "YEUNG",
+                                "room": "P4701"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGCA",
+                                "BDEGEE",
+                                "BDEGMNE",
+                                "BDSEE",
+                                "BDSEE1",
+                                "BDSI",
+                                "BENGBDU3",
+                                "BENGBDU4",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4",
+                                "BENGSEEU2",
+                                "BENGSEEU3",
+                                "BENGSEEU4",
+                                "BSCCBU4",
+                                "BSCCCU2",
+                                "BSCCCU3",
+                                "BSCCCU4",
+                                "BSCSCMU3",
+                                "BSCSCMU4",
+                                "BSCSEEU4",
+                                "BSCSIU2",
+                                "BSCSIU3",
+                                "BSCSIU4",
+                                "DBENGBBA",
+                                "DBSCBSC1"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "ARSV",
+                                "BME",
+                                "CDE",
+                                "CEG",
+                                "CFFT",
+                                "CHEM",
+                                "CRM1",
+                                "CSC",
+                                "CSC1",
+                                "D004",
+                                "D006",
+                                "D008",
+                                "ELEL",
+                                "ESB",
+                                "ESE",
+                                "EVE",
+                                "IEEG",
+                                "INFE",
+                                "ITME",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "PHY",
+                                "U"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 1081,
+                    "rows": [
+                        {
+                            "programme": "BDEGCA",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "94"
+                        },
+                        {
+                            "programme": "BDEGEE",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "281"
+                        },
+                        {
+                            "programme": "BDEGMNE",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "88"
+                        },
+                        {
+                            "programme": "BDSEE",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "40"
+                        },
+                        {
+                            "programme": "BDSEE1",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "21"
+                        },
+                        {
+                            "programme": "BDSI",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "21"
+                        },
+                        {
+                            "programme": "BENGBDU3",
+                            "major": "BME",
+                            "cohort": "2026",
+                            "headcount": "2"
+                        },
+                        {
+                            "programme": "BENGBDU4",
+                            "major": "BME",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGBDU4",
+                            "major": "BME",
+                            "cohort": "2026",
+                            "headcount": "71"
+                        },
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "CDE",
+                            "cohort": "2026",
+                            "headcount": "19"
+                        },
+                        {
+                            "programme": "BENGEGU2",
+                            "major": "ELEL",
+                            "cohort": "2026",
+                            "headcount": "15"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "A.E.",
+                            "cohort": "2026",
+                            "headcount": "3"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "CDE",
+                            "cohort": "2026",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "ELEL",
+                            "cohort": "2026",
+                            "headcount": "11"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "INFE",
+                            "cohort": "2026",
+                            "headcount": "2"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "M.E.",
+                            "cohort": "2026",
+                            "headcount": "7"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "MASE",
+                            "cohort": "2026",
+                            "headcount": "5"
+                        },
+                        {
+                            "programme": "BENGEGU3",
+                            "major": "MEE",
+                            "cohort": "2026",
+                            "headcount": "2"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "IEEG",
+                            "cohort": "2026",
+                            "headcount": "23"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ITME",
+                            "cohort": "2026",
+                            "headcount": "67"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "MASE",
+                            "cohort": "2026",
+                            "headcount": "45"
+                        },
+                        {
+                            "programme": "BENGSEEU4",
+                            "major": "ESE",
+                            "cohort": "2025",
+                            "headcount": "2"
+                        },
+                        {
+                            "programme": "BSCCBU4",
+                            "major": "CFFT",
+                            "cohort": "2025",
+                            "headcount": "2"
+                        },
+                        {
+                            "programme": "BSCCBU4",
+                            "major": "CFFT",
+                            "cohort": "2026",
+                            "headcount": "93"
+                        },
+                        {
+                            "programme": "BSCSEEU4",
+                            "major": "ESB",
+                            "cohort": "2026",
+                            "headcount": "35"
+                        },
+                        {
+                            "programme": "BSCSIU4",
+                            "major": "CHEM",
+                            "cohort": "2026",
+                            "headcount": "63"
+                        },
+                        {
+                            "programme": "BSCSIU4",
+                            "major": "PHY",
+                            "cohort": "2026",
+                            "headcount": "38"
+                        },
+                        {
+                            "programme": "DBENGBBA",
+                            "major": "D006",
+                            "cohort": "2026",
+                            "headcount": "19"
+                        },
+                        {
+                            "programme": "DBSCBSC1",
+                            "major": "D008",
+                            "cohort": "2026",
+                            "headcount": "10"
+                        }
+                    ]
+                }
+            },
+            "MA2001": {
+                "courseId": "MA2001",
+                "title": "Multi-variable Calculus and Linear Algebra",
+                "offeringUnit": "Mathematics",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 15:04 PM",
+                "prerequisites": "MA1201 or MA1301",
+                "exclusiveCourses": "MA2158",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/MA2001.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/MA2001.pdf",
+                "catalogue": {
+                    "title": "Multi-variable Calculus and Linear Algebra",
+                    "description": "This course aims to introduce important ideas in Linear Algebra and Advanced Calculus necessary for an understanding of their application to Science and Engineering. It will help students develop the ability to think quantitatively and analyse problems critically.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 30,
+                    "examination": 70,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 30,
+                    "examination": 70,
+                    "examinationDurationHours": 2,
+                    "tasks": [],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "10463",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "133",
+                        "capacity": "140",
+                        "waitlistAvailable": "N",
+                        "instructor": "LIU Lizuo",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "13:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "LT-10"
+                            },
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "13:00 - 14:50",
+                                "building": "YEUNG",
+                                "room": "LT-10"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "CDE",
+                                "ECE",
+                                "ELEL",
+                                "INFE",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "10510",
+                        "section": "T01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "133",
+                        "capacity": "140",
+                        "waitlistAvailable": "N",
+                        "instructor": "IP Long Fung Harry",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "W",
+                                "time": "12:00 - 12:50",
+                                "building": "YEUNG",
+                                "room": "LT-10"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE",
+                                "BENGEGU2",
+                                "BENGEGU3",
+                                "BENGEGU4"
+                            ],
+                            "majors": [
+                                "A.E.",
+                                "CDE",
+                                "ECE",
+                                "ELEL",
+                                "INFE",
+                                "M.E.",
+                                "MASE",
+                                "MEE",
+                                "NRE",
+                                "U"
+                            ]
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 7,
+                    "rows": [
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "ELEL",
+                            "cohort": "2025",
+                            "headcount": "5"
+                        },
+                        {
+                            "programme": "BSCCBU4",
+                            "major": "CFFT",
+                            "cohort": "2025",
+                            "headcount": "2"
+                        }
+                    ]
+                }
+            },
+            "PHY1101": {
+                "courseId": "PHY1101",
+                "title": "Introductory Classical Mechanics",
+                "offeringUnit": "Physics",
+                "term": "Semester B 2026/27",
+                "asOf": "November 04, 2026 15:12 PM",
+                "prerequisites": "Nil",
+                "exclusiveCourses": "Nil",
+                "catalogueUrl": "https://www.cityu.edu.hk/catalogue/ug/current/course/PHY1101.htm",
+                "syllabusUrl": "https://www.cityu.edu.hk/catalogue/ug/202627/course/PHY1101.pdf",
+                "catalogue": {
+                    "title": "Introductory Classical Mechanics",
+                    "description": "This course introduces classical mechanics, covering topics related to kinematics, Newton's laws of motion, gravity, momentum, angular momentum, work, energy, motion of rigid body, etc. The course will be heavily calculus based and serves as the first course for physics major. Basic calculus and vector calculus are introduced at the beginning. The goal of this course is to develop a conceptual understanding of core physics concepts, to make students familiar with the fundamental methodology of physics, and to provide a solid foundation for subsequent physics courses.",
+                    "offeringTerm": "Semester A 2026/27, Semester B 2026/27",
+                    "creditUnits": 3,
+                    "continuousAssessment": 30,
+                    "examination": 70,
+                    "examinationDurationHours": 2
+                },
+                "assessment": {
+                    "continuousAssessment": 30,
+                    "examination": 70,
+                    "examinationDurationHours": 2,
+                    "tasks": [
+                        {
+                            "label": "Homework, Quizzes etc.",
+                            "cilos": "1, 2, 3, 4",
+                            "weight": 30,
+                            "component": "midterm"
+                        }
+                    ],
+                    "source": "syllabus-pdf"
+                },
+                "sections": [
+                    {
+                        "crn": "13155",
+                        "section": "C01",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "10",
+                        "capacity": "245",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Xin Sunny, ZHONG Yiming",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "12:00 - 13:50",
+                                "building": "MMW",
+                                "room": "2450"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE"
+                            ],
+                            "majors": [
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13197",
+                        "section": "CA1",
+                        "creditUnits": "3",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "3",
+                        "capacity": "5",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Xin Sunny, ZHONG Yiming",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "12:00 - 13:50",
+                                "building": "MMW",
+                                "room": "2450"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    },
+                    {
+                        "crn": "13156",
+                        "section": "T01",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "10",
+                        "capacity": "245",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Xin Sunny",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "14:00 - 14:50",
+                                "building": "MMW",
+                                "room": "2450"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [
+                                "BDEGEE"
+                            ],
+                            "majors": [
+                                "U"
+                            ]
+                        }
+                    },
+                    {
+                        "crn": "13198",
+                        "section": "TA1",
+                        "creditUnits": "0",
+                        "campus": "Main Campus",
+                        "web": "Y",
+                        "level": "B",
+                        "available": "3",
+                        "capacity": "5",
+                        "waitlistAvailable": "N",
+                        "instructor": "WANG Xin Sunny",
+                        "mediumOfInstruction": "English",
+                        "meetings": [
+                            {
+                                "dateRange": "11/01/2027 - 17/04/2027",
+                                "day": "T",
+                                "time": "14:00 - 14:50",
+                                "building": "MMW",
+                                "room": "2450"
+                            }
+                        ],
+                        "restrictions": {
+                            "programmes": [],
+                            "majors": []
+                        }
+                    }
+                ],
+                "demand": {
+                    "totalRegistration": 237,
+                    "rows": [
+                        {
+                            "programme": "BDEGEE",
+                            "major": "U",
+                            "cohort": "2026",
+                            "headcount": "235"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2024",
+                            "headcount": "1"
+                        },
+                        {
+                            "programme": "BENGEGU4",
+                            "major": "INFE",
+                            "cohort": "2025",
+                            "headcount": "1"
+                        }
+                    ]
+                }
+            }
+        }
+    },
     "comparatorSemesterPresets": {
         "2A": [
             "EE1001",
