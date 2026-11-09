@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課程資訊 | CityU EE Student Portal</title>
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="course-info.css">
+    <script src="../assets/js/common.js" defer></script>
+    <script src="../assets/js/mock-data.js" defer></script>
+    <script src="review-seed.js" defer></script>
+    <script src="course-info.js" defer></script>
+</head>
+<body data-page="course-info" data-lang="zh">
+    <div class="layout">
+        <main class="main" id="mainContent" tabindex="-1">
+            <section id="pageContent" class="page-content course-info-page" aria-labelledby="pageTitle">
+                <a class="course-back" id="back-to-courses" href="index.html">
+                    <span aria-hidden="true">←</span>
+                    <span class="lang-zh">返回課程清單</span><span class="lang-en">Back to courses</span>
+                </a>
+                <header class="feature-header course-heading">
+                    <p class="course-code" id="detail-code" hidden></p>
+                    <h2 id="pageTitle"></h2>
+                    <p id="course-description"></p>
+                    <p id="course-credits" hidden></p>
+                </header>
+                <div id="course-detail" class="course-stack" hidden>
+                    <section class="card" id="official-assessment" aria-labelledby="assessment-heading" hidden>
+                        <h3 id="assessment-heading">
+                            <span class="lang-zh">先修與評核</span><span class="lang-en">Prerequisites and assessment</span>
+                        </h3>
+                        <p id="outline-term" class="course-hint"></p>
+                        <p id="course-prerequisite"></p>
+                        <dl id="assessment-weights" class="workload-metrics"></dl>
+                        <p id="assessment-passing" class="course-hint"></p>
+                        <a class="course-link" id="outline-source" target="_blank" rel="noopener">
+                            <span class="lang-zh">查看城大官方課綱（PDF）</span><span class="lang-en">View the official CityU syllabus (PDF)</span>
+                        </a>
+                    </section>
+                    <section class="card" aria-labelledby="workload-heading">
+                        <div class="course-section-heading">
+                            <div>
+                                <h3 id="workload-heading">
+                                    <span class="lang-zh">課業負擔</span><span class="lang-en">Workload</span>
+                                </h3>
+                                <p class="course-hint">
+                                    <span class="lang-zh">時數以課外學習為準。</span>
+                                    <span class="lang-en">Hours cover study outside scheduled classes.</span>
+                                </p>
+                            </div>
+                            <button class="btn-action" id="open-experience" type="button" aria-controls="experience-panel" aria-expanded="false">
+                                <span class="lang-zh">分享修讀經驗</span><span class="lang-en">Share your experience</span>
+                            </button>
+                        </div>
+                        <p id="response-count" class="course-count" role="status"></p>
+                        <dl id="workload-metrics" class="workload-metrics"></dl>
+                        <p id="peak-weeks" class="course-count"></p>
+                        <p id="readonly-course" class="course-hint" hidden>
+                            <span class="lang-zh">此課程合併列示兩個編號，待有獨立記錄後才可提交評價。</span>
+                            <span class="lang-en">Feedback will be available once these two course codes have separate records.</span>
+                        </p>
+                    </section>
+                    <section id="experience-panel" class="card" aria-labelledby="experience-heading" hidden>
+                        <h3 id="experience-heading" tabindex="-1">
+                            <span class="lang-zh">分享修讀經驗</span><span class="lang-en">Share your experience</span>
+                        </h3>
+                        <p id="experience-course" class="course-hint"></p>
+                        <form id="experience-form" novalidate>
+                            <div class="experience-fields" id="experience-fields"></div>
+                            <p class="course-hint">
+                                <span class="lang-zh">回覆只儲存在目前瀏覽器。請勿填寫姓名或其他個人資料。</span>
+                                <span class="lang-en">Responses are stored in this browser. Leave out names and other personal details.</span>
+                            </p>
+                            <div class="experience-actions">
+                                <button class="btn-action" type="submit">
+                                    <span class="lang-zh">提交評價</span><span class="lang-en">Submit experience</span>
+                                </button>
+                                <button class="btn-secondary" id="close-experience" type="button">
+                                    <span class="lang-zh">收起表單</span><span class="lang-en">Close form</span>
+                                </button>
+                            </div>
+                        </form>
+                    </section>
+                    <section class="card" id="timeline-panel" aria-labelledby="timeline-heading">
+                        <h3 id="timeline-heading">
+                            <span class="lang-zh">13 週忙碌分布</span><span class="lang-en">13-week workload timeline</span>
+                        </h3>
+                        <p class="course-hint">
+                            <span class="lang-zh">選擇週次，查看有多少回覆將該週列為最忙。</span>
+                            <span class="lang-en">Select a week to see how many responses marked it as busy.</span>
+                        </p>
+                        <ol class="workload-timeline" id="workload-timeline" aria-labelledby="timeline-heading"></ol>
+                        <p id="week-detail" class="week-detail" role="status"></p>
+                    </section>
+                    <section class="card" aria-labelledby="reviews-heading">
+                        <h3 id="reviews-heading">
+                            <span class="lang-zh">修讀經驗</span><span class="lang-en">Student experiences</span>
+                        </h3>
+                        <p class="course-hint">
+                            <span class="lang-zh">最近提交的評價排在最前。</span>
+                            <span class="lang-en">Most recent reviews first.</span>
+                        </p>
+                        <div class="course-review-filter" id="review-filter" hidden>
+                            <label for="review-term">
+                                <span class="lang-zh">按修讀學期篩選</span><span class="lang-en">Filter by study term</span>
+                            </label>
+                            <select id="review-term"></select>
+                        </div>
+                        <p id="submission-status" class="submission-status" role="status" tabindex="-1"></p>
+                        <p id="empty-reviews" class="course-hint">
+                            <span class="lang-zh">這門課暫時未有修讀經驗。</span>
+                            <span class="lang-en">No experiences have been added for this course yet.</span>
+                        </p>
+                        <ul id="course-reviews" class="course-reviews"></ul>
+                    </section>
+                    <section class="card" aria-labelledby="grade-heading">
+                        <h3 id="grade-heading">
+                            <span class="lang-zh">成績分布</span><span class="lang-en">Grade distribution</span>
+                        </h3>
+                        <p id="grade-status" class="course-count" role="status"></p>
+                        <ul class="grade-bars" id="course-grades"></ul>
+                    </section>
+                </div>
+            </section>
+            <noscript><p>請啟用 JavaScript 以查看課程資訊。 / Enable JavaScript to view course information.</p></noscript>
+        </main>
+    </div>
+</body>
+</html>

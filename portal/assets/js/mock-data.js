@@ -1073,8 +1073,14 @@
         {
             "courseId": "EE4213",
             "titles": {
-                "en": "Programming for Engineers"
+                "en": "Human-Computer Interaction",
+                "zh": "人機互動"
             },
+            "descriptions": {
+                "en": "Study human-computer interaction through user research, prototyping, and usability evaluation.",
+                "zh": "透過使用者研究、製作原型及可用性評估，學習人機互動。"
+            },
+            "creditUnits": 3,
             "category": "comparator-sample",
             "comparator": {
                 "expectedStudyHoursPerWeek": 11,
