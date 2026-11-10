@@ -39,11 +39,17 @@
                     <div class="form-group">
                         <label for="majorSelect"><span class="lang-zh">主修</span><span class="lang-en">Major</span></label>
                         <select id="majorSelect" onchange="handleGlobalChange()">
+                            <option value="" data-zh="請於二年級選擇主修" data-en="Choose a major from Year 2"></option>
+                            <option value="COMMON" data-zh="共同一年級（尚未選擇主修）" data-en="Common Year 1 (major not selected)" selected></option>
                             <option value="CDE">Computer and Data Engineering (CDE)</option>
                             <option value="INFE">Information Engineering (INFE)</option>
                             <option value="ELEL">Electronic and Electrical Engineering (ELEL)</option>
                             <option value="MEE">Microelectronic Engineering (MEE)</option>
                         </select>
+                        <small id="majorSelectionHint">
+                            <span class="lang-zh">一年級為共同課程階段，學生於二年級選擇主修；目前仍可使用課表。</span>
+                            <span class="lang-en">Year 1 is a common year. Choose a major in Year 2; the timetable is available now.</span>
+                        </small>
                     </div>
                     <div class="form-group">
                         <label for="degreeRouteSelect"><span class="lang-zh">入學途徑</span><span class="lang-en">Entry route</span></label>
@@ -55,20 +61,21 @@
                     </div>
                     <div class="form-group">
                         <label for="yearSelect"><span class="lang-zh">修讀年級</span><span class="lang-en">Year of study</span></label>
-                        <select id="yearSelect" aria-describedby="auditYearHint">
-                            <option value="1" data-zh="一年級" data-en="Year 1"></option>
-                            <option value="2" data-zh="二年級" data-en="Year 2" selected></option>
+                        <select id="yearSelect" aria-describedby="auditYearHint" onchange="handleGlobalChange()">
+                            <option value="1" data-zh="一年級" data-en="Year 1" selected></option>
+                            <option value="2" data-zh="二年級" data-en="Year 2"></option>
                             <option value="3" data-zh="三年級" data-en="Year 3"></option>
                             <option value="4" data-zh="四年級" data-en="Year 4"></option>
                         </select>
                         <small id="auditYearHint">
-                            <span class="lang-zh">重置清單時按此年級預填。</span>
-                            <span class="lang-en">Reset Checklist uses this year to set defaults.</span>
+                            <span class="lang-zh">一年級顯示共同課程；二年級起可選擇主修。</span>
+                            <span class="lang-en">Year 1 shows the common curriculum; choose a major from Year 2.</span>
                         </small>
                     </div>
                     <div class="form-group">
-                        <label for="failedCourseSelect"><span class="lang-zh">需重修科目</span><span class="lang-en">Course to retake</span></label>
-                        <select id="failedCourseSelect" onchange="handleGlobalChange()"></select>
+                        <label for="failedCourseSelect"><span class="lang-zh">重修模擬課程</span><span class="lang-en">Retake simulation course</span></label>
+                        <select id="failedCourseSelect"></select>
+                        <small><span class="lang-zh">此選項用於選擇重修模擬對象；在上方清單標記「不合格」亦會同步。</span><span class="lang-en">This selects the course used by the retake simulator. Marking a course as Failed in the checklist also syncs here.</span></small>
                     </div>
                 </div>
 
@@ -124,17 +131,24 @@
                         <div>
                             <div class="checklist-heading">
                                 <h3>
-                                    <span class="lang-zh">步驟 1：勾選已完成課程</span>
-                                    <span class="lang-en">Step 1: Check Completed Courses</span>
+                                    <span class="lang-zh">步驟 1：設定每門課程的修讀狀態</span>
+                                    <span class="lang-en">Step 1: Set the status of each course</span>
                                 </h3>
                                 <button class="btn-reset" onclick="resetChecklistToDefault()">
                                     🔄 <span class="lang-zh">重置清單</span><span class="lang-en">Reset Checklist</span>
                                 </button>
                             </div>
                             <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px;">
-                                <span class="lang-zh">包含 7 門通識 GE 課程 (21 CUs) 及 5 門專業選修 TE 課程 (15 CUs)。</span>
-                                <span class="lang-en">Includes 7 GE Courses (21 CUs) and 5 Technical Electives (15 CUs).</span>
+                                <span class="lang-zh">使用右方兩個方格標記「已完成」或「不合格」；兩者皆不勾選代表「未修讀／規劃中」。如先修科目不合格，相關後續課程會暫時從左側清單及右側規劃器隱藏；課程比較器仍會以灰色顯示該等課程並解釋原因。</span>
+                                <span class="lang-en">Use the two boxes on the right to mark a course Completed or Failed. Leave both unchecked for Not taken / planned. If a prerequisite is Failed, its downstream courses are temporarily hidden from the left checklist and right planner; Course Comparator still shows them in grey with the reason.</span>
                             </p>
+                            <div class="audit-status-legend" aria-label="Course status legend">
+                                <span class="audit-status-chip is-completed"><span class="lang-zh">已完成</span><span class="lang-en">Completed</span></span>
+                                <span class="audit-status-chip is-failed"><span class="lang-zh">不合格</span><span class="lang-en">Failed</span></span>
+                                <span class="audit-status-chip is-pending"><span class="lang-zh">未修讀／規劃中</span><span class="lang-en">Not taken / planned</span></span>
+                            </div>
+                            <p id="audit-status-feedback" class="audit-status-feedback" role="status" aria-live="polite"></p>
+                            <p id="audit-blocked-course-note" class="audit-blocked-course-note" role="status" aria-live="polite" hidden></p>
                             <div class="checklist-container" id="completedChecklistContainer"></div>
                         </div>
 
@@ -148,6 +162,7 @@
                                 <span class="lang-zh">將剩餘必修分配至未來學期。「即將到來 Sem B」的課程將自動同步至課表模擬器。</span>
                                 <span class="lang-en">Allocate remaining requirements into upcoming terms. Courses in Upcoming Semester B automatically sync to Timetable Simulator.</span>
                             </p>
+                            <p id="planner-eligibility-hint" class="planner-eligibility-hint" role="status" aria-live="polite"></p>
 
                             <div class="planner-container">
                                 <div class="planner-term-card">
@@ -253,8 +268,8 @@
                                 <span class="lang-en">Courses shown in the timetable</span>
                             </h4>
                             <p class="simulator-hint">
-                                <span class="lang-zh">如尚未規劃下學期 B，這裡會先顯示示範科目。</span>
-                                <span class="lang-en">Sample courses appear until you plan courses for Upcoming Semester B.</span>
+                                <span class="lang-zh">即使尚未選擇主修，也可使用課表；一年級會顯示共同一年級課程。選取課程以檢查時間衝突。</span>
+                                <span class="lang-en">You can use the timetable before selecting a major. Year 1 shows common-year courses; select courses to check for clashes.</span>
                             </p>
                             <div id="visualizerCheckboxes" style="display:flex; flex-direction:column; gap:8px; margin-top:8px;"></div>
                         </div>

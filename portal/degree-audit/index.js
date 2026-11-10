@@ -3,7 +3,7 @@
  */
 
 (function () {
-    const defaultFailedCourse = 'EE1001';
+    const defaultFailedCourse = ''; // Do not pre-mark a course as failed in a fresh audit.
     const semesters = ['GE', '1A', '1B', '2A', '2B', '3A', '3B', '4A', '4B'];
     const curriculumData = Object.fromEntries(window.EE4213Data.majors.map(major => [
         major.majorId,
@@ -17,6 +17,7 @@
                 day: course.day,
                 slot: course.timeSlot,
                 prereq: course.prerequisiteCourseIds?.[0],
+                prereqs: course.prerequisiteCourseIds || [],
                 blocks: course.blocksCourseId,
                 downstream: course.downstreamCourseId,
                 hasNoSlot: course.hasNoTimetableSlot,
@@ -26,10 +27,185 @@
         }
     ]));
 
+    // Year 1 is a common curriculum before students select a major in Year 2.
+    // Build it from the courses shared by every major in GE, 1A and 1B.
+    const majorIds = window.EE4213Data.majors.map(major => major.majorId);
+    const commonSource = curriculumData[majorIds[0]];
+    curriculumData.COMMON = {
+        name: 'Common Year 1 (Major not selected)',
+        courses: commonSource.courses.filter(course =>
+            ['GE', '1A', '1B'].includes(course.defaultSem) &&
+            majorIds.every(majorId => curriculumData[majorId]?.courses.some(item => item.code === course.code))
+        )
+    };
+
     const completedCourses = new Set();
+    const failedCourses = new Set();
     const plannedTerms = { 1: [], 2: [], 3: [] };
+    const progressStorageKey = 'cityuEE4213DegreeAuditStatusV2';
+    let sharedProgress = readSharedProgress();
     let activeMajor;
+    let lastChosenMajor = majorIds.includes(sharedProgress.activeMajor) ? sharedProgress.activeMajor : '';
     let courseSemMap = {};
+
+    function readSharedProgress() {
+        try {
+            const raw = localStorage.getItem(progressStorageKey);
+            const parsed = raw ? JSON.parse(raw) : null;
+            if (parsed && parsed.version === 2 && parsed.byMajor && typeof parsed.byMajor === 'object') return parsed;
+        } catch (error) {
+            console.warn('Unable to read saved Degree Audit progress.', error);
+        }
+        return { version: 2, activeMajor: null, byMajor: {} };
+    }
+
+    function saveCurrentMajorProgress() {
+        if (!activeMajor) return;
+        const major = curriculumData[activeMajor];
+        const statuses = {};
+        const commonCodes = new Set(curriculumData.COMMON.courses.map(course => course.code));
+        const commonStatuses = { ...(sharedProgress.byMajor?.COMMON || {}) };
+        major.courses.forEach(course => {
+            const status = failedCourses.has(course.code)
+                ? 'failed'
+                : completedCourses.has(course.code) ? 'completed' : 'not-taken';
+            statuses[course.code] = status;
+            // A common Year 1 course has one shared status, even after a student selects a major.
+            if (commonCodes.has(course.code)) commonStatuses[course.code] = status;
+        });
+        sharedProgress.version = 2;
+        sharedProgress.byMajor[activeMajor] = statuses;
+        sharedProgress.byMajor.COMMON = commonStatuses;
+        sharedProgress.activeMajor = activeMajor;
+        try {
+            localStorage.setItem(progressStorageKey, JSON.stringify(sharedProgress));
+        } catch (error) {
+            console.warn('Unable to save Degree Audit progress for Course Comparator.', error);
+        }
+    }
+
+    function loadMajorProgress(majorKey) {
+        completedCourses.clear();
+        failedCourses.clear();
+        const commonCodes = new Set(curriculumData.COMMON.courses.map(course => course.code));
+        let commonStatuses = sharedProgress.byMajor?.COMMON || {};
+
+        // Older saved sessions may only have a major-specific record. Recover its shared Year 1 statuses.
+        if (majorKey === 'COMMON' && !Object.keys(commonStatuses).length) {
+            const savedMajorId = lastChosenMajor || majorIds.find(id => sharedProgress.byMajor?.[id]);
+            const savedMajorStatuses = savedMajorId ? (sharedProgress.byMajor?.[savedMajorId] || {}) : {};
+            commonStatuses = Object.fromEntries(Object.entries(savedMajorStatuses).filter(([code]) => commonCodes.has(code)));
+        }
+
+        // Common Year 1 status carries into each selected Year 2+ major.
+        const majorStatuses = majorKey === 'COMMON' ? {} : (sharedProgress.byMajor?.[majorKey] || {});
+        const statuses = { ...commonStatuses, ...majorStatuses };
+        if (!Object.keys(statuses).length) return false;
+        Object.entries(statuses).forEach(([code, status]) => {
+            if (status === 'completed') completedCourses.add(code);
+            if (status === 'failed') failedCourses.add(code);
+        });
+        // Prevent saved downstream completions from contradicting a failed prerequisite.
+        [...failedCourses].forEach(code => clearCompletedDependents(code));
+        return true;
+    }
+
+    function syncRetakeCourse(preferredCode = '') {
+        const select = document.getElementById('failedCourseSelect');
+        if (!select) return;
+        const current = select.value;
+        if (preferredCode && failedCourses.has(preferredCode)) {
+            select.value = preferredCode;
+            return;
+        }
+        if (current && failedCourses.has(current)) return;
+        select.value = [...failedCourses][0] || '';
+    }
+
+    function getFailedPrerequisiteChain(courseCode, visited = new Set()) {
+        if (!activeMajor || visited.has(courseCode)) return null;
+        const major = curriculumData[activeMajor];
+        const course = major?.courses.find(item => item.code === courseCode);
+        if (!course) return null;
+
+        const nextVisited = new Set(visited);
+        nextVisited.add(courseCode);
+        for (const prerequisiteCode of course.prereqs || []) {
+            if (failedCourses.has(prerequisiteCode)) {
+                return [prerequisiteCode, courseCode];
+            }
+            const upstream = getFailedPrerequisiteChain(prerequisiteCode, nextVisited);
+            if (upstream) return [...upstream, courseCode];
+        }
+        return null;
+    }
+
+    function getPlannerBlockInfo(courseCode) {
+        const chain = getFailedPrerequisiteChain(courseCode);
+        return chain ? { rootCode: chain[0], chain } : null;
+    }
+
+    function clearCompletedDependents(prerequisiteCode) {
+        if (!activeMajor) return [];
+        const major = curriculumData[activeMajor];
+        const dependentsByPrerequisite = new Map();
+        major.courses.forEach(course => {
+            (course.prereqs || []).forEach(requiredCode => {
+                if (!dependentsByPrerequisite.has(requiredCode)) dependentsByPrerequisite.set(requiredCode, []);
+                dependentsByPrerequisite.get(requiredCode).push(course.code);
+            });
+        });
+
+        const queue = [prerequisiteCode];
+        const visited = new Set(queue);
+        const clearedCourses = [];
+        while (queue.length) {
+            const currentCode = queue.shift();
+            (dependentsByPrerequisite.get(currentCode) || []).forEach(dependentCode => {
+                if (visited.has(dependentCode)) return;
+                visited.add(dependentCode);
+                // A dependent course cannot remain recorded as completed when its prerequisite is not passed.
+                if (completedCourses.delete(dependentCode)) clearedCourses.push(dependentCode);
+                for (const term in plannedTerms) {
+                    plannedTerms[term] = plannedTerms[term].filter(code => code !== dependentCode);
+                }
+                queue.push(dependentCode);
+            });
+        }
+        return clearedCourses;
+    }
+
+    function setAuditStatusFeedback(code, status, clearedCourses = []) {
+        const feedback = document.getElementById('audit-status-feedback');
+        if (!feedback || !code) return;
+        const lang = document.body.dataset.lang === 'en' ? 'en' : 'zh';
+        const label = lang === 'en'
+            ? ({ completed: 'Completed', failed: 'Failed', 'not-taken': 'Not taken / planned' }[status])
+            : ({ completed: '已完成', failed: '不合格', 'not-taken': '未修讀／規劃中' }[status]);
+        if (clearedCourses.length) {
+            feedback.textContent = lang === 'en'
+                ? `${code} marked as ${label}. The completion status of dependent course(s) was reset: ${clearedCourses.join(', ')}.`
+                : `${code} 已標記為「${label}」。以下後續課程的已完成狀態已重設：${clearedCourses.join('、')}。`;
+        } else {
+            feedback.textContent = lang === 'en'
+                ? `${code} marked as ${label}. The change has been shared with Course Comparator.`
+                : `${code} 已標記為「${label}」，並已同步至課程比較器。`;
+        }
+    }
+
+    function markCourseFailed(code) {
+        if (!code) return [];
+        failedCourses.add(code);
+        completedCourses.delete(code);
+        return clearCompletedDependents(code);
+    }
+
+    function refreshAuditViews() {
+        renderChecklist();
+        renderFlowchart();
+        renderRoadmapAndAudit();
+        saveCurrentMajorProgress();
+    }
 
     const timeSlots = [
         { time: "09:00 - 11:50", key: "09:00" },
@@ -41,7 +217,34 @@
     const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 
     function getSelectedMajor() {
-        return document.getElementById('majorSelect').value;
+        // An empty Year 2+ selection still uses the common-year curriculum,
+        // keeping Degree Audit and the timetable usable before a major is chosen.
+        return document.getElementById('majorSelect').value || 'COMMON';
+    }
+
+    function configureMajorSelectionForYear() {
+        const year = getSelectedYear();
+        const majorSelect = document.getElementById('majorSelect');
+        const hint = document.getElementById('majorSelectionHint');
+        if (year === 1) {
+            if (majorSelect.value && majorSelect.value !== 'COMMON') lastChosenMajor = majorSelect.value;
+            majorSelect.value = 'COMMON';
+            majorSelect.disabled = true;
+            if (hint) hint.textContent = document.body.dataset.lang === 'en'
+                ? 'Year 1 is a common year. Major selection is made in Year 2; the timetable is available now.'
+                : '一年級為共同課程階段，學生於二年級選擇主修；目前仍可使用課表。';
+        } else {
+            majorSelect.disabled = false;
+            if (majorSelect.value === 'COMMON') majorSelect.value = lastChosenMajor || '';
+            if (majorSelect.value && majorSelect.value !== 'COMMON') lastChosenMajor = majorSelect.value;
+            if (hint) hint.textContent = majorSelect.value
+                ? (document.body.dataset.lang === 'en'
+                    ? 'Major selected. The audit now shows the selected major curriculum.'
+                    : '已選擇主修；學位審核現正顯示該主修的課程。')
+                : (document.body.dataset.lang === 'en'
+                    ? 'Major selection starts in Year 2. Until you choose one, the common Year 1 courses remain available in the audit and timetable.'
+                    : '二年級起可選擇主修。選擇前仍可查看共同一年級課程及使用課表。');
+        }
     }
 
     function getSelectedDegreeRoute() {
@@ -73,29 +276,40 @@
     }
 
     window.handleGlobalChange = function () {
+        configureMajorSelectionForYear();
         const majorKey = getSelectedMajor();
-        const major = curriculumData[majorKey];
-        const initializing = activeMajor === undefined;
+        const major = curriculumData[majorKey] || curriculumData.COMMON;
+        const majorChanged = activeMajor !== majorKey;
 
-        if (activeMajor !== majorKey) {
+        if (majorChanged) {
+            if (activeMajor) saveCurrentMajorProgress();
             activeMajor = majorKey;
             initCourseSemMap();
+
             const failedSelect = document.getElementById('failedCourseSelect');
             const currentFailed = failedSelect.value;
             const failCandidates = major.courses.filter(c => !c.isGe);
-            failedSelect.replaceChildren(...failCandidates.map(c =>
+            const placeholder = new Option(
+                document.body.dataset.lang === 'en' ? 'Select a failed course (optional)' : '選擇需重修課程（可選）',
+                ''
+            );
+            failedSelect.replaceChildren(placeholder, ...failCandidates.map(c =>
                 new Option(`${c.code} - ${c.name} (${c.cu} CU)`, c.code)));
-            failedSelect.value = failCandidates.some(c => c.code === currentFailed) ? currentFailed : defaultFailedCourse;
-        }
 
-        if (initializing) {
-            resetChecklistToDefault();
+            const hasSavedProgress = loadMajorProgress(majorKey);
+            if (hasSavedProgress) {
+                syncRetakeCourse(currentFailed);
+                refreshAuditViews();
+            } else {
+                failedSelect.value = '';
+                resetChecklistToDefault();
+            }
             return;
         }
-        completedCourses.delete(getSelectedFailedCourse());
-        renderChecklist();
-        renderFlowchart();
-        renderRoadmapAndAudit();
+
+        const selectedFailed = getSelectedFailedCourse();
+        if (selectedFailed) markCourseFailed(selectedFailed);
+        refreshAuditViews();
     };
 
     window.switchTab = function (tabId, btn) {
@@ -109,54 +323,142 @@
 
     function renderChecklist() {
         const majorKey = getSelectedMajor();
-        const failedCode = getSelectedFailedCourse();
         const major = getActiveCurriculumData()[majorKey] || getActiveCurriculumData()["CDE"];
+        const lang = document.body.dataset.lang === 'en' ? 'en' : 'zh';
+        const labels = lang === 'en'
+            ? { completed: 'Completed', failed: 'Failed' }
+            : { completed: '已完成', failed: '不合格／需重修' };
 
         const container = document.getElementById('completedChecklistContainer');
         if (!container) return;
-        container.innerHTML = '';
+        container.replaceChildren();
 
-        major.courses.forEach(c => {
-            container.innerHTML += `
-                <div class="course-check-item ${c.isGe ? 'ge-item' : ''}">
-                    <label>
-                        <input type="checkbox" value="${c.code}" ${completedCourses.has(c.code) ? 'checked' : ''} ${c.code === failedCode ? 'disabled' : ''} onchange="degreeAuditToggleCourse('${c.code}', this.checked)">
-                        <span><strong>${c.code}</strong> ${c.name} ${c.isGe ? '(GE)' : '[' + c.defaultSem + ']'}</span>
-                    </label>
-                    <span>${c.cu} CU</span>
-                </div>
-            `;
+        const blockedItems = major.courses
+            .map(course => ({ course, chain: getFailedPrerequisiteChain(course.code) }))
+            // Keep the failed course itself visible so the student can clear or update its status.
+            .filter(item => item.chain && !failedCourses.has(item.course.code));
+        const hiddenCodes = new Set(blockedItems.map(item => item.course.code));
+        const blockedNote = document.getElementById('audit-blocked-course-note');
+        if (blockedNote) {
+            blockedNote.hidden = blockedItems.length === 0;
+            if (blockedItems.length) {
+                const details = blockedItems.map(item => `${item.course.code} (${item.chain.join(' → ')})`);
+                blockedNote.textContent = lang === 'en'
+                    ? `Temporarily hidden because a prerequisite failed: ${details.join('; ')}. Pass the prerequisite first to show these courses again.`
+                    : `以下課程因先修科目不合格而暫時隱藏：${details.join('；')}。請先通過先修科目，這些課程便會重新顯示。`;
+            } else {
+                blockedNote.textContent = '';
+            }
+        }
+
+        major.courses.filter(course => !hiddenCodes.has(course.code)).forEach(c => {
+            const isCompleted = completedCourses.has(c.code);
+            const isFailed = failedCourses.has(c.code);
+            const status = isFailed ? 'failed' : isCompleted ? 'completed' : 'not-taken';
+            const row = document.createElement('div');
+            row.className = `course-check-item ${c.isGe ? 'ge-item' : ''} status-${status}`;
+
+            const courseText = document.createElement('div');
+            courseText.className = 'course-check-name';
+            const code = document.createElement('strong');
+            code.textContent = c.code;
+            const title = document.createTextNode(` ${c.name} ${c.isGe ? '(GE)' : '[' + c.defaultSem + ']'}`);
+            courseText.append(code, title);
+
+            const controls = document.createElement('div');
+            controls.className = 'course-status-controls';
+
+            const completedLabel = document.createElement('label');
+            completedLabel.className = 'course-status-option is-completed';
+            const completedCheckbox = document.createElement('input');
+            completedCheckbox.type = 'checkbox';
+            completedCheckbox.checked = isCompleted;
+            completedCheckbox.setAttribute('aria-label', lang === 'en' ? `${c.code}: ${labels.completed}` : `${c.code}：${labels.completed}`);
+            completedCheckbox.addEventListener('change', () => {
+                const currentStatus = failedCourses.has(c.code) ? 'failed' : completedCourses.has(c.code) ? 'completed' : 'not-taken';
+                if (completedCheckbox.checked) {
+                    window.degreeAuditSetCourseStatus(c.code, 'completed');
+                } else if (currentStatus === 'completed') {
+                    window.degreeAuditSetCourseStatus(c.code, 'not-taken');
+                }
+            });
+            const completedText = document.createElement('span');
+            completedText.textContent = labels.completed;
+            completedLabel.append(completedCheckbox, completedText);
+
+            const failedLabel = document.createElement('label');
+            failedLabel.className = 'course-status-option is-failed';
+            const failedCheckbox = document.createElement('input');
+            failedCheckbox.type = 'checkbox';
+            failedCheckbox.checked = isFailed;
+            failedCheckbox.setAttribute('aria-label', lang === 'en' ? `${c.code}: ${labels.failed}` : `${c.code}：${labels.failed}`);
+            failedCheckbox.addEventListener('change', () => {
+                const currentStatus = failedCourses.has(c.code) ? 'failed' : completedCourses.has(c.code) ? 'completed' : 'not-taken';
+                if (failedCheckbox.checked) {
+                    window.degreeAuditSetCourseStatus(c.code, 'failed');
+                } else if (currentStatus === 'failed') {
+                    window.degreeAuditSetCourseStatus(c.code, 'not-taken');
+                }
+            });
+            const failedText = document.createElement('span');
+            failedText.textContent = labels.failed;
+            failedLabel.append(failedCheckbox, failedText);
+
+            controls.append(completedLabel, failedLabel);
+
+            const credit = document.createElement('span');
+            credit.className = 'course-credit-units';
+            credit.textContent = `${c.cu} CU`;
+            row.append(courseText, controls, credit);
+            container.appendChild(row);
         });
-
     }
 
-    window.degreeAuditToggleCourse = function (code, isChecked) {
-        if (isChecked) {
-            completedCourses.add(code);
-            for (let t in plannedTerms) {
-                plannedTerms[t] = plannedTerms[t].filter(c => c !== code);
+    window.degreeAuditSetCourseStatus = function (code, status) {
+        let clearedCourses = [];
+        if (status === 'completed') {
+            const failedChain = getFailedPrerequisiteChain(code);
+            if (failedChain) {
+                const feedback = document.getElementById('audit-status-feedback');
+                if (feedback) feedback.textContent = document.body.dataset.lang === 'en'
+                    ? `${code} cannot be marked Completed because prerequisite ${failedChain[0]} is Failed (${failedChain.join(' → ')}).`
+                    : `${code} 不能標記為「已完成」，因為先修科目 ${failedChain[0]} 不合格（${failedChain.join(' → ')}）。`;
+                refreshAuditViews();
+                return;
             }
+            completedCourses.add(code);
+            failedCourses.delete(code);
+            for (const term in plannedTerms) plannedTerms[term] = plannedTerms[term].filter(courseCode => courseCode !== code);
+        } else if (status === 'failed') {
+            failedCourses.add(code);
+            completedCourses.delete(code);
+            for (const term in plannedTerms) plannedTerms[term] = plannedTerms[term].filter(courseCode => courseCode !== code);
+            clearedCourses = clearCompletedDependents(code);
         } else {
             completedCourses.delete(code);
+            failedCourses.delete(code);
+            clearedCourses = clearCompletedDependents(code);
         }
-        renderFlowchart();
-        renderRoadmapAndAudit();
+        syncRetakeCourse(status === 'failed' ? code : '');
+        refreshAuditViews();
+        setAuditStatusFeedback(code, status, clearedCourses);
+    };
+
+    // Backward-compatible wrapper for any older checklist markup.
+    window.degreeAuditToggleCourse = function (code, isChecked) {
+        window.degreeAuditSetCourseStatus(code, isChecked ? 'completed' : 'not-taken');
     };
 
     window.resetChecklistToDefault = function () {
+        // The prototype must not assume that a student has taken any course.
+        // Show the curriculum, but leave all Completed / Failed boxes unticked.
         completedCourses.clear();
-        const year = getSelectedYear();
-        const failedCode = getSelectedFailedCourse();
-        for (const course of curriculumData[getSelectedMajor()].courses) {
-            const takenInEarlierYear = course.isGe ? year >= 2 : Number(course.defaultSem[0]) < year;
-            if (course.code !== failedCode && !course.isTe && takenInEarlierYear) completedCourses.add(course.code);
-        }
-        for (const term in plannedTerms) {
-            plannedTerms[term] = plannedTerms[term].filter(code => !completedCourses.has(code));
-        }
-        renderChecklist();
-        renderFlowchart();
-        renderRoadmapAndAudit();
+        failedCourses.clear();
+        const failedSelect = document.getElementById('failedCourseSelect');
+        if (failedSelect) failedSelect.value = '';
+        for (const term in plannedTerms) plannedTerms[term] = [];
+        syncRetakeCourse('');
+        refreshAuditViews();
     };
 
     function renderFlowchart() {
@@ -181,18 +483,16 @@
 
             let prereqViolations = [];
             semCourses.forEach(c => {
-                if (c.prereq) {
-                    const isPrereqCompleted = completedCourses.has(c.prereq);
-                    if (!isPrereqCompleted) {
-                        const prereqSem = courseSemMap[c.prereq];
+                (c.prereqs || []).forEach(prereqCode => {
+                    if (!completedCourses.has(prereqCode)) {
+                        const prereqSem = courseSemMap[prereqCode];
                         const currentSemIdx = semesters.indexOf(semLabel);
                         const prereqSemIdx = semesters.indexOf(prereqSem);
-
-                        if (prereqSemIdx >= currentSemIdx) {
-                            prereqViolations.push(`<span class="lang-zh">${c.code} 須先修讀 ${c.prereq}</span><span class="lang-en">${c.code} requires ${c.prereq} in an earlier semester</span>`);
+                        if (prereqSemIdx >= currentSemIdx || failedCourses.has(prereqCode)) {
+                            prereqViolations.push(`<span class="lang-zh">${c.code} 須先完成 ${prereqCode}</span><span class="lang-en">${c.code} requires ${prereqCode} to be completed first</span>`);
                         }
                     }
-                }
+                });
             });
 
             const isWarningRow = prereqViolations.length > 0;
@@ -220,7 +520,7 @@
 
             semCourses.forEach(c => {
                 const isCompleted = completedCourses.has(c.code);
-                const isFailed = (c.code === failedCode);
+                const isFailed = failedCourses.has(c.code) || c.code === failedCode;
 
                 let boxClass = "flow-box ";
                 if (isFailed) {
@@ -287,12 +587,32 @@
         const majorKey = getSelectedMajor();
         const major = getActiveCurriculumData()[majorKey] || getActiveCurriculumData()["CDE"];
 
-        const uncompleted = major.courses.filter(c => !completedCourses.has(c.code));
+        // Keep a failed course itself available for retake planning, but hide any
+        // downstream course whose prerequisite chain contains a failed course.
+        const uncompleted = major.courses.filter(c =>
+            !completedCourses.has(c.code) && !getPlannerBlockInfo(c.code)
+        );
+        const blocked = major.courses
+            .map(c => ({ course: c, block: getPlannerBlockInfo(c.code) }))
+            .filter(item => item.block);
+        const plannerHint = document.getElementById('planner-eligibility-hint');
+        if (plannerHint) {
+            if (!blocked.length) {
+                plannerHint.textContent = document.body.dataset.lang === 'en'
+                    ? 'Courses blocked by failed prerequisites will be hidden here. A failed course itself can still be added for retake planning.'
+                    : '如有先修科目不合格，相關後續課程會在此清單隱藏；不合格科目本身仍可加入以規劃重修。';
+            } else {
+                const details = blocked.map(item => `${item.course.code} (${item.block.chain.join(' → ')})`);
+                plannerHint.textContent = document.body.dataset.lang === 'en'
+                    ? `Hidden because a prerequisite failed: ${details.join('; ')}. Retake and pass the prerequisite first.`
+                    : `因先修科目不合格而隱藏：${details.join('；')}。請先重修並通過先修科目。`;
+            }
+        }
 
         for (let t = 1; t <= 3; t++) {
             const select = document.getElementById(`term${t}Select`);
             if (!select) continue;
-            select.innerHTML = '';
+            select.innerHTML = `<option value="">${document.body.dataset.lang === 'en' ? 'Choose a course…' : '請選擇課程…'}</option>`;
             uncompleted.forEach(c => {
                 let alreadyPlanned = false;
                 for (let p in plannedTerms) {
@@ -310,7 +630,15 @@
         if (!select) return;
         const code = select.value;
         if (code) {
-            plannedTerms[termId].push(code);
+            const blocked = getPlannerBlockInfo(code);
+            if (blocked) {
+                const hint = document.getElementById('planner-eligibility-hint');
+                if (hint) hint.textContent = document.body.dataset.lang === 'en'
+                    ? `${code} cannot be planned because prerequisite ${blocked.rootCode} is failed (${blocked.chain.join(' → ')}).`
+                    : `${code} 暫時不能規劃，因為先修科目 ${blocked.rootCode} 不合格（${blocked.chain.join(' → ')}）。`;
+                return;
+            }
+            if (!plannedTerms[termId].includes(code)) plannedTerms[termId].push(code);
             renderRoadmapAndAudit();
         }
     };
@@ -418,14 +746,20 @@
 
         const container = document.getElementById('visualizerCheckboxes');
         if (!container) return;
+        const previouslySelectedCodes = new Set(
+            Array.from(container.querySelectorAll('input:checked')).map(input => input.value)
+        );
         container.innerHTML = '';
 
-        let targetCourses = [];
-        if (plannedTerms[1] && plannedTerms[1].length > 0) {
-            targetCourses = major.courses.filter(c => plannedTerms[1].includes(c.code) && c.code !== failedCode);
-        } else {
-            targetCourses = major.courses.filter(c => !completedCourses.has(c.code) && c.code !== failedCode && !c.isGe && !c.isTe).slice(0, 4);
-        }
+        // Keep all eligible courses available for timetable selection. Nothing is
+        // checked automatically; only courses already added to a planned term are pre-ticked.
+        const targetCourses = major.courses.filter(c =>
+            !completedCourses.has(c.code) &&
+            !failedCourses.has(c.code) &&
+            !getPlannerBlockInfo(c.code) &&
+            !c.isTe
+        );
+        const plannedCodes = new Set(Object.values(plannedTerms).flat());
 
         if (targetCourses.length === 0) {
             container.innerHTML = `<p><span class="lang-zh">沒有可加入課表的其他科目。</span><span class="lang-en">There are no other courses to show.</span></p>`;
@@ -440,7 +774,7 @@
 
             container.innerHTML += `
                 <label style="display:flex; align-items:center; gap:8px; font-size:0.85rem;">
-                    <input type="checkbox" value="${c.code}" checked onchange="renderTimetable()">
+                    <input type="checkbox" value="${c.code}" ${previouslySelectedCodes.has(c.code) || plannedCodes.has(c.code) ? 'checked' : ''} onchange="renderTimetable()">
                     <span><strong>${c.code}</strong> ${slotLabel}</span>
                 </label>
             `;
@@ -457,8 +791,10 @@
         const failedCode = getSelectedFailedCourse();
         const major = getActiveCurriculumData()[majorKey] || getActiveCurriculumData()["CDE"];
 
-        let retakeSlot = (section === "L01") ? { day: "Tue", timeKey: "09:00" } : { day: "Thu", timeKey: "15:00" };
-        const retakeTime = timeSlots.find(slot => slot.key === retakeSlot.timeKey).time;
+        const retakeSlot = failedCode
+            ? ((section === "L01") ? { day: "Tue", timeKey: "09:00" } : { day: "Thu", timeKey: "15:00" })
+            : null;
+        const retakeTime = retakeSlot ? timeSlots.find(slot => slot.key === retakeSlot.timeKey).time : '';
 
         const selectedCodes = Array.from(document.querySelectorAll('#visualizerCheckboxes input:checked')).map(cb => cb.value);
         const activeCourses = major.courses.filter(c => selectedCodes.includes(c.code));
@@ -467,7 +803,7 @@
         let clashingCode = "";
 
         activeCourses.forEach(c => {
-            if (!c.hasNoSlot && c.day === retakeSlot.day && c.slot === retakeSlot.timeKey) {
+            if (retakeSlot && !c.hasNoSlot && c.day === retakeSlot.day && c.slot === retakeSlot.timeKey) {
                 isClash = true;
                 clashingCode = c.code;
             }
@@ -475,7 +811,13 @@
 
         const alertContainer = document.getElementById('clashAlertContainer');
         if (alertContainer) {
-            if (isClash) {
+            if (!failedCode) {
+                alertContainer.innerHTML = `
+                    <div class="schedule-status-card is-empty">
+                        <p><span class="lang-zh">未設定重修課程；仍可正常檢查目前勾選科目的上課時間及衝突。</span><span class="lang-en">No retake course is set. You can still check the meeting times and clashes of the selected courses.</span></p>
+                    </div>
+                `;
+            } else if (isClash) {
                 alertContainer.innerHTML = `
                     <div class="alert alert-danger">
                         <div>
@@ -507,7 +849,7 @@
                 let content = "";
                 let cellClass = "";
 
-                if (d === retakeSlot.day && ts.key === retakeSlot.timeKey) {
+                if (retakeSlot && d === retakeSlot.day && ts.key === retakeSlot.timeKey) {
                     content += `<div><span class="lang-zh">重修</span><span class="lang-en">Retake</span> ${failedCode}</div>`;
                     cellClass = "slot-active";
                 }
@@ -540,15 +882,15 @@
         const majorKey = getSelectedMajor();
         const failedCode = getSelectedFailedCourse();
         const major = getActiveCurriculumData()[majorKey] || getActiveCurriculumData()["CDE"];
-        const failedObj = major.courses.find(c => c.code === failedCode) || major.courses[0];
+        const failedObj = major.courses.find(c => c.code === failedCode);
 
         const chainContainer = document.getElementById('prereqChainContainer');
         if (chainContainer) {
-            chainContainer.innerHTML = `
+            chainContainer.innerHTML = failedObj ? `
                 <div class="chain-node failed">${failedObj.code} <span class="lang-zh">需重修</span><span class="lang-en">Retake</span></div>
                 ${failedObj.blocks ? `<span aria-hidden="true">➔</span><div class="chain-node">${failedObj.blocks} <span class="lang-zh">先修要求未滿足</span><span class="lang-en">Prerequisite unmet</span></div>` : ''}
                 ${failedObj.downstream ? `<span aria-hidden="true">➔</span><div class="chain-node">${failedObj.downstream}</div>` : ''}
-            `;
+            ` : `<p><span class="lang-zh">請先在課程清單標記不合格課程，或選擇重修模擬課程。</span><span class="lang-en">Mark a course as failed in the checklist or select a retake simulation course first.</span></p>`;
         }
 
         const gpaOk = document.getElementById('chkGpa').checked;
@@ -586,7 +928,21 @@
         });
     }
 
-    document.addEventListener('portal:languagechange', translateOptions);
+    document.addEventListener('portal:languagechange', () => {
+        translateOptions();
+        configureMajorSelectionForYear();
+        renderChecklist();
+    });
+    document.getElementById('failedCourseSelect').addEventListener('change', () => {
+        const code = getSelectedFailedCourse();
+        if (code) {
+            const clearedCourses = markCourseFailed(code);
+            refreshAuditViews();
+            setAuditStatusFeedback(code, 'failed', clearedCourses);
+        } else {
+            refreshAuditViews();
+        }
+    });
     document.getElementById('flowchartSemester').replaceChildren(...semesters.map(semester => new Option(semester)));
     document.getElementById('flowchartMoveForm').addEventListener('submit', event => {
         event.preventDefault();
