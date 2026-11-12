@@ -7,11 +7,26 @@
     }
 
     const assessmentLoadRank = { Low: 10, Moderate: 20, High: 30, 'Very High': 45 };
-    const courses = data.courses.filter(course => course.comparator);
+    const courses = data.courses;
     const presets = data.comparatorSemesterPresets;
-    if (!courses.length || !presets) {
+    const majors = Array.isArray(data.majors) ? data.majors : [];
+    if (!courses.length || !presets || !majors.length) {
         throw new Error('Course Comparator data is missing from EE4213Data.');
     }
+
+    const progressStorageKey = 'cityuEE4213DegreeAuditStatusV2';
+    const majorById = new Map(majors.map(major => [major.majorId, major]));
+    const commonCurriculum = (majors[0]?.curriculum || []).filter(course =>
+        ['GE', '1A', '1B'].includes(course.semester) &&
+        majors.every(major => major.curriculum.some(item => item.courseId === course.courseId))
+    );
+    const commonMajor = {
+        majorId: 'COMMON',
+        name: { zh: '共同一年級（尚未選擇主修）', en: 'Common Year 1 (major not selected)' },
+        curriculum: commonCurriculum
+    };
+    let auditProgress = readAuditProgress();
+    let currentMajorId = auditProgress.activeMajor === 'COMMON' || majorById.has(auditProgress.activeMajor) ? auditProgress.activeMajor : 'COMMON';
 
     const days = [
         { key: 'M', zh: '星期一', en: 'Monday' },
@@ -49,6 +64,13 @@
             gradingLabels: { assignments: '作業', midterm: '期中考', final: '期末考', project: '專題' },
             time: '時間',
             selectionLabel: (code, title) => `選擇 ${code} ${title}`,
+            notInMajor: major => `不屬於所選主修（${major}）的課程`,
+            completedReason: '已在學位審核標記為已完成',
+            failedReason: '已在學位審核標記為不合格；請先處理重修安排',
+            prerequisiteReason: (code, failed, chain) => `未能選擇：先修科目 ${code}${failed ? ' 不合格' : ' 尚未標記為已完成'}。課程鏈：${chain}`,
+            noAuditProgress: '尚未找到學位審核紀錄。請先在 Degree Audit 標記已完成／不合格課程；未完成先修科目的後續課程會保持鎖定。',
+            auditSync: (major, completed, failed) => `已連結學位審核：${major} · 已完成 ${completed} 門 · 不合格 ${failed} 門。狀態會在同一網站的頁面之間同步。`,
+            blockedSummary: (codes) => `以下課程因狀態或先修要求而略過：${codes.join('、')}`,
             timeSlot: (type, time, place) => [type, time, place].filter(Boolean).join(' · ')
         },
         en: {
@@ -79,6 +101,13 @@
             gradingLabels: { assignments: 'Assignments', midterm: 'Midterm', final: 'Final', project: 'Project' },
             time: 'Time',
             selectionLabel: (code, title) => `Select ${code} ${title}`,
+            notInMajor: major => `Not part of the selected ${major} curriculum`,
+            completedReason: 'Marked as completed in Degree Audit',
+            failedReason: 'Marked as failed in Degree Audit; handle the retake first',
+            prerequisiteReason: (code, failed, chain) => `Unavailable: prerequisite ${code} is ${failed ? 'marked as failed' : 'not marked as completed'}. Course chain: ${chain}`,
+            noAuditProgress: 'No Degree Audit record was found. Mark completed / failed courses in Degree Audit first; courses with unmet prerequisites will remain locked.',
+            auditSync: (major, completed, failed) => `Linked to Degree Audit: ${major} · ${completed} completed · ${failed} failed. Status is shared across pages on this website.`,
+            blockedSummary: codes => `Skipped because of course status or prerequisites: ${codes.join(', ')}`,
             timeSlot: (type, time, place) => [type, time, place].filter(Boolean).join(' · ')
         }
     };
@@ -103,7 +132,9 @@
         sort: document.getElementById('sort-key'),
         status: document.getElementById('status-message'),
         timetable: document.getElementById('timetable-wrapper'),
-        comparison: document.getElementById('comparison-table-wrapper')
+        comparison: document.getElementById('comparison-table-wrapper'),
+        auditMajor: document.getElementById('audit-major'),
+        auditSync: document.getElementById('audit-sync-status')
     };
     let selectedCodes = [];
     let sortKey = 'workloadScore';
@@ -118,6 +149,134 @@
 
     function courseTitle(course) {
         return course.titles?.[language()] || course.titles?.en || course.courseId;
+    }
+
+    function readAuditProgress() {
+        try {
+            const raw = localStorage.getItem(progressStorageKey);
+            const parsed = raw ? JSON.parse(raw) : null;
+            if (parsed && parsed.version === 2 && parsed.byMajor && typeof parsed.byMajor === 'object') return parsed;
+        } catch (error) {
+            console.warn('Unable to read shared Degree Audit status.', error);
+        }
+        return { version: 2, activeMajor: null, byMajor: {} };
+    }
+
+    function majorName(majorId) {
+        if (majorId === 'COMMON') {
+            return language() === 'zh'
+                ? '共同一年級（尚未選擇主修）'
+                : 'Common Year 1 (major not selected)';
+        }
+        if (language() === 'zh') {
+            const zhNames = {
+                CDE: '電子計算機及數據工程學',
+                INFE: '資訊工程學',
+                ELEL: '電子及電機工程學',
+                MEE: '微電子工程學'
+            };
+            if (zhNames[majorId]) return zhNames[majorId];
+        }
+        const major = majorById.get(majorId);
+        return major?.name?.[language()] || major?.name?.en || majorId;
+    }
+
+    function getMajorCurriculum(majorId = currentMajorId) {
+        if (majorId === 'COMMON') return commonMajor.curriculum;
+        return majorById.get(majorId)?.curriculum || [];
+    }
+
+    function getMajorCourseIndex(majorId = currentMajorId) {
+        const curriculum = getMajorCurriculum(majorId);
+        return {
+            courseIds: new Set(curriculum.map(course => course.courseId)),
+            prerequisites: new Map(curriculum.map(course => [course.courseId, course.prerequisiteCourseIds || []]))
+        };
+    }
+
+    function getMajorStatuses(majorId = currentMajorId) {
+        // Year 1 statuses are shared by all majors and remain relevant before a major is selected.
+        const commonYearStatuses = auditProgress.byMajor?.COMMON || {};
+        const majorSpecificStatuses = auditProgress.byMajor?.[majorId] || {};
+        return { ...commonYearStatuses, ...majorSpecificStatuses };
+    }
+
+    function findUnmetPrerequisite(courseId, visited = new Set(), majorIndex = getMajorCourseIndex()) {
+        if (visited.has(courseId)) return null;
+        const nextVisited = new Set(visited);
+        nextVisited.add(courseId);
+        const prereqs = majorIndex.prerequisites.get(courseId) || [];
+        const statuses = getMajorStatuses();
+
+        for (const prerequisiteCode of prereqs) {
+            const status = statuses[prerequisiteCode] || 'not-taken';
+            if (status === 'completed') continue;
+
+            if (status === 'failed') {
+                return { rootCode: prerequisiteCode, failed: true, chain: [prerequisiteCode, courseId] };
+            }
+
+            const upstream = findUnmetPrerequisite(prerequisiteCode, nextVisited, majorIndex);
+            if (upstream) {
+                return { ...upstream, chain: [...upstream.chain, courseId] };
+            }
+            return { rootCode: prerequisiteCode, failed: false, chain: [prerequisiteCode, courseId] };
+        }
+        return null;
+    }
+
+    function getCourseAvailability(course) {
+        const majorIndex = getMajorCourseIndex();
+        if (!majorIndex.courseIds.has(course.courseId)) {
+            return { allowed: false, reason: copy().notInMajor(majorName(currentMajorId)), kind: 'not-in-major' };
+        }
+
+        const status = getMajorStatuses()[course.courseId] || 'not-taken';
+        if (status === 'completed') {
+            return { allowed: false, reason: copy().completedReason, kind: 'completed' };
+        }
+        if (status === 'failed') {
+            return { allowed: false, reason: copy().failedReason, kind: 'failed' };
+        }
+
+        const unmet = findUnmetPrerequisite(course.courseId, new Set(), majorIndex);
+        if (unmet) {
+            return {
+                allowed: false,
+                reason: copy().prerequisiteReason(unmet.rootCode, unmet.failed, unmet.chain.join(' → ')),
+                kind: 'prerequisite'
+            };
+        }
+        return { allowed: true, reason: '', kind: 'available' };
+    }
+
+    function updateAuditSyncStatus() {
+        if (!elements.auditSync) return;
+        const statuses = Object.values(getMajorStatuses());
+        const completedCount = statuses.filter(status => status === 'completed').length;
+        const failedCount = statuses.filter(status => status === 'failed').length;
+        const hasRecord = Object.prototype.hasOwnProperty.call(auditProgress.byMajor || {}, currentMajorId) ||
+            Object.prototype.hasOwnProperty.call(auditProgress.byMajor || {}, 'COMMON');
+        const auditMajorLabel = auditProgress.activeMajor === 'COMMON' &&
+            !Object.prototype.hasOwnProperty.call(auditProgress.byMajor || {}, currentMajorId)
+            ? (language() === 'zh' ? '共同一年級（尚未選擇主修）' : 'Common Year 1 (major not selected)')
+            : majorName(currentMajorId);
+        elements.auditSync.textContent = hasRecord
+            ? copy().auditSync(auditMajorLabel, completedCount, failedCount)
+            : copy().noAuditProgress;
+    }
+
+    function applyAuditProgress(nextProgress, followActiveMajor = false) {
+        auditProgress = nextProgress || readAuditProgress();
+        if (followActiveMajor && (auditProgress.activeMajor === 'COMMON' || majorById.has(auditProgress.activeMajor))) {
+            currentMajorId = auditProgress.activeMajor;
+            if (elements.auditMajor) elements.auditMajor.value = currentMajorId;
+        }
+        selectedCodes = selectedCodes.filter(code => {
+            const course = courseByCode.get(code);
+            return course && getCourseAvailability(course).allowed;
+        });
+        render();
     }
 
     function setInputMessage(message, isError = false) {
@@ -136,7 +295,7 @@
     function getSortedSelectedCourses() {
         return selectedCodes
             .map(code => courseByCode.get(code))
-            .filter(Boolean)
+            .filter(course => course && getCourseAvailability(course).allowed)
             .sort((a, b) => {
                 const first = sortValue(a);
                 const second = sortValue(b);
@@ -156,9 +315,9 @@
 
     function setSelectLanguage() {
         const lang = language();
-        [elements.preset, elements.sort].forEach(select => {
+        [elements.preset, elements.sort, elements.auditMajor].filter(Boolean).forEach(select => {
             Array.from(select.options).forEach(option => {
-                option.textContent = option.dataset[lang];
+                if (option.dataset[lang]) option.textContent = option.dataset[lang];
             });
         });
         elements.courseCodes.placeholder = lang === 'zh' ? '例如：EE1001, EE2002' : 'e.g. EE1001, EE2002';
@@ -166,15 +325,21 @@
 
     function renderCourseList() {
         elements.courseList.replaceChildren();
-        courses.forEach(course => {
+        const visibleCourses = getMajorCurriculum()
+            .map(item => courseByCode.get(item.courseId))
+            .filter(Boolean);
+        visibleCourses.forEach(course => {
+            const availability = getCourseAvailability(course);
             const label = document.createElement('label');
-            label.className = 'comparator-course-option';
+            label.className = `comparator-course-option${availability.allowed ? '' : ' is-disabled'}`;
+            if (!availability.allowed) label.title = availability.reason;
 
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.value = course.courseId;
-            checkbox.checked = selectedCodes.includes(course.courseId);
-            checkbox.setAttribute('aria-label', copy().selectionLabel(course.courseId, courseTitle(course)));
+            checkbox.checked = selectedCodes.includes(course.courseId) && availability.allowed;
+            checkbox.disabled = !availability.allowed;
+            checkbox.setAttribute('aria-label', `${copy().selectionLabel(course.courseId, courseTitle(course))}${availability.reason ? ` — ${availability.reason}` : ''}`);
             checkbox.addEventListener('change', () => {
                 selectedCodes = checkbox.checked
                     ? [...selectedCodes, course.courseId]
@@ -189,9 +354,21 @@
             const name = document.createElement('small');
             name.textContent = courseTitle(course);
             labelContent.append(code, name);
+            if (!availability.allowed) {
+                const reason = document.createElement('small');
+                reason.className = 'comparator-course-reason';
+                reason.textContent = availability.reason;
+                labelContent.appendChild(reason);
+            } else if (!course.comparator) {
+                const dataNote = document.createElement('small');
+                dataNote.className = 'comparator-course-data-note';
+                dataNote.textContent = language() === 'zh' ? '未有示範比較／時間表資料' : 'No sample workload or timetable data';
+                labelContent.appendChild(dataNote);
+            }
             label.append(checkbox, labelContent);
             elements.courseList.appendChild(label);
         });
+        updateAuditSyncStatus();
     }
 
     function parseCodes(value) {
@@ -204,12 +381,18 @@
             setInputMessage(copy().noCode, true);
             return;
         }
-        const valid = codes.filter(code => courseByCode.has(code));
+        const known = codes.filter(code => courseByCode.has(code));
         const invalid = codes.filter(code => !courseByCode.has(code));
+        const blocked = known.filter(code => !getCourseAvailability(courseByCode.get(code)).allowed);
+        const valid = known.filter(code => getCourseAvailability(courseByCode.get(code)).allowed);
         selectedCodes = [...new Set([...selectedCodes, ...valid])];
         elements.courseCodes.value = '';
         render();
-        setInputMessage(invalid.length ? copy().notFound(invalid) : copy().added(valid.length), invalid.length > 0);
+        const parts = [];
+        if (valid.length) parts.push(copy().added(valid.length));
+        if (blocked.length) parts.push(copy().blockedSummary(blocked.map(code => `${code} (${getCourseAvailability(courseByCode.get(code)).reason})`)));
+        if (invalid.length) parts.push(copy().notFound(invalid));
+        setInputMessage(parts.join(' '), blocked.length > 0 || invalid.length > 0);
     }
 
     function timeToMinutes(value) {
@@ -244,7 +427,7 @@
     }
 
     function allEvents(selected) {
-        return selected.flatMap(course => (course.comparator.scheduledMeetingTimes || []).flatMap(meeting => {
+        return selected.flatMap(course => (course.comparator?.scheduledMeetingTimes || []).flatMap(meeting => {
             const interval = timeToMinutes(meeting.time);
             if (!interval) return [];
             return normalizedDays(meeting.days).map(day => ({
@@ -437,13 +620,13 @@
         table.appendChild(head);
 
         const rows = [
-            { label: copy().studyHours, value: course => course.comparator.expectedStudyHoursPerWeek == null ? copy().noSharedValue : `${course.comparator.expectedStudyHoursPerWeek} h` },
-            { label: copy().assessment, value: course => copy().assessmentLabel[course.comparator.assessmentLoad] || course.comparator.assessmentLoad || copy().noSharedValue },
-            { label: copy().difficulty, value: course => course.comparator.difficulty == null ? copy().noSharedValue : `${course.comparator.difficulty}/5` },
+            { label: copy().studyHours, value: course => course.comparator?.expectedStudyHoursPerWeek == null ? copy().noSharedValue : `${course.comparator.expectedStudyHoursPerWeek} h` },
+            { label: copy().assessment, value: course => copy().assessmentLabel[course.comparator?.assessmentLoad] || course.comparator?.assessmentLoad || copy().noSharedValue },
+            { label: copy().difficulty, value: course => course.comparator?.difficulty == null ? copy().noSharedValue : `${course.comparator.difficulty}/5` },
             { label: copy().workload, value: course => workloadScore(course) ?? copy().noSharedValue },
             {
                 label: copy().grading,
-                value: course => Object.entries(course.comparator.gradingComponents || {})
+                value: course => Object.entries(course.comparator?.gradingComponents || {})
                     .map(([key, value]) => `${copy().gradingLabels[key] || key}: ${value}%`)
                     .join('; ') || copy().noSharedValue
             },
@@ -485,9 +668,12 @@
     });
     elements.importPreset.addEventListener('click', () => {
         const semester = elements.preset.value;
-        selectedCodes = [...presets[semester]];
+        const presetCodes = [...presets[semester]];
+        const skipped = presetCodes.filter(code => !getCourseAvailability(courseByCode.get(code)).allowed);
+        selectedCodes = presetCodes.filter(code => getCourseAvailability(courseByCode.get(code)).allowed);
         render();
-        setInputMessage(copy().preset(semester));
+        const message = [copy().preset(semester), ...(skipped.length ? [copy().blockedSummary(skipped.map(code => `${code} (${getCourseAvailability(courseByCode.get(code)).reason})`))] : [])].join(' ');
+        setInputMessage(message, skipped.length > 0);
     });
     elements.reset.addEventListener('click', () => {
         selectedCodes = [];
@@ -497,6 +683,22 @@
     elements.sort.addEventListener('change', () => {
         sortKey = elements.sort.value;
         renderResults();
+    });
+    if (elements.auditMajor) {
+        elements.auditMajor.value = currentMajorId;
+        elements.auditMajor.addEventListener('change', () => {
+            currentMajorId = elements.auditMajor.value || 'COMMON';
+            selectedCodes = selectedCodes.filter(code => {
+                const course = courseByCode.get(code);
+                return course && getCourseAvailability(course).allowed;
+            });
+            render();
+            setInputMessage(language() === 'zh' ? `已切換至 ${majorName(currentMajorId)}。` : `Switched to ${majorName(currentMajorId)}.`);
+        });
+    }
+    window.addEventListener('storage', event => {
+        if (event.key !== progressStorageKey) return;
+        applyAuditProgress(readAuditProgress(), true);
     });
     document.addEventListener('portal:languagechange', render);
 

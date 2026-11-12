@@ -87,6 +87,14 @@
     color: var(--text-muted);
 }
 
+#pageContent[data-page="degree-audit"] #majorSelect:disabled {
+    background: #eef2f6;
+    border-style: dashed;
+    color: #64748b;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
 #pageContent[data-page="degree-audit"] select {
     width: 100%;
     min-width: 0;
@@ -674,4 +682,178 @@
     cursor: pointer;
     color: var(--danger-red);
     font-weight: bold;
+}
+
+
+/* Course-status controls added for shared Degree Audit / Comparator eligibility. */
+#pageContent[data-page="degree-audit"] .audit-status-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 10px;
+}
+
+#pageContent[data-page="degree-audit"] .audit-status-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 9px;
+    border-radius: 999px;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    color: #475569;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+#pageContent[data-page="degree-audit"] .audit-status-chip.is-completed {
+    border-color: #86b99a;
+    background: #edf8f0;
+    color: #176b3a;
+}
+
+#pageContent[data-page="degree-audit"] .audit-status-chip.is-failed {
+    border-color: #e2a3a3;
+    background: #fff1f1;
+    color: #9f1d1d;
+}
+
+#pageContent[data-page="degree-audit"] .audit-status-chip.is-pending {
+    border-color: #cbd5e1;
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+#pageContent[data-page="degree-audit"] .course-check-item {
+    gap: 10px;
+    padding: 7px 9px;
+    min-height: 54px;
+}
+
+#pageContent[data-page="degree-audit"] .course-check-item > label {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+#pageContent[data-page="degree-audit"] .course-check-name {
+    flex: 1 1 280px;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+#pageContent[data-page="degree-audit"] .course-status-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    flex: 0 0 auto;
+}
+
+#pageContent[data-page="degree-audit"] .course-status-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 38px;
+    padding: 6px 9px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    background: #fff;
+    color: #475569;
+    font-size: 0.78rem;
+    font-weight: 650;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+#pageContent[data-page="degree-audit"] .course-status-option input {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    flex: 0 0 18px;
+    accent-color: #176b3a;
+    cursor: pointer;
+}
+
+#pageContent[data-page="degree-audit"] .course-status-option.is-completed:has(input:checked) {
+    border-color: #2e8b57;
+    background: #effaf2;
+    color: #166534;
+}
+
+#pageContent[data-page="degree-audit"] .course-status-option.is-failed input {
+    accent-color: #b91c1c;
+}
+
+#pageContent[data-page="degree-audit"] .course-status-option.is-failed:has(input:checked) {
+    border-color: #b91c1c;
+    background: #fff1f2;
+    color: #991b1b;
+}
+
+#pageContent[data-page="degree-audit"] .course-credit-units {
+    white-space: nowrap;
+    margin-left: 8px;
+    font-weight: bold;
+    color: var(--text-muted);
+}
+
+#pageContent[data-page="degree-audit"] .audit-blocked-course-note {
+    margin: 0 0 10px;
+    padding: 9px 11px;
+    border: 1px solid #e7c78c;
+    border-left: 4px solid #a56a00;
+    border-radius: 5px;
+    background: #fff9e8;
+    color: #624719;
+    font-size: 0.78rem;
+    line-height: 1.45;
+}
+
+#pageContent[data-page="degree-audit"] .planner-eligibility-hint {
+    margin: 0 0 12px;
+    padding: 8px 10px;
+    border-left: 3px solid #a56a00;
+    border-radius: 4px;
+    background: #fff9e8;
+    color: #624719;
+    font-size: 0.78rem;
+    line-height: 1.45;
+}
+
+#pageContent[data-page="degree-audit"] .course-check-item.status-completed {
+    background: #f2fbf4;
+    border-left: 4px solid #2e8b57;
+}
+
+#pageContent[data-page="degree-audit"] .course-check-item.status-failed {
+    background: #fff5f5;
+    border-left: 4px solid #b91c1c;
+}
+
+#pageContent[data-page="degree-audit"] .course-check-item.status-not-taken {
+    border-left: 4px solid #cbd5e1;
+}
+
+@media (max-width: 700px) {
+    #pageContent[data-page="degree-audit"] .course-check-item {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        padding: 9px;
+    }
+    #pageContent[data-page="degree-audit"] .course-status-controls {
+        flex: 1 1 auto;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    #pageContent[data-page="degree-audit"] .course-credit-units {
+        margin-left: auto;
+    }
+}
+
+
+#pageContent[data-page="degree-audit"] .audit-status-feedback {
+    min-height: 1.3em;
+    margin: 0 0 8px;
+    color: #475569;
+    font-size: 0.78rem;
+    line-height: 1.45;
 }
