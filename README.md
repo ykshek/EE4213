@@ -1,5 +1,7 @@
 # CityU EE Student Portal
 
+https://ykshek.github.io/EE4213/
+
 A static, build-free high-fidelity prototype of a student guide for the Department of Electrical Engineering at City University of Hong Kong (CityUHK). It brings programme and major exploration, course discovery, workload comparison, degree planning, and a browser-local demo account flow together in one multipage portal.
 
 > **Prototype data only.** Course, major, workload, review, grade, and student data are sample or demo content unless explicitly noted as an imported CityU catalogue/AIMS snapshot. Generated workload/GPA scores and machine translations are not official statistics. Nothing is connected live to CityU AIMS, Canvas, or official student records, and nothing is saved on a server.
