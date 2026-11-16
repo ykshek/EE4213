@@ -52,7 +52,8 @@
         },
         pressure: levels
     };
-    const courses = window.EE4213Data.courses.filter(course =>
+    const allCourses = window.EE4213Data.courses;
+    const courses = allCourses.filter(course =>
         /^EE\d{4}(?: ?[A-Z])?(?: \/ EE\d{4})?$/.test(course.courseId) &&
         (course.category !== 'comparator-sample' || course.courseId === 'EE4213')
     ).sort((first, second) => first.courseId.localeCompare(second.courseId));
@@ -755,7 +756,7 @@
         const id = params.get('course')?.trim().toUpperCase();
         const query = params.get('q');
         if (query) byId('back-to-courses').href = 'index.html?' + new URLSearchParams({ q: query });
-        const course = courses.find(item => item.courseId === id);
+        const course = allCourses.find(item => item.courseId === id);
         if (!course) {
             bilingual(byId('pageTitle'), '找不到課程', 'Course not found');
             bilingual(byId('course-description'), '請返回課程清單並選擇一門課程。', 'Return to the course list and select a course.');
