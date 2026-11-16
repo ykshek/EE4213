@@ -2,3 +2,12 @@
 .DS_Store
 portal/assets/js/mock-data.js.bak
 /.arrow
+tmp-card-test.js
+/.tmp-chromium
+/.tmp-runtime
+tmp-conflict-test.js
+tmp-import-persist-test.js
+tmp-persist-test.js
+tmp-search-test.js
+tmp-summary-test.js
+tmp-provenance-test.js

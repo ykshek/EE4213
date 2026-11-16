@@ -51,11 +51,25 @@
         return { version: 2, activeMajor: null, byMajor: {} };
     }
 
-    function getCommonCurriculum(majors) {
+    function getMajorCurriculum(major, courseById) {
+        return major.curriculum.map(courseId => {
+            const course = courseById.get(courseId);
+            const curriculum = course?.curriculumByMajor?.[major.majorId];
+            if (!course || !curriculum) {
+                throw new Error(`Missing ${major.majorId} curriculum data for ${courseId}.`);
+            }
+            return { ...curriculum, courseId };
+        });
+    }
+
+    function getCommonCurriculum(majors, curriculumByMajor) {
         if (!majors.length) return [];
-        return majors[0].curriculum.filter(course =>
+        const firstMajorCurriculum = curriculumByMajor.get(majors[0].majorId) || [];
+        return firstMajorCurriculum.filter(course =>
             YEAR_SEMESTERS[1].includes(course.semester) &&
-            majors.every(major => major.curriculum.some(item => item.courseId === course.courseId))
+            majors.every(major =>
+                curriculumByMajor.get(major.majorId)?.some(item => item.courseId === course.courseId)
+            )
         );
     }
 
@@ -64,16 +78,21 @@
         const majorById = new Map(majors.map(major => [major.majorId, major]));
         const courseById = new Map((Array.isArray(data?.courses) ? data.courses : [])
             .map(course => [course.courseId, course]));
+        const curriculumByMajor = new Map(majors.map(major => [
+            major.majorId,
+            getMajorCurriculum(major, courseById)
+        ]));
+        const commonCurriculum = getCommonCurriculum(majors, curriculumByMajor);
         const year = Number((typeof profile.year === 'string' ? profile.year : '').match(/\d+/)?.[0]);
         const validYear = YEAR_SEMESTERS[year] ? year : 1;
         const majorId = validYear === 1
             ? 'COMMON'
             : (profile.major !== UNDECLARED_ID && majorById.has(profile.major) ? profile.major : '');
         const curriculum = majorId === 'COMMON'
-            ? getCommonCurriculum(majors)
-            : (majorById.get(majorId)?.curriculum || []);
+            ? commonCurriculum
+            : (curriculumByMajor.get(majorId) || []);
         const curriculumById = new Map(curriculum.map(course => [course.courseId, course]));
-        const commonById = new Map(getCommonCurriculum(majors).map(course => [course.courseId, course]));
+        const commonById = new Map(commonCurriculum.map(course => [course.courseId, course]));
         const semesters = new Set(YEAR_SEMESTERS[validYear]);
         const statuses = {
             ...(progress.byMajor?.COMMON || {}),
