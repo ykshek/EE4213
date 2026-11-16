@@ -43,6 +43,21 @@
                             </button>
                         </div>
 
+                        <div class="comparator-form-group audit-sync-group">
+                            <label for="audit-major">
+                                <span class="lang-zh">學位審核主修</span>
+                                <span class="lang-en">Degree Audit major</span>
+                            </label>
+                            <select id="audit-major">
+                                <option value="COMMON" data-zh="共同一年級（尚未選擇主修）" data-en="Common Year 1 (major not selected)" selected>Common Year 1 (major not selected)</option>
+                                <option value="CDE" data-zh="電子計算機及數據工程學 (CDE)" data-en="Computer and Data Engineering (CDE)">Computer and Data Engineering (CDE)</option>
+                                <option value="INFE" data-zh="資訊工程學 (INFE)" data-en="Information Engineering (INFE)">Information Engineering (INFE)</option>
+                                <option value="ELEL" data-zh="電子及電機工程學 (ELEL)" data-en="Electronic and Electrical Engineering (ELEL)">Electronic and Electrical Engineering (ELEL)</option>
+                                <option value="MEE" data-zh="微電子工程學 (MEE)" data-en="Microelectronics Engineering (MEE)">Microelectronics Engineering (MEE)</option>
+                            </select>
+                            <p id="audit-sync-status" class="comparator-hint" role="status" aria-live="polite"></p>
+                        </div>
+
                         <div class="comparator-form-group">
                             <label for="course-codes">
                                 <span class="lang-zh">輸入課程編號</span>
@@ -81,8 +96,8 @@
                                 <span class="lang-en">Available courses</span>
                             </legend>
                             <p class="comparator-hint">
-                                <span class="lang-zh">可選多項；選課後時間表會即時更新。</span>
-                                <span class="lang-en">Select multiple courses. The timetable updates as you choose.</span>
+                                <span class="lang-zh">可選多項。灰色課程代表已完成、不合格、非本主修課程或未符合先修要求；原因會顯示在課程名稱下方。</span>
+                                <span class="lang-en">Select multiple courses. Greyed-out courses are completed, failed, outside the selected major, or blocked by an unmet prerequisite; the reason appears below each course.</span>
                             </p>
                             <div id="course-list" class="comparator-course-list"></div>
                         </fieldset>

@@ -3,32 +3,319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>學位審核輔助 | CityU EE Student Portal</title>
+    <title>Degree Audit & Recovery Simulator - CityU EE Student Portal</title>
     <link rel="stylesheet" href="../assets/css/common.css">
-    <!-- Load page-specific CSS after common.css, and deferred JS after common.js. -->
+    <link rel="stylesheet" href="index.css">
     <script src="../assets/js/common.js" defer></script>
+    <script src="../assets/js/mock-data.js" defer></script>
+    <script src="index.js" defer></script>
 </head>
 <body data-page="degree-audit" data-lang="zh">
-    <!-- Shared header, sidebar, footer and dialogs are mounted by common.js. -->
     <div class="layout">
         <main class="main" id="mainContent" tabindex="-1">
-            <!-- PAGE OWNER: develop this page inside #pageContent. -->
-            <section id="pageContent" class="page-content" aria-labelledby="pageTitle" hidden inert>
-                <div class="feature-header">
-                    <h2 id="pageTitle">
-                        <span class="lang-zh">✅ 學位審核輔助</span>
-                        <span class="lang-en">✅ Degree Audit Helper</span>
-                    </h2>
+            <section id="pageContent" data-page="degree-audit" class="page-content degree-audit-container" aria-labelledby="pageTitle" hidden inert>
+
+                <header class="audit-header">
+                    <div>
+                        <h2 id="pageTitle">
+                            <span class="lang-zh">城大電機工程學系 學位審查與課表重修模擬器</span>
+                            <span class="lang-en">CityU EE Degree Audit & Timetable Recovery Simulator</span>
+                        </h2>
+                        <p>
+                            <span class="lang-zh">2小時50分鐘時段引擎 & 全課程時段覆蓋</span>
+                            <span class="lang-en">2hr 50min Time Slot Engine & Full Course Timeslot Coverage</span>
+                        </p>
+                    </div>
+                    <div class="header-badges">
+                        <span class="badge-version">v6.0 Integrated</span>
+                        <span class="badge-demo">
+                            <span class="lang-zh">原型示範數據</span>
+                            <span class="lang-en">Prototype Demo Data</span>
+                        </span>
+                    </div>
+                </header>
+
+                <div class="control-panel">
+                    <div class="form-group">
+                        <label for="majorSelect"><span class="lang-zh">主修</span><span class="lang-en">Major</span></label>
+                        <select id="majorSelect" onchange="handleGlobalChange()">
+                            <option value="" data-zh="請於二年級選擇主修" data-en="Choose a major from Year 2"></option>
+                            <option value="COMMON" data-zh="共同一年級（尚未選擇主修）" data-en="Common Year 1 (major not selected)" selected></option>
+                            <option value="CDE">Computer and Data Engineering (CDE)</option>
+                            <option value="INFE">Information Engineering (INFE)</option>
+                            <option value="ELEL">Electronic and Electrical Engineering (ELEL)</option>
+                            <option value="MEE">Microelectronic Engineering (MEE)</option>
+                        </select>
+                        <small id="majorSelectionHint">
+                            <span class="lang-zh">一年級為共同課程階段，學生於二年級選擇主修；目前仍可使用課表。</span>
+                            <span class="lang-en">Year 1 is a common year. Choose a major in Year 2; the timetable is available now.</span>
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="degreeRouteSelect"><span class="lang-zh">入學途徑</span><span class="lang-en">Entry route</span></label>
+                        <select id="degreeRouteSelect" onchange="handleGlobalChange()">
+                            <option value="120" data-zh="四年制（120 學分）" data-en="Four-year degree (120 CU)"></option>
+                            <option value="96" data-zh="高年級入學 I（96 學分）" data-en="Advanced Standing I (96 CU)"></option>
+                            <option value="75" data-zh="高年級入學 II（75 學分）" data-en="Advanced Standing II (75 CU)"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="yearSelect"><span class="lang-zh">修讀年級</span><span class="lang-en">Year of study</span></label>
+                        <select id="yearSelect" aria-describedby="auditYearHint" onchange="handleGlobalChange()">
+                            <option value="1" data-zh="一年級" data-en="Year 1" selected></option>
+                            <option value="2" data-zh="二年級" data-en="Year 2"></option>
+                            <option value="3" data-zh="三年級" data-en="Year 3"></option>
+                            <option value="4" data-zh="四年級" data-en="Year 4"></option>
+                        </select>
+                        <small id="auditYearHint">
+                            <span class="lang-zh">一年級顯示共同課程；二年級起可選擇主修。</span>
+                            <span class="lang-en">Year 1 shows the common curriculum; choose a major from Year 2.</span>
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="failedCourseSelect"><span class="lang-zh">重修模擬課程</span><span class="lang-en">Retake simulation course</span></label>
+                        <select id="failedCourseSelect"></select>
+                        <small><span class="lang-zh">此選項用於選擇重修模擬對象；在上方清單標記「不合格」亦會同步。</span><span class="lang-en">This selects the course used by the retake simulator. Marking a course as Failed in the checklist also syncs here.</span></small>
+                    </div>
                 </div>
-                <div class="placeholder-card">
-                    <span class="emoji" aria-hidden="true">🚧</span>
-                    <span class="status-zh">此功能開發中</span>
-                    <span class="status-en">Under Development</span>
-                    <span class="hint lang-zh">此區塊為功能掛載預留位置，由負責組員整合。</span>
-                    <span class="hint lang-en">Reserved mount point for the assigned teammate to integrate this feature.</span>
+
+                <!-- Navigation Tabs -->
+                <div class="nav-tabs">
+                    <button type="button" class="tab-btn active" aria-pressed="true" aria-controls="roadmapTab" onclick="switchTab('roadmapTab', this)">
+                        🎓 <span class="lang-zh">學位審查與互動流程圖</span><span class="lang-en">Degree Audit & Interactive Flowchart</span>
+                    </button>
+                    <button type="button" class="tab-btn" aria-pressed="false" aria-controls="visualizerTab" onclick="switchTab('visualizerTab', this)">
+                        🗓️ <span class="lang-zh">課表衝突模擬器</span><span class="lang-en">Timetable Conflict Simulator</span>
+                    </button>
+                    <button type="button" class="tab-btn" aria-pressed="false" aria-controls="overrideTab" onclick="switchTab('overrideTab', this)">
+                        🔓 <span class="lang-zh">先修科目豁免申請助手</span><span class="lang-en">Prerequisite Override Assistant</span>
+                    </button>
                 </div>
+
+                <!-- TAB 1: Degree Audit & Interactive Flowchart -->
+                <div id="roadmapTab" class="tab-content active">
+
+                    <!-- Metrics Bar -->
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="label">
+                                <span class="lang-zh">畢業總學分要求</span><span class="lang-en">Degree Requirement</span>
+                            </div>
+                            <div class="value" id="metricDegreeReq">120 CU</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="label">
+                                <span class="lang-zh">已完成學分</span><span class="lang-en">Completed Credits</span>
+                            </div>
+                            <div class="value" id="metricCompleted">0 CU</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="label">
+                                <span class="lang-zh">已規劃學分</span><span class="lang-en">Planned Credits</span>
+                            </div>
+                            <div class="value" id="metricPlanned">0 CU</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="label">
+                                <span class="lang-zh">剩餘學分缺口</span><span class="lang-en">Remaining Gap</span>
+                            </div>
+                            <div class="value" id="metricRemaining" style="color:var(--danger-red);">120 CU</div>
+                        </div>
+                    </div>
+
+                    <!-- Deferral Alert Banner -->
+                    <div id="deferralStatusBanner" role="status"></div>
+
+                    <div class="audit-layout">
+                        <!-- Left: Interactive Course Checklist -->
+                        <div>
+                            <div class="checklist-heading">
+                                <h3>
+                                    <span class="lang-zh">步驟 1：設定每門課程的修讀狀態</span>
+                                    <span class="lang-en">Step 1: Set the status of each course</span>
+                                </h3>
+                                <button class="btn-reset" onclick="resetChecklistToDefault()">
+                                    🔄 <span class="lang-zh">重置清單</span><span class="lang-en">Reset Checklist</span>
+                                </button>
+                            </div>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px;">
+                                <span class="lang-zh">使用右方兩個方格標記「已完成」或「不合格」；兩者皆不勾選代表「未修讀／規劃中」。如先修科目不合格，相關後續課程會暫時從左側清單及右側規劃器隱藏；課程比較器仍會以灰色顯示該等課程並解釋原因。</span>
+                                <span class="lang-en">Use the two boxes on the right to mark a course Completed or Failed. Leave both unchecked for Not taken / planned. If a prerequisite is Failed, its downstream courses are temporarily hidden from the left checklist and right planner; Course Comparator still shows them in grey with the reason.</span>
+                            </p>
+                            <div class="audit-status-legend" aria-label="Course status legend">
+                                <span class="audit-status-chip is-completed"><span class="lang-zh">已完成</span><span class="lang-en">Completed</span></span>
+                                <span class="audit-status-chip is-failed"><span class="lang-zh">不合格</span><span class="lang-en">Failed</span></span>
+                                <span class="audit-status-chip is-pending"><span class="lang-zh">未修讀／規劃中</span><span class="lang-en">Not taken / planned</span></span>
+                            </div>
+                            <p id="audit-status-feedback" class="audit-status-feedback" role="status" aria-live="polite"></p>
+                            <p id="audit-blocked-course-note" class="audit-blocked-course-note" role="status" aria-live="polite" hidden></p>
+                            <div class="checklist-container" id="completedChecklistContainer"></div>
+                        </div>
+
+                        <!-- Right: Future Planning -->
+                        <div>
+                            <h3>
+                                <span class="lang-zh">步驟 2：規劃未完成學期</span>
+                                <span class="lang-en">Step 2: Plan Unfinished Semesters</span>
+                            </h3>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px;">
+                                <span class="lang-zh">將剩餘必修分配至未來學期。「即將到來 Sem B」的課程將自動同步至課表模擬器。</span>
+                                <span class="lang-en">Allocate remaining requirements into upcoming terms. Courses in Upcoming Semester B automatically sync to Timetable Simulator.</span>
+                            </p>
+                            <p id="planner-eligibility-hint" class="planner-eligibility-hint" role="status" aria-live="polite"></p>
+
+                            <div class="planner-container">
+                                <div class="planner-term-card">
+                                    <h4>
+                                        <span>
+                                            <span class="lang-zh">即將到來 Semester B (同步至課表)</span>
+                                            <span class="lang-en">Upcoming Semester B (Syncs to Timetable)</span>
+                                        </span>
+                                        <span id="term1Cu">0 CU</span>
+                                    </h4>
+                                    <div class="planner-course-list" id="term1List"></div>
+                                    <label for="term1Select" class="planner-label"><span class="lang-zh">選擇下學期 B 的科目</span><span class="lang-en">Choose a course for Upcoming Semester B</span></label>
+                                    <div class="planner-controls">
+                                        <select id="term1Select"></select>
+                                        <button class="btn-action" onclick="addCourseToTerm(1)">+ <span class="lang-zh">新增</span><span class="lang-en">Add</span></button>
+                                    </div>
+                                </div>
+
+                                <div class="planner-term-card">
+                                    <h4>
+                                        <span>
+                                            <span class="lang-zh">暑期學期 Summer Term</span>
+                                            <span class="lang-en">Summer Term</span>
+                                        </span>
+                                        <span id="term2Cu">0 CU</span>
+                                    </h4>
+                                    <div class="planner-course-list" id="term2List"></div>
+                                    <label for="term2Select" class="planner-label"><span class="lang-zh">選擇暑期學期的科目</span><span class="lang-en">Choose a course for Summer Term</span></label>
+                                    <div class="planner-controls">
+                                        <select id="term2Select"></select>
+                                        <button class="btn-action" onclick="addCourseToTerm(2)">+ <span class="lang-zh">新增</span><span class="lang-en">Add</span></button>
+                                    </div>
+                                </div>
+
+                                <div class="planner-term-card">
+                                    <h4>
+                                        <span>
+                                            <span class="lang-zh">下一學年 Semester A</span>
+                                            <span class="lang-en">Next Semester A</span>
+                                        </span>
+                                        <span id="term3Cu">0 CU</span>
+                                    </h4>
+                                    <div class="planner-course-list" id="term3List"></div>
+                                    <label for="term3Select" class="planner-label"><span class="lang-zh">選擇下一學年 A 學期的科目</span><span class="lang-en">Choose a course for Next Semester A</span></label>
+                                    <div class="planner-controls">
+                                        <select id="term3Select"></select>
+                                        <button class="btn-action" onclick="addCourseToTerm(3)">+ <span class="lang-zh">新增</span><span class="lang-en">Add</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Major Structure Interactive Flowchart -->
+                    <div class="flowchart-section">
+                        <div class="flowchart-header">
+                            <h3 id="flowchartTitle">Curriculum Structure Flowchart</h3>
+                            <button class="btn-reset" onclick="resetFlowchartLayout()">
+                                🔄 <span class="lang-zh">重置流程圖版面</span><span class="lang-en">Reset to Default Flowchart</span>
+                            </button>
+                        </div>
+                        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">
+                            <strong><span class="lang-zh">支援拖放操作：</span><span class="lang-en">Drag & Drop Enabled:</span></strong>
+                            <span class="lang-zh">將任意課程方塊拖拽至不同學期行，即時更新學分數及先修科目警告。</span>
+                            <span class="lang-en">Drag any course block to a different semester row. Real-time credit counters and prerequisite warnings update automatically.</span>
+                        </p>
+
+                        <div class="flowchart-legend">
+                            <div class="legend-item"><div class="legend-box completed"></div> <span class="lang-zh">已完成課程 (綠色)</span><span class="lang-en">Completed Course (Green)</span></div>
+                            <div class="legend-item"><div class="legend-box incomplete"></div> <span class="lang-zh">未完成課程 (灰色/白色)</span><span class="lang-en">Haven't Completed (Grey/White)</span></div>
+                            <div class="legend-item"><div class="legend-box failed"></div> <span class="lang-zh">不合格/先修受阻課程 (紅色外框)</span><span class="lang-en">Failed Prerequisite Course (Red Outline)</span></div>
+                        </div>
+
+                        <details class="flowchart-move">
+                            <summary><span class="lang-zh">使用選單移動科目</span><span class="lang-en">Move a course using menus</span></summary>
+                            <form class="flowchart-move-controls" id="flowchartMoveForm">
+                                <label for="flowchartCourse"><span class="lang-zh">科目</span><span class="lang-en">Course</span><select id="flowchartCourse"></select></label>
+                                <label for="flowchartSemester"><span class="lang-zh">目標學期</span><span class="lang-en">Destination semester</span><select id="flowchartSemester"></select></label>
+                                <button type="submit" class="btn-action"><span class="lang-zh">移動</span><span class="lang-en">Move</span></button>
+                            </form>
+                            <p id="flowchartMoveStatus" role="status"></p>
+                        </details>
+                        <div class="flowchart-grid" id="flowchartGridContainer"></div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: Timetable Conflict Simulator -->
+                <div id="visualizerTab" class="tab-content">
+                    <div id="clashAlertContainer"></div>
+
+                    <div class="simulator-grid">
+                        <div class="simulator-controls">
+                            <h3><span class="lang-zh">課程選取與重修設定</span><span class="lang-en">Course Selection</span></h3>
+                            <div class="form-group" style="margin-top:10px;">
+                                <label for="sectionSelect"><span class="lang-zh">重修科目修讀時段</span><span class="lang-en">Retake section</span></label>
+                                <select id="sectionSelect" onchange="renderTimetable()">
+                                    <option value="L01" data-zh="L01（星期二 09:00–11:50）" data-en="L01 (Tue 09:00–11:50)"></option>
+                                    <option value="L02" data-zh="L02（星期四 15:00–17:50）" data-en="L02 (Thu 15:00–17:50)"></option>
+                                </select>
+                            </div>
+                            <h4 style="margin-top:15px; font-size:0.9rem;">
+                                <span class="lang-zh">課表中顯示的科目</span>
+                                <span class="lang-en">Courses shown in the timetable</span>
+                            </h4>
+                            <p class="simulator-hint">
+                                <span class="lang-zh">即使尚未選擇主修，也可使用課表；一年級會顯示共同一年級課程。選取課程以檢查時間衝突。</span>
+                                <span class="lang-en">You can use the timetable before selecting a major. Year 1 shows common-year courses; select courses to check for clashes.</span>
+                            </p>
+                            <div id="visualizerCheckboxes" style="display:flex; flex-direction:column; gap:8px; margin-top:8px;"></div>
+                        </div>
+
+                        <div class="timetable-scroll" tabindex="0" role="region" aria-labelledby="auditTimetableCaption">
+                            <table class="timetable-table">
+                                <caption id="auditTimetableCaption"><span class="lang-zh">模擬每週課表</span><span class="lang-en">Sample weekly timetable</span></caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><span class="lang-zh">時段 (2小時50分)</span><span class="lang-en">Time Slot (2h 50m)</span></th>
+                                        <th scope="col"><span class="lang-zh">星期一</span><span class="lang-en">Mon</span></th>
+                                        <th scope="col"><span class="lang-zh">星期二</span><span class="lang-en">Tue</span></th>
+                                        <th scope="col"><span class="lang-zh">星期三</span><span class="lang-en">Wed</span></th>
+                                        <th scope="col"><span class="lang-zh">星期四</span><span class="lang-en">Thu</span></th>
+                                        <th scope="col"><span class="lang-zh">星期五</span><span class="lang-en">Fri</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="timetableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: Prerequisite Override Assistant -->
+                <div id="overrideTab" class="tab-content">
+                    <div class="override-card">
+                        <h3><span class="lang-zh">先修科目鏈接視覺化</span><span class="lang-en">Prerequisite Chain Visualizer</span></h3>
+                        <div class="prereq-chain" id="prereqChainContainer"></div>
+                    </div>
+
+                    <div class="override-card">
+                        <h3><span class="lang-zh">同步修讀豁免申請評估 (Concurrent Enrollment Waiver)</span><span class="lang-en">Concurrent Enrollment Waiver Evaluation</span></h3>
+                        <ul class="waiver-checklist">
+                            <li><label><input type="checkbox" checked disabled> <span class="lang-zh">已有先修科目修讀紀錄</span><span class="lang-en">Prior attempt logged in prerequisite course</span></label></li>
+                            <li><label><input type="checkbox" id="chkGpa" checked onchange="renderOverrideTab()"> <span class="lang-zh">累積 GPA ≥ 1.70</span><span class="lang-en">Cumulative GPA ≥ 1.70</span></label></li>
+                            <li><label><input type="checkbox" id="chkNoClash" checked disabled> <span class="lang-zh">重修時段無衝突</span><span class="lang-en">No retake section clash</span></label></li>
+                        </ul>
+                        <div id="overrideEligibilityBanner" role="status"></div>
+                        <button class="btn-action" style="margin-top:15px;" onclick="downloadForm()">
+                            📄 <span class="lang-zh">預覽示範豁免申請</span><span class="lang-en">Preview sample waiver application</span>
+                        </button>
+                    </div>
+                </div>
+
             </section>
-            <noscript><p>請啟用 JavaScript 以使用導覽和登入功能。 / Enable JavaScript for navigation and login.</p></noscript>
+            <noscript><p>請啟用 JavaScript 以使用學位審查。 / Enable JavaScript to use Degree Audit.</p></noscript>
         </main>
     </div>
 </body>

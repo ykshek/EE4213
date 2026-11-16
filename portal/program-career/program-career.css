@@ -1,0 +1,375 @@
+#pageContent.program-career-page .career-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+#pageContent.program-career-page .career-tab-btn {
+    padding: 12px 20px;
+    border: none;
+    background: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+    #pageContent.program-career-page .career-tab-btn:hover {
+        color: var(--cityu-maroon);
+    }
+
+    #pageContent.program-career-page .career-tab-btn.active {
+        color: var(--cityu-maroon);
+        border-bottom-color: var(--cityu-maroon);
+        background: #fff9f9;
+    }
+
+#pageContent.program-career-page .career-tab-content {
+    display: none;
+    animation: fadeIn 0.25s ease;
+}
+
+    #pageContent.program-career-page .career-tab-content.active {
+        display: block;
+    }
+
+/* Official Internship Table */
+#pageContent.program-career-page .official-link {
+    color: var(--cityu-maroon);
+    text-decoration: none;
+}
+
+    #pageContent.program-career-page .official-link:hover {
+        text-decoration: underline;
+    }
+
+#pageContent.program-career-page .intern-table-wrapper {
+    overflow-x: auto;
+    margin-top: 16px;
+}
+
+#pageContent.program-career-page .intern-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+    #pageContent.program-career-page .intern-table th,
+    #pageContent.program-career-page .intern-table td {
+        padding: 10px 12px;
+        border: 1px solid var(--border-color);
+        text-align: left;
+    }
+
+    #pageContent.program-career-page .intern-table th {
+        background: #f8fafc;
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+
+/* Coop Schemes Links */
+#pageContent.program-career-page .coop-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+#pageContent.program-career-page .coop-link-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: #f8fafc;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+    #pageContent.program-career-page .coop-link-card:hover {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        transform: translateY(-2px);
+        border-color: var(--cityu-maroon);
+    }
+
+    #pageContent.program-career-page .coop-link-card strong {
+        color: var(--cityu-maroon);
+        font-size: 0.95rem;
+    }
+
+    #pageContent.program-career-page .coop-link-card span:not(.lang-zh):not(.lang-en) {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.4;
+    }
+
+#pageContent.program-career-page .coop-footer-hint {
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+    #pageContent.program-career-page .coop-footer-hint a {
+        color: var(--cityu-maroon);
+        text-decoration: underline;
+    }
+
+/* Internship Grid */
+#pageContent.program-career-page .internship-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+#pageContent.program-career-page .internship-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+}
+
+    #pageContent.program-career-page .internship-card h3 {
+        margin: 0 0 10px;
+        font-size: 1.1rem;
+        color: var(--cityu-maroon);
+    }
+
+#pageContent.program-career-page .internship-desc {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    line-height: 1.5;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+#pageContent.program-career-page .internship-section-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+#pageContent.program-career-page .internship-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+    #pageContent.program-career-page .internship-tags span {
+        display: inline-block;
+        background: #eaf4f7;
+        color: #1d5b78;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+#pageContent.program-career-page .internship-companies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+#pageContent.program-career-page .company-tag {
+    display: inline-block;
+    background: #f1f5f9;
+    color: #475569;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    border: 1px solid #e2e8f0;
+}
+
+#pageContent.program-career-page .internship-courses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+}
+
+    #pageContent.program-career-page .internship-courses a {
+        display: inline-block;
+        background: #fff4f4;
+        color: var(--cityu-maroon);
+        border: 1px solid #fadbd8;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.15s;
+    }
+
+        #pageContent.program-career-page .internship-courses a:hover {
+            background: #fadbd8;
+        }
+
+/* Discussion Board */
+#pageContent.program-career-page .experience-form {
+    background: #f8fafc;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+    #pageContent.program-career-page .experience-form .form-group {
+        margin-bottom: 0;
+    }
+
+    #pageContent.program-career-page .experience-form input,
+    #pageContent.program-career-page .experience-form textarea {
+        width: 100%;
+        padding: 9px;
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        font-family: inherit;
+        font-size: 0.9rem;
+    }
+
+#pageContent.program-career-page .discussion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#pageContent.program-career-page .discussion-thread {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: #fff;
+    overflow: hidden;
+}
+
+#pageContent.program-career-page .discussion-header {
+    padding: 14px 16px;
+    background: #fcfcfc;
+    border-bottom: 1px solid var(--border-color);
+}
+
+    #pageContent.program-career-page .discussion-header h4 {
+        margin: 0 0 4px 0;
+        font-size: 1rem;
+        color: var(--text-dark);
+    }
+
+#pageContent.program-career-page .discussion-meta {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+#pageContent.program-career-page .discussion-content {
+    padding: 16px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#pageContent.program-career-page .discussion-footer {
+    padding: 8px 16px;
+    background: #fafafa;
+    display: flex;
+    justify-content: flex-end;
+}
+
+    #pageContent.program-career-page .discussion-footer button {
+        font-size: 0.8rem;
+        background: none;
+        border: none;
+        color: var(--cityu-maroon);
+        cursor: pointer;
+        font-weight: 700;
+    }
+
+        #pageContent.program-career-page .discussion-footer button:hover {
+            text-decoration: underline;
+        }
+
+#pageContent.program-career-page .replies-list {
+    background: #f9fafb;
+    padding: 0 16px;
+}
+
+#pageContent.program-career-page .reply-item {
+    padding: 12px 0;
+    border-bottom: 1px dashed #e2e8f0;
+    font-size: 0.85rem;
+}
+
+    #pageContent.program-career-page .reply-item:last-child {
+        border-bottom: none;
+    }
+
+#pageContent.program-career-page .reply-header {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#pageContent.program-career-page .reply-content {
+    line-height: 1.4;
+    margin-bottom: 6px;
+    white-space: pre-wrap;
+}
+
+#pageContent.program-career-page .reply-actions {
+    font-size: 0.75rem;
+}
+
+    #pageContent.program-career-page .reply-actions button {
+        background: none;
+        border: none;
+        color: var(--cityu-maroon);
+        cursor: pointer;
+        padding: 0;
+    }
+
+        #pageContent.program-career-page .reply-actions button:hover {
+            text-decoration: underline;
+        }
+
+#pageContent.program-career-page .reply-form {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+    #pageContent.program-career-page .reply-form input {
+        flex: 1;
+        min-height: 32px;
+        padding: 4px 8px;
+        font-size: 0.85rem;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+    }
+
+    #pageContent.program-career-page .reply-form button {
+        min-height: 32px;
+        padding: 0 12px;
+        font-size: 0.85rem;
+    }
+
+@media (max-width: 640px) {
+    #pageContent.program-career-page .internship-grid {
+        grid-template-columns: 1fr;
+    }
+}

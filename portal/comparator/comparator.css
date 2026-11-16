@@ -475,3 +475,71 @@
         transition-duration: 0.01ms !important;
     }
 }
+
+
+/* Degree Audit integration: course availability and prerequisite explanations. */
+.comparator-page .audit-sync-group {
+    padding: 10px;
+    margin: 0 0 18px;
+    border: 1px solid #d7dce3;
+    border-radius: 7px;
+    background: #f8fafc;
+}
+
+.comparator-page .audit-sync-group select {
+    width: 100%;
+    min-height: 42px;
+    padding: 8px 10px;
+    border: 1px solid var(--comparator-border);
+    border-radius: 6px;
+    background: #fff;
+    color: var(--text-dark);
+    font: inherit;
+}
+
+.comparator-page #audit-sync-status {
+    margin-top: 7px;
+    font-size: 0.78rem;
+}
+
+.comparator-course-option.is-disabled {
+    border-color: #d1d5db;
+    background: #f1f3f5;
+    color: #7b8490;
+    cursor: not-allowed;
+    opacity: 0.9;
+}
+
+.comparator-course-option.is-disabled:has(input:disabled) {
+    cursor: not-allowed;
+}
+
+.comparator-course-option.is-disabled input {
+    accent-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.comparator-course-option.is-disabled strong,
+.comparator-course-option.is-disabled small {
+    color: #7b8490;
+}
+
+.comparator-course-option .comparator-course-reason {
+    margin-top: 5px;
+    color: #626d79;
+    font-size: 0.74rem;
+    line-height: 1.35;
+    font-weight: 600;
+}
+
+.comparator-course-option .comparator-course-data-note {
+    margin-top: 4px;
+    color: #7b8490;
+    font-size: 0.72rem;
+    font-style: italic;
+}
+
+.comparator-course-option.is-disabled:has(input:checked) {
+    border-color: #d1d5db;
+    background: #f1f3f5;
+}

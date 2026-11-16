@@ -5,28 +5,178 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>主修資訊 | CityU EE Student Portal</title>
     <link rel="stylesheet" href="../assets/css/common.css">
-    <!-- Load page-specific CSS after common.css, and deferred JS after common.js. -->
+    <link rel="stylesheet" href="major-info.css">
     <script src="../assets/js/common.js" defer></script>
 </head>
 <body data-page="major-info" data-lang="zh">
     <!-- Shared header, sidebar, footer and dialogs are mounted by common.js. -->
     <div class="layout">
         <main class="main" id="mainContent" tabindex="-1">
-            <!-- PAGE OWNER: develop this page inside #pageContent. -->
-            <section id="pageContent" class="page-content" aria-labelledby="pageTitle">
-                <div class="feature-header">
+            <section id="pageContent" class="page-content major-info-page" aria-labelledby="pageTitle">
+                <header class="feature-header">
                     <h2 id="pageTitle">
-                        <span class="lang-zh">🎓 主修資訊</span>
-                        <span class="lang-en">🎓 Major Information</span>
+                        <span aria-hidden="true">🎓</span>
+                        <span class="lang-zh">主修資訊</span>
+                        <span class="lang-en">Major Information</span>
                     </h2>
-                </div>
-                <div class="placeholder-card">
-                    <span class="emoji" aria-hidden="true">🚧</span>
-                    <span class="status-zh">此功能開發中</span>
-                    <span class="status-en">Under Development</span>
-                    <span class="hint lang-zh">此區塊為功能掛載預留位置，由負責組員整合。</span>
-                    <span class="hint lang-en">Reserved mount point for the assigned teammate to integrate this feature.</span>
-                </div>
+                    <p>
+                        <span class="lang-zh">了解城大電機工程學系四個工學士主修的學習內容、職涯方向及主修分配方式。</span>
+                        <span class="lang-en">Explore the four engineering majors offered by CityUHK's Department of Electrical Engineering, their career paths and how majors are allocated.</span>
+                    </p>
+                </header>
+
+                <section class="major-section" aria-labelledby="major-options-title">
+                    <h3 id="major-options-title">
+                        <span class="lang-zh">主修選項</span>
+                        <span class="lang-en">Major Options</span>
+                    </h3>
+                    <div class="major-grid">
+                        <article class="card major-card" aria-labelledby="CDE">
+                            <h4 id="CDE">
+                                <span class="major-code">CDE</span>
+                                <span class="lang-zh">電子計算機及數據工程學</span>
+                                <span class="lang-en">Computer and Data Engineering</span>
+                            </h4>
+                            <p>
+                                <span class="lang-zh">學習如何設計電腦系統，並運用數據和機器學習解決工程問題。</span>
+                                <span class="lang-en">Learn to build computer systems and use data and machine learning to solve engineering problems.</span>
+                            </p>
+                            <div>
+                                <h5><span class="lang-zh">學習重點</span><span class="lang-en">What you’ll study</span></h5>
+                                <ul>
+                                    <li><span class="lang-zh">電腦硬件與軟件設計</span><span class="lang-en">Computer hardware and software design</span></li>
+                                    <li><span class="lang-zh">數據分析</span><span class="lang-en">Data analytics</span></li>
+                                    <li><span class="lang-zh">機器學習</span><span class="lang-en">Machine learning</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5><span class="lang-zh">職涯例子</span><span class="lang-en">Example career paths</span></h5>
+                                <p><span class="lang-zh">軟件開發、數據工程</span><span class="lang-en">Software development and data engineering</span></p>
+                            </div>
+                            <div class="major-source">
+                                <a class="major-source-link lang-zh" href="https://www.ee.cityu.edu.hk/zh-hk/current_students/undergraduate/major/admission_beng-cde_aim">城大官方 CDE 課程簡介</a>
+                                <a class="major-source-link lang-en" href="https://www.ee.cityu.edu.hk/current_students/undergraduate/major/admission_beng-cde_aim">Official CityUHK CDE programme overview</a>
+                            </div>
+                        </article>
+
+                        <article class="card major-card" aria-labelledby="ELEL">
+                            <h4 id="ELEL">
+                                <span class="major-code">ELEL</span>
+                                <span class="lang-zh">電子及電機工程學</span>
+                                <span class="lang-en">Electronic and Electrical Engineering</span>
+                            </h4>
+                            <p>
+                                <span class="lang-zh">了解如何運用電子及電機技術，設計由電子器件到通訊和供電的系統。</span>
+                                <span class="lang-en">Explore how electronics and electrical engineering are used to build devices, communications systems and power networks.</span>
+                            </p>
+                            <div>
+                                <h5><span class="lang-zh">學習重點</span><span class="lang-en">What you’ll study</span></h5>
+                                <ul>
+                                    <li><span class="lang-zh">電子器件</span><span class="lang-en">Electronic devices</span></li>
+                                    <li><span class="lang-zh">無線通訊</span><span class="lang-en">Wireless communications</span></li>
+                                    <li><span class="lang-zh">電力系統</span><span class="lang-en">Electrical power systems</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5><span class="lang-zh">職涯例子</span><span class="lang-en">Example career paths</span></h5>
+                                <p><span class="lang-zh">電子工程、電訊工程</span><span class="lang-en">Electronics engineering and telecommunications engineering</span></p>
+                            </div>
+                            <div class="major-source">
+                                <a class="major-source-link lang-zh" href="https://www.ee.cityu.edu.hk/zh-hk/current_students/undergraduate/major/admission_beng-elel_aim">城大官方 ELEL 課程簡介</a>
+                                <a class="major-source-link lang-en" href="https://www.ee.cityu.edu.hk/current_students/undergraduate/major/admission_beng-elel_aim">Official CityUHK ELEL programme overview</a>
+                            </div>
+                        </article>
+
+                        <article class="card major-card" aria-labelledby="INFE">
+                            <h4 id="INFE">
+                                <span class="major-code">INFE</span>
+                                <span class="lang-zh">資訊工程學</span>
+                                <span class="lang-en">Information Engineering</span>
+                            </h4>
+                            <p>
+                                <span class="lang-zh">學習如何透過網絡傳送和保護資訊，並開發人工智能系統。</span>
+                                <span class="lang-en">Learn how to transmit and protect information over networks and develop AI systems.</span>
+                            </p>
+                            <div>
+                                <h5><span class="lang-zh">學習重點</span><span class="lang-en">What you’ll study</span></h5>
+                                <ul>
+                                    <li><span class="lang-zh">通訊網絡</span><span class="lang-en">Communications networks</span></li>
+                                    <li><span class="lang-zh">網絡安全</span><span class="lang-en">Cybersecurity</span></li>
+                                    <li><span class="lang-zh">人工智能系統</span><span class="lang-en">AI systems</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5><span class="lang-zh">職涯例子</span><span class="lang-en">Example career paths</span></h5>
+                                <p><span class="lang-zh">系統工程、雲端運算工程</span><span class="lang-en">Systems engineering and cloud computing engineering</span></p>
+                            </div>
+                            <div class="major-source">
+                                <a class="major-source-link lang-zh" href="https://www.ee.cityu.edu.hk/zh-hk/current_students/undergraduate/major/admission_beng-infe_aim">城大官方 INFE 課程簡介</a>
+                                <a class="major-source-link lang-en" href="https://www.ee.cityu.edu.hk/current_students/undergraduate/major/admission_beng-infe_aim">Official CityUHK INFE programme overview</a>
+                            </div>
+                        </article>
+
+                        <article class="card major-card" aria-labelledby="MEE">
+                            <h4 id="MEE">
+                                <span class="major-code">MEE</span>
+                                <span class="lang-zh">微電子工程學</span>
+                                <span class="lang-en">Microelectronics Engineering</span>
+                            </h4>
+                            <p>
+                                <span class="lang-zh">了解晶片如何設計和製造，以及如何把它們應用於電子系統。</span>
+                                <span class="lang-en">Learn how chips are designed, manufactured and used in electronic systems.</span>
+                            </p>
+                            <div>
+                                <h5><span class="lang-zh">學習重點</span><span class="lang-en">What you’ll study</span></h5>
+                                <ul>
+                                    <li><span class="lang-zh">集成電路設計</span><span class="lang-en">Integrated circuit design</span></li>
+                                    <li><span class="lang-zh">半導體製造</span><span class="lang-en">Semiconductor manufacturing</span></li>
+                                    <li><span class="lang-zh">嵌入式系統</span><span class="lang-en">Embedded systems</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5><span class="lang-zh">職涯例子</span><span class="lang-en">Example career paths</span></h5>
+                                <p><span class="lang-zh">晶片設計、半導體製程工程</span><span class="lang-en">Chip design and semiconductor process engineering</span></p>
+                            </div>
+                            <div class="major-source">
+                                <a class="major-source-link lang-zh" href="https://www.ee.cityu.edu.hk/zh-hk/current_students/undergraduate/major/admission_beng-mee_aim">城大官方 MEE 課程簡介</a>
+                                <a class="major-source-link lang-en" href="https://www.ee.cityu.edu.hk/current_students/undergraduate/major/admission_beng-mee_aim">Official CityUHK MEE programme overview</a>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="major-section" aria-labelledby="major-allocation-title">
+                    <h3 id="major-allocation-title">
+                        <span class="lang-zh">2025/26 主修分配摘要</span>
+                        <span class="lang-en">2025/26 Major Allocation Summary</span>
+                    </h3>
+                    <div class="card allocation-card">
+                        <p>
+                            <span class="lang-zh">以下為 2025/26 學年四年制入學學生在一年級結束後的分配安排。</span>
+                            <span class="lang-en">This summary covers the 2025/26 allocation exercise for four-year degree students at the end of their first year.</span>
+                        </p>
+                        <div class="major-grid">
+                            <div class="allocation-phase">
+                                <h4><span class="lang-zh">第一階段：前 40%</span><span class="lang-en">Phase one · Top 40%</span></h4>
+                                <p>
+                                    <span class="lang-zh">按一年級 B 學期結束時的累積平均績點（CGPA）排名，符合校方條件的前 40% 學生獲派第一志願。條件包括在 A、B 學期沒有不及格科目，並完成至少 30 學分（包括指定課程）。</span>
+                                    <span class="lang-en">Ranking uses the cumulative GPA (CGPA) at the end of Year 1 Semester B. Students in the top 40% who meet the university’s conditions receive their first choice. The conditions include passing all courses and completing at least 30 credit units across Semesters A and B, including specified courses.</span>
+                                </p>
+                            </div>
+                            <div class="allocation-phase">
+                                <h4><span class="lang-zh">第二階段：其餘 60%</span><span class="lang-en">Phase two · Remaining 60%</span></h4>
+                                <p>
+                                    <span class="lang-zh">分配考慮一年級 B 學期結束時的累積平均績點、志願次序、各主修學額及其甄選準則。</span>
+                                    <span class="lang-en">Allocation considers the CGPA at the end of Year 1 Semester B, students’ ranked preferences, available places and each major’s selection criteria.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="major-source">
+                            <a class="major-source-link lang-zh" href="https://www.ee.cityu.edu.hk/zh-hk/current_students/undergraduate/admission_bdee_major">查閱官方分配條件、例外及日期</a>
+                            <a class="major-source-link lang-en" href="https://www.ee.cityu.edu.hk/en/current_students/undergraduate/admission_bdee_major">See official allocation criteria, exceptions and dates</a>
+                        </div>
+                    </div>
+                </section>
             </section>
             <noscript><p>請啟用 JavaScript 以使用導覽和登入功能。 / Enable JavaScript for navigation and login.</p></noscript>
         </main>

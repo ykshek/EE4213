@@ -5,28 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>課程資訊 | CityU EE Student Portal</title>
     <link rel="stylesheet" href="../assets/css/common.css">
-    <!-- Load page-specific CSS after common.css, and deferred JS after common.js. -->
+    <link rel="stylesheet" href="course-info.css">
     <script src="../assets/js/common.js" defer></script>
+    <script src="../assets/js/mock-data.js" defer></script>
+    <script src="course-info.js" defer></script>
 </head>
 <body data-page="course-info" data-lang="zh">
     <!-- Shared header, sidebar, footer and dialogs are mounted by common.js. -->
     <div class="layout">
         <main class="main" id="mainContent" tabindex="-1">
-            <!-- PAGE OWNER: develop this page inside #pageContent. -->
-            <section id="pageContent" class="page-content" aria-labelledby="pageTitle">
-                <div class="feature-header">
-                    <h2 id="pageTitle">
-                        <span class="lang-zh">📚 課程資訊</span>
-                        <span class="lang-en">📚 Course Information</span>
-                    </h2>
+            <section id="pageContent" class="page-content course-info-page course-directory-page" aria-labelledby="pageTitle">
+                <div class="course-directory-toolbar">
+                    <header class="feature-header course-directory-intro">
+                        <h2 id="pageTitle">
+                            <span aria-hidden="true">📚</span>
+                            <span class="lang-zh">課程資訊</span>
+                            <span class="lang-en">Course Information</span>
+                        </h2>
+                        <p>
+                            <span class="lang-zh">查閱電機工程課程、了解課業負擔，並分享你的修讀經驗。</span>
+                            <span class="lang-en">Explore EE courses, review their workload, and share your experience.</span>
+                        </p>
+                    </header>
+                    <div class="course-search-panel">
+                        <label for="course-search">
+                            <span class="lang-zh">搜尋課程</span><span class="lang-en">Search courses</span>
+                        </label>
+                        <div class="course-search-controls">
+                            <input id="course-search" type="search" autocomplete="off" aria-describedby="course-search-hint">
+                            <button class="course-search-clear" id="clear-search" type="button">
+                                <span class="lang-zh">清除搜尋</span><span class="lang-en">Clear search</span>
+                            </button>
+                        </div>
+                        <p class="course-hint" id="course-search-hint">
+                            <span class="lang-zh">輸入課程編號或中英文名稱，例如 EE4213。</span>
+                            <span class="lang-en">Enter a course code or its Chinese or English name, for example EE4213.</span>
+                        </p>
+                    </div>
                 </div>
-                <div class="placeholder-card">
-                    <span class="emoji" aria-hidden="true">🚧</span>
-                    <span class="status-zh">此功能開發中</span>
-                    <span class="status-en">Under Development</span>
-                    <span class="hint lang-zh">此區塊為功能掛載預留位置，由負責組員整合。</span>
-                    <span class="hint lang-en">Reserved mount point for the assigned teammate to integrate this feature.</span>
-                </div>
+                <section class="course-directory" aria-labelledby="course-directory-heading">
+                    <div class="course-directory-heading">
+                        <h3 id="course-directory-heading">
+                            <span class="lang-zh">課程目錄</span><span class="lang-en">Course directory</span>
+                        </h3>
+                        <p class="course-hint course-count" id="course-count" role="status"></p>
+                    </div>
+                    <div class="course-directory-columns" aria-hidden="true" hidden>
+                        <span><span class="lang-zh">課程編號</span><span class="lang-en">Course code</span></span>
+                        <span><span class="lang-zh">課程名稱</span><span class="lang-en">Course title</span></span>
+                        <span><span class="lang-zh">學分</span><span class="lang-en">Credits</span></span>
+                    </div>
+                    <ul class="course-directory-list" id="course-list" role="list"></ul>
+                </section>
             </section>
             <noscript><p>請啟用 JavaScript 以使用導覽和登入功能。 / Enable JavaScript for navigation and login.</p></noscript>
         </main>
