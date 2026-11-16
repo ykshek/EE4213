@@ -23,6 +23,8 @@ What this script does
    - gives each imported course a ``comparator`` object containing official
      section times plus derived assessment data, so the Course Comparator can
      include it immediately;
+   - rebuilds projected pre-registration tags from each major's ordered
+     course-ID list and each course's ``curriculumByMajor`` metadata;
    - stores the complete official export under
      ``EE4213Data.officialOfferings``.
 
@@ -91,6 +93,12 @@ CATALOGUE_TEMPLATE = "https://www.cityu.edu.hk/catalogue/ug/current/course/{code
 SYLLABUS_TEMPLATES = (
     "https://www.cityu.edu.hk/catalogue/ug/202627/course/{code}.pdf",
     "https://www.cityu.edu.hk/ug/202627/course/{code}.pdf",
+)
+PRE_REGISTRATION_FLOWCHARTS = (
+    "https://www.ee.cityu.edu.hk/home/doc/programme/CDE_Major_flowchart_2026_Entering_Major.pdf",
+    "https://www.ee.cityu.edu.hk/home/docs/programme/INFE_Programme_Structure_2026-2027_v3.pdf",
+    "https://www.ee.cityu.edu.hk/home/doc/programme/ELEL_Entering_Major_2026-27.pdf",
+    "https://www.ee.cityu.edu.hk/home/doc/programme/MEE_Entering_Major_2026-27.pdf",
 )
 TRANSLATE_ENDPOINT = "https://translate.googleapis.com/translate_a/single"
 JINA_PREFIX = "https://r.jina.ai/"
@@ -1375,6 +1383,8 @@ def merge_into_dataset(
 
         imported_codes.append(code)
 
+    apply_pre_registration_tags(data)
+
     metadata = data.setdefault("metadata", {})
     sources = metadata.setdefault("sources", [])
     for source in (
@@ -1425,6 +1435,49 @@ def merge_into_dataset(
 
     _validate_dataset(data)
     return imported_codes
+
+
+def apply_pre_registration_tags(data: dict[str, Any]) -> None:
+    major_ids_by_course: dict[str, list[str]] = defaultdict(list)
+    course_by_id = {
+        course.get("courseId"): course
+        for course in data.get("courses", [])
+        if course.get("courseId")
+    }
+    for major in data.get("majors", []):
+        major_id = major.get("majorId")
+        if not major_id:
+            continue
+        for course_id in major.get("curriculum", []):
+            course = course_by_id.get(course_id)
+            curriculum = (course or {}).get("curriculumByMajor", {}).get(major_id, {})
+            if (
+                curriculum.get("isGeneralEducation")
+                or curriculum.get("isTechnicalElective")
+            ):
+                continue
+            if course_id and major_id not in major_ids_by_course[course_id]:
+                major_ids_by_course[course_id].append(major_id)
+
+    for course in course_by_id.values():
+        major_ids = major_ids_by_course.get(course.get("courseId"), [])
+        if major_ids:
+            course["preRegistration"] = {
+                "status": "projected",
+                "majorIds": major_ids,
+            }
+        else:
+            course.pop("preRegistration", None)
+
+    metadata = data.setdefault("metadata", {})
+    metadata["preRegistrationProjection"] = {
+        "enteringMajor": "2026/27",
+        "sourceUrls": list(PRE_REGISTRATION_FLOWCHARTS),
+        "note": (
+            "Projected for major-flowchart courses; GE requirements and elective placeholders "
+            "are excluded. This is not a live registration record."
+        ),
+    }
 
 
 def build_comparator_from_record(
@@ -1484,14 +1537,33 @@ def _validate_dataset(data: dict[str, Any]) -> None:
         raise ValueError(f"Duplicate course IDs after merge: {duplicates}")
 
     valid_ids = set(ids)
-    for semester, course_ids in (data.get("comparatorSemesterPresets") or {}).items():
-        missing = [code for code in course_ids if code not in valid_ids]
-        if missing:
-            LOGGER.warning(
-                "Comparator preset %s still references missing courses: %s",
-                semester,
-                missing,
-            )
+    course_by_id = {course.get("courseId"): course for course in courses}
+    majors = data.get("majors", [])
+    major_ids = {major.get("majorId") for major in majors}
+    curriculum_ids_by_major = {
+        major.get("majorId"): set(major.get("curriculum", []))
+        for major in majors
+    }
+    for major in majors:
+        major_id = major.get("majorId")
+        curriculum_ids = major.get("curriculum", [])
+        if len(curriculum_ids) != len(set(curriculum_ids)):
+            raise ValueError(f"{major_id} curriculum contains duplicate course IDs.")
+        for course_id in curriculum_ids:
+            if course_id not in valid_ids:
+                raise ValueError(f"{major_id} curriculum references missing course {course_id}.")
+            course = course_by_id[course_id]
+            if major_id not in course.get("curriculumByMajor", {}):
+                raise ValueError(f"{course_id} is missing {major_id} curriculum metadata.")
+
+    for course in courses:
+        for major_id in course.get("curriculumByMajor", {}):
+            if major_id not in major_ids:
+                raise ValueError(f"{course.get('courseId')} references unknown major {major_id}.")
+            if course.get("courseId") not in curriculum_ids_by_major[major_id]:
+                raise ValueError(
+                    f"{course.get('courseId')} has {major_id} metadata but is not in its curriculum."
+                )
 
     for course in courses:
         comparator = course.get("comparator")
@@ -1523,6 +1595,8 @@ def discover_course_files(html_dir: Path, scope: str, existing_ids: set[str], su
             if not any(code.startswith(subject) for subject in subjects):
                 continue
         elif scope == "ee" and not code.startswith("EE"):
+            continue
+        elif scope == "ge" and not code.startswith("GE"):
             continue
         elif scope == "existing" and code not in existing_ids:
             continue
@@ -1714,7 +1788,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--html-dir", default=str(DEFAULT_HTML_DIR), help="Directory containing *-course.html/*-classes.html")
     parser.add_argument("--output", default=str(DEFAULT_MOCK_DATA), help="mock-data.js to update")
-    parser.add_argument("--scope", choices=("ee", "all", "existing"), default="ee", help="Which exports to import (default: ee)")
+    parser.add_argument("--scope", choices=("ee", "ge", "all", "existing"), default="ee", help="Which exports to import (default: ee)")
     parser.add_argument("--subjects", help="Comma-separated subject prefixes, e.g. EE,CS,MA (overrides --scope filtering)")
     parser.add_argument("--limit", type=int, help="Only process the first N matching course files (useful for testing)")
     parser.add_argument("--cache-dir", help="Cache directory (default: <html-dir>/.cache/official-import)")

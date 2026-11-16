@@ -357,16 +357,13 @@
 
         const seen = new Set();
         const out = [];
-        cde.curriculum.forEach((entry) => {
-            if (entry.semester !== '1A' && entry.semester !== '1B') return;
-            if (seen.has(entry.courseId)) return;
-            seen.add(entry.courseId);
-            const course = getCourseById(entry.courseId);
-            if (course) out.push(course);
-            else out.push({
-                courseId: entry.courseId,
-                titles: { en: entry.curriculumTitle || entry.courseId }
-            });
+        cde.curriculum.forEach((courseId) => {
+            const course = getCourseById(courseId);
+            const curriculum = course?.curriculumByMajor?.[cde.majorId];
+            if (!curriculum || !['1A', '1B'].includes(curriculum.semester)) return;
+            if (seen.has(courseId)) return;
+            seen.add(courseId);
+            out.push(course);
         });
         return out;
     }
@@ -376,17 +373,13 @@
         const exclude = new Set((excludeCourses || []).map((c) => c.courseId));
         const seen = new Set();
         const out = [];
-        majorObj.curriculum.forEach((entry) => {
-            if (entry.semester === 'GE') return;
-            if (exclude.has(entry.courseId)) return;
-            if (seen.has(entry.courseId)) return;
-            seen.add(entry.courseId);
-            const course = getCourseById(entry.courseId);
-            if (course) out.push(course);
-            else out.push({
-                courseId: entry.courseId,
-                titles: { en: entry.curriculumTitle || entry.courseId }
-            });
+        majorObj.curriculum.forEach((courseId) => {
+            const course = getCourseById(courseId);
+            const curriculum = course?.curriculumByMajor?.[majorObj.majorId];
+            if (!curriculum || curriculum.semester === 'GE') return;
+            if (exclude.has(courseId) || seen.has(courseId)) return;
+            seen.add(courseId);
+            out.push(course);
         });
         return out;
     }

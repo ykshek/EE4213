@@ -31,6 +31,14 @@
         }
     };
 
+    const gradingLabels = {
+        assignments: { zh: '作業', en: 'Assignments' },
+        midterm: { zh: '期中考', en: 'Midterm' },
+        final: { zh: '期末考', en: 'Final' },
+        project: { zh: '專題', en: 'Project' },
+        other: { zh: '其他', en: 'Other' }
+    };
+
     const labels = {
         hours: ['每週課外時數', 'Weekly study hours'],
         project: ['專題負擔', 'Project workload'],
@@ -52,7 +60,8 @@
         },
         pressure: levels
     };
-    const courses = window.EE4213Data.courses.filter(course =>
+    const allCourses = window.EE4213Data.courses;
+    const courses = allCourses.filter(course =>
         /^EE\d{4}(?: ?[A-Z])?(?: \/ EE\d{4})?$/.test(course.courseId) &&
         (course.category !== 'comparator-sample' || course.courseId === 'EE4213')
     ).sort((first, second) => first.courseId.localeCompare(second.courseId));
@@ -124,7 +133,7 @@
         const url = new URL(location.href);
         search.value = url.searchParams.get('q') || '';
         const rows = courses.map(course => {
-            const row = element('li');
+            const row = element('li', undefined, 'course-directory-row');
             const link = element('a', undefined, 'course-link course-directory-link');
             const name = element('span', undefined, 'course-directory-name');
             const title = element('span', undefined, 'course-directory-title');
@@ -146,7 +155,18 @@
             const arrow = element('span', '→', 'course-directory-arrow');
             arrow.setAttribute('aria-hidden', 'true');
             link.append(element('span', course.courseId, 'course-directory-code'), name, credits, arrow);
-            row.append(link);
+
+            const compare = element('a', undefined, 'course-compare-link');
+            compare.href = '../comparator/index.html?add=' + encodeURIComponent(course.courseId);
+            compare.setAttribute('aria-label', `將 ${course.courseId} 加入課程比較器 / Add ${course.courseId} to Course Comparator`);
+            compare.title = `將 ${course.courseId} 加入課程比較器 / Add ${course.courseId} to Course Comparator`;
+            const compareIcon = element('span', '＋', 'course-compare-icon');
+            compareIcon.setAttribute('aria-hidden', 'true');
+            const compareLabel = element('span', undefined, 'course-compare-label');
+            bilingual(compareLabel, '比較', 'Compare');
+            compare.append(compareIcon, compareLabel);
+
+            row.append(link, compare);
             const searchable = [course.courseId, course.titles?.en, course.titles?.zh].join(' ').toLowerCase();
             return { row, link, courseId: course.courseId, searchable, code: course.courseId.replace(/\s/g, '').toLowerCase() };
         });
@@ -220,6 +240,22 @@
         bilingual(byId('assessment-passing'), ...outline.passing);
         byId('outline-source').href = outline.source;
         byId('official-assessment').hidden = false;
+    }
+
+    function renderGradingComponents(course) {
+        const components = course.gradingComponents || course.comparator?.gradingComponents;
+        if (!components || !Object.values(components).some(value => Number.isFinite(value) && value > 0) ||
+            !window.EE4213GradingChart) return;
+        const container = byId('grading-chart');
+        const render = () => {
+            container.replaceChildren(window.EE4213GradingChart.create(components, {
+                labels: gradingLabels,
+                language: window.Portal.getSession().language === 'en' ? 'en' : 'zh'
+            }));
+        };
+        render();
+        document.addEventListener('portal:languagechange', render);
+        byId('grading-components').hidden = false;
     }
 
     function renderGradeBars(list, counts) {
@@ -755,7 +791,7 @@
         const id = params.get('course')?.trim().toUpperCase();
         const query = params.get('q');
         if (query) byId('back-to-courses').href = 'index.html?' + new URLSearchParams({ q: query });
-        const course = courses.find(item => item.courseId === id);
+        const course = allCourses.find(item => item.courseId === id);
         if (!course) {
             bilingual(byId('pageTitle'), '找不到課程', 'Course not found');
             bilingual(byId('course-description'), '請返回課程清單並選擇一門課程。', 'Return to the course list and select a course.');
@@ -787,7 +823,15 @@
             creditsText(byId('course-credits'), creditUnits);
             byId('course-credits').hidden = false;
         }
+        const compareLink = byId('add-to-comparator');
+        if (compareLink) {
+            compareLink.href = '../comparator/index.html?add=' + encodeURIComponent(courseId);
+            compareLink.setAttribute('aria-label', `將 ${courseId} 加入課程比較器 / Add ${courseId} to Course Comparator`);
+            compareLink.title = `將 ${courseId} 加入課程比較器 / Add ${courseId} to Course Comparator`;
+            compareLink.hidden = false;
+        }
         renderAssessment(courseId);
+        renderGradingComponents(course);
         byId('course-detail').hidden = false;
         byId('readonly-course').hidden = !readOnly;
         byId('open-experience').hidden = readOnly;

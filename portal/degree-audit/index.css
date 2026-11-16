@@ -1,45 +1,73 @@
 /* Scoped styles for Degree Audit & Recovery Simulator in portal */
 #pageContent[data-page="degree-audit"] {
-    --cityu-maroon: #800020;
-    --cityu-gold: #D4AF37;
-    --bg-gray: #f4f6f9;
-    --card-bg: #ffffff;
-    --text-dark: #2c3e50;
-    --text-muted: #64748b;
-    --border-color: #cbd5e1;
+    /* Base palette, type, and card tokens come from common.css. */
     --danger-red: #b91c1c;
     --danger-bg: #fdf2f2;
-    --warning-orange: #f39c12;
-    --warning-bg: #fef9e7;
-    --success-green: #2ecc71;
-    --success-bg: #eafaf1;
-    --primary-blue: #3498db;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: var(--text-dark);
+}
+
+#pageContent[data-page="degree-audit"] .course-inline-status {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    margin-top: auto;
+}
+
+#pageContent[data-page="degree-audit"] .course-status-action {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 44px;
+    padding: 4px 5px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #fff;
+    color: #475569;
+    font-size: 0.68rem;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+#pageContent[data-page="degree-audit"] .course-status-action.is-completed[aria-pressed="true"] {
+    border-color: #2e8b57;
+    background: #effaf2;
+    color: #166534;
+}
+
+#pageContent[data-page="degree-audit"] .course-status-action.is-failed[aria-pressed="true"] {
+    border-color: #b91c1c;
+    background: #fff1f2;
+    color: #991b1b;
+}
+
+#pageContent[data-page="degree-audit"] .course-status-action:focus-visible,
+#pageContent[data-page="degree-audit"] .flow-reset-button:focus-visible {
+    outline: 2px solid var(--cityu-maroon);
+    outline-offset: 2px;
 }
 
 #pageContent[data-page="degree-audit"] .audit-header {
-    background-color: var(--cityu-maroon);
-    color: white;
-    padding: 20px;
-    border-radius: 10px 10px 0 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    align-items: flex-start;
     justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--text-dark);
+    box-shadow: none;
 }
 
 #pageContent[data-page="degree-audit"] .audit-header h2 {
-    font-size: 1.35rem;
-    font-weight: 700;
     margin-bottom: 4px;
+    color: var(--cityu-maroon);
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 #pageContent[data-page="degree-audit"] .audit-header p {
-    font-size: 0.85rem;
-    opacity: 0.9;
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
 
 #pageContent[data-page="degree-audit"] .header-badges {
@@ -50,30 +78,61 @@
 }
 
 #pageContent[data-page="degree-audit"] .badge-version {
-    background: var(--cityu-gold);
-    color: #000;
     padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: bold;
+    border: 1px solid #e2c56f;
+    border-radius: 999px;
+    background: #fff7e6;
+    color: #8a5a00;
+    font-size: 0.72rem;
+    font-weight: 700;
 }
 
 #pageContent[data-page="degree-audit"] .badge-demo {
-    background: rgba(255,255,255,0.2);
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.4);
     padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+#pageContent[data-page="degree-audit"] .metric-value-danger {
+    color: var(--danger-red);
+}
+
+#pageContent[data-page="degree-audit"] .waiver-preview-action {
+    margin-top: 15px;
+}
+
+#pageContent[data-page="degree-audit"] .alert-detail {
+    margin-top: 3px;
+    font-size: 0.85rem;
+}
+
+#pageContent[data-page="degree-audit"] .override-eligibility-alert {
+    margin-top: 10px;
+}
+
+#pageContent[data-page="degree-audit"] .audit-layout {
+    display: grid;
+    grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+    align-items: start;
+    gap: 18px;
+}
+
+#pageContent[data-page="degree-audit"] .audit-results {
+    min-width: 0;
 }
 
 #pageContent[data-page="degree-audit"] .control-panel {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 16px;
     padding: 16px;
-    background: #f8fafc;
-    border-bottom: 1px solid var(--border-color);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
 }
 
 #pageContent[data-page="degree-audit"] .control-panel .form-group {
@@ -106,7 +165,7 @@
     background-color: #fff;
 }
 
-#pageContent[data-page="degree-audit"] :is(select, input, .timetable-scroll):focus-visible {
+#pageContent[data-page="degree-audit"] :is(select, input):focus-visible {
     outline: 2px solid var(--cityu-maroon);
     outline-offset: 2px;
 }
@@ -127,31 +186,45 @@
 /* Tabs */
 #pageContent[data-page="degree-audit"] .nav-tabs {
     display: flex;
-    background: #fff;
+    align-items: flex-end;
+    gap: 6px;
     border-bottom: 1px solid var(--border-color);
-    flex-wrap: wrap;
 }
 
 #pageContent[data-page="degree-audit"] .tab-btn {
-    padding: 14px 20px;
-    border: none;
-    background: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-muted);
+    display: inline-flex;
+    flex: 1 1 0;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-bottom: 0;
+    border-radius: 8px 8px 0 0;
+    background: #f7f2f3;
+    color: #5b2a35;
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
     cursor: pointer;
-    border-bottom: 3px solid transparent;
-    transition: all 0.2s;
 }
 
 #pageContent[data-page="degree-audit"] .tab-btn:hover {
+    background: #f2e7e9;
     color: var(--cityu-maroon);
 }
 
 #pageContent[data-page="degree-audit"] .tab-btn.active {
+    background: #fff;
     color: var(--cityu-maroon);
-    border-bottom-color: var(--cityu-maroon);
-    background: #fff9f9;
+    box-shadow: inset 0 3px 0 var(--cityu-maroon);
+}
+
+#pageContent[data-page="degree-audit"] .tab-btn:focus-visible {
+    outline: 3px solid rgba(128, 0, 32, 0.35);
+    outline-offset: -3px;
 }
 
 /* Tab Panels */
@@ -159,6 +232,8 @@
     display: none;
     background: var(--card-bg);
     padding: clamp(12px, 2.5vw, 25px);
+    border: 1px solid var(--border-color);
+    border-top: 0;
     border-radius: 0 0 10px 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     min-height: 500px;
@@ -177,7 +252,7 @@
 }
 
 #pageContent[data-page="degree-audit"] .metric-card {
-    background: #f8fafc;
+    background: #fbfcfd;
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 15px;
@@ -238,6 +313,27 @@
     background-color: #600018;
 }
 
+#pageContent[data-page="degree-audit"] .btn-action:disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+#pageContent[data-page="degree-audit"] .audit-comparator-button {
+    width: 100%;
+    margin-top: 8px;
+}
+
+#pageContent[data-page="degree-audit"] .audit-comparator-status {
+    margin-top: 6px;
+    color: var(--danger-red);
+    font-size: 0.8rem;
+}
+
+#pageContent[data-page="degree-audit"] .waiver-comparator-action {
+    margin-top: 10px;
+}
+
 #pageContent[data-page="degree-audit"] .btn-reset {
     background-color: #475569;
     color: white;
@@ -254,19 +350,7 @@
 }
 
 /* Audit Layout */
-#pageContent[data-page="degree-audit"] .audit-layout {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
-    margin-bottom: 30px;
-}
-
-#pageContent[data-page="degree-audit"] .audit-layout > div {
-    flex: 1 1 20rem;
-    min-width: 0;
-}
-
-#pageContent[data-page="degree-audit"] :is(.checklist-heading, .flowchart-header) {
+#pageContent[data-page="degree-audit"] .flowchart-header {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -275,7 +359,7 @@
     margin-bottom: 10px;
 }
 
-#pageContent[data-page="degree-audit"] :is(.course-check-item, #visualizerCheckboxes, .waiver-checklist) label {
+#pageContent[data-page="degree-audit"] .waiver-checklist label {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -283,41 +367,9 @@
     cursor: pointer;
 }
 
-#pageContent[data-page="degree-audit"] .course-check-item > span {
-    white-space: nowrap;
-    margin-left: 8px;
-    font-weight: bold;
-    color: var(--text-muted);
-}
-
-#pageContent[data-page="degree-audit"] .checklist-container {
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 15px;
-    max-height: 480px;
-    overflow-y: auto;
-    background: #fafafa;
-}
-
-#pageContent[data-page="degree-audit"] .course-check-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 8px;
-    border-bottom: 1px solid #e2e8f0;
-    background: #fff;
-    margin-bottom: 5px;
-    border-radius: 4px;
-    font-size: 0.85rem;
-}
-
-#pageContent[data-page="degree-audit"] .course-check-item.ge-item {
-    border-left: 4px solid var(--cityu-gold);
-}
-
 /* Flowchart Section */
 #pageContent[data-page="degree-audit"] .flowchart-section {
-    border-top: 2px dashed var(--border-color);
+    border-top: 1px solid var(--border-color);
     padding-top: 25px;
     margin-top: 25px;
 }
@@ -325,6 +377,19 @@
 #pageContent[data-page="degree-audit"] .flowchart-header h3 {
     font-size: 1.1rem;
     color: var(--cityu-maroon);
+}
+
+#pageContent[data-page="degree-audit"] .flowchart-help {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+#pageContent[data-page="degree-audit"] #planner-assignment-status,
+#pageContent[data-page="degree-audit"] #planner-transfer-status {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    margin-bottom: 10px;
 }
 
 #pageContent[data-page="degree-audit"] .flowchart-legend {
@@ -371,44 +436,21 @@
     padding-bottom: 10px;
 }
 
-#pageContent[data-page="degree-audit"] .flowchart-move {
-    margin-bottom: 12px;
-}
-
-#pageContent[data-page="degree-audit"] .flowchart-move summary {
-    min-height: 44px;
-    padding: 10px 0;
-    color: var(--cityu-maroon);
-    cursor: pointer;
-}
-
-#pageContent[data-page="degree-audit"] .flowchart-move-controls {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: end;
-    gap: 8px;
-}
-
-#pageContent[data-page="degree-audit"] .flowchart-move-controls label {
-    flex: 1 1 11rem;
-    min-width: 0;
-}
-
 #pageContent[data-page="degree-audit"] .sem-row {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
     gap: 12px;
-    background: #f8fafc;
+    background: #fbfcfd;
     padding: 12px;
     border-radius: 8px;
-    border: 1.5px solid var(--border-color);
+    border: 1px solid var(--border-color);
     position: relative;
 }
 
-#pageContent[data-page="degree-audit"] .sem-row.sem-warning-border {
-    border-color: var(--danger-red) !important;
-    background-color: #fef2f2 !important;
+#pageContent[data-page="degree-audit"] .sem-row.drag-over {
+    border-color: var(--primary-blue);
+    background: #f0f9ff;
 }
 
 #pageContent[data-page="degree-audit"] .sem-label-container {
@@ -440,53 +482,307 @@
 }
 
 #pageContent[data-page="degree-audit"] .sem-courses {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
     gap: 8px;
     flex: 1 1 14rem;
     min-width: 0;
     min-height: 55px;
-    align-items: center;
+    align-items: stretch;
     padding: 4px;
     border: 1px dashed transparent;
     border-radius: 6px;
 }
 
-#pageContent[data-page="degree-audit"] .sem-courses.drag-over {
-    border-color: var(--primary-blue);
-    background-color: #f0f9ff;
-}
-
-#pageContent[data-page="degree-audit"] .prereq-warning-banner {
-    width: 100%;
-    background: var(--danger-bg);
-    color: var(--danger-red);
-    font-size: 0.75rem;
-    padding: 4px 8px;
-    border-radius: 4px;
-    margin-bottom: 6px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
 #pageContent[data-page="degree-audit"] .flow-box {
-    padding: 8px 12px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    min-width: 0;
+    min-height: 150px;
+    gap: 5px;
+    padding: 8px;
     border-radius: 6px;
     font-size: 0.78rem;
-    min-width: 110px;
     text-align: center;
     border: 1.5px solid var(--border-color);
     box-shadow: 0 1px 2px rgba(0,0,0,0.03);
     transition: all 0.2s;
-    cursor: grab;
     user-select: none;
 }
 
-#pageContent[data-page="degree-audit"] .flow-box:active {
+#pageContent[data-page="degree-audit"] .flow-box.pre-registered::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: 5px 5px 0 0;
+    background: #2563eb;
+}
+
+#pageContent[data-page="degree-audit"] .flow-course-name,
+#pageContent[data-page="degree-audit"] .flow-course-slot-note {
+    overflow-wrap: anywhere;
+}
+
+#pageContent[data-page="degree-audit"] .flow-course-name {
+    display: -webkit-box;
+    min-height: 2.4em;
+    overflow: hidden;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+#pageContent[data-page="degree-audit"] .flow-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 16px;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+}
+
+#pageContent[data-page="degree-audit"] .flow-card-marker {
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    font-size: 0.62rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+#pageContent[data-page="degree-audit"] .flow-card-marker.is-pre-registration {
+    border-color: #6aa2e8;
+    background: #eaf3ff;
+    color: #174ea6;
+}
+
+#pageContent[data-page="degree-audit"] .flow-card-marker.is-completed {
+    border-color: #86b99a;
+    background: #dcfce7;
+    color: #166534;
+}
+
+#pageContent[data-page="degree-audit"] .flow-card-marker.is-failed {
+    border-color: #e2a3a3;
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+#pageContent[data-page="degree-audit"] .flow-card-marker.is-blocked {
+    border-color: #fca5a5;
+    background: #fff1f2;
+    color: #991b1b;
+}
+
+#pageContent[data-page="degree-audit"] .flow-card-marker.is-rescheduled {
+    border-color: #d8b4b8;
+    background: #f2e7e9;
+    color: var(--cityu-maroon);
+}
+
+#pageContent[data-page="degree-audit"] .flow-course-credit {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+}
+
+#pageContent[data-page="degree-audit"] .flow-course-slot-note {
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+#pageContent[data-page="degree-audit"] .flow-slot-course-control {
+    display: block;
+    width: 100%;
+}
+
+#pageContent[data-page="degree-audit"] .flow-control-label {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 0.68rem;
+    font-weight: 650;
+    text-align: left;
+}
+
+#pageContent[data-page="degree-audit"] .flow-slot-course-control select {
+    width: 100%;
+    min-height: 44px;
+    margin-top: 2px;
+    font-size: 0.72rem;
+    text-align: left;
+}
+
+#pageContent[data-page="degree-audit"] .flow-slot-course-control select {
+    border-color: #b7c8df;
+}
+
+#pageContent[data-page="degree-audit"] .flow-reset-button {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+    min-height: 28px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+/* Keep the visual button compact while preserving a 44px touch target. */
+#pageContent[data-page="degree-audit"] .flow-reset-button::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+}
+
+#pageContent[data-page="degree-audit"] .flow-reset-button:hover {
+    border-color: var(--border-color);
+    background: #f1f5f9;
+    color: var(--cityu-maroon);
+}
+
+#pageContent[data-page="degree-audit"] .flow-reset-button:disabled {
+    opacity: 0.28;
+    cursor: default;
+}
+
+#pageContent[data-page="degree-audit"] .flow-reset-button:disabled:hover {
+    border-color: transparent;
+    background: transparent;
+    color: var(--text-muted);
+}
+
+#pageContent[data-page="degree-audit"] .sem-compare-button {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 4px 6px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background: #fff;
+    color: var(--cityu-maroon);
+    cursor: pointer;
+    font-size: 0.72rem;
+    font-weight: 650;
+}
+
+#pageContent[data-page="degree-audit"] .sem-compare-button {
+    margin-top: 6px;
+    font-size: 0.68rem;
+}
+
+#pageContent[data-page="degree-audit"] .sem-compare-button:focus-visible {
+    outline: 3px solid rgba(128, 0, 32, 0.3);
+    outline-offset: 2px;
+}
+
+#pageContent[data-page="degree-audit"] .sem-bulk-complete {
+    width: 100%;
+    background: #ecfdf5;
+    border-color: #86b99a;
+    color: #166534;
+    font-size: 0.66rem;
+}
+
+#pageContent[data-page="degree-audit"] .sem-bulk-complete:hover {
+    background: #dcfce7;
+}
+
+#pageContent[data-page="degree-audit"] .flow-box.planable {
+    cursor: grab;
+}
+
+#pageContent[data-page="degree-audit"] .flow-box.planable:active {
     cursor: grabbing;
     opacity: 0.6;
+}
+
+#pageContent[data-page="degree-audit"] .flow-box.planned {
+    outline: 2px solid var(--cityu-maroon);
+    outline-offset: 1px;
+}
+
+#pageContent[data-page="degree-audit"] .flow-box:not(.planable) {
+    user-select: text;
+}
+
+#pageContent[data-page="degree-audit"] .pre-registration-help {
+    margin: -4px 0 12px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+#pageContent[data-page="degree-audit"] .flow-prereq-warning {
+    display: block;
+    margin-top: 2px;
+    padding: 4px 6px;
+    border: 1px dashed #fca5a5;
+    border-radius: 4px;
+    background: #fff1f2;
+    color: var(--danger-red);
+    font-size: 0.68rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+#pageContent[data-page="degree-audit"] .audit-course-info-link,
+#pageContent[data-page="degree-audit"] .audit-course-code-link {
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    color: var(--cityu-maroon);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+#pageContent[data-page="degree-audit"] .audit-course-code-link {
+    min-width: 0;
+    padding: 0 2px;
+}
+
+#pageContent[data-page="degree-audit"] .audit-course-info-link {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+}
+
+/* Keep the visible arrow compact while preserving a 44px touch target. */
+#pageContent[data-page="degree-audit"] .audit-course-info-link::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+}
+
+#pageContent[data-page="degree-audit"] .audit-course-info-link:hover,
+#pageContent[data-page="degree-audit"] .audit-course-info-link:focus-visible,
+#pageContent[data-page="degree-audit"] .audit-course-code-link:hover,
+#pageContent[data-page="degree-audit"] .audit-course-code-link:focus-visible {
+    background: #f2e7e9;
+    text-decoration: underline;
 }
 
 #pageContent[data-page="degree-audit"] .flow-box.completed {
@@ -502,6 +798,12 @@
     color: #475569 !important;
 }
 
+#pageContent[data-page="degree-audit"] .flow-box.prereq-warning {
+    border: 2px solid var(--danger-red) !important;
+    background-color: #fff5f5 !important;
+    box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.08);
+}
+
 #pageContent[data-page="degree-audit"] .flow-box.failed-highlight {
     border: 2px solid #ef4444 !important;
     background-color: #fee2e2 !important;
@@ -509,74 +811,9 @@
     font-weight: bold;
 }
 
-/* Simulator Grid & Timetable */
-#pageContent[data-page="degree-audit"] .simulator-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-#pageContent[data-page="degree-audit"] .simulator-controls {
-    flex: 1 1 14rem;
-    min-width: 0;
-}
-
-#pageContent[data-page="degree-audit"] .simulator-hint {
-    margin-top: 4px;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-}
-
-#pageContent[data-page="degree-audit"] .timetable-scroll {
-    flex: 3 1 32rem;
-    min-width: 0;
-    overflow-x: auto;
-    align-self: start;
-}
-
-#pageContent[data-page="degree-audit"] .timetable-table {
-    width: 100%;
-    min-width: 32rem;
-    border-collapse: collapse;
-    text-align: center;
-    font-size: 0.85rem;
-}
-
-#pageContent[data-page="degree-audit"] .timetable-table caption {
-    text-align: left;
-    font-weight: 700;
-    padding-bottom: 8px;
-}
-
-#pageContent[data-page="degree-audit"] .timetable-table th, 
-#pageContent[data-page="degree-audit"] .timetable-table td {
-    border: 1px solid var(--border-color);
-    padding: 10px;
-    height: 65px;
-    vertical-align: middle;
-}
-
-#pageContent[data-page="degree-audit"] .timetable-table th {
-    background-color: #f8f9fa;
-}
-
-#pageContent[data-page="degree-audit"] .slot-active {
-    background-color: #e0f2fe;
-    border-left: 4px solid var(--primary-blue) !important;
-    color: #0369a1;
-    font-weight: bold;
-}
-
-#pageContent[data-page="degree-audit"] .slot-clash {
-    background-color: var(--danger-bg) !important;
-    border-left: 4px solid var(--danger-red) !important;
-    color: var(--danger-red) !important;
-    font-weight: bold;
-}
-
 /* Override Assistant */
 #pageContent[data-page="degree-audit"] .override-card {
-    background: #fafafa;
+    background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 20px;
@@ -587,6 +824,25 @@
     list-style: none;
 }
 
+#pageContent[data-page="degree-audit"] .waiver-hint {
+    display: block;
+    margin-top: 8px;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.45;
+}
+
+#pageContent[data-page="degree-audit"] .waiver-banner-detail {
+    margin-top: 5px;
+    font-size: 0.85rem;
+}
+
+#pageContent[data-page="degree-audit"] .waiver-missing-list {
+    margin: 6px 0 0 18px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
 #pageContent[data-page="degree-audit"] .prereq-chain {
     display: flex;
     align-items: center;
@@ -594,6 +850,13 @@
     margin: 15px 0;
     font-weight: bold;
     flex-wrap: wrap;
+}
+
+#pageContent[data-page="degree-audit"] .chain-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
 }
 
 #pageContent[data-page="degree-audit"] .chain-node {
@@ -610,245 +873,112 @@
     color: var(--danger-red);
 }
 
-/* Planner */
-#pageContent[data-page="degree-audit"] .planner-container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+#pageContent[data-page="degree-audit"] .chain-node.blocked {
+    background: #fff7ed;
+    border-color: #f59e0b;
+    color: #92400e;
 }
 
-#pageContent[data-page="degree-audit"] .planner-term-card {
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 12px;
-    background: #fff;
-}
-
-#pageContent[data-page="degree-audit"] .planner-term-card h4 {
-    font-size: 0.9rem;
-    color: var(--cityu-maroon);
-    margin-bottom: 8px;
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-}
-
-#pageContent[data-page="degree-audit"] .planner-term-card h4 > :last-child {
-    white-space: nowrap;
-}
-
-#pageContent[data-page="degree-audit"] .planner-label {
-    display: block;
-    margin-bottom: 4px;
-    font-size: 0.85rem;
-}
-
-#pageContent[data-page="degree-audit"] .planner-controls {
-    display: flex;
-    gap: 6px;
-}
-
-#pageContent[data-page="degree-audit"] .planner-controls select {
-    flex: 1;
-}
-
-#pageContent[data-page="degree-audit"] .planner-course-list {
-    min-height: 45px;
-    border: 1px dashed var(--border-color);
-    border-radius: 6px;
-    padding: 6px;
-    margin-bottom: 8px;
-    background: #fafafa;
-}
-
-#pageContent[data-page="degree-audit"] .planned-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #e0f2fe;
-    border: 1px solid #bae6fd;
-    color: #0369a1;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    margin: 2px;
-}
-
-#pageContent[data-page="degree-audit"] .planned-tag .remove-btn {
-    min-width: 44px;
-    padding: 0;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    color: var(--danger-red);
-    font-weight: bold;
-}
-
-
-/* Course-status controls added for shared Degree Audit / Comparator eligibility. */
-#pageContent[data-page="degree-audit"] .audit-status-legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 0 0 10px;
-}
-
-#pageContent[data-page="degree-audit"] .audit-status-chip {
-    display: inline-flex;
-    align-items: center;
-    padding: 4px 9px;
-    border-radius: 999px;
-    border: 1px solid #cbd5e1;
+#pageContent[data-page="degree-audit"] .chain-node.downstream {
     background: #f8fafc;
     color: #475569;
-    font-size: 0.75rem;
+}
+
+#pageContent[data-page="degree-audit"] .chain-note {
+    display: block;
+    margin-top: 3px;
+    font-size: 0.68rem;
+    font-weight: 600;
+}
+
+#pageContent[data-page="degree-audit"] .waiver-preview-dialog {
+    position: fixed;
+    inset: 0;
+    width: min(42rem, calc(100vw - 2rem));
+    max-height: 85vh;
+    margin: auto;
+    padding: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: var(--text-dark);
+}
+
+#pageContent[data-page="degree-audit"] .waiver-preview-dialog::backdrop {
+    background: rgba(15, 23, 42, 0.55);
+}
+
+#pageContent[data-page="degree-audit"] .waiver-preview-body {
+    max-height: calc(85vh - 70px);
+    overflow-y: auto;
+    padding: 20px;
+}
+
+#pageContent[data-page="degree-audit"] .waiver-preview-body h3 {
+    margin-bottom: 12px;
+    color: var(--cityu-maroon);
+    font-size: 1.05rem;
+}
+
+#pageContent[data-page="degree-audit"] .waiver-preview-fields {
+    display: grid;
+    grid-template-columns: minmax(8rem, auto) 1fr;
+    gap: 8px 14px;
+    margin: 0 0 14px;
+    font-size: 0.82rem;
+}
+
+#pageContent[data-page="degree-audit"] .waiver-preview-fields dt {
     font-weight: 700;
+    color: #475569;
 }
 
-#pageContent[data-page="degree-audit"] .audit-status-chip.is-completed {
-    border-color: #86b99a;
-    background: #edf8f0;
-    color: #176b3a;
-}
-
-#pageContent[data-page="degree-audit"] .audit-status-chip.is-failed {
-    border-color: #e2a3a3;
-    background: #fff1f1;
-    color: #9f1d1d;
-}
-
-#pageContent[data-page="degree-audit"] .audit-status-chip.is-pending {
-    border-color: #cbd5e1;
-    background: #f1f5f9;
-    color: #64748b;
-}
-
-#pageContent[data-page="degree-audit"] .course-check-item {
-    gap: 10px;
-    padding: 7px 9px;
-    min-height: 54px;
-}
-
-#pageContent[data-page="degree-audit"] .course-check-item > label {
-    flex: 1 1 auto;
-    min-width: 0;
-}
-
-#pageContent[data-page="degree-audit"] .course-check-name {
-    flex: 1 1 280px;
-    min-width: 0;
+#pageContent[data-page="degree-audit"] .waiver-preview-fields dd {
+    margin: 0;
+    color: var(--text-dark);
     overflow-wrap: anywhere;
 }
 
-#pageContent[data-page="degree-audit"] .course-status-controls {
+#pageContent[data-page="degree-audit"] .waiver-preview-note {
+    margin: 0;
+    padding: 9px 11px;
+    border-radius: 6px;
+    background: #fff9e8;
+    color: #624719;
+    font-size: 0.78rem;
+    line-height: 1.45;
+}
+
+#pageContent[data-page="degree-audit"] .waiver-preview-actions {
     display: flex;
-    align-items: center;
     justify-content: flex-end;
     gap: 8px;
-    flex: 0 0 auto;
+    padding: 12px 20px;
+    border-top: 1px solid var(--border-color);
+    border-radius: 0 0 10px 10px;
+    background: #f8fafc;
 }
 
-#pageContent[data-page="degree-audit"] .course-status-option {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    min-height: 38px;
-    padding: 6px 9px;
-    border: 1px solid #cbd5e1;
-    border-radius: 7px;
-    background: #fff;
-    color: #475569;
-    font-size: 0.78rem;
-    font-weight: 650;
-    white-space: nowrap;
-    cursor: pointer;
-}
-
-#pageContent[data-page="degree-audit"] .course-status-option input {
-    width: 18px;
-    height: 18px;
-    margin: 0;
-    flex: 0 0 18px;
-    accent-color: #176b3a;
-    cursor: pointer;
-}
-
-#pageContent[data-page="degree-audit"] .course-status-option.is-completed:has(input:checked) {
-    border-color: #2e8b57;
-    background: #effaf2;
-    color: #166534;
-}
-
-#pageContent[data-page="degree-audit"] .course-status-option.is-failed input {
-    accent-color: #b91c1c;
-}
-
-#pageContent[data-page="degree-audit"] .course-status-option.is-failed:has(input:checked) {
-    border-color: #b91c1c;
-    background: #fff1f2;
-    color: #991b1b;
-}
-
-#pageContent[data-page="degree-audit"] .course-credit-units {
-    white-space: nowrap;
-    margin-left: 8px;
-    font-weight: bold;
-    color: var(--text-muted);
-}
-
-#pageContent[data-page="degree-audit"] .audit-blocked-course-note {
-    margin: 0 0 10px;
-    padding: 9px 11px;
-    border: 1px solid #e7c78c;
-    border-left: 4px solid #a56a00;
-    border-radius: 5px;
-    background: #fff9e8;
-    color: #624719;
-    font-size: 0.78rem;
-    line-height: 1.45;
-}
-
-#pageContent[data-page="degree-audit"] .planner-eligibility-hint {
-    margin: 0 0 12px;
-    padding: 8px 10px;
-    border-left: 3px solid #a56a00;
-    border-radius: 4px;
-    background: #fff9e8;
-    color: #624719;
-    font-size: 0.78rem;
-    line-height: 1.45;
-}
-
-#pageContent[data-page="degree-audit"] .course-check-item.status-completed {
-    background: #f2fbf4;
-    border-left: 4px solid #2e8b57;
-}
-
-#pageContent[data-page="degree-audit"] .course-check-item.status-failed {
-    background: #fff5f5;
-    border-left: 4px solid #b91c1c;
-}
-
-#pageContent[data-page="degree-audit"] .course-check-item.status-not-taken {
-    border-left: 4px solid #cbd5e1;
-}
-
-@media (max-width: 700px) {
-    #pageContent[data-page="degree-audit"] .course-check-item {
-        flex-wrap: wrap;
-        align-items: flex-start;
-        padding: 9px;
-    }
-    #pageContent[data-page="degree-audit"] .course-status-controls {
-        flex: 1 1 auto;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-    }
-    #pageContent[data-page="degree-audit"] .course-credit-units {
-        margin-left: auto;
+@media (max-width: 900px) {
+    #pageContent[data-page="degree-audit"] .audit-layout {
+        grid-template-columns: minmax(0, 1fr);
     }
 }
 
+@media (max-width: 600px) {
+    #pageContent[data-page="degree-audit"] .tab-btn {
+        padding: 8px;
+        font-size: 0.76rem;
+    }
+
+    #pageContent[data-page="degree-audit"] .waiver-preview-fields {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+
+    #pageContent[data-page="degree-audit"] .waiver-preview-fields dd {
+        margin-bottom: 8px;
+    }
+}
 
 #pageContent[data-page="degree-audit"] .audit-status-feedback {
     min-height: 1.3em;
@@ -856,4 +986,450 @@
     color: #475569;
     font-size: 0.78rem;
     line-height: 1.45;
+}
+
+/* Compact semester accordion */
+#pageContent[data-page="degree-audit"] .sem-panel {
+    margin-bottom: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--card-bg);
+    overflow: hidden;
+}
+
+#pageContent[data-page="degree-audit"] .sem-panel.drag-over {
+    border-color: var(--cityu-maroon);
+    box-shadow: 0 0 0 3px rgba(128, 0, 32, 0.12);
+}
+
+#pageContent[data-page="degree-audit"] .sem-summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    background: #fbfcfd;
+}
+
+#pageContent[data-page="degree-audit"] .sem-toggle {
+    display: flex;
+    flex: 1 1 15rem;
+    min-width: 0;
+    min-height: 44px;
+    align-items: center;
+    gap: 8px;
+    padding: 4px;
+    border: 0;
+    background: transparent;
+    color: var(--text-dark);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+#pageContent[data-page="degree-audit"] .sem-toggle:hover .sem-label {
+    text-decoration: underline;
+}
+
+#pageContent[data-page="degree-audit"] .sem-toggle:focus-visible {
+    outline: 3px solid rgba(128, 0, 32, 0.3);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+#pageContent[data-page="degree-audit"] .sem-chevron {
+    flex: 0 0 auto;
+    color: var(--cityu-maroon);
+    font-size: 0.8rem;
+    transition: transform 0.15s ease;
+}
+
+#pageContent[data-page="degree-audit"] .sem-toggle.is-open .sem-chevron {
+    transform: rotate(90deg);
+}
+
+#pageContent[data-page="degree-audit"] .sem-label {
+    flex: 0 0 auto;
+    color: var(--cityu-maroon);
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+#pageContent[data-page="degree-audit"] .sem-summary-meta {
+    display: inline-flex;
+    min-width: 0;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+#pageContent[data-page="degree-audit"] .sem-summary .sem-cu-counter {
+    margin: 0;
+    padding: 2px 7px;
+    font-size: 0.7rem;
+}
+
+#pageContent[data-page="degree-audit"] .sem-summary-warning {
+    flex: 0 0 auto;
+    padding: 2px 7px;
+    border: 1px solid #e2b46b;
+    border-radius: 999px;
+    background: #fff7e6;
+    color: #8a4b00;
+    font-size: 0.68rem;
+    font-weight: 700;
+}
+
+#pageContent[data-page="degree-audit"] .sem-actions {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+#pageContent[data-page="degree-audit"] .sem-actions .sem-compare-button {
+    margin-top: 0;
+}
+
+#pageContent[data-page="degree-audit"] .sem-actions .sem-bulk-complete {
+    width: auto;
+}
+
+#pageContent[data-page="degree-audit"] .sem-body {
+    padding: 8px 10px 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+#pageContent[data-page="degree-audit"] .sem-courses {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+    align-items: start;
+    gap: 8px;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+}
+
+#pageContent[data-page="degree-audit"] .course-row {
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    border-left: 4px solid #94a3b8;
+    border-radius: 6px;
+    background: #fff;
+}
+
+#pageContent[data-page="degree-audit"] .course-row.is-completed {
+    border-left-color: #10b981;
+    background: #f0fdf4;
+}
+
+#pageContent[data-page="degree-audit"] .course-row.is-failed {
+    border-left-color: #dc2626;
+    background: #fff7f7;
+}
+
+#pageContent[data-page="degree-audit"] .course-row.is-blocked {
+    border-left-color: #dc2626;
+    background: #fff7f7;
+}
+
+#pageContent[data-page="degree-audit"] .course-row.is-warning {
+    border-left-color: #d97706;
+    background: #fffaf0;
+}
+
+#pageContent[data-page="degree-audit"] .course-row.is-moved {
+    box-shadow: inset 0 0 0 1px var(--cityu-maroon);
+}
+
+#pageContent[data-page="degree-audit"] .course-row.is-pre-registered {
+    border-top: 3px solid #2563eb;
+}
+
+#pageContent[data-page="degree-audit"] .course-row.planable {
+    cursor: grab;
+}
+
+#pageContent[data-page="degree-audit"] .course-row.planable:active {
+    cursor: grabbing;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-main {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 48px;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 7px;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-identity {
+    display: flex;
+    flex: 1 1 11rem;
+    min-width: 0;
+    align-items: baseline;
+    gap: 6px;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-code {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 1px;
+    color: var(--cityu-maroon);
+    white-space: nowrap;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-code strong {
+    font-size: 0.78rem;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-code .audit-course-info-link {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    min-height: 18px;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-title {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--text-dark);
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.25;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-credits {
+    flex: 0 0 auto;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-status {
+    flex: 0 0 auto;
+    padding: 2px 6px;
+    border-radius: 999px;
+    font-size: 0.64rem;
+    font-weight: 700;
+    line-height: 1.3;
+    white-space: nowrap;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-status.is-completed {
+    background: #dcfce7;
+    color: #166534;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-status.is-failed,
+#pageContent[data-page="degree-audit"] .course-row-status.is-blocked {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-status.is-warning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-status.is-planned {
+    background: #f2e7e9;
+    color: var(--cityu-maroon);
+}
+
+#pageContent[data-page="degree-audit"] .course-row-markers {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 2px;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-markers .flow-card-marker {
+    width: 14px;
+    height: 14px;
+    font-size: 0.55rem;
+}
+
+@media (max-width: 700px) {
+    #pageContent[data-page="degree-audit"] .sem-toggle {
+        flex-basis: 100%;
+    }
+
+    #pageContent[data-page="degree-audit"] .sem-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    #pageContent[data-page="degree-audit"] .course-row-identity {
+        flex-basis: 100%;
+    }
+}
+
+/* Inline icon-only course actions */
+#pageContent[data-page="degree-audit"] .course-row-footer {
+    display: flex;
+    flex: 0 0 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-footer .course-row-actions {
+    margin-left: auto;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-actions {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 8px;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-actions .course-inline-status {
+    display: flex;
+    width: auto;
+    margin: 0;
+    gap: 8px;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-actions .course-status-action,
+#pageContent[data-page="degree-audit"] .course-row-actions .flow-reset-button,
+#pageContent[data-page="degree-audit"] .course-row-options-toggle {
+    position: relative;
+    top: auto;
+    right: auto;
+    display: inline-flex;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #fff;
+    color: #475569;
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-actions .course-status-action::after,
+#pageContent[data-page="degree-audit"] .course-row-actions .flow-reset-button::after,
+#pageContent[data-page="degree-audit"] .course-row-options-toggle::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-actions .course-status-action.is-completed[aria-pressed="true"] {
+    border-color: #2e8b57;
+    background: #dcfce7;
+    color: #166534;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-actions .course-status-action.is-failed[aria-pressed="true"] {
+    border-color: #b91c1c;
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-actions .flow-reset-button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-options-toggle {
+    color: var(--cityu-maroon);
+    font-size: 1rem;
+}
+
+#pageContent[data-page="degree-audit"] .course-row-options-toggle[aria-expanded="true"] {
+    border-color: var(--cityu-maroon);
+    background: #f2e7e9;
+}
+
+/* Course options are an overlay so normal rows stay button-only. */
+#pageContent[data-page="degree-audit"] .sem-panel,
+#pageContent[data-page="degree-audit"] .course-row {
+    overflow: visible;
+}
+
+#pageContent[data-page="degree-audit"] .course-row {
+    position: relative;
+}
+
+#pageContent[data-page="degree-audit"] .course-row.has-options-open {
+    z-index: 8;
+}
+
+#pageContent[data-page="degree-audit"] .course-options-popover {
+    position: absolute;
+    z-index: 30;
+    top: calc(100% + 4px);
+    right: 4px;
+    display: grid;
+    width: min(21rem, calc(100% - 8px));
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+}
+
+#pageContent[data-page="degree-audit"] .course-options-popover[hidden] {
+    display: none;
+}
+
+#pageContent[data-page="degree-audit"] .course-options-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: var(--text-dark);
+    font-size: 0.78rem;
+}
+
+#pageContent[data-page="degree-audit"] .course-options-close {
+    display: inline-flex;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background: #fff;
+    color: var(--text-muted);
+    font: inherit;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+#pageContent[data-page="degree-audit"] .course-options-close::after {
+    content: '';
+    position: absolute;
+    inset: -7px;
+}
+
+#pageContent[data-page="degree-audit"] .course-options-close {
+    position: relative;
+}
+
+#pageContent[data-page="degree-audit"] .course-options-popover .flow-slot-course-control {
+    margin: 0;
 }

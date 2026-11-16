@@ -3,7 +3,7 @@
     --home-ink: #202936;
     --home-muted: #536176;
     --home-line: #e4e8ee;
-    --home-maroon: #65001f;
+    --home-maroon: var(--cityu-maroon);
     --home-gold-ink: #805617;
     color: var(--home-ink);
 }
@@ -201,11 +201,11 @@
 .fit-tags > span { padding: 7px 10px; border: 1px solid #e2d3b5; border-radius: 999px; color: #6e4b1c; background: rgba(255,255,255,.58); font-size: .7rem; font-weight: 700; }
 .official-panel { border: 1px solid var(--home-line); background: #fff; }
 .official-panel h2 { font-size: 1.35rem; }
-.official-panel a { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; padding: 11px 0; border-bottom: 1px solid var(--home-line); color: #680020; font-size: .875rem; font-weight: 750; text-decoration: none; }
+.official-panel a { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; padding: 11px 0; border-bottom: 1px solid var(--home-line); color: var(--cityu-maroon); font-size: .875rem; font-weight: 750; text-decoration: none; }
 .official-panel a:first-of-type { margin-top: 13px; }
 .official-panel a:last-child { border-bottom: 0; }
 .official-panel a:hover { color: #9b3454; }
-.official-panel a:focus-visible { outline: 2px solid #680020; outline-offset: 4px; }
+.official-panel a:focus-visible { outline: 2px solid var(--cityu-maroon); outline-offset: 4px; }
 .home-disclaimer { max-width: 980px; margin: 0 auto; color: var(--home-muted); font-size: .875rem; line-height: 1.8; text-align: center; }
 .home-noscript { margin: 15px; padding: 12px; border-radius: 8px; background: #fff3cd; color: #594400; }
 

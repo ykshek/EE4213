@@ -9,6 +9,7 @@
     <script src="../assets/js/common.js" defer></script>
     <script src="../assets/js/mock-data.js" defer></script>
     <script src="review-seed.js" defer></script>
+    <script src="../assets/js/grading-chart.js" defer></script>
     <script src="course-info.js" defer></script>
 </head>
 <body data-page="course-info" data-lang="zh">
@@ -25,6 +26,11 @@
                     <h2 id="pageTitle"></h2>
                     <p id="course-description"></p>
                     <p id="course-credits" hidden></p>
+                    <a class="course-link course-compare-detail" id="add-to-comparator" href="../comparator/index.html" hidden>
+                        <span aria-hidden="true">＋</span>
+                        <span class="lang-zh">加入課程比較器</span>
+                        <span class="lang-en">Add to Course Comparator</span>
+                    </a>
                 </header>
                 
                 <div id="course-detail" class="course-stack" hidden>
@@ -51,6 +57,17 @@
                             <a class="course-link" id="outline-source" target="_blank" rel="noopener">
                                 <span class="lang-zh">查看城大官方課綱（PDF）</span><span class="lang-en">View the official CityU syllabus (PDF)</span>
                             </a>
+                        </section>
+
+                        <section class="card" id="grading-components" aria-labelledby="grading-components-heading" hidden>
+                            <h3 id="grading-components-heading">
+                                <span class="lang-zh">評分組成</span><span class="lang-en">Grading components</span>
+                            </h3>
+                            <p class="course-hint">
+                                <span class="lang-zh">此圖使用本課程可用的評分組成資料（課程目錄或課程比較器快照）；官方課綱可能以不同方式細分個別評核項目。</span>
+                                <span class="lang-en">This chart uses the grading components available for this course (course catalogue or Course Comparator snapshot). The official syllabus may break down individual tasks differently.</span>
+                            </p>
+                            <div id="grading-chart"></div>
                         </section>
                         
                         <section class="card" aria-labelledby="workload-heading">
