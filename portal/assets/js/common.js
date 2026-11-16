@@ -186,7 +186,7 @@
         'major-info': { file: 'major-info/index.html', public: true, nav: 'navMajorInfo', zh: '主修資訊', en: 'Major Information' },
         comparator: { file: 'comparator/index.html', public: true, nav: 'navComparator', zh: '課程比較器', en: 'Course Comparator' },
         'degree-audit': { file: 'degree-audit/index.html', nav: 'navDegreeAudit', zh: '學位審核輔助', en: 'Degree Audit Helper' },
-        'program-career': { file: 'program-career/index.html', nav: 'navProgramCareer', zh: '課程瀏覽與職涯資訊', en: 'Program Browser & Career Information' }
+        'program-career': { file: 'program-career/index.html', public: true, nav: 'navProgramCareer', zh: '課程瀏覽與職涯資訊', en: 'Program Browser & Career Information' }
     });
     const STORAGE_KEY = 'ee4213.portal.session.v1';
     const ACCOUNTS_KEY = 'ee4213.portal.demo-accounts.v1';
