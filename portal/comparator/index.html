@@ -9,6 +9,8 @@
     <script src="../assets/js/common.js" defer></script>
     <script src="../assets/js/mock-data.js" defer></script>
     <script src="../assets/js/course-pool.js" defer></script>
+    <script src="../assets/js/timetable.js" defer></script>
+    <script src="../assets/js/grading-chart.js" defer></script>
     <script src="comparator.js" defer></script>
 </head>
 <body data-page="comparator" data-lang="zh">
@@ -17,20 +19,49 @@
             <section id="pageContent" class="page-content comparator-page" aria-labelledby="pageTitle" hidden inert>
                 <header class="feature-header">
                     <h2 id="pageTitle">
-                        <span class="lang-zh">⚖️ 課程比較器</span>
-                        <span class="lang-en">⚖️ Course Comparator</span>
+                        <span aria-hidden="true">⚖️</span>
+                        <span class="lang-zh">課程比較器</span>
+                        <span class="lang-en">Course Comparator</span>
                     </h2>
                     <p>
-                        <span class="lang-zh">比較課程負擔，並先檢查示範時間表有沒有重疊。</span>
-                        <span class="lang-en">Compare course workload and check the sample timetable for overlaps.</span>
+                        <span class="lang-zh">比較課程負擔，並檢查所選上課時間有否重疊。</span>
+                        <span class="lang-en">Compare course workload and check selected meeting times for overlaps.</span>
                     </p>
                 </header>
 
                 <p class="comparator-data-note">
                     <strong><span class="lang-zh">示範資料</span><span class="lang-en">Demo data</span></strong>
-                    <span class="lang-zh">課程負擔及上課時間只供示範，並非最新或官方課程資料。</span>
-                    <span class="lang-en">Workload figures and meeting times are illustrative, not current or official course information.</span>
+                    <span class="lang-zh">負擔指標為示範估算；課程時間可能是示範時段或按學期匯入的 AIMS 資料，請以官方時間表為準。重修 L01/L02 為示範時段。</span>
+                    <span class="lang-en">Workload figures are estimates. Meeting times may be illustrative or imported from a term-specific AIMS snapshot; confirm against the official timetable. Retake L01/L02 times are illustrative.</span>
                 </p>
+
+                <div class="comparator-provenance-legend" role="note">
+                    <span class="comparator-provenance-chip is-official">
+                        <span class="lang-zh">AIMS 快照</span><span class="lang-en">AIMS snapshot</span>
+                    </span>
+                    <span class="lang-zh">上課時間及評分比重在可用時取自 AIMS／課程目錄。</span>
+                    <span class="lang-en">Meeting times and grading weights come from an AIMS/catalogue snapshot where available.</span>
+                    <span class="comparator-provenance-chip is-sample">
+                        <span class="lang-zh">示範估算</span><span class="lang-en">Sample estimate</span>
+                    </span>
+                    <span class="lang-zh">自修時數、難度、評估等級、負擔指數及 GPA 為生成示範值。</span>
+                    <span class="lang-en">Study hours, difficulty, assessment tier, workload index, and GPA are generated demo values.</span>
+                </div>
+
+                <div id="comparator-summary" class="comparator-summary" role="status" aria-live="polite">
+                    <div class="comparator-summary-stat">
+                        <span class="comparator-summary-label"><span class="lang-zh">已選課程</span><span class="lang-en">Selected</span></span>
+                        <strong id="summary-selected">0</strong>
+                    </div>
+                    <div class="comparator-summary-stat">
+                        <span class="comparator-summary-label"><span class="lang-zh">納入時間表</span><span class="lang-en">Planned</span></span>
+                        <strong id="summary-planned">0</strong>
+                    </div>
+                    <div class="comparator-summary-stat">
+                        <span class="comparator-summary-label"><span class="lang-zh">時間衝突</span><span class="lang-en">Conflicts</span></span>
+                        <strong id="summary-conflicts">0</strong>
+                    </div>
+                </div>
 
                 <div class="comparator-layout">
                     <aside class="card comparator-controls" aria-labelledby="selectionHeading">
@@ -39,51 +70,59 @@
                                 <span class="lang-zh">選擇課程</span>
                                 <span class="lang-en">Choose courses</span>
                             </h3>
-                            <button id="reset-selection" class="btn-secondary comparator-reset" type="button">
-                                <span class="lang-zh">清除</span><span class="lang-en">Clear</span>
-                            </button>
-                        </div>
-
-                        <div class="comparator-form-group">
-                            <label for="course-codes">
-                                <span class="lang-zh">輸入課程編號</span>
-                                <span class="lang-en">Enter course codes</span>
-                            </label>
-                            <textarea id="course-codes" rows="2" placeholder="EE1001, EE2002"></textarea>
-                            <button id="add-courses" class="btn-action" type="button">
-                                <span class="lang-zh">加入課程</span><span class="lang-en">Add courses</span>
-                            </button>
-                            <p id="input-message" class="comparator-message" role="status" aria-live="polite"></p>
-                        </div>
-
-                        <div class="comparator-form-group">
-                            <label for="semester-preset">
-                                <span class="lang-zh">示範學期</span>
-                                <span class="lang-en">Sample semester</span>
-                            </label>
-                            <div class="comparator-preset-row">
-                                <select id="semester-preset">
-                                    <option value="2A" data-zh="第 2A 學期（示範）" data-en="Semester 2A (sample)">第 2A 學期（示範）</option>
-                                    <option value="2B" data-zh="第 2B 學期（示範）" data-en="Semester 2B (sample)">第 2B 學期（示範）</option>
-                                    <option value="3A" data-zh="第 3A 學期（示範）" data-en="Semester 3A (sample)">第 3A 學期（示範）</option>
-                                    <option value="3B" data-zh="第 3B 學期（示範）" data-en="Semester 3B (sample)">第 3B 學期（示範）</option>
-                                    <option value="4A" data-zh="第 4A 學期（示範）" data-en="Semester 4A (sample)" selected>第 4A 學期（示範）</option>
-                                    <option value="4B" data-zh="第 4B 學期（示範）" data-en="Semester 4B (sample)">第 4B 學期（示範）</option>
-                                </select>
-                                <button id="import-timetable" class="btn-secondary" type="button">
-                                    <span class="lang-zh">載入</span><span class="lang-en">Load</span>
+                            <div class="comparator-heading-actions">
+                                <button id="undo-clear" class="btn-secondary comparator-reset" type="button" hidden>
+                                    <span class="lang-zh">復原清除</span><span class="lang-en">Undo clear</span>
+                                </button>
+                                <button id="reset-selection" class="btn-secondary comparator-reset" type="button">
+                                    <span class="lang-zh">清除</span><span class="lang-en">Clear</span>
                                 </button>
                             </div>
                         </div>
 
+                        <div class="comparator-form-group comparator-search-group">
+                            <label for="course-search">
+                                <span class="lang-zh">搜尋課程</span>
+                                <span class="lang-en">Search courses</span>
+                            </label>
+                            <div class="comparator-search-row">
+                                <input id="course-search" type="search" autocomplete="off" spellcheck="false" aria-controls="course-list">
+                                <button id="clear-course-search" class="btn-secondary" type="button">
+                                    <span class="lang-zh">清除搜尋</span><span class="lang-en">Clear search</span>
+                                </button>
+                            </div>
+                            <p id="course-search-status" class="comparator-hint" role="status" aria-live="polite"></p>
+                        </div>
+
+                        <details class="comparator-code-entry">
+                            <summary>
+                                <span class="comparator-add-icon" aria-hidden="true">＋</span>
+                                <span class="lang-zh">以課程編號加入</span>
+                                <span class="lang-en">Add by course code</span>
+                            </summary>
+                            <div class="comparator-form-group">
+                                <label for="course-codes">
+                                    <span class="lang-zh">輸入課程編號</span>
+                                    <span class="lang-en">Enter course codes</span>
+                                </label>
+                                <textarea id="course-codes" rows="2" placeholder="EE1001, EE2002"></textarea>
+                                <button id="add-courses" class="btn-action comparator-add-button" type="button">
+                                    <span class="comparator-add-icon" aria-hidden="true">＋</span>
+                                    <span class="lang-zh">加入課程</span><span class="lang-en">Add courses</span>
+                                </button>
+                            </div>
+                        </details>
+
+                        <p id="input-message" class="comparator-message" role="status" aria-live="polite"></p>
+
                         <fieldset class="comparator-course-fieldset">
                             <legend>
-                                <span class="lang-zh">可選課程</span>
-                                <span class="lang-en">Available courses</span>
+                                <span class="lang-zh">課程清單</span>
+                                <span class="lang-en">Course list</span>
                             </legend>
                             <p class="comparator-hint">
-                                <span class="lang-zh">課程清單會根據學生資料，只顯示本學年可加入的科目。</span>
-                                <span class="lang-en">This list follows the Student Profile and shows only courses available to add for the selected year.</span>
+                                <span class="lang-zh">清單會根據學生資料顯示本學年可加入的科目，並按課程編號排序；勾選或取消不會移動項目。</span>
+                                <span class="lang-en">The list follows the Student Profile and shows courses available for the selected year, sorted by course code. Checking or unchecking a course does not move it.</span>
                             </p>
                             <p id="profile-pool-status" class="comparator-hint" role="status" aria-live="polite"></p>
                             <div id="course-list" class="comparator-course-list"></div>
@@ -91,7 +130,19 @@
                     </aside>
 
                     <div class="comparator-results">
-                        <section class="card schedule-panel" aria-labelledby="scheduleHeading">
+                        <div class="comparator-result-tabs" role="tablist" aria-label="Comparator views / 比較器檢視">
+                            <button class="comparator-result-tab" id="tab-timetable" type="button" role="tab" aria-selected="true" aria-controls="schedule-panel" data-comparator-view="schedule">
+                                <span class="lang-zh">時間表與衝突檢查</span>
+                                <span class="lang-en">Timetable &amp; conflict check</span>
+                                <span id="tab-conflict-count" class="comparator-tab-count" hidden></span>
+                            </button>
+                            <button class="comparator-result-tab" id="tab-workload" type="button" role="tab" aria-selected="false" aria-controls="comparison-panel" data-comparator-view="comparison" tabindex="-1">
+                                <span class="lang-zh">課程負擔比較</span>
+                                <span class="lang-en">Workload comparison</span>
+                            </button>
+                        </div>
+
+                        <section class="card schedule-panel" id="schedule-panel" role="tabpanel" aria-labelledby="tab-timetable">
                             <div class="comparator-section-heading">
                                 <div>
                                     <h3 id="scheduleHeading">
@@ -104,11 +155,23 @@
                                     </p>
                                 </div>
                             </div>
+                            <div id="section-choice-panel" class="section-choice-panel" hidden>
+                                <h4>
+                                    <span class="lang-zh">選擇班別</span>
+                                    <span class="lang-en">Choose sections</span>
+                                </h4>
+                                <p class="comparator-hint">
+                                    <span class="lang-zh">每組班別先選第一個時段；可更改選擇以重新檢查衝突。</span>
+                                    <span class="lang-en">The first section in each group is selected initially. Change a selection to recheck conflicts.</span>
+                                </p>
+                                <div id="section-choice-list" class="section-choice-list"></div>
+                            </div>
                             <div id="status-message" class="schedule-status" role="status" aria-live="polite"></div>
+                            <p id="conflict-focus-status" class="comparator-message" role="status" aria-live="polite"></p>
                             <div id="timetable-wrapper" class="timetable-wrapper" tabindex="0" role="region" aria-label="Weekly timetable / 每週時間表"></div>
                         </section>
 
-                        <section class="card comparison-panel" aria-labelledby="comparisonHeading">
+                        <section class="card comparison-panel" id="comparison-panel" role="tabpanel" aria-labelledby="tab-workload" hidden>
                             <div class="comparator-section-heading">
                                 <div>
                                     <h3 id="comparisonHeading">
@@ -116,8 +179,8 @@
                                         <span class="lang-en">Workload comparison</span>
                                     </h3>
                                     <p class="comparator-hint">
-                                        <span class="lang-zh">指標為示範估算；資料不足時會清楚標示。</span>
-                                        <span class="lang-en">Metrics are illustrative estimates; missing data is identified.</span>
+                                        <span class="lang-zh">指標為示範估算；「資料來源」列區分 AIMS 快照與示範資料。</span>
+                                        <span class="lang-en">Metrics are illustrative estimates; the Data source row distinguishes AIMS snapshots from sample data.</span>
                                     </p>
                                 </div>
                                 <label class="comparator-sort" for="sort-key">
