@@ -7,6 +7,7 @@
 (() => {
     'use strict';
 
+    const PROFILE_STORAGE_KEY = 'ee4213.registration.profile.v1';
     const SELECTED_COURSES_KEY = 'ee4213.registration.selectedCourses.v1';
     const UNDECLARED_ID = 'UNDECLARED';
 
@@ -111,6 +112,39 @@
         }
     }
 
+    function loadProfile() {
+        try {
+            const raw = sessionStorage.getItem(PROFILE_STORAGE_KEY);
+            if (!raw) return;
+            const parsed = JSON.parse(raw);
+            if (!parsed || typeof parsed !== 'object') return;
+
+            if (typeof parsed.major === 'string') state.profile.major = parsed.major;
+            if (typeof parsed.transfer === 'string') state.profile.transfer = parsed.transfer;
+            if (typeof parsed.year === 'string') state.profile.year = parsed.year;
+            if (typeof parsed.goal === 'string') state.goal = parsed.goal;
+            if (typeof parsed.specialization === 'string') state.specialization = parsed.specialization;
+        } catch (err) {
+            /* Ignore invalid demo data. */
+        }
+    }
+
+    function saveProfile() {
+        try {
+            sessionStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify({
+                major: state.profile.major,
+                transfer: state.profile.transfer,
+                year: state.profile.year,
+                goal: state.goal,
+                specialization: state.specialization
+            }));
+            return true;
+        } catch (err) {
+            /* sessionStorage may be unavailable under file:// in some browsers. */
+            return false;
+        }
+    }
+
     // ---------- step navigation ----------
     function goToStep(n) {
         if (typeof n !== 'number' || n < 0 || n > 5) return;
@@ -161,9 +195,40 @@
         });
 
         select.value = state.profile.major;
+        if (select.value !== state.profile.major) {
+            state.profile.major = UNDECLARED_ID;
+            select.value = UNDECLARED_ID;
+        }
         select.addEventListener('change', () => {
             state.profile.major = select.value;
+            saveProfile();
         });
+    }
+
+    function applyProfileSelectionsToUI() {
+        state.profile.transfer = applyButtonSelection(
+            '[data-transfer]', 'data-transfer', state.profile.transfer, 'Associate Degree'
+        );
+        state.profile.year = applyButtonSelection(
+            '#yearChips button', 'data-year', state.profile.year, 'Year 1'
+        );
+        state.goal = applyButtonSelection(
+            '#goalChips button', 'data-goal', state.goal, ''
+        );
+        state.specialization = applyButtonSelection(
+            '#specGrid [data-spec]', 'data-spec', state.specialization, 'Data Engineering'
+        );
+    }
+
+    function applyButtonSelection(selector, attribute, value, fallback) {
+        const buttons = Array.from(document.querySelectorAll(selector));
+        const selectedValue = buttons.some((button) => button.getAttribute(attribute) === value)
+            ? value
+            : fallback;
+        buttons.forEach((button) => {
+            button.classList.toggle('selected', button.getAttribute(attribute) === selectedValue);
+        });
+        return selectedValue;
     }
 
     function bindProfileButtons() {
@@ -172,6 +237,7 @@
                 state.profile.transfer = btn.getAttribute('data-transfer');
                 document.querySelectorAll('[data-transfer]').forEach((b) => b.classList.remove('selected'));
                 btn.classList.add('selected');
+                saveProfile();
             });
         });
 
@@ -180,6 +246,7 @@
                 state.profile.year = btn.getAttribute('data-year');
                 document.querySelectorAll('#yearChips button').forEach((b) => b.classList.remove('selected'));
                 btn.classList.add('selected');
+                saveProfile();
             });
         });
     }
@@ -191,6 +258,7 @@
                 state.goal = btn.getAttribute('data-goal');
                 document.querySelectorAll('#goalChips button').forEach((b) => b.classList.remove('selected'));
                 btn.classList.add('selected');
+                saveProfile();
             });
         });
     }
@@ -346,6 +414,7 @@
                 state.specialization = btn.getAttribute('data-spec');
                 document.querySelectorAll('#specGrid [data-spec]').forEach((b) => b.classList.remove('selected'));
                 btn.classList.add('selected');
+                saveProfile();
             });
         });
     }
@@ -452,6 +521,7 @@
         const btn = document.getElementById('finishBtn');
         if (!btn) return;
         btn.addEventListener('click', () => {
+            if (!saveProfile()) return;
             window.location.href = '../student-profile/index.html';
         });
     }
@@ -468,7 +538,9 @@
     // ---------- Init ----------
     function init() {
         state.selectedCourses = loadSelectedCourses();
+        loadProfile();
         populateMajorSelect();
+        applyProfileSelectionsToUI();
         bindProfileButtons();
         bindGoalButtons();
         bindSpecializationButtons();

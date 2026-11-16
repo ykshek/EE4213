@@ -12,7 +12,7 @@ A static, build-free high-fidelity prototype of a student guide for the Departme
 | --- | --- | --- |
 | Home page | `portal/index.html` | Implemented. Public landing page with programme, study-area, learning-journey, career, and official-resource sections. Not listed in the sidebar. |
 | Demo accounts, login, and language switch | `portal/assets/js/common.js`, `portal/assets/css/common.css` | Implemented. Browser-local accounts, session state, first-login routing, locked-page notices, storage warnings, and a Chinese/English switch. |
-| Registration Navigator | `portal/registration/index.html` | UI and step logic are present, but the page is **not currently wired up**: it does not load its page CSS/JS or the shared data module, and its page-root class does not match the scoped CSS. The flow is login-protected and not in the sidebar. |
+| Registration Navigator | `portal/registration/index.html` | Implemented six-step flow. Saves and restores major, entry route, year, career goal, and specialization in the same-tab session so the completed profile appears on Student Profile. Login-protected and not in the sidebar. |
 | Student Profile | `portal/student-profile/` | Implemented. View and edit major, entry route, year, career goal, and specialization. Login-protected. |
 | Course Information directory | `portal/course-info/index.html` | Implemented. Searchable directory of 56 baseline EE course entries (more after the official AIMS import) with bilingual titles, credits, and practical/theoretical badges. Public. |
 | Course Workload Details | `portal/course-info/workload.html` | Implemented. Course description, credits, workload metrics, 13-week busy-week timeline, student experiences, and grade distribution. Public subpage; not a sidebar item. |
@@ -127,7 +127,6 @@ Clearing site data removes all demo accounts, profiles, and feedback.
 
 ## Known gaps
 
-- The Registration Navigator needs its page assets reconnected before the step buttons work; see `AGENTS.md` for the exact mismatch.
 - `portal/registration/` and `portal/assets/` contain two different copies of the registration CSS and JavaScript. One canonical pair should be linked and the duplicate removed.
 - The Registration Navigator's selected courses are stored in `sessionStorage` but are not read by the Student Profile or Degree Audit Helper.
 - Program Browser & Career Information is still a placeholder.
