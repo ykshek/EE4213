@@ -1379,7 +1379,7 @@
     top: calc(100% + 4px);
     right: 4px;
     display: grid;
-    width: min(21rem, calc(100vw - 2rem));
+    width: min(21rem, calc(100% - 8px));
     gap: 8px;
     padding: 10px;
     border: 1px solid var(--border-color);
