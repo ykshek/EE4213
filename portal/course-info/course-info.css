@@ -145,13 +145,49 @@
     border-top: 1px solid #e2e8f0;
 }
 
-.course-directory-columns,
+.course-directory-columns {
+    display: grid;
+    grid-template-columns: minmax(7.5rem, 8.5rem) minmax(0, 1fr) 5.5rem 1.25rem 7.5rem;
+    align-items: center;
+    gap: 8px 12px;
+    padding: 7px 16px;
+}
+
+.course-directory-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 7.5rem;
+    align-items: stretch;
+}
+
 .course-directory .course-directory-link {
     display: grid;
     grid-template-columns: minmax(7.5rem, 8.5rem) minmax(0, 1fr) 5.5rem 1.25rem;
     align-items: center;
     gap: 8px 12px;
     padding: 7px 16px;
+}
+
+.course-compare-link {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 7px 8px;
+    border-left: 1px solid #e2e8f0;
+    color: var(--cityu-maroon);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.course-compare-link:hover,
+.course-compare-link:focus-visible {
+    background: #fbf2f4;
+}
+
+.course-directory-columns > :last-child {
+    text-align: center;
 }
 
 .course-directory-columns {
@@ -206,7 +242,6 @@
     font-weight: 400;
 }
 
-.course-directory-columns > :last-child,
 .course-directory-credits {
     text-align: right;
 }
@@ -267,6 +302,10 @@
 
 .course-back {
     margin-bottom: 10px;
+}
+
+.course-compare-detail {
+    margin-top: 8px;
 }
 
 .course-code {
@@ -690,10 +729,23 @@
         border-top: 1px solid var(--border-color);
     }
 
+    .course-directory-row {
+        grid-template-columns: minmax(0, 1fr) 3.25rem;
+    }
+
     .course-directory .course-directory-link {
         grid-template-columns: minmax(0, 1fr) auto 1.25rem;
         gap: 4px 8px;
         padding: 8px 14px;
+    }
+
+    .course-compare-label {
+        display: none;
+    }
+
+    .course-compare-link {
+        padding: 4px;
+        font-size: 1rem;
     }
 
     .course-directory-name {
